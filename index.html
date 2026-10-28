@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="uk">
 <head>
-<!-- QuantumYur v47 / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
+<!-- QuantumYur v48 / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script id="qy-v35-before-paint">
@@ -4250,6 +4250,22 @@ document.body.classList.add('qy44-ready','qy44-home');updateLabels();updateClock
 @media (max-width:340px){#qy47-manual-label{font-size:12px}#qy47-manual-choice{max-width:65vw}#qy47-switch button{min-width:94px}}
 @media(prefers-reduced-motion:reduce){#qy47-controls *{transition:none!important}}
 </style>
+
+<style id="qy-v48-photo-arrows">
+/* QuantumYur v48: compact manual-scene navigation, with the label on its own line. */
+#qy47-manual-wrap{display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:6px;width:min(100%,370px);max-width:100%;margin:0 auto;padding:2px 0 0}
+#qy47-manual-wrap[hidden]{display:none!important}
+#qy47-manual-label{display:block;width:100%;padding:0 4px;text-align:left;font-size:14px;line-height:1.5;flex:none}
+#qy48-photo-row{display:grid;grid-template-columns:48px minmax(0,1fr) 48px;gap:8px;align-items:center;max-width:100%;width:100%}
+#qy48-photo-row .qy48-step{box-sizing:border-box;width:100%;min-width:0;min-height:48px;padding:5px 0!important;border-radius:13px!important;border:1px solid var(--qy45-edge,#ba9c6a)!important;background:rgba(9,33,49,.93)!important;color:#fff!important;font:700 32px/1 ui-monospace,Consolas,monospace!important;box-shadow:0 0 10px var(--qy45-glow,rgba(220,170,95,.1));cursor:pointer;touch-action:manipulation}
+#qy48-photo-row .qy48-step:disabled{opacity:.45;cursor:default}
+#qy48-photo-row .qy48-step:active:not(:disabled){background:rgba(60,104,125,.95)!important}
+#qy48-photo-row #qy47-manual-choice{box-sizing:border-box;min-width:0;max-width:100%;width:100%;height:48px;min-height:48px;font-size:16px!important;padding:8px 10px;text-overflow:ellipsis}
+#qy48-photo-row .qy48-step:focus-visible{outline:3px solid #ffe5a9!important;outline-offset:2px}
+@media(max-width:700px){#qy47-manual-wrap{flex-direction:column;flex-wrap:nowrap;gap:6px;width:min(100%,360px)}#qy47-manual-choice{max-width:100%!important}#qy48-photo-row{grid-template-columns:46px minmax(0,1fr) 46px;gap:8px}}
+@media(max-width:340px){#qy48-photo-row{grid-template-columns:42px minmax(0,1fr) 42px;gap:5px}#qy47-manual-label{font-size:13px}#qy48-photo-row #qy47-manual-choice{font-size:14px!important}}
+@media(prefers-reduced-motion:reduce){#qy48-photo-row .qy48-step{transition:none!important}}
+</style>
 <script id="qy-v47-home-mode-js">
 (()=>{'use strict';
 const byId=id=>document.getElementById(id);
@@ -4261,9 +4277,10 @@ const labels={
 const lang=()=>byId('site-language')?.value||'uk';
 const tr=i=>(labels[lang()]||labels.en)[i];
 const container=document.createElement('div');container.id='qy47-controls';container.setAttribute('aria-label','Background mode');
-container.innerHTML='<div id="qy47-switch" role="group"><button id="qy47-auto" type="button" aria-pressed="false"></button><button id="qy47-manual" type="button" aria-pressed="false"></button></div><div id="qy47-manual-wrap" hidden><label id="qy47-manual-label" for="qy47-manual-choice"></label><select id="qy47-manual-choice"></select></div>';
+container.innerHTML='<div id="qy47-switch" role="group"><button id="qy47-auto" type="button" aria-pressed="false"></button><button id="qy47-manual" type="button" aria-pressed="false"></button></div><div id="qy47-manual-wrap" hidden><label id="qy47-manual-label" for="qy47-manual-choice"></label><div id="qy48-photo-row"><button id="qy48-prev" class="qy48-step" type="button" aria-label="Previous photo" title="Previous photo">&#x2039;</button><select id="qy47-manual-choice"></select><button id="qy48-next" class="qy48-step" type="button" aria-label="Next photo" title="Next photo">&#x203a;</button></div></div>';
 byId('qy44-active').insertAdjacentElement('afterend',container);
-const auto=byId('qy47-auto'),manual=byId('qy47-manual'),wrap=byId('qy47-manual-wrap'),choice=byId('qy47-manual-choice');
+const auto=byId('qy47-auto'),manual=byId('qy47-manual'),wrap=byId('qy47-manual-wrap'),choice=byId('qy47-manual-choice'),prev=byId('qy48-prev'),next=byId('qy48-next');
+const stepLabels={uk:['Попереднє фото','Наступне фото'],pl:['Poprzednie zdjęcie','Następne zdjęcie'],en:['Previous photo','Next photo'],ru:['Предыдущее фото','Следующее фото'],ja:['前の写真','次の写真'],ko:['이전 사진','다음 사진'],zh:['上一张照片','下一张照片'],hi:['पिछली तस्वीर','अगली तस्वीर'],es:['Foto anterior','Foto siguiente'],'pt-BR':['Foto anterior','Próxima foto']};
 const lastManualKey='qy47-last-manual-by-theme';
 let last={};try{const obj=JSON.parse(localStorage.getItem(lastManualKey)||'{}');if(obj&&typeof obj==='object'&&!Array.isArray(obj))last=obj;}catch(_){ }
 function remember(){if(source.value==='auto')return;last[String(theme.value)]=source.value;try{localStorage.setItem(lastManualKey,JSON.stringify(last))}catch(_){ }}
@@ -4283,7 +4300,21 @@ function sync(){const isAuto=source.value==='auto';
   if(!isAuto)choice.value=selected;
   if(!isAuto)remember();
   auto.setAttribute('aria-label',tr(0));manual.setAttribute('aria-label',tr(1));
+  const wording=stepLabels[lang()]||stepLabels.en;
+  prev.setAttribute('aria-label',wording[0]);next.setAttribute('aria-label',wording[1]);
+  prev.title=wording[0];next.title=wording[1];
+  const hasAlternatives=choice.options.length>1;
+  prev.disabled=next.disabled=isAuto||!hasAlternatives;
 }
+function step(direction){
+  if(source.value==='auto')return;
+  const values=[...source.options].filter(option=>option.value!=='auto').map(option=>option.value);
+  if(values.length<2)return;
+  const i=values.indexOf(source.value), index=i<0?0:i;
+  dispatch(values[(index+direction+values.length)%values.length]);
+}
+prev.addEventListener('click',()=>step(-1));
+next.addEventListener('click',()=>step(1));
 auto.addEventListener('click',()=>dispatch('auto'));
 manual.addEventListener('click',()=>{if(source.value!=='auto')return;dispatch(preferredManual())});
 choice.addEventListener('change',()=>dispatch(choice.value));
