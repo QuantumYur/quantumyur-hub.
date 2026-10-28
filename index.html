@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="uk">
 <head>
-<!-- QuantumYur v46 / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
+<!-- QuantumYur v47 / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script id="qy-v35-before-paint">
@@ -4209,4 +4209,90 @@ document.body.classList.add('qy44-ready','qy44-home');updateLabels();updateClock
  :root{--qy46-mark-bg:rgb(18,25,37)}
 }
 </style>
+<style id="qy-v47-mobile-polish">
+/* QuantumYur v47 — mobile focus and a direct homepage scenery switch. */
+#qy47-controls{display:flex;flex-direction:column;align-items:center;gap:9px;max-width:440px;margin:14px auto 0;font-family:ui-monospace,Consolas,monospace;text-shadow:none}
+#qy47-switch{display:flex;gap:4px;align-items:stretch;padding:4px;border:1px solid var(--qy45-edge,#b8d4e8);border-radius:999px;background:rgba(5,17,31,.82);box-shadow:0 3px 20px rgba(0,0,0,.28);backdrop-filter:blur(9px)}
+#qy47-switch button{min-height:41px;min-width:112px;padding:8px 15px;border:1px solid transparent!important;border-radius:999px;background:transparent!important;color:#dce9f3!important;font:750 clamp(13px,2.8vw,15px)/1.35 ui-monospace,Consolas,monospace!important;cursor:pointer}
+#qy47-switch button[aria-pressed="true"]{background:rgba(64,112,131,.78)!important;color:white!important;border:1px solid var(--qy45-strong,#e0edf5)!important;box-shadow:0 0 12px var(--qy45-glow,rgba(108,191,215,.15))!important}
+#qy47-manual-wrap{display:flex;gap:9px;align-items:center;justify-content:center;width:100%;padding:1px 0 0}
+#qy47-manual-wrap[hidden]{display:none!important}
+#qy47-manual-label{font-size:13px;font-weight:700;flex:0 0 auto;color:#f4f7ff}
+#qy47-manual-choice{min-height:43px;max-width:min(280px,68vw);width:100%;border:1px solid var(--qy45-edge,#90b4c7)!important;border-radius:12px;background:#102a3c!important;color:#fff!important;box-shadow:0 0 10px var(--qy45-glow,rgba(0,0,0,.1));padding:9px 12px;font:700 14px/1.4 ui-monospace,Consolas,monospace;cursor:pointer;appearance:auto}
+#qy47-controls button:focus-visible,#qy47-manual-choice:focus-visible{outline:3px solid #ffe5a9!important;outline-offset:3px!important}
+@media(max-width:700px){
+  /* The whole phone screen is the menu, not a narrow desktop side drawer. */
+  #qy44-menu-overlay{width:100vw!important;max-width:100vw!important;min-height:100dvh!important;justify-content:stretch!important;align-items:stretch!important;backdrop-filter:none!important}
+  #qy44-menu-sheet{box-sizing:border-box!important;width:100%!important;max-width:none!important;height:100dvh!important;max-height:100dvh!important;margin:0!important;border:0!important;border-radius:0!important;padding:clamp(16px,4vw,24px) clamp(16px,5vw,26px) calc(30px + env(safe-area-inset-bottom,0px))!important;overflow-y:auto!important;overscroll-behavior:contain}
+  #qy44-menu-sheet .qy44-menulinks{grid-template-columns:1fr!important;gap:8px!important}
+  #qy44-menu-sheet .qy44-link{min-height:49px!important;font-size:15px!important;padding:11px 14px!important}
+  #qy44-menu-sheet .qy44-menuhead{position:sticky;top:-16px;z-index:2;padding:4px 0 10px;background:#0c2132}
+  /* Frame choices are shallower: no loss of labels or touch targets. */
+  #qy42-sheet{padding:17px 15px 18px!important}
+  #qy42-head{margin-bottom:10px!important}
+  #qy42-head h2{font-size:clamp(20px,5vw,25px)!important}
+  #qy42-options{gap:8px!important}
+  #qy42-options button{min-height:82px!important;padding:9px 11px!important}
+  #qy42-options .qy42-emoji{font-size:22px!important;margin-bottom:4px!important}
+  #qy42-options .qy42-option-label{font-size:14px!important}
+  #qy42-options .qy42-option-desc{font-size:11.5px!important;line-height:1.3!important}
+  #qy42-status{margin-top:8px!important}
+  #qy42-note{margin-top:6px!important}
+  /* Smaller corner artwork on narrow phone screens, especially the pumpkin. */
+  #qy42-frame .qy42-corner{width:clamp(70px,19vw,108px)!important;height:clamp(70px,19vw,108px)!important;opacity:.9}
+  #qy42-frame .qy42-bl{transform:scale(.80);transform-origin:bottom left}
+  #qy42-frame .qy42-br{transform:scale(.76);transform-origin:bottom right}
+  #qy47-switch button{min-width:105px;min-height:43px;padding:8px 13px}
+  #qy47-controls{margin:12px auto 0;gap:8px}
+  #qy47-manual-wrap{flex-wrap:wrap;gap:7px}
+  #qy47-manual-choice{max-width:min(270px,68vw)}
+}
+@media (max-width:340px){#qy47-manual-label{font-size:12px}#qy47-manual-choice{max-width:65vw}#qy47-switch button{min-width:94px}}
+@media(prefers-reduced-motion:reduce){#qy47-controls *{transition:none!important}}
+</style>
+<script id="qy-v47-home-mode-js">
+(()=>{'use strict';
+const byId=id=>document.getElementById(id);
+const front=byId('qy44-front'),source=byId('qy37-mode'),theme=byId('qy37-theme');
+if(!front||!source||!theme||byId('qy47-controls'))return;
+const labels={
+  uk:['Авто','Вручну','Пейзаж'],en:['Auto','Manual','Scenery'],pl:['Auto','Ręcznie','Krajobraz'],ru:['Авто','Вручную','Пейзаж'],
+  ja:['自動','手動','景色'],ko:['자동','수동','풍경'],zh:['自动','手动','风景'],hi:['ऑटो','मैनुअल','दृश्य'],es:['Auto','Manual','Paisaje'],'pt-BR':['Auto','Manual','Paisagem']};
+const lang=()=>byId('site-language')?.value||'uk';
+const tr=i=>(labels[lang()]||labels.en)[i];
+const container=document.createElement('div');container.id='qy47-controls';container.setAttribute('aria-label','Background mode');
+container.innerHTML='<div id="qy47-switch" role="group"><button id="qy47-auto" type="button" aria-pressed="false"></button><button id="qy47-manual" type="button" aria-pressed="false"></button></div><div id="qy47-manual-wrap" hidden><label id="qy47-manual-label" for="qy47-manual-choice"></label><select id="qy47-manual-choice"></select></div>';
+byId('qy44-active').insertAdjacentElement('afterend',container);
+const auto=byId('qy47-auto'),manual=byId('qy47-manual'),wrap=byId('qy47-manual-wrap'),choice=byId('qy47-manual-choice');
+const lastManualKey='qy47-last-manual-by-theme';
+let last={};try{const obj=JSON.parse(localStorage.getItem(lastManualKey)||'{}');if(obj&&typeof obj==='object'&&!Array.isArray(obj))last=obj;}catch(_){ }
+function remember(){if(source.value==='auto')return;last[String(theme.value)]=source.value;try{localStorage.setItem(lastManualKey,JSON.stringify(last))}catch(_){ }}
+function dispatch(v){if(![...source.options].some(o=>o.value===v))return;
+  source.value=v;source.dispatchEvent(new Event('change',{bubbles:true}));sync();}
+function preferredManual(){const options=[...source.options].filter(o=>o.value!=='auto');const old=String(last[String(theme.value)]??'');
+  if(options.some(o=>o.value===old))return old;
+  // On first manual switch, use the currently visible time-of-day scene.
+  const hour=new Date().getHours();const phase=hour>=22||hour<4?7:hour<6?0:hour<8?1:hour<11?2:hour<14?3:hour<17?4:hour<19?5:6;
+  const guess=theme.value==='1'?String(phase):String([0,0,0,1,1,2,2,2][phase]);
+  return options.some(o=>o.value===guess)?guess:options[0]?.value||'0';}
+function sync(){const isAuto=source.value==='auto';
+  auto.textContent='↻ '+tr(0);manual.textContent='✋ '+tr(1);byId('qy47-manual-label').textContent=tr(2);
+  auto.setAttribute('aria-pressed',String(isAuto));manual.setAttribute('aria-pressed',String(!isAuto));wrap.hidden=isAuto;
+  const selected=source.value;
+  choice.replaceChildren();for(const option of [...source.options]){if(option.value==='auto')continue;const o=document.createElement('option');o.value=option.value;o.textContent=option.textContent;choice.append(o)}
+  if(!isAuto)choice.value=selected;
+  if(!isAuto)remember();
+  auto.setAttribute('aria-label',tr(0));manual.setAttribute('aria-label',tr(1));
+}
+auto.addEventListener('click',()=>dispatch('auto'));
+manual.addEventListener('click',()=>{if(source.value!=='auto')return;dispatch(preferredManual())});
+choice.addEventListener('change',()=>dispatch(choice.value));
+source.addEventListener('change',sync);
+theme.addEventListener('change',()=>queueMicrotask(sync));
+byId('site-language')?.addEventListener('change',sync);
+byId('qy41-overlay')?.addEventListener('click',()=>setTimeout(sync,10));
+window.addEventListener('pageshow',sync);
+sync();
+})();
+</script>
 </body></html>
