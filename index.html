@@ -736,6 +736,65 @@ html[data-qy-v19-bgmode="soft"][data-qy-palette="sandstorm"] #qy-v14-theme-photo
 }
 @media(prefers-reduced-motion:reduce){#qy-v14-theme-photo,#qy-v19-cinema-scene::before{animation:none!important;transform:none!important;transition:none!important}}
 </style>
+<style id="qy-v20-glass-css">
+/* QuantumYur v20 Cinematic Glass — scoped, translucent, legible and lightweight. */
+html{--qy-v20-glass:rgba(9,20,41,.78);--qy-v20-glass-strong:rgba(7,18,37,.82);--qy-v20-glass-small:rgba(7,21,43,.73);--qy-v20-glass-stroke:rgba(210,232,255,.31);--qy-v20-glass-shine:rgba(242,250,255,.11)}
+html[data-qy-v20-glass="clear"]{--qy-v20-glass:rgba(8,21,43,.69);--qy-v20-glass-strong:rgba(8,18,36,.73);--qy-v20-glass-small:rgba(8,22,44,.68)}
+html[data-qy-v20-glass="frosted"]{--qy-v20-glass:rgba(8,19,38,.86);--qy-v20-glass-strong:rgba(8,19,38,.91);--qy-v20-glass-small:rgba(8,21,40,.82)}
+/* Treat the landscape as the stage; only content surfaces take an overlay. */
+html[data-qy-palette] :is(.wrap>header,.sky-scene,.daily-panel,.daily-datebar,.qy-news-card,.qy-discover,.qy-reminders,.qy-twitch-promo,.qy-install-card,.astro-panel,.q-vault-panel,.q-comp-panel,.quote,.card,.artwork,.hero){
+  background:linear-gradient(125deg,var(--qy-v20-glass-shine) 0%,transparent 29%,rgba(1,6,17,.13) 100%),var(--qy-v20-glass) !important;
+  border:1px solid var(--qy-v20-glass-stroke)!important;
+  box-shadow:0 14px 38px rgba(0,5,18,.22),inset 0 1px 0 rgba(255,255,255,.075)!important;
+  color:#f4f8ff;
+}
+html[data-qy-palette] :is(.daily-panel,.sky-scene,.qy-news-card,.qy-discover,.qy-reminders,.astro-panel,.q-vault-panel,.q-comp-panel,.card,.artwork,.qy-install-card,.qy-twitch-promo){
+  -webkit-backdrop-filter:blur(6px) saturate(1.12);backdrop-filter:blur(6px) saturate(1.12);
+}
+/* Daily Pulse: dedicated compact glass for the previously white-on-sunlight heading. */
+#daily-pulse .daily-heading{align-items:flex-start;gap:10px;margin-bottom:16px}
+#daily-pulse .daily-heading>div:first-child{
+  display:inline-block;max-width:100%;min-width:0;
+  padding:16px 17px 15px;border-radius:19px;
+  border:1px solid var(--qy-v20-glass-stroke);
+  background:linear-gradient(128deg,rgba(255,255,255,.09),transparent 49%),var(--qy-v20-glass-strong);
+  -webkit-backdrop-filter:blur(9px) saturate(1.12);backdrop-filter:blur(9px) saturate(1.12);
+  box-shadow:0 9px 27px rgba(0,7,18,.18),inset 0 1px 0 rgba(255,255,255,.075)
+}
+#daily-pulse .daily-heading #daily-title,#daily-pulse .daily-heading #daily-intro{color:#f9fbff!important;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+#daily-pulse .daily-heading #daily-title{font-weight:790;line-height:1.15}
+#daily-pulse .daily-heading #daily-intro{margin:8px 0 0!important;opacity:1!important;color:#e9f4ff!important;line-height:1.48}
+#daily-pulse .daily-heading .daily-eyebrow{color:#a9e8ff;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+#daily-pulse .daily-live{background:rgba(8,52,63,.88)!important;border-color:rgba(116,245,215,.49)!important;box-shadow:0 7px 24px rgba(0,0,0,.18);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);color:#b3ffe8!important}
+#daily-pulse .daily-datebar{background:linear-gradient(120deg,rgba(255,255,255,.08),transparent 60%),var(--qy-v20-glass-strong)!important;-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
+#daily-pulse .daily-datebar :is(strong,span){color:#f4f9ff!important;text-shadow:0 1px 4px rgba(0,0,0,.42)}
+/* Small standalone headings elsewhere remain readable without masking the entire panorama. */
+html[data-qy-palette] .section>.intro{display:table;max-width:100%;padding:7px 11px;margin-top:5px;border-radius:10px;background:var(--qy-v20-glass-small);color:#e6f1ff!important;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+html[data-qy-palette] .section>h2{width:fit-content;max-width:100%;color:#fff!important;text-shadow:0 2px 9px #00112acc,0 0 22px #00112acc}
+html[data-qy-palette] :is(.section>.panel-overline,.daily-eyebrow){text-shadow:0 1px 8px rgba(0,0,0,.8)}
+html[data-qy-palette] .daily-panel :is(h3,p),html[data-qy-palette] .qy-news-card :is(h2,h3,p),html[data-qy-palette] .sky-scene :is(h2,h3,p),html[data-qy-palette] .wrap>header :is(a,span,label){color:#f3f9ff}
+html[data-qy-palette] .daily-panel .daily-subtitle{color:#cce0f2!important}
+html[data-qy-palette] #qy-v19-cinema-scene .qy-v19-inner{position:relative}
+/* A small floating control, reusing v19's buttons for consistent touch targets. */
+#qy-v20-glass-control{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:4px;max-width:100%;padding:7px 9px;border:1px solid rgba(211,235,255,.24);background:rgba(5,17,35,.35);border-radius:13px;-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
+#qy-v20-glass-control .qy-v20-glass-label{color:#e1f1ff;font:700 11px/1.3 system-ui,sans-serif}
+#qy-v20-glass-control button{min-height:37px;padding:8px 12px}
+#qy-v20-glass-control button[aria-pressed="true"]{background:rgba(205,233,254,.94)!important;color:#09223c!important;border-color:#f5fbff!important}
+html[data-qy-palette] #qy-v19-cinema-scene .qy-v19-controls{padding:8px 9px;background:rgba(5,17,35,.38);border:1px solid rgba(210,235,255,.25);border-radius:13px;-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
+/* International/world widgets: keep internal light/dark logic, do not invert charts. */
+html[data-qy-palette] #qy-world-hub{background:linear-gradient(143deg,rgba(17,37,61,.90),rgba(12,27,51,.85))!important;border-color:var(--qy-v20-glass-stroke)!important}
+html[data-qy-palette] #qy-world-hub .qh-panel{box-shadow:0 7px 26px rgba(0,0,0,.20)}
+@media(max-width:600px){
+ #daily-pulse .daily-heading>div:first-child{padding:15px 14px 13px;border-radius:16px}
+ #daily-pulse .daily-heading #daily-title{font-size:clamp(26px,7.3vw,36px)}
+ #daily-pulse .daily-heading #daily-intro{font-size:clamp(14px,4vw,17px);line-height:1.45}
+ #qy-v20-glass-control{gap:7px;padding:7px}
+ #qy-v20-glass-control .qy-v20-glass-label{width:100%}
+ #qy-v20-glass-control button{flex:1 1 85px}
+}
+@media (prefers-reduced-transparency: reduce){html{--qy-v20-glass:rgba(9,20,41,.94);--qy-v20-glass-strong:rgba(7,18,37,.96);--qy-v20-glass-small:rgba(7,21,43,.93)}}
+@media(prefers-reduced-motion:reduce){html[data-qy-palette] :is(.daily-heading>div,.sky-scene,.daily-panel){transition:none!important}}
+</style>
 </head>
 <body>
 <div id="qy-cosmos-background" aria-hidden="true"></div>
@@ -2204,6 +2263,26 @@ obs.observe(status,{childList:true,subtree:true,characterData:true});
  window.addEventListener('pageshow',refresh);
  const obs=new MutationObserver(()=>refresh());obs.observe(root,{attributes:true,attributeFilter:['data-qy-palette']});
  setMode(mode);refresh();
+})();
+</script>
+<script id="qy-v20-glass-js">
+(()=>{'use strict';
+ const root=document.documentElement,lang=document.getElementById('site-language'),scene=document.getElementById('qy-v19-cinema-scene');
+ if(!scene||document.getElementById('qy-v20-glass-control'))return;
+ const tr={
+ uk:['Скло інтерфейсу','Прозоре','Матове'],en:['Interface glass','Clear','Frosted'],pl:['Szklany interfejs','Przezroczyste','Matowe'],ru:['Стекло интерфейса','Прозрачное','Матовое'],
+ es:['Cristal de la interfaz','Transparente','Esmerilado'],'pt-BR':['Vidro da interface','Transparente','Fosco'],ja:['インターフェースのガラス','透明','曇りガラス'],ko:['인터페이스 글래스','투명','반투명'],zh:['玻璃界面','透明','磨砂'],hi:['इंटरफ़ेस ग्लास','पारदर्शी','धुंधला']};
+ const row=document.createElement('div');row.id='qy-v20-glass-control';row.setAttribute('role','group');
+ const label=document.createElement('span');label.className='qy-v20-glass-label';const clear=document.createElement('button'),frosted=document.createElement('button');
+ for(const b of [clear,frosted]){b.type='button';b.setAttribute('aria-pressed','false')}
+ clear.id='qy-v20-clear';frosted.id='qy-v20-frosted';row.append(label,clear,frosted);
+ const controls=scene.querySelector('.qy-v19-controls');if(controls)controls.insertAdjacentElement('afterend',row);else scene.querySelector('.qy-v19-inner')?.appendChild(row);
+ const get=()=>{try{return localStorage.getItem('qy-v20-glass-mode')}catch{return null}};
+ const put=v=>{try{localStorage.setItem('qy-v20-glass-mode',v)}catch{}};
+ let mode=get()==='frosted'?'frosted':'clear';
+ function sync(){const t=tr[lang?.value]||tr.uk;label.textContent=t[0]+':';clear.textContent=t[1];frosted.textContent=t[2];row.setAttribute('aria-label',t[0]);root.dataset.qyV20Glass=mode;clear.setAttribute('aria-pressed',String(mode==='clear'));frosted.setAttribute('aria-pressed',String(mode==='frosted'))}
+ clear.addEventListener('click',()=>{mode='clear';put(mode);sync()});frosted.addEventListener('click',()=>{mode='frosted';put(mode);sync()});
+ lang?.addEventListener('change',()=>setTimeout(sync,0));window.addEventListener('pageshow',sync);sync();
 })();
 </script>
 </body></html>
