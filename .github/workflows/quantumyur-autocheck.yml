@@ -1,0 +1,268 @@
+name: QuantumYur — AutoCheck (один файл)
+
+on:
+  workflow_dispatch:
+    inputs:
+      site_url:
+        description: 'Адреса сайту, якщо вона відрізняється від стандартної GitHub Pages'
+        required: false
+        type: string
+  push:
+    paths:
+      - 'index.html'
+      - 'assets/**'
+      - 'images/**'
+      - '.github/workflows/quantumyur-autocheck.yml'
+  schedule:
+    - cron: '17 6,14,22 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quantumyur-autocheck
+  cancel-in-progress: true
+
+jobs:
+  visual-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    env:
+      SITE_URL: ${{ inputs.site_url || vars.SITE_URL || '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Встановити Playwright і Chromium
+        run: |
+          python -m pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium
+      - name: Перевірити сайт у браузері
+        id: checks
+        continue-on-error: true
+        shell: bash
+        run: |
+          cat > quantumyur_autocheck.py <<'PYCODE'
+          #!/usr/bin/env python3
+          """QuantumYur Hub autonomous visual/browser diagnostic (public site only)."""
+          import argparse
+          import datetime as dt
+          import json
+          import os
+          from pathlib import Path
+          import sys
+          import time
+          from urllib.parse import urlparse
+          
+          from playwright.sync_api import sync_playwright, Error as PWError
+          
+          DEVICES = {
+              'phone': {'width': 390, 'height': 844, 'scale': 2, 'package': 'light'},
+              'tablet': {'width': 820, 'height': 1180, 'scale': 1, 'package': 'balanced'},
+              'desktop': {'width': 1440, 'height': 900, 'scale': 1, 'package': 'full'},
+          }
+          SNAPSHOT_JS = r'''() => {
+            const root=document.documentElement;
+            const forest=document.getElementById('qy-v28-forest-bg');
+            const lake=document.getElementById('qy-lake-preview-bg');
+            const hash=s=>{let h=2166136261; for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return (h>>>0).toString(16)};
+            const view={w:innerWidth,h:innerHeight,y:window.scrollY,documentHeight:document.documentElement.scrollHeight};
+            const activeForest=root.dataset.qyForestActive==='1';
+            const activeLake=root.dataset.qyLakeActive==='1';
+            let layer=activeForest?forest:(activeLake?lake:document.querySelector('#qy-site-wallpaper'));
+            let image=layer?getComputedStyle(layer).backgroundImage:'';
+            // Local CSS data URLs can be huge: only store a short fingerprint, never the whole image.
+            const inViewport=e=>{const r=e.getBoundingClientRect();return r.bottom>30&&r.top<innerHeight-30&&r.width>40&&r.height>35};
+            const candidates=[...document.querySelectorAll('section, article, .card, .daily-panel, .artwork')].filter(inViewport);
+            const unexpectedlyHidden=candidates.filter(e=>{const s=getComputedStyle(e);return s.visibility==='hidden'||s.display==='none'||Number(s.opacity)<0.03}).slice(0,7).map(e=>e.id||e.className||e.tagName);
+            let rendered=0;
+            for(let y=75;y<innerHeight-50;y+=110){const e=document.elementFromPoint(innerWidth/2,y);if(e&&e!==document.body&&e!==document.documentElement)rendered++}
+            const currentSection=[...document.querySelectorAll('section')].filter(inViewport).slice(0,4).map(e=>e.id||e.querySelector('h1,h2,h3')?.textContent?.trim()?.slice(0,55)||'section');
+            return { ...view, font:root.dataset.qyV22Font||'',size:root.dataset.qyV22Size||'',
+              device:root.dataset.qyDevicePackage||'', theme:root.dataset.qyTheme||'',
+              forest:activeForest, lake:activeLake, forestChoice:localStorage.getItem('qy-v28-forest-choice'),
+              layer:layer?.id||'unknown', imageHash:hash(image), imageLength:image.length,
+              boot:root.dataset.qyV35Boot||'', candidates:candidates.length,
+              unexpectedlyHidden, renderedSamplePoints:rendered,
+              horizontalOverflow:Math.round(document.documentElement.scrollWidth-innerWidth), sections:currentSection };
+          }'''
+          
+          def resolve_site_url(provided):
+              if provided:
+                  return provided.strip()
+              repository=os.getenv('GITHUB_REPOSITORY','')
+              if '/' not in repository:
+                  raise ValueError('Вкажи SITE_URL (або передай --url); адресу сайту не визначено.')
+              owner, repo=repository.split('/',1)
+              if repo.lower()==f'{owner.lower()}.github.io':
+                  return f'https://{owner}.github.io/'
+              return f'https://{owner}.github.io/{repo}/'
+          
+          def prepare_profile(context, device_name, remembered=False):
+              data={
+                  'qy-v33-device-choice': DEVICES[device_name]['package'],
+                  'qy-v22-font': 'mono',
+                  'qy-v22-size': 'large',
+              }
+              if remembered:
+                  data.update({
+                      'qy-site-theme-v1': 'forest',
+                      'qy-v28-forest-active': '1',
+                      'qy-v28-forest-choice': 'ja',
+                      'qy-v26-lake-active': '0',
+                  })
+              code='''(values)=>{ for(const [key,value] of Object.entries(values)) {
+                try{localStorage.setItem(key,value)}catch(e){} } }'''
+              context.add_init_script(f'({code})({json.dumps(data,ensure_ascii=False)});')
+          
+          
+          def make_report(results, site, output):
+              errors=sum(1 for r in results if r['status']=='FAIL')
+              warnings=sum(1 for r in results if r['status']=='WARN')
+              stamp=dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
+              summary=['# QuantumYur AutoCheck — звіт', '', f'**Дата:** {stamp}  ', f'**Адреса:** `{site}`  ',
+                      f'**Підсумок:** {len(results)-errors-warnings} OK · {warnings} попереджень · {errors} помилок',
+                      '', '| Пристрій / сценарій | Статус | Результат |', '|---|---|---|']
+              for r in results:
+                  details=str(r['details']).replace('|','/').replace('\n',' ')[:250]
+                  summary.append(f"| {r['device']} · {r['check']} | {r['status']} | {details} |")
+              summary += ['', '## Файли', '',
+                          'Скріншоти лежать у папці `screenshots/`. `report.json` містить виміряні стани сторінки та повідомлення консолі.',
+                          '', '## Що програма перевіряє', '',
+                          'Наявність сторінки, запуск скриптів, збереження шрифту й теми, зміну режимів пристроїв,',
+                          'стрибки активного фону під час гортання та зміни висоти екрана, приховані блоки й горизонтальне прокручування.',
+                          '', '> Автотест не гарантує, що всі фотографії візуально правильні; скріншоти потрібні для остаточного огляду.',
+                          '> Перевіряється чистий тестовий браузер, приватний щоденник користувача не відкривається.', '']
+              (output/'report.md').write_text('\n'.join(summary),encoding='utf-8')
+              (output/'report.json').write_text(json.dumps({'site_url':site,'generated_at':stamp,'results':results},ensure_ascii=False,indent=2),encoding='utf-8')
+              print('\n'.join(summary[:10]))
+              return errors
+          
+          
+          def check_site(url,out,limit_seconds=120):
+              results=[]
+              out.mkdir(parents=True,exist_ok=True)
+              shots=out/'screenshots'; shots.mkdir(exist_ok=True)
+              def record(device,check,status,details,**extra):
+                  results.append({'device':device,'check':check,'status':status,'details':details,**extra})
+                  print(f'[{status}] {device} — {check}: {str(details)[:150]}',flush=True)
+              with sync_playwright() as pw:
+                  kwargs={'headless':True}
+                  if os.getenv('QY_CHROMIUM_PATH'):
+                      kwargs['executable_path']=os.environ['QY_CHROMIUM_PATH']
+                  browser=pw.chromium.launch(**kwargs)
+                  try:
+                      for device_name,spec in DEVICES.items():
+                          if sum(r['check']=='відкриття' and r['status']=='FAIL' for r in results)>=2:
+                              break
+                          context=browser.new_context(viewport={'width':spec['width'],'height':spec['height']},
+                              device_scale_factor=spec['scale'],locale='uk-UA',timezone_id='Europe/Warsaw',
+                              is_mobile=device_name=='phone',has_touch=device_name!='desktop',ignore_https_errors=False)
+                          prepare_profile(context,device_name,remembered=True)
+                          page=context.new_page()
+                          js_errors=[]
+                          page.on('pageerror',lambda error:js_errors.append(str(error)[:250]))
+                          try:
+                              resp=page.goto(url,wait_until='domcontentloaded',timeout=30000)
+                              if not resp or resp.status>=400:
+                                  raise RuntimeError(f'HTTP {resp.status if resp else "немає відповіді"}')
+                              record(device_name,'відкриття','OK',f'HTTP {resp.status}')
+                              # External images can be slow; no networkidle requirement.
+                              page.wait_for_timeout(2200)
+                              try: page.wait_for_selector('#qy-v35-startup',state='hidden',timeout=6000)
+                              except PWError: pass
+                              page.wait_for_timeout(700)
+                              baseline=page.evaluate(SNAPSHOT_JS)
+                              expected=spec['package']
+                              record(device_name,'режим пристрою','OK' if baseline['device']==expected else 'FAIL',
+                                  f"очікувано {expected}; отримано {baseline['device']}")
+                              correct=(baseline['font']=='mono' and baseline['size']=='large' and baseline['forest']
+                                       and baseline['forestChoice']=='ja' and not baseline['lake'])
+                              record(device_name,'збережені шрифт і Японія','OK' if correct else 'FAIL',
+                                  {k:baseline[k] for k in ['font','size','forest','forestChoice','lake']})
+                              if baseline['boot']=='loading':
+                                  record(device_name,'екран завантаження','WARN','Не зник після відкриття')
+                              page.screenshot(path=str(shots/f'{device_name}-top.png'),timeout=15000,animations='disabled')
+                              positions=[.14,.33,.53,.75,1.0,0.0]
+                              samples=[baseline]
+                              for index,fraction in enumerate(positions):
+                                  page.evaluate('r => window.scrollTo({top:Math.max(0,(document.documentElement.scrollHeight-innerHeight)*r),behavior:"instant"})',fraction)
+                                  page.wait_for_timeout(150)
+                                  data=page.evaluate(SNAPSHOT_JS)
+                                  samples.append(data)
+                                  if index==2:
+                                      page.screenshot(path=str(shots/f'{device_name}-middle.png'),timeout=15000,animations='disabled')
+                                  if index==4:
+                                      page.screenshot(path=str(shots/f'{device_name}-bottom.png'),timeout=15000,animations='disabled')
+                              # URL image may get replaced once while it downloads. Compare stable captured states after settling.
+                              hashes=[(x['layer'],x['imageHash']) for x in samples[1:]]
+                              stable=len(set(hashes))==1
+                              record(device_name,'стабільність фону при гортанні','OK' if stable else 'WARN',
+                                  f'{len(set(hashes))} різних станів фону',samples=samples)
+                              unexpected=[(i,x['unexpectedlyHidden']) for i,x in enumerate(samples) if x['unexpectedlyHidden']]
+                              record(device_name,'видимість блоків','WARN' if unexpected else 'OK',
+                                  unexpected[:6] if unexpected else 'Не виявлено прихованих блоків у видимій зоні')
+                              overflow=max(x['horizontalOverflow'] for x in samples)
+                              record(device_name,'горизонтальне гортання','WARN' if overflow>9 else 'OK',
+                                  f'перевищення ширини екрана: {overflow}px')
+                              if device_name=='phone':
+                                  before=page.evaluate(SNAPSHOT_JS)
+                                  # Simulate Chrome address bar changing the visual height.
+                                  for h in [750,900,844]:
+                                      page.set_viewport_size({'width':390,'height':h})
+                                      page.wait_for_timeout(180)
+                                  after=page.evaluate(SNAPSHOT_JS)
+                                  changed=(before['layer'],before['imageHash'])!=(after['layer'],after['imageHash'])
+                                  record(device_name,'адресний рядок Chrome','WARN' if changed else 'OK',
+                                      'Фон змінився при зміні лише висоти' if changed else 'Фон не перезавантажився')
+                              page.reload(wait_until='domcontentloaded',timeout=30000)
+                              page.wait_for_timeout(1300)
+                              again=page.evaluate(SNAPSHOT_JS)
+                              keep=(again['forest'] and again['forestChoice']=='ja' and again['font']=='mono' and again['size']=='large')
+                              record(device_name,'після оновлення сторінки','OK' if keep else 'FAIL',
+                                  {k:again[k] for k in ['font','size','forest','forestChoice']})
+                              page.screenshot(path=str(shots/f'{device_name}-after-refresh.png'),timeout=15000,animations='disabled')
+                          except Exception as exc:
+                              record(device_name,'відкриття' if not any(r['device']==device_name for r in results) else 'виконання тесту',
+                                     'FAIL',f'{type(exc).__name__}: {str(exc)[:260]}')
+                          finally:
+                              record(device_name,'JavaScript помилки','WARN' if js_errors else 'OK',
+                                  js_errors[:6] if js_errors else 'Помилок pageerror не знайдено')
+                              context.close()
+                  finally:
+                      browser.close()
+              return make_report(results,url,out)
+          
+          if __name__=='__main__':
+              p=argparse.ArgumentParser(description='QuantumYur Hub autonomous visual checks')
+              p.add_argument('--url',default=os.getenv('SITE_URL'))
+              p.add_argument('--output',default='autocheck-results')
+              args=p.parse_args()
+              try:
+                  url=resolve_site_url(args.url)
+                  if urlparse(url).scheme not in ('https','http'): raise ValueError('Адреса має починатися з https:// або http://')
+                  failures=check_site(url,Path(args.output))
+                  sys.exit(1 if failures else 0)
+              except Exception as e:
+                  print('ПОМИЛКА АВТОПЕРЕВІРКИ:',e,file=sys.stderr)
+                  out=Path(args.output);out.mkdir(parents=True,exist_ok=True)
+                  (out/'report.md').write_text(f'# QuantumYur AutoCheck — помилка запуску\n\n{e}\n',encoding='utf-8')
+                  sys.exit(2)
+          PYCODE
+          python quantumyur_autocheck.py --output autocheck-results
+      - name: Показати звіт у GitHub Actions
+        if: always()
+        run: |
+          if [ -f autocheck-results/report.md ]; then cat autocheck-results/report.md >> "$GITHUB_STEP_SUMMARY"; fi
+      - name: Зберегти скріншоти та дані перевірки
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: quantumyur-check-${{ github.run_number }}
+          path: autocheck-results/
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Червоний статус, якщо є помилки
+        if: steps.checks.outcome != 'success'
+        run: exit 1
