@@ -3961,4 +3961,130 @@ document.body.classList.add('qy44-ready','qy44-home');updateLabels();updateClock
 })();
 
 </script>
+<style id="qy-v45-unified-framing">
+/* v45 — cohesive frame-colored contours for all major site surfaces.
+   No motion, remote assets, or new listeners. Chrome :has follows v42 frame choice instantly. */
+:root{
+  --qy45-edge: #9dc8d5;
+  --qy45-strong:rgba(182,233,244,.81);
+  --qy45-second:rgba(160,213,232,.20);
+  --qy45-glow:rgba(84,166,192,.11);
+  --qy45-button-glow:rgba(66,145,182,.10);
+}
+/* Frame colour is inherited from the SAME currently displayed frame. */
+:root:has(#qy42-frame[data-frame="halloween"]:not([hidden])){
+  --qy45-edge:#e5a264;
+  --qy45-strong:rgba(247,187,112,.87);
+  --qy45-second:rgba(255,196,110,.28);
+  --qy45-glow:rgba(240,122,39,.17);
+  --qy45-button-glow:rgba(231,121,44,.11);
+}
+:root:has(#qy42-frame[data-frame="autumn"]:not([hidden])){
+  --qy45-edge:#d5a672;
+  --qy45-strong:rgba(235,186,125,.87);
+  --qy45-second:rgba(224,160,93,.25);
+  --qy45-glow:rgba(218,125,56,.13);
+  --qy45-button-glow:rgba(217,145,72,.09);
+}
+:root:has(#qy42-frame[data-frame="winter"]:not([hidden])){
+  --qy45-edge:#93cde9;
+  --qy45-strong:rgba(174,224,255,.88);
+  --qy45-second:rgba(166,218,247,.28);
+  --qy45-glow:rgba(103,178,228,.16);
+  --qy45-button-glow:rgba(103,178,228,.10);
+}
+:root:has(#qy42-frame[data-frame="cosmos"]:not([hidden])){
+  --qy45-edge:#a2a4ed;
+  --qy45-strong:rgba(187,176,255,.87);
+  --qy45-second:rgba(167,147,255,.28);
+  --qy45-glow:rgba(126,103,231,.17);
+  --qy45-button-glow:rgba(134,112,243,.12);
+}
+:root:has(#qy42-frame[data-frame="classic"]:not([hidden])){
+  --qy45-edge:#dec293;
+  --qy45-strong:rgba(247,215,160,.88);
+  --qy45-second:rgba(255,210,145,.24);
+  --qy45-glow:rgba(205,167,98,.14);
+  --qy45-button-glow:rgba(205,167,98,.10);
+}
+/* All primary outer contours echo the page's outer holiday frame. */
+:is(.wrap > header,
+  #qy41-compact,
+  #qy-v33-device-banner,
+  #qy-v19-cinema-scene,
+  #sky-scene,
+  #qy-v37-controls,
+  #qy39-scene-notes,
+  #qy-world-hub,
+  #qy44-front,
+  #qy44-contentbar,
+  main#top > .section,
+  main#top > .hero,
+  main#top > .quote,
+  main#top > .qy-twitch-promo
+){
+  border:1.5px solid var(--qy45-strong)!important;
+  border-radius:clamp(16px,2.4vw,27px)!important;
+  box-shadow:inset 0 0 0 5px rgba(2,9,20,.16),
+             inset 0 0 0 6px var(--qy45-second),
+             0 0 0 1px var(--qy45-second),
+             0 0 20px var(--qy45-glow),
+             0 10px 28px rgba(0,0,0,.26)!important;
+}
+/* Cards inside sections: lighter second line, enough visual separation without bulk. */
+:is(.daily-panel, .card, .artwork, .qy-news-card, .qy-discover-item,
+ .qy-install-card, .astro-panel, .q-note-entry,
+ .qh-panel, .qh-country, .qh-chart,
+ #qy41-picker, #qy41-old, #qy41-compact,
+ .qy44-menugroup, .qy44-link,
+ .qy37-shot, .qy-v19-controls,
+ .qy-frame-preview
+){
+  border:1px solid var(--qy45-edge)!important;
+  border-radius:clamp(12px,1.65vw,18px)!important;
+  box-shadow:inset 0 0 0 1px var(--qy45-second),
+             0 0 12px var(--qy45-glow)!important;
+}
+/* Drawers and dialogs remain functional; decorative accents never intercept taps. */
+:is(#qy41-sheet,#qy42-sheet,#qy44-menu-sheet,#gallery-dialog .modal-content){
+  border:1.5px solid var(--qy45-edge)!important;
+  box-shadow:inset 0 0 0 3px rgba(2,11,24,.34),
+             inset 0 0 0 4px var(--qy45-second),
+             0 0 24px var(--qy45-glow),
+             0 15px 42px rgba(0,0,0,.5)!important;
+}
+:is(#qy41-top,#qy44-contentbar){border-color:var(--qy45-edge)!important}
+/* Touch controls use the same palette, but do not get an intrusive halo. */
+:is(.qy44-action,#qy44-weather,#qy44-contentbar button,
+ #qy41-gallery-grid button,#qy41-open,#qy41-nav-btn,
+ #qy42-launch,#qy42-nav,#qy42-options button,
+ .qy44-smallbtn,#qy44-city,#qy44-lang-slot select,
+ #qy41-search,#qy41-category,#qy43-more,
+ .qy44-close,#qy41-close,#qy42-close,
+ .qy44-link
+){
+  border-color:var(--qy45-edge)!important;
+  box-shadow:inset 0 0 0 1px var(--qy45-second),0 0 9px var(--qy45-button-glow)!important;
+}
+/* Preserve obvious selected-item distinction. */
+#qy41-gallery-grid button[aria-pressed="true"],
+#qy42-options button[aria-pressed="true"]{
+  border:2px solid var(--qy45-strong)!important;
+  box-shadow:inset 0 0 0 1px var(--qy45-edge),0 0 15px var(--qy45-glow)!important;
+}
+/* Avoid full-width glow haze and crowded nested outlines on small phones. */
+@media(max-width:640px){
+ :is(#qy44-front,#sky-scene,main#top > .section,#qy-v19-cinema-scene,#qy44-contentbar){
+  border-radius:18px!important;
+  box-shadow:inset 0 0 0 3px rgba(2,9,20,.13),
+             inset 0 0 0 4px var(--qy45-second),
+             0 0 9px var(--qy45-glow)!important;
+ }
+ .qy44-action{border-width:1.5px!important}
+ #qy44-menu-sheet,#qy41-sheet{border-left-width:2px!important;border-right-width:0!important;border-top-width:0!important;border-bottom-width:0!important}
+}
+@media(prefers-reduced-motion:reduce){
+ :is(#qy44-front,main#top > .section,#sky-scene){transition:none!important}
+}
+</style>
 </body></html>
