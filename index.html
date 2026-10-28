@@ -4326,4 +4326,79 @@ window.addEventListener('pageshow',sync);
 sync();
 })();
 </script>
+<style id="qy-v49-portal-css">
+/* QuantumYur v49: an opt-in, GPU-friendly world portal, independent of the wallpaper. */
+#qy49-hint{position:absolute;z-index:4;right:clamp(15px,3vw,34px);top:clamp(78px,7vw,103px);padding:7px 10px;min-height:36px;border:1px solid rgba(240,210,145,.7);border-radius:99px;color:#f9f1df;background:rgba(8,21,39,.72);font:650 12px/1.25 ui-monospace,Consolas,monospace;backdrop-filter:blur(9px);box-shadow:0 3px 12px #0004;cursor:pointer;max-width:51%;text-align:center}
+#qy49-hint:focus-visible{outline:3px solid #fbdf91;outline-offset:4px}
+body.qy44-home #qy44-front{cursor:default}
+body.qy44-home #qy44-front :is(.qy44-middle,#qy44-time,.qy44-head,.qy44-greeting,#qy44-date,#qy44-active){cursor:zoom-in}
+#qy49-overlay[hidden]{display:none!important}
+#qy49-overlay{--qy49-a:91,163,255;--qy49-b:188,104,255;position:fixed!important;inset:0!important;z-index:2147483600!important;display:grid;place-items:center;background:radial-gradient(circle at 50% 46%,#11345e 0%,#080e2a 34%,#030818 76%,#01040b 100%);color:#f5f9ff;isolation:isolate;overflow:hidden;overscroll-behavior:contain;font:600 16px/1.5 ui-monospace,Consolas,monospace}
+#qy49-overlay[data-style="light"]{--qy49-a:255,202,105;--qy49-b:255,119,131;background:radial-gradient(circle at 50% 46%,#483319 0%,#211529 40%,#070712 80%,#03040c)}
+#qy49-overlay[data-style="mist"]{--qy49-a:130,235,204;--qy49-b:110,153,234;background:radial-gradient(circle at 50% 46%,#103f46 0%,#0c1c39 42%,#030914 80%,#020408)}
+#qy49-overlay::before{content:"";position:absolute;inset:-30%;pointer-events:none;background:repeating-radial-gradient(circle at center,transparent 0 47px,rgba(var(--qy49-a),.048) 48px 51px,transparent 52px 105px);transform:rotate(-18deg);animation:qy49-turn 24s linear infinite}
+#qy49-overlay::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(170deg,rgba(6,10,30,.25),transparent 48%,rgba(1,5,14,.48));z-index:1}
+.qy49-vortex{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden;pointer-events:none;perspective:600px;filter:drop-shadow(0 0 30px rgba(var(--qy49-a),.3))}
+.qy49-ring{width:min(77vw,67vh);height:min(77vw,67vh);position:absolute;border-radius:50%;background:conic-gradient(from 25deg,transparent 0deg,rgba(var(--qy49-a),.16) 25deg,transparent 46deg,rgba(var(--qy49-b),.55) 94deg,transparent 133deg,rgba(var(--qy49-a),.45) 205deg,transparent 240deg,rgba(var(--qy49-b),.38) 300deg,transparent 345deg);mask:radial-gradient(circle,transparent 50%,#000 55%,#000 63%,transparent 70%);-webkit-mask:radial-gradient(circle,transparent 50%,#000 55%,#000 63%,transparent 70%);transform:scale(.1);opacity:0;animation:qy49-zoom 3.1s ease-in infinite;will-change:transform,opacity}
+.qy49-ring:nth-child(1){animation-delay:-.15s}.qy49-ring:nth-child(2){animation-delay:-.76s}.qy49-ring:nth-child(3){animation-delay:-1.37s}.qy49-ring:nth-child(4){animation-delay:-1.98s}.qy49-ring:nth-child(5){animation-delay:-2.59s}
+.qy49-core{width:min(21vw,155px);height:min(21vw,155px);border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.9) 0%,rgba(var(--qy49-a),.62) 8%,rgba(var(--qy49-b),.45) 24%,rgba(var(--qy49-a),.08) 48%,transparent 72%);box-shadow:0 0 95px 45px rgba(var(--qy49-a),.22);animation:qy49-breathe 2.4s ease-in-out infinite}
+.qy49-card{position:relative;z-index:3;width:min(540px,calc(100vw - 28px));border:1px solid rgba(255,223,164,.68);border-radius:24px;background:linear-gradient(160deg,rgba(9,26,49,.90),rgba(10,15,38,.92));backdrop-filter:blur(18px);box-shadow:inset 0 0 0 2px rgba(255,235,180,.06),0 20px 70px #0009,0 0 60px rgba(var(--qy49-a),.14);padding:clamp(19px,4vw,30px);text-align:center;opacity:0;transform:translateY(20px) scale(.96);visibility:hidden;transition:opacity .48s ease,transform .48s ease,visibility .48s}
+#qy49-overlay.qy49-ready .qy49-card{opacity:1;transform:translateY(0) scale(1);visibility:visible}
+.qy49-card h2{font:800 clamp(23px,6vw,32px)/1.24 ui-monospace,Consolas,monospace;margin:7px 0 8px;color:#fff;text-shadow:0 2px 15px #0008}
+.qy49-card p{font-size:clamp(13px,3.5vw,16px);color:#d6e4f4;margin:0 0 20px}
+.qy49-eyebrow{letter-spacing:.2em;text-transform:uppercase;color:#bfddff;font-size:12px}
+.qy49-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 20px}
+.qy49-choices button{min-height:59px;border:1px solid rgba(255,208,139,.65);border-radius:15px;background:#123149ee;color:white;font:750 clamp(14px,3.5vw,17px)/1.35 ui-monospace,Consolas,monospace;cursor:pointer;padding:11px 12px}
+.qy49-choices #qy49-next{grid-column:1/-1;background:linear-gradient(110deg,rgba(29,99,142,.92),rgba(66,47,123,.92));border-color:#ffd89e;font-size:clamp(16px,4vw,19px)}
+.qy49-stylelabel{display:block;color:#c8d7e8;font-size:12px;margin:12px 0 7px}
+.qy49-styles{display:flex;gap:7px;justify-content:center;flex-wrap:wrap}
+.qy49-styles button{border:1px solid #7694a9;border-radius:99px;padding:9px 11px;min-height:41px;background:rgba(10,25,47,.9);color:#dceaf2;font:700 12px/1.1 ui-monospace,Consolas,monospace;cursor:pointer}
+.qy49-styles button[aria-pressed="true"]{border-color:#ffe2a6;background:rgba(81,71,113,.93);color:#fff;box-shadow:0 0 13px rgba(var(--qy49-a),.35)}
+#qy49-overlay button:focus-visible{outline:3px solid #ffe4aa;outline-offset:3px}
+#qy49-overlay.qy49-travel .qy49-card{opacity:0;transform:scale(1.25)}
+#qy49-overlay.qy49-travel .qy49-vortex{animation:qy49-travel .7s ease-in forwards}
+@keyframes qy49-zoom{0%{transform:scale(.07) rotate(0deg);opacity:0}18%{opacity:.9}72%{opacity:.65}100%{transform:scale(5.9) rotate(190deg);opacity:0}}
+@keyframes qy49-turn{to{transform:rotate(342deg)}}
+@keyframes qy49-breathe{50%{transform:scale(1.35);opacity:.7}}
+@keyframes qy49-travel{to{transform:scale(5);opacity:0}}
+@media(max-width:470px){#qy49-hint{font-size:11px;padding:6px 8px;right:18px;top:90px}#qy49-overlay .qy49-card{padding:18px 15px}.qy49-choices button{min-height:53px}}
+@media(prefers-reduced-motion:reduce){#qy49-overlay *,#qy49-overlay::before,#qy49-overlay::after{animation:none!important;transition:none!important}#qy49-overlay.qy49-ready .qy49-card{opacity:1;visibility:visible;transform:none}}
+</style>
+<script id="qy-v49-portal-js">
+(()=>{'use strict';
+const front=document.getElementById('qy44-front'),theme=document.getElementById('qy37-theme');
+if(!front||!theme||document.getElementById('qy49-overlay'))return;
+const $=id=>document.getElementById(id);
+const text={
+uk:['✦ Доторкнись до світу','ПОРТАЛ QUANTUMYUR','Куди вирушимо?','Тунель між світами','🪐 Наступний світ','🎨 Галерея','↩ Повернутись','Стиль переходу','🌌 Тунель','✨ Світло','🌫️ Туман'],
+pl:['✦ Dotknij świata','PORTAL QUANTUMYUR','Dokąd ruszamy?','Tunel między światami','🪐 Następny świat','🎨 Galeria','↩ Powrót','Styl przejścia','🌌 Tunel','✨ Światło','🌫️ Mgła'],
+en:['✦ Touch the world','QUANTUMYUR PORTAL','Where shall we go?','A tunnel between worlds','🪐 Next world','🎨 Gallery','↩ Go back','Transition style','🌌 Tunnel','✨ Light','🌫️ Mist'],
+ru:['✦ Прикоснись к миру','ПОРТАЛ QUANTUMYUR','Куда отправимся?','Туннель между мирами','🪐 Следующий мир','🎨 Галерея','↩ Назад','Стиль перехода','🌌 Туннель','✨ Свет','🌫️ Туман']};
+const language=()=>$('site-language')?.value||'uk';
+const tr=i=>(text[language()]||text.en)[i];
+const hint=document.createElement('button');hint.type='button';hint.id='qy49-hint';hint.setAttribute('aria-haspopup','dialog');hint.setAttribute('aria-controls','qy49-overlay');front.append(hint);
+const overlay=document.createElement('div');overlay.id='qy49-overlay';overlay.hidden=true;overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-labelledby','qy49-title');
+overlay.innerHTML='<div class="qy49-vortex" aria-hidden="true"><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-core"></span></div><section class="qy49-card"><div class="qy49-eyebrow" id="qy49-eyebrow"></div><h2 id="qy49-title"></h2><p id="qy49-desc"></p><div class="qy49-choices"><button type="button" id="qy49-next"></button><button type="button" id="qy49-gallery"></button><button type="button" id="qy49-back"></button></div><label class="qy49-stylelabel" id="qy49-stylelabel"></label><div class="qy49-styles" role="group" aria-label="Transition style"><button type="button" data-portal-style="tunnel" aria-pressed="true"></button><button type="button" data-portal-style="light" aria-pressed="false"></button><button type="button" data-portal-style="mist" aria-pressed="false"></button></div></section>';
+document.body.append(overlay);
+let style='tunnel';try{const saved=localStorage.getItem('qy49-portal-style');if(['tunnel','light','mist'].includes(saved))style=saved}catch(_){}
+let stageTimer=null,travelTimer=null,busy=false,focusFrom=null,oldOverflow='';
+const motionReduced=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function labels(){hint.textContent=tr(0);$('qy49-eyebrow').textContent=tr(1);$('qy49-title').textContent=tr(2);$('qy49-desc').textContent=tr(3);$('qy49-next').textContent=tr(4);$('qy49-gallery').textContent=tr(5);$('qy49-back').textContent=tr(6);$('qy49-stylelabel').textContent=tr(7);for(const [i,b] of [...overlay.querySelectorAll('[data-portal-style]')].entries())b.textContent=tr(8+i)}
+function applyStyle(v){style=v;overlay.dataset.style=v;overlay.querySelectorAll('[data-portal-style]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.portalStyle===v)));try{localStorage.setItem('qy49-portal-style',v)}catch(_){}}
+function open(){if(busy||!overlay.hidden||!document.body.classList.contains('qy44-home'))return;busy=true;focusFrom=document.activeElement;oldOverflow=document.body.style.overflow;overlay.hidden=false;overlay.classList.remove('qy49-ready','qy49-travel');document.body.style.overflow='hidden';labels();applyStyle(style);stageTimer=setTimeout(()=>{overlay.classList.add('qy49-ready');$('qy49-next').focus();busy=false},motionReduced()?40:850)}
+function close(){clearTimeout(stageTimer);clearTimeout(travelTimer);overlay.classList.remove('qy49-ready','qy49-travel');overlay.hidden=true;document.body.style.overflow=oldOverflow;busy=false;focusFrom?.isConnected&&focusFrom.focus({preventScroll:true})}
+function travel(fn){if(busy)return;busy=true;overlay.classList.add('qy49-travel');travelTimer=setTimeout(()=>{try{fn()}finally{close()}},motionReduced()?45:660)}
+function nextWorld(){const opts=[...theme.options].filter(o=>!o.disabled&&o.value&&o.value!=='all');if(opts.length<2)return;const index=opts.findIndex(o=>o.value===theme.value);const next=opts[(index+1+opts.length)%opts.length];if(next){theme.value=next.value;theme.dispatchEvent(new Event('change',{bubbles:true}))}}
+$('qy49-next').addEventListener('click',()=>travel(nextWorld));
+$('qy49-gallery').addEventListener('click',()=>travel(()=>{$('qy44-themes')?.click()}));
+$('qy49-back').addEventListener('click',close);
+for(const b of overlay.querySelectorAll('[data-portal-style]'))b.addEventListener('click',()=>applyStyle(b.dataset.portalStyle));
+overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
+overlay.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();close();return}if(e.key==='Tab'&&overlay.classList.contains('qy49-ready')){const buttons=[...overlay.querySelectorAll('button')];const first=buttons[0],last=buttons[buttons.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
+hint.addEventListener('click',e=>{e.stopPropagation();open()});
+front.addEventListener('click',e=>{if(e.target.closest('button,a,input,select,textarea,label,summary,[role="button"],[contenteditable],#qy47-controls,#qy48-photo-row,.qy44-actions,.qy44-bottom'))return;open()});
+$('site-language')?.addEventListener('change',labels);
+labels();applyStyle(style);
+})();
+</script>
 </body></html>
