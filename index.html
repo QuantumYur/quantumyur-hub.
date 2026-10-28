@@ -688,6 +688,54 @@ html[data-qy-palette] #qy-world-v13 .qy-v13-preview{background-image:linear-grad
 .qy-v18-card[data-realm="observatory"]{--qy-v18-image:var(--qy-v18-scene-observatory)}
 
 </style>
+
+<style id="qy-v19-background-fix-css">
+/* v19: repair the vanished background and show cinematic scenes at their true aspect ratio. */
+#qy-v14-theme-photo{
+  position:fixed!important; inset:0!important; width:100vw!important; height:100dvh!important;
+  z-index:0!important; pointer-events:none!important; isolation:isolate;
+  background-image:linear-gradient(160deg,rgba(5,10,22,.02),rgba(5,12,22,.24)),var(--qy-photo)!important;
+  background-size:cover!important; background-position:var(--qy-photo-pos,center center)!important;
+  opacity:.92!important; filter:none!important;
+  transform:scale(1.025); animation:qy-v18-camera 36s ease-in-out infinite alternate;
+}
+#qy-cosmos-background{opacity:0!important}
+body:has(#qy-v19-cinema-scene)>.wrap{position:relative;z-index:2!important}
+#qy-v13-canvas{opacity:.15!important}
+#qy-v16-atmosphere{opacity:.29!important}
+html[data-qy-v19-bgmode="soft"] #qy-v14-theme-photo{opacity:.48!important}
+html[data-qy-v19-bgmode="soft"] #qy-v13-canvas{opacity:.12!important}
+html[data-qy-v19-bgmode="soft"] #qy-v16-atmosphere{opacity:.16!important}
+html[data-qy-palette="light"] #qy-v14-theme-photo,
+html[data-qy-palette="dawn"] #qy-v14-theme-photo,
+html[data-qy-palette="arctic"] #qy-v14-theme-photo,
+html[data-qy-palette="desert"] #qy-v14-theme-photo,
+html[data-qy-palette="sandstorm"] #qy-v14-theme-photo{opacity:.70!important}
+html[data-qy-v19-bgmode="soft"][data-qy-palette="light"] #qy-v14-theme-photo,
+html[data-qy-v19-bgmode="soft"][data-qy-palette="dawn"] #qy-v14-theme-photo,
+html[data-qy-v19-bgmode="soft"][data-qy-palette="arctic"] #qy-v14-theme-photo,
+html[data-qy-v19-bgmode="soft"][data-qy-palette="desert"] #qy-v14-theme-photo,
+html[data-qy-v19-bgmode="soft"][data-qy-palette="sandstorm"] #qy-v14-theme-photo{opacity:.35!important}
+#qy-v19-cinema-scene{position:relative;margin:12px 0 24px;min-height:clamp(190px,22vw,335px);overflow:hidden;border-radius:24px;border:1px solid color-mix(in srgb,var(--qy-accent,#81cded) 58%,transparent);color:#fff;background-color:var(--qy-back1,#081323);box-shadow:0 17px 48px #0008;isolation:isolate}
+#qy-v19-cinema-scene::before{content:"";position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(0,0,0,.01) 0%,rgba(1,4,13,.06) 28%,rgba(2,5,17,.62) 72%,rgba(1,4,13,.90) 100%),var(--qy-photo);background-size:cover;background-position:var(--qy-photo-pos,center center);transform:scale(1.035);transition:background-image .4s ease;z-index:-1;}
+#qy-v19-cinema-scene::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,transparent 55%,rgba(255,255,255,.035) 70%,transparent 88%);z-index:-1}
+#qy-v19-cinema-scene .qy-v19-inner{min-height:clamp(190px,22vw,335px);padding:clamp(15px,3vw,26px);display:flex;justify-content:flex-end;flex-direction:column;align-items:flex-start;gap:7px;}
+#qy-v19-cinema-scene .qy-v19-overline{text-transform:uppercase;letter-spacing:.19em;font:800 10px/1.4 system-ui,sans-serif;color:#bcdeff;text-shadow:0 1px 4px #000}
+#qy-v19-cinema-scene h2{font:750 clamp(22px,4vw,35px)/1.12 system-ui,sans-serif;margin:0;color:#fff;text-shadow:0 3px 10px #000}
+#qy-v19-cinema-scene p{font:400 12px/1.45 system-ui,sans-serif;max-width:40ch;margin:0 0 3px;color:#e4ecf8;text-shadow:0 2px 8px #000}
+#qy-v19-cinema-scene .qy-v19-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:5px}
+#qy-v19-cinema-scene .qy-v19-label{color:#dbe9f7;font:600 11px/1.3 system-ui,sans-serif;margin-right:2px}
+#qy-v19-cinema-scene button{font:700 11px/1.2 system-ui,sans-serif;color:#eef7ff;background:rgba(5,17,34,.72);border:1px solid #b3dcff68;border-radius:11px;padding:9px 12px;min-height:34px;cursor:pointer;backdrop-filter:blur(9px)}
+#qy-v19-cinema-scene button[aria-pressed="true"]{background:rgba(196,230,255,.92);color:#0c2540;border-color:#ecfaff}
+#qy-v19-cinema-scene button:focus-visible{outline:3px solid #fff;outline-offset:2px}
+@media(max-width:600px){
+#qy-v19-cinema-scene{margin:11px 0 22px;border-radius:20px;min-height:195px}
+#qy-v19-cinema-scene .qy-v19-inner{min-height:195px;padding:14px 16px}
+#qy-v19-cinema-scene h2{font-size:23px}
+#qy-v19-cinema-scene::before{background-position:center center}
+}
+@media(prefers-reduced-motion:reduce){#qy-v14-theme-photo,#qy-v19-cinema-scene::before{animation:none!important;transform:none!important;transition:none!important}}
+</style>
 </head>
 <body>
 <div id="qy-cosmos-background" aria-hidden="true"></div>
@@ -696,6 +744,20 @@ html[data-qy-palette] #qy-world-v13 .qy-v13-preview{background-image:linear-grad
 <div class="wrap">
 <header><a href="#top" class="brand"><span class="brand-mark">✦</span> QuantumYur</a><nav class="nav"><a href="#platforms">Платформи</a><a href="#concept">Як це працює</a><a href="#gallery" id="nav-gallery">Галерея</a><a href="#astrokhizm" id="nav-astro">Астрохізм</a><a href="#companion" id="nav-comp">Співрозмовник</a><a href="#idea">Ідея</a><a href="#reminders" id="qy-nav-reminders">⏰ Нагадування</a><a href="#qy-discover" id="qy-nav-discover">✨ Маршрут дня</a><a href="#gaming-news" id="qy-nav-gaming">🎮 Ігрові новини</a><a href="#twitch-promo" id="qy-nav-twitch">💜 Twitch</a><a href="#daily-pulse" id="nav-daily">🪐 Сьогодні</a><a href="#install-app" id="qy-install-nav">📲 Встановити</a><a href="#qy-world-hub" id="qy-nav-world">🌐 Світ</a></nav><select id="site-language" class="lang-select" aria-label="Мова сайту"><option value="uk">🇺🇦 Українська</option><option value="en">🇬🇧 English</option><option value="pl">🇵🇱 Polski</option><option value="ru">🇷🇺 Русский</option><option value="ja">🇯🇵 日本語</option><option value="ko">🇰🇷 한국어</option><option value="zh">🇨🇳 中文</option><option value="hi">🇮🇳 हिन्दी</option><option value="es">🌎 Español</option><option value="pt-BR">🇧🇷 Português (Brasil)</option></select><label class="qy-theme-control" for="qy-theme-switch-v1"><span id="qy-theme-caption">Тема сайту</span><select id="qy-theme-switch-v1" aria-label="Тема сайту"><option value="auto">Автоматично</option><option value="dark">Темна</option><option value="light">Світла</option></select></label></header>
 <main id="top">
+
+<section id="qy-v19-cinema-scene" aria-labelledby="qy-v19-scene-title">
+  <div class="qy-v19-inner">
+    <span id="qy-v19-overline" class="qy-v19-overline">QUANTUMYUR · CINEMATIC SCENE</span>
+    <h2 id="qy-v19-scene-title">Кінематографічний світ</h2>
+    <p id="qy-v19-scene-subtitle">Реалістичний пейзаж для обраної атмосфери</p>
+    <div class="qy-v19-controls" role="group" aria-label="Видимість фону">
+      <span id="qy-v19-label" class="qy-v19-label">Видимість фону:</span>
+      <button id="qy-v19-vivid" type="button" data-mode="vivid" aria-pressed="true">Насичений</button>
+      <button id="qy-v19-soft" type="button" data-mode="soft" aria-pressed="false">Спокійний</button>
+    </div>
+  </div>
+</section>
+
 <section id="sky-scene" class="sky-scene" aria-label="Сезонне небо QuantumYur">
  <div class="sky-top"><div><div class="panel-overline">✧ QUANTUMYUR · COSMIC CLOCK</div><h2 id="sky-head">Ритм Всесвіту</h2><p id="sky-lead">Шість атмосфер доби</p></div><div class="sky-clock" id="sky-clock">Місцевий час</div></div>
  <div id="qy-wallpaper-status" class="qy-wallpaper-status" role="status" aria-live="off">✦ Фон дня</div>
@@ -2100,6 +2162,48 @@ const obs=new MutationObserver(()=>{
  },100)}
 });
 obs.observe(status,{childList:true,subtree:true,characterData:true});
+})();
+</script>
+
+<script id="qy-v19-background-fix-js">
+(()=>{'use strict';
+ const root=document.documentElement, main=document.getElementById('qy-theme-switch-v1'),langCtl=document.getElementById('site-language');
+ const scene=document.getElementById('qy-v19-cinema-scene');
+ if(!main||!langCtl||!scene)return;
+ const tr={
+  uk:['Кінематографічний світ','Реалістичний пейзаж для обраної атмосфери','Видимість фону:','Насичений','Спокійний'],
+  en:['Cinematic world','Realistic landscape for your selected atmosphere','Background visibility:','Vivid','Calm'],
+  pl:['Filmowy świat','Realistyczny krajobraz wybranego motywu','Widoczność tła:','Wyraźne','Spokojne'],
+  ru:['Кинематографический мир','Реалистичный пейзаж для выбранной атмосферы','Видимость фона:','Яркий','Спокойный'],
+  es:['Mundo cinematográfico','Paisaje realista para el ambiente elegido','Visibilidad del fondo:','Vivo','Suave'],
+  'pt-BR':['Mundo cinematográfico','Paisagem realista para a atmosfera escolhida','Visibilidade do fundo:','Vivo','Suave'],
+  ja:['映画のような世界','選んだ雰囲気のリアルな風景','背景表示:','鮮明','控えめ'],
+  ko:['시네마틱 세계','선택한 분위기의 사실적인 풍경','배경 표시:','선명하게','부드럽게'],
+  zh:['电影般的世界','所选氛围的真实景观','背景显示:','鲜明','柔和'],
+  hi:['सिनेमाई दुनिया','चुने हुए वातावरण का वास्तविक दृश्य','पृष्ठभूमि:','चमकीला','शांत']
+ };
+ const labels={uk:{'polar-night':'Полярна ніч','neon-city':'Неоновий мегаполіс','abyss':'Підводний світ','volcano':'Вулканічний горизонт','alpine-sunset':'Гірський захід','galactic-dust':'Космічна туманність','storm-savanna':'Штормова савана','lunar-expanse':'Місячна поверхня','rainforest':'Ліс після дощу','moonlit-lake':'Нічне озеро','sandstorm':'Пустельний вітер','observatory':'Зоряна обсерваторія'}};
+ const safeGet=k=>{try{return localStorage.getItem(k)}catch{return null}};
+ const safeSet=(k,v)=>{try{localStorage.setItem(k,v)}catch{}};
+ let mode=safeGet('qy-v19-bg-mode')==='soft'?'soft':'vivid';
+ function setMode(m){mode=m;root.dataset.qyV19Bgmode=m;safeSet('qy-v19-bg-mode',m);for(const k of ['vivid','soft'])document.getElementById('qy-v19-'+k)?.setAttribute('aria-pressed',String(k===m));}
+ function refresh(){const lang=langCtl.value,t=tr[lang]||tr.en, key=root.dataset.qyPalette||main.value;
+ const name=(lang==='uk'&&labels.uk[key])||main.selectedOptions[0]?.textContent?.trim()||key;
+ document.getElementById('qy-v19-overline').textContent='QUANTUMYUR · CINEMATIC SCENE';
+ document.getElementById('qy-v19-scene-title').textContent=name||t[0];
+ document.getElementById('qy-v19-scene-subtitle').textContent=t[1];
+ document.getElementById('qy-v19-label').textContent=t[2];
+ document.getElementById('qy-v19-vivid').textContent=t[3];document.getElementById('qy-v19-soft').textContent=t[4];
+ scene.querySelector('.qy-v19-controls').setAttribute('aria-label',t[2]);
+ setMode(mode);
+ }
+ for(const k of ['vivid','soft'])document.getElementById('qy-v19-'+k)?.addEventListener('click',()=>setMode(k));
+ main.addEventListener('change',()=>setTimeout(refresh,0));
+ langCtl.addEventListener('change',()=>setTimeout(refresh,0));
+ window.addEventListener('qy:theme-changed',refresh);
+ window.addEventListener('pageshow',refresh);
+ const obs=new MutationObserver(()=>refresh());obs.observe(root,{attributes:true,attributeFilter:['data-qy-palette']});
+ setMode(mode);refresh();
 })();
 </script>
 </body></html>
