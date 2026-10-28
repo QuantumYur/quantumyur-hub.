@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="uk">
 <head>
-<!-- QuantumYur v40 / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
+<!-- QuantumYur v41 / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script id="qy-v35-before-paint">
@@ -3589,6 +3589,117 @@ const s=SHOTS[slot];const qs=REFS.map(r=>`<li><a href="${esc(r.url)}" target="_b
 panel.innerHTML=`<strong>${esc(s.name)} · ${esc(s.inspiration)}</strong><div>Природна деталь: ${esc(s.detail)}.</div><div class="qy39-muted">${s.quality==='prototype'?'Пробний окремий WebP із фрагмента колажу, невисока початкова роздільність.':'Окреме повнорозмірне згенероване зображення.'} Художня ілюстрація ШІ, не документальна фотографія конкретного місця.</div><details><summary>Збережені альтернативи: Wikimedia Commons та Unsplash (${REFS.length})</summary><p class="qy39-muted">Це ПОСИЛАННЯ на справжні фотографії, не копії на сервері. Час світла в оригінальному кадрі може відрізнятися від назви стану. При використанні дотримуйтеся ліцензії й зазначайте автора.</p><ul>${qs}</ul></details>`;
 }
 root.addEventListener('change',update);root.addEventListener('click',()=>setTimeout(update,0));setInterval(update,60000);update();
+})();
+</script>
+<style id="qy-v41-gallery-css">
+/* v41 Theme Library: the home page stays clean; all older theme controllers live in one accessible overlay. */
+#qy41-compact,#qy41-compact *,#qy41-overlay,#qy41-overlay *{box-sizing:border-box}
+#qy41-compact{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:12px 0 16px;padding:10px 14px;border:1px solid rgba(169,220,231,.58);border-radius:16px;background:rgba(8,26,40,.88);color:#edfaff;font:600 clamp(12px,1.4vw,15px)/1.5 ui-monospace,Consolas,monospace;box-shadow:0 6px 20px #0004}
+#qy41-compact .qy41-summary{min-width:0;flex:1 1 220px}
+#qy41-compact .qy41-summary strong{display:block;color:#fff;font-size:clamp(14px,1.7vw,17px);overflow-wrap:anywhere}
+#qy41-compact .qy41-summary small{display:block;color:#c5dfeb;margin-top:1px;font-size:12px}
+#qy41-open,#qy41-nav-btn{cursor:pointer;background:#1c6471;color:#fff;border:1px solid #86dbe5;border-radius:11px;min-height:44px;padding:9px 16px;font:700 14px ui-monospace,Consolas,monospace}
+#qy41-open:focus-visible,#qy41-nav-btn:focus-visible,#qy41-overlay button:focus-visible,#qy41-overlay input:focus-visible,#qy41-overlay select:focus-visible,#qy41-overlay summary:focus-visible{outline:3px solid #fce69f;outline-offset:3px}
+#qy41-nav-btn{background:#1a4659;white-space:nowrap;font-size:12px;padding:8px 11px}
+#qy41-overlay[hidden]{display:none!important}
+#qy41-overlay{position:fixed!important;inset:0!important;display:flex!important;justify-content:flex-end!important;z-index:2147483000!important;isolation:isolate!important;font:500 14px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;color:#e8f8ff}
+#qy41-dim{position:absolute;inset:0;background:rgba(0,6,19,.76)}
+#qy41-sheet{position:relative;z-index:1;width:min(760px,100vw);height:100%;height:100dvh;overflow:auto;overscroll-behavior:contain;background:#071b29;box-shadow:-14px 0 38px #000a;border-left:1px solid #85cbdc80;display:flex;flex-direction:column}
+#qy41-top{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px clamp(14px,3vw,26px);border-bottom:1px solid #81d4e350;background:#0e2a3b}
+#qy41-top h2{margin:0;font:800 clamp(18px,2.4vw,24px)/1.25 ui-monospace,Consolas,monospace;color:#f2fcff}
+#qy41-top p{margin:3px 0 0;color:#b9dae6;font-size:12px}
+#qy41-close{min-width:44px;min-height:44px;border-radius:10px;border:1px solid #7ea8c0;background:#163b50;color:#fff;cursor:pointer;font:700 20px monospace}
+#qy41-body{padding:15px clamp(12px,3vw,25px) 28px;max-width:100%;flex:1}
+#qy41-search-bar{display:grid;grid-template-columns:minmax(0,1fr) minmax(130px,180px);gap:8px;margin:4px 0 10px}
+#qy41-search,#qy41-category{width:100%;min-height:44px;max-width:100%;border-radius:10px;border:1px solid #83bac6;background:#15344a;color:#f4faff;padding:9px 12px;font:inherit}
+#qy41-help{margin:5px 0 12px;color:#b8d9e3;font-size:12px}
+#qy41-gallery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:3px 0 14px}
+#qy41-gallery-grid button{position:relative;min-width:0;text-align:left;padding:11px 12px;min-height:55px;background:#133346;color:#e8f9ff;border:1px solid #457e8f;border-radius:12px;cursor:pointer;font:600 13px/1.35 ui-monospace,Consolas,monospace;display:flex;align-items:center;gap:10px}
+#qy41-gallery-grid button::before{content:'';width:26px;height:26px;flex:none;border:1px solid #9fbfc5;border-radius:9px;background:linear-gradient(140deg,var(--qy41-a,#45657d),var(--qy41-b,#122944))}
+#qy41-gallery-grid button[aria-pressed="true"]{border:2px solid #a4f3c5;background:#21504d;color:#fff}
+#qy41-gallery-grid button[aria-pressed="true"]::after{content:'✓';position:absolute;right:10px;top:6px;color:#b6ffc8;font-weight:900}
+#qy41-gallery-grid button span{padding-right:15px}
+#qy41-empty{padding:18px;color:#d4f0f7;border:1px dashed #779da8;border-radius:12px}
+#qy41-picker{border:1px solid #74a4af80;border-radius:15px;padding:12px;background:rgba(7,25,38,.6)}
+#qy41-picker summary{cursor:pointer;padding:5px 4px;color:#efffff;font-size:15px;font-weight:750}#qy41-picker[open] summary{margin-bottom:8px}
+#qy41-content #qy-v37-controls{z-index:auto!important;margin:10px 0 16px!important;box-shadow:none;max-width:100%;width:100%}
+#qy41-old{margin-top:16px;padding:9px;border:1px solid #577a9280;border-radius:14px;background:#0e2939;color:#e8f7ff}
+#qy41-old>summary{cursor:pointer;padding:9px;color:#bdeff9;font-weight:700}
+#qy41-old .qy41-old-content{display:grid;gap:12px;padding:8px 0 10px;min-width:0}
+#qy41-old .qy41-old-content>*{max-width:100%!important;min-width:0}
+#qy41-old #qy-atmosphere-studio{width:100%;max-width:100%}
+#qy41-old .qy-theme-control{display:grid!important;gap:5px;padding:10px;background:#113349;border-radius:12px;width:100%;color:#e8faff}
+#qy41-old .qy-theme-control select{width:100%;max-width:100%;color:#fff;background:#193e53}
+@media(max-width:560px){#qy41-gallery-grid{grid-template-columns:1fr 1fr}#qy41-sheet{border-left:0}#qy41-search-bar{grid-template-columns:1fr}#qy41-compact{padding:10px}#qy41-open{width:100%}#qy41-top{padding:12px}#qy41-body{padding:11px}#qy41-gallery-grid button{font-size:12px;padding:10px 8px;min-height:55px}}
+@media(prefers-reduced-motion:reduce){#qy41-overlay *,#qy41-compact *{animation:none!important;transition:none!important}}
+</style>
+<script id="qy-v41-gallery">
+(()=>{'use strict';
+const pick=document.getElementById('qy37-theme'),mode=document.getElementById('qy37-mode'),season=document.getElementById('qy40-season');
+const panel=document.getElementById('qy-v37-controls'),header=document.querySelector('.wrap > header');
+if(!pick||!mode||!panel||!header||document.getElementById('qy41-overlay'))return;
+const dic={
+ uk:['🎨 Галерея світів','53 теми · окремий простір','Теми','Обрати тему','Шукати за назвою або номером…','Усі категорії','Вибери світ. Фон зміниться відразу; режим «Авто» збережеться.','Додаткові старі теми та налаштування','Налаштування пейзажу','Не знайдено','Активна тема','Закрити'],
+ en:['🎨 World Gallery','53 themes · separate space','Themes','Choose theme','Search by name or number…','All categories','Choose a world. The background changes immediately; Auto stays available.','Older themes and additional settings','Landscape settings','No results','Active theme','Close'],
+ pl:['🎨 Galeria światów','53 motywy · osobne miejsce','Motywy','Wybierz motyw','Szukaj nazwy lub numeru…','Wszystkie kategorie','Wybierz krajobraz. Tło zmieni się od razu; tryb Auto pozostaje dostępny.','Starsze motywy i dodatkowe ustawienia','Ustawienia krajobrazu','Brak wyników','Aktywny motyw','Zamknij'],
+ ru:['🎨 Галерея миров','53 темы · отдельное пространство','Темы','Выбрать тему','Поиск по названию или номеру…','Все категории','Выбери мир. Фон сменится сразу; режим «Авто» сохранится.','Старые темы и дополнительные настройки','Настройки пейзажа','Ничего не найдено','Активная тема','Закрыть'],
+ ja:['🎨 世界のギャラリー','53のテーマ','テーマ','テーマを選ぶ','名前や番号で検索…','すべてのカテゴリー','テーマを選択すると背景が変わります。','以前のテーマと詳細設定','風景の設定','見つかりません','現在のテーマ','閉じる'],
+ ko:['🎨 세계 갤러리','53가지 테마','테마','테마 선택','이름 또는 번호 검색…','모든 카테고리','테마를 선택하면 배경이 변경됩니다.','이전 테마와 추가 설정','풍경 설정','검색 결과 없음','현재 테마','닫기'],
+ zh:['🎨 世界画廊','53种主题','主题','选择主题','按名称或编号搜索…','所有类别','选择主题即可更换背景。','旧主题及附加设置','风景设置','未找到','当前主题','关闭'],
+ hi:['🎨 विश्व गैलरी','53 थीम','थीम','थीम चुनें','नाम या नंबर खोजें…','सभी श्रेणियाँ','थीम चुनें, पृष्ठभूमि बदल जाएगी।','पुरानी थीम व अतिरिक्त सेटिंग','दृश्य सेटिंग','कुछ नहीं मिला','सक्रिय थीम','बंद करें'],
+ es:['🎨 Galería de mundos','53 temas · espacio independiente','Temas','Elegir tema','Buscar nombre o número…','Todas las categorías','Elige un mundo: el fondo cambia al instante.','Otros temas y ajustes','Ajustes del paisaje','Sin resultados','Tema actual','Cerrar'],
+ 'pt-BR':['🎨 Galeria de mundos','53 temas · espaço separado','Temas','Escolher tema','Buscar nome ou número…','Todas as categorias','Escolha um tema: o fundo muda imediatamente.','Temas antigos e ajustes extras','Ajustes de paisagem','Sem resultados','Tema atual','Fechar']};
+const l=()=>dic[document.getElementById('site-language')?.value]||dic.uk;
+const compact=document.createElement('section');compact.id='qy41-compact';compact.setAttribute('aria-label','QuantumYur · Theme Gallery');
+const summary=document.createElement('div');summary.className='qy41-summary';
+const current=document.createElement('strong');current.id='qy41-active';const subtitle=document.createElement('small');subtitle.id='qy41-subtitle';summary.append(current,subtitle);
+const openBtn=document.createElement('button');openBtn.type='button';openBtn.id='qy41-open';openBtn.setAttribute('aria-haspopup','dialog');openBtn.setAttribute('aria-controls','qy41-overlay');
+compact.append(summary,openBtn);header.insertAdjacentElement('afterend',compact);
+const nav=document.querySelector('.wrap > header nav');const navBtn=document.createElement('button');navBtn.id='qy41-nav-btn';navBtn.type='button';navBtn.setAttribute('aria-haspopup','dialog');navBtn.setAttribute('aria-controls','qy41-overlay');nav?.prepend(navBtn);
+const overlay=document.createElement('div');overlay.id='qy41-overlay';overlay.hidden=true;overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-labelledby','qy41-title');
+const dim=document.createElement('div');dim.id='qy41-dim';dim.setAttribute('aria-hidden','true');
+const sheet=document.createElement('div');sheet.id='qy41-sheet';const top=document.createElement('div');top.id='qy41-top';
+const heading=document.createElement('div');const title=document.createElement('h2');title.id='qy41-title';const desc=document.createElement('p');desc.id='qy41-desc';heading.append(title,desc);
+const close=document.createElement('button');close.type='button';close.id='qy41-close';close.setAttribute('aria-label','Закрити');close.textContent='×';top.append(heading,close);
+const body=document.createElement('div');body.id='qy41-body';
+const searchbar=document.createElement('div');searchbar.id='qy41-search-bar';const input=document.createElement('input');input.id='qy41-search';input.type='search';input.autocomplete='off';
+const category=document.createElement('select');category.id='qy41-category';searchbar.append(input,category);
+const help=document.createElement('p');help.id='qy41-help';
+const grid=document.createElement('div');grid.id='qy41-gallery-grid';grid.setAttribute('role','group');grid.setAttribute('aria-label','53 themes');
+const picker=document.createElement('details');picker.id='qy41-picker';const pickerTitle=document.createElement('summary');pickerTitle.id='qy41-settings-title';const content=document.createElement('div');content.id='qy41-content';picker.append(pickerTitle,content);
+const older=document.createElement('details');older.id='qy41-old';const olderSummary=document.createElement('summary');olderSummary.id='qy41-old-title';const olderContent=document.createElement('div');olderContent.className='qy41-old-content';older.append(olderSummary,olderContent);
+body.append(searchbar,help,picker,grid,older);sheet.append(top,body);overlay.append(dim,sheet);document.body.append(overlay);
+// Move (never copy) existing controls: keep event handlers, localStorage, 53 themes and image previews intact.
+content.append(panel);
+for(const id of ['qy-atmosphere-studio','qy-v18-living-realms','qy-v23-exhibition','qy-v26-lakes','qy-v28-forest']){
+ const node=document.getElementById(id);if(node&&!olderContent.contains(node))olderContent.append(node);
+}
+const oldHeaderControl=header.querySelector('.qy-theme-control');if(oldHeaderControl)olderContent.prepend(oldHeaderControl);
+const items=[];let group='';for(const opt of Array.from(pick.options)){
+ if(opt.parentElement?.tagName==='OPTGROUP')group=opt.parentElement.label;
+ items.push({id:opt.value,name:opt.textContent.trim(),category:group});
+}
+const groups=[...new Set(items.map(x=>x.category))];let savedFocus=null;
+function text(){const a=l();title.textContent=a[0];desc.textContent=a[1];openBtn.textContent=a[3];navBtn.textContent='🎨 '+a[2];input.placeholder=a[4];help.textContent=a[6];olderSummary.textContent=a[7];pickerTitle.textContent=a[8];close.setAttribute('aria-label',a[11]);
+ const previous=category.value;category.replaceChildren();for(const val of ['',...groups]){const option=document.createElement('option');option.value=val;option.textContent=val||a[5];category.append(option)}category.value=groups.includes(previous)?previous:'';updateSummary();}
+function updateSummary(){const opt=pick.options[pick.selectedIndex];const a=l();current.textContent=a[10]+': '+(opt?.textContent?.trim()||'#1');
+ const m=mode.options[mode.selectedIndex]?.textContent||'Авто';const seasons=season?.options[season.selectedIndex]?.textContent||'';
+ subtitle.textContent=m+' · '+seasons;
+}
+function display(){const q=input.value.toLocaleLowerCase().trim();const selected=category.value;grid.replaceChildren();const found=items.filter(x=>(!selected||x.category===selected)&&(!q||(x.name+' '+x.id+' '+x.category).toLocaleLowerCase().includes(q)));
+ if(!found.length){const empty=document.createElement('p');empty.id='qy41-empty';empty.textContent=l()[9];grid.append(empty);return}
+ const frag=document.createDocumentFragment();found.forEach((it,n)=>{const button=document.createElement('button');button.type='button';const hue= (Number(it.id)*37+185)%360;button.style.setProperty('--qy41-a','hsl('+hue+' 43% 41%)');button.style.setProperty('--qy41-b','hsl('+((hue+44)%360)+' 53% 20%)');button.setAttribute('aria-pressed',String(pick.value===it.id));const span=document.createElement('span');span.textContent=it.name;button.append(span);button.addEventListener('click',()=>{pick.value=it.id;pick.dispatchEvent(new Event('change',{bubbles:true}));updateSummary();display();});frag.append(button)});grid.append(frag);}
+function show(){savedFocus=document.activeElement;overlay.hidden=false;document.body.style.overflow='hidden';navBtn.setAttribute('aria-expanded','true');openBtn.setAttribute('aria-expanded','true');text();display();close.focus();}
+function hide(){overlay.hidden=true;document.body.style.overflow='';navBtn.setAttribute('aria-expanded','false');openBtn.setAttribute('aria-expanded','false');if(savedFocus?.isConnected)savedFocus.focus();}
+openBtn.addEventListener('click',show);navBtn.addEventListener('click',show);close.addEventListener('click',hide);dim.addEventListener('click',hide);
+input.addEventListener('input',display);category.addEventListener('change',display);
+// Escape and focus containment keep keyboard navigation predictable.
+overlay.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();hide();return}if(event.key!=='Tab')return;
+ const focusable=[...sheet.querySelectorAll('button:not([disabled]),input:not([disabled]),select:not([disabled]),summary,[href]')].filter(x=>x.getClientRects().length);
+ if(!focusable.length)return;const first=focusable[0],last=focusable[focusable.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}});
+for(const el of [pick,mode,season,document.getElementById('qy40-hemisphere')])el?.addEventListener('change',()=>{setTimeout(()=>{updateSummary();if(!overlay.hidden)display()},0)});
+document.getElementById('site-language')?.addEventListener('change',()=>{text();if(!overlay.hidden)display()});
+setInterval(updateSummary,60000);text();
 })();
 </script>
 </body></html>
