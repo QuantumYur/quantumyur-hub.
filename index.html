@@ -2,6 +2,49 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script id="qy-v35-before-paint">
+(()=>{'use strict';
+ const root=document.documentElement;
+ const read=(key)=>{try{return localStorage.getItem(key)}catch(_){return null}};
+ root.dataset.qyV35Boot='loading';
+ const f=read('qy-v22-font'),s=read('qy-v22-size');
+ root.dataset.qyV22Font=['system','modern','classic','reading','mono','elegant'].includes(f)?f:'mono';
+ root.dataset.qyV22Size=['small','normal','large','extra'].includes(s)?s:'large';
+ const theme=read('qy-site-theme-v1')||'auto';
+ const rotations=['nebula','dawn','arctic','ocean','sunset','cosmos'];
+ const lang=(read('qy-lang')||'uk');
+ const locales={'uk':'uk-carpathians','pl':'pl-tatras','ja':'jp-sakura','en':'en-lake','ru':'ru-forest','es':'es-canyon','ko':'ko-neon','zh':'zh-mist','hi':'hi-sunrise','pt-BR':'br-tropics'};
+ const allowed=["dark", "light", "cosmos", "nebula", "aurora", "ocean", "forest", "sunset", "dawn", "arctic", "desert", "cyberpunk", "graphite", "polar-night", "neon-city", "abyss", "volcano", "alpine-sunset", "galactic-dust", "storm-savanna", "lunar-expanse", "rainforest", "moonlit-lake", "sandstorm", "observatory", "uk-carpathians", "pl-tatras", "jp-sakura", "br-tropics", "ko-neon", "es-canyon", "zh-mist", "hi-sunrise", "en-lake", "ru-forest", "qy23-alpine", "qy23-aurora", "qy23-moon", "qy23-galaxy", "qy23-neon", "qy23-cyber", "qy23-forest", "qy23-ocean", "qy23-desert", "qy23-eastern", "qy23-sakura", "qy23-china", "qy23-india", "qy23-arctic", "qy23-tropics", "qy23-europe", "qy23-canyon", "qy23-nightcity"];
+ const palette=theme==='auto'?rotations[Math.floor(new Date().getHours()/4)]:(theme==='locale'?(locales[lang]||'uk-carpathians'):(allowed.includes(theme)?theme:'nebula'));
+ root.dataset.qyPalette=palette;
+ root.dataset.qyThemeChoice=theme;
+ const light=["light", "dawn", "arctic", "desert", "sandstorm", "qy23-desert", "qy23-arctic"].includes(palette);
+ root.dataset.qyTheme=light?'light':'dark';
+ root.style.colorScheme=light?'light':'dark';
+ const forest=read('qy-v28-forest-active')==='1';
+ root.dataset.qyForestActive=forest?'1':'0';
+ root.dataset.qyLakeActive=!forest&&read('qy-v26-lake-active')==='1'?'1':'0';
+ root.dataset.qyV35NeedsForest=forest?'1':'0';
+ // Built-in fallback if later scripts fail or a browser restores from its page cache.
+ const guard=setTimeout(()=>{const veil=document.getElementById('qy-v35-startup');if(veil){veil.remove();root.dataset.qyV35Boot='ready'}},6500);
+ window.__qyV35BootFallback=()=>clearTimeout(guard);
+})();
+</script>
+
+<style id="qy-v35-before-paint-css">
+/* Freeze the first visible frame until all persisted styles and sections are ready.
+   Only the small loading veil appears on a refresh; underlying page remains mounted.
+   No changes to journal data, font selections or theme controls. */
+#qy-v35-startup{position:fixed!important;inset:0!important;z-index:2147483647!important;display:flex!important;align-items:center;justify-content:center;min-height:100vh;min-height:100svh;background:#071421!important;color:#e9f5ff!important;opacity:1;pointer-events:auto!important;transition:opacity .14s ease!important;}
+#qy-v35-startup .qy-v35-inside{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;text-align:center;max-width:82vw;letter-spacing:.05em}
+#qy-v35-startup .qy-v35-mark{font-size:29px;font-weight:800;margin-bottom:10px}
+#qy-v35-startup .qy-v35-sub{font-size:13px;opacity:.78}
+#qy-v35-startup.qy-v35-disappear{opacity:0!important;pointer-events:none!important}
+@media(prefers-reduced-motion:reduce){#qy-v35-startup{transition:none!important}}
+</style>
+<noscript><style>#qy-v35-startup{display:none!important}</style></noscript>
+
 <script id="qy-v33-device-early">
 (()=>{'use strict';
  function auto(){const w=window.innerWidth||document.documentElement.clientWidth||390;
@@ -1378,6 +1421,7 @@ html[data-qy-device-package="balanced"] :is(#qy-v23-grid button,#qy-v22-country-
 </style>
 </head>
 <body>
+<div id="qy-v35-startup" role="status" aria-label="Завантаження оформлення"><div class="qy-v35-inside"><div class="qy-v35-mark">✦ QuantumYur</div><div class="qy-v35-sub">Відновлюємо вибрану тему…</div></div></div>
 <div id="qy-cosmos-background" aria-hidden="true"></div>
 <div id="qy-v14-theme-photo" aria-hidden="true"></div>
 <a href="#top" class="skip-to-main">Перейти до вмісту</a>
@@ -3123,14 +3167,14 @@ function update(){
  }
  status.dataset.loadingState='loading';status.textContent='Обрано '+s.place+'. Завантажуємо фотографію…';
  const apply=()=>{if(token!==latest||!active||selected!==s.id)return;
-  setWallpaper('url("'+url+'")');displayedScene=s.id;displayedUrl=url;
+  setWallpaper('url("'+url+'")');displayedScene=s.id;displayedUrl=url;root.dataset.qyV35WallpaperReady='1';window.dispatchEvent(new Event('qy:v35-wallpaper-ready'));
   status.dataset.loadingState='loaded';status.textContent='Завантажено: '+s.place+' · '+s.title+'. Натисни іншу країну для зміни фону.';
  };
  if(decodedCache.has(url)){apply();return;}
  const req=new Image();req.decoding='async';
  let done=false;
  const fail=()=>{if(done||token!==latest||!active)return;done=true;
-   if(!wasShowingSameScene) setWallpaper(fallback);
+   if(!wasShowingSameScene) setWallpaper(fallback);root.dataset.qyV35WallpaperReady='1';window.dispatchEvent(new Event('qy:v35-wallpaper-ready'));
    status.dataset.loadingState='fallback';
    status.textContent='Фото '+s.place+' зараз недоступне. Показано резервний фон — перевір інтернет або відкрий джерело нижче.';
  };
@@ -3245,4 +3289,31 @@ update();
  apply();
 })();
 </script>
+
+<script id="qy-v35-first-paint-finish">
+(()=>{'use strict';
+ const root=document.documentElement;
+ const veil=document.getElementById('qy-v35-startup');
+ if(!veil){root.dataset.qyV35Boot='ready';return}
+ let released=false;
+ let waiter=null;
+ function release(){if(released)return;released=true;
+  if(waiter)clearTimeout(waiter);
+  root.dataset.qyV35Boot='ready';
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+   veil.classList.add('qy-v35-disappear');
+   setTimeout(()=>veil.remove(),180);
+  }));
+ }
+ const start=()=>{
+  if(root.dataset.qyV35NeedsForest==='1'&&root.dataset.qyV35WallpaperReady!=='1'){
+   const onImage=()=>{window.removeEventListener('qy:v35-wallpaper-ready',onImage);release()};
+   window.addEventListener('qy:v35-wallpaper-ready',onImage,{once:true});
+   waiter=setTimeout(()=>{window.removeEventListener('qy:v35-wallpaper-ready',onImage);release()},2800);
+  }else release();
+ };
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true}); else start();
+})();
+</script>
+
 </body></html>
