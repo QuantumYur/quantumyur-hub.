@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="uk">
 <head>
-<!-- QuantumYur v54 / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
+<!-- QuantumYur v55 / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script id="qy-v35-before-paint">
@@ -3552,7 +3552,7 @@ function qy54PhotoParams(small=false){
 }
 const imageUrl=(id,small=false)=>'https://images.unsplash.com/'+id+'?auto=format&fit=crop&'+qy54PhotoParams(small);
 /* Debug-only metrics; not visible in the user interface. */
-window.qyHubImageQuality=Object.freeze({version:'54',dimensions:()=>qy54PhotoParams(false),lazy:true});
+window.qyHubImageQuality=Object.freeze({version:'55',dimensions:()=>qy54PhotoParams(false),lazy:true});
 // v51.1: read the real image of a destination from this site's 53-theme catalogue.
 // Theme 1 includes eight embedded scenes, so its portal works fully offline.
 window.qyHubPortalSource=Object.freeze({
@@ -4535,7 +4535,7 @@ body.qy44-home #qy44-front :is(.qy44-middle,#qy44-time,.qy44-head,.qy44-greeting
 #qy49-stylelabel{display:none!important}
 #qy50-change .qy50-copy{display:none!important}
 #qy50-change{
- --qy52-duration:1.08s;
+ --qy52-duration:.92s;
  background:radial-gradient(circle at 50% 50%,rgba(var(--qy49-a),.65),rgba(var(--qy49-b),.36) 42%,#061023 98%);
  perspective:850px;
  animation:qy52-curtain var(--qy52-duration) cubic-bezier(.22,.61,.36,1) both!important;
@@ -4647,6 +4647,56 @@ body.qy44-home #qy44-front :is(.qy44-middle,#qy44-time,.qy44-head,.qy44-greeting
  #qy50-change .qy52-sparks i{box-shadow:0 0 4px rgba(255,255,255,.6)!important}
 }
 </style>
+<style id="qy-v55-vector-high-detail">
+/* v55: higher-resolution (resolution-independent SVG) 3D elements. Smooth GPU motion
+   without CSS blur, large glow kernels or full-photo repaint effects. */
+#qy50-change .qy52-prism.qy55-prism,
+#qy50-change[data-family] .qy52-prism.qy55-prism{
+ width:clamp(86px,24vmin,192px)!important;
+ height:clamp(108px,32vmin,254px)!important;
+ background:none!important;clip-path:none!important;border-radius:0!important;
+ box-shadow:none!important;outline:none!important;border:0!important;
+ contain:layout style;
+ filter:none!important;
+ animation:qy55-prism-flight var(--qy52-duration) cubic-bezier(.16,.53,.27,1) var(--pd) both!important;
+ backface-visibility:visible;
+}
+#qy50-change .qy55-vector{
+ display:block;width:100%;height:100%;overflow:visible;
+ shape-rendering:geometricPrecision;
+ filter:none!important;pointer-events:none;
+}
+#qy50-change .qy52-gate i{animation-name:qy55-gate-fly;filter:none!important;}
+#qy50-change .qy52-gate i:nth-child(1){--gstart:-540px;animation-delay:-.24s}
+#qy50-change .qy52-gate i:nth-child(2){--gstart:-320px;animation-delay:-.11s}
+#qy50-change .qy52-gate i:nth-child(3){--gstart:-120px;animation-delay:0s}
+#qy50-change .qy52-sparks i{box-shadow:none!important;border:1px solid rgba(255,255,255,.72);background:rgba(var(--qy49-a),.95);}
+#qy50-change .qy51-landscape img{filter:contrast(1.08) saturate(1.17)!important;}
+@keyframes qy55-prism-flight{
+ 0%{transform:translate3d(0,0,var(--pz)) rotateY(-42deg) rotate(var(--pr)) scale(calc(var(--ps) * .27));opacity:0}
+ 13%{opacity:.98}
+ 61%{transform:translate3d(calc(var(--dx) * .36),calc(var(--dy) * .34),60px) rotateY(5deg) rotate(calc(var(--pr) * -.40)) scale(var(--ps));opacity:.98}
+ 82%{opacity:.87}
+ 100%{transform:translate3d(var(--dx),var(--dy),480px) rotateY(41deg) rotate(38deg) scale(calc(var(--ps) * 1.35));opacity:0}
+}
+@keyframes qy55-gate-fly{
+ 0%{transform:translate3d(-50%,-50%,var(--gstart)) rotate(var(--gturn)) scale(.3);opacity:0}
+ 29%{opacity:.34}65%{opacity:.28}
+ 100%{transform:translate3d(-50%,-50%,590px) rotate(27deg) scale(1.6);opacity:0}
+}
+@media(max-width:600px){
+ #qy50-change .qy52-prism.qy55-prism{width:clamp(74px,23vmin,102px)!important;height:clamp(100px,29vmin,140px)!important}
+ #qy50-change .qy52-sparks i:nth-child(n+6){display:block!important}
+ #qy50-change .qy52-prism.qy55-prism:nth-child(n+13){display:none!important}
+ #qy50-change .qy52-sparks i:nth-child(n+17){display:none!important}
+}
+@media (max-width:900px) and (prefers-reduced-motion:no-preference),
+       (hover:none) and (pointer:coarse) and (prefers-reduced-motion:no-preference){
+ #qy50-change .qy52-prism.qy55-prism{animation-duration:var(--qy52-duration)!important;animation-iteration-count:1!important}
+ #qy50-change .qy52-sparks i{animation-duration:var(--qy52-duration)!important}
+}
+@media(prefers-reduced-motion:reduce){#qy50-change .qy52-prism.qy55-prism{animation:none!important}}
+</style>
 <script id="qy-v50-realm-portal-js">
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
@@ -4725,27 +4775,58 @@ function sceneHTML(){let particles='';for(let i=0;i<19;i++){
 const x=(i*37+13)%96,y=(i*53+11)%88,size=2+(i%4),speed=3.3+(i%5)*.8,delay=-(i*.41)%5;
 particles+=`<i style="--p-x:${x}%;--p-y:${y}%;--p-size:${size}px;--p-speed:${speed}s;--p-delay:${delay}s"></i>`}
 return `<div class="qy50-scene" aria-hidden="true"><div class="qy50-orb"></div><div class="qy50-clouds"></div><div class="qy50-land"></div><div class="qy50-land2"></div><div class="qy50-specks">${particles}</div></div>`}
-/* Lightweight CSS-3D passage: 8 faceted foreground forms and 12 depth sparks.
-   Everything is authored as DOM/CSS, no WebGL, frameworks or extra downloads. */
-function passageHTML(){
- let shapes='';
- const coords=[
-  ['7%','18%','-230px','-28deg','-.40s','1.05','-120px','-54px'],
-  ['83%','18%','-330px','31deg','-.12s','1.18','110px','-86px'],
-  ['5%','60%','-180px','18deg','-.55s','1.45','-150px','65px'],
-  ['84%','60%','-100px','-23deg','-.31s','1.32','146px','70px'],
-  ['18%','75%','-420px','43deg','-.26s','1.03','-65px','130px'],
-  ['70%','74%','-380px','-37deg','-.24s','1.10','80px','130px']
+ /* v55: true vector-resolution fragments. Every element is an SVG containing
+    distinct, layered faces rather than a texture stretched by CSS transforms.
+    Each theme's objects use its own family silhouettes and palette. */
+ const qy55Coords=[
+  ['4%','13%','-400px','-22deg','-.20s','.77','-95px','-45px'],
+  ['82%','10%','-360px','32deg','-.16s','.82','112px','-52px'],
+  ['7%','31%','-270px','13deg','-.08s','.92','-104px','-32px'],
+  ['86%','34%','-190px','-27deg','-.24s','.94','135px','-17px'],
+  ['-1%','54%','-330px','27deg','-.12s','1.01','-105px','65px'],
+  ['88%','58%','-220px','-39deg','-.22s','.94','125px','62px'],
+  ['4%','76%','-430px','-24deg','-.13s','.72','-100px','102px'],
+  ['83%','77%','-340px','30deg','-.19s','.89','115px','95px'],
+  ['25%','84%','-290px','17deg','-.05s','.62','-34px','119px'],
+  ['62%','89%','-380px','-31deg','-.21s','.69','45px','115px'],
+  ['36%','-3%','-480px','16deg','-.07s','.55','-18px','-100px'],
+  ['61%','3%','-430px','-12deg','-.23s','.59','27px','-90px'],
+  ['18%','63%','-530px','36deg','-.18s','.66','-50px','48px'],
+  ['74%','46%','-520px','-28deg','-.09s','.61','59px','39px']
  ];
- coords.forEach(([x,y,z,r,d,scale,dx,dy],i)=>{
-   shapes+=`<i class="qy52-prism qy52-prism-${i+1}" style="--px:${x};--py:${y};--pz:${z};--pr:${r};--pd:${d};--ps:${scale};--dx:${dx};--dy:${dy}"><b></b><em></em></i>`;
- });
- let sparks='';for(let i=0;i<7;i++){
-   const x=7+(i*31)%87,y=9+(i*41)%82;
-   sparks+=`<i style="--sx:${x}%;--sy:${y}%;--sd:${(i%5)*-.22}s;--ss:${1+(i%3)*.6}"></i>`;
+ function qy55ShapeSVG(family,i){
+  const g='qy55-grad-'+i, gl='qy55-glint-'+i;
+  const defs=`<defs><linearGradient id="${g}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".95"/><stop offset=".26" style="stop-color:rgb(var(--qy49-a))"/><stop offset=".64" style="stop-color:rgb(var(--qy49-b))"/><stop offset="1" stop-color="#092039"/></linearGradient><linearGradient id="${gl}" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".83"/><stop offset="1" style="stop-color:rgb(var(--qy49-a))" stop-opacity=".18"/></linearGradient></defs>`;
+  const shell=`fill="url(#${g})" stroke="rgba(255,255,255,.86)" stroke-width="1.7" stroke-linejoin="round"`;
+  const face=`fill="url(#${gl})" stroke="rgba(255,255,255,.55)" stroke-width="1.2" stroke-linejoin="round"`;
+  let shape;
+  if(['forest','jungle','savanna','bloom','meadow'].includes(family)){
+   shape=`<path d="M81 7 L135 65 L116 87 L148 125 L84 192 L19 128 L45 89 L27 62 Z" ${shell}/><path d="M81 7 L84 192 L19 128 L45 89 Z" ${face}/><path d="M81 7 L135 65 L84 113 Z" fill="rgba(255,255,255,.33)"/><path d="M81 7 V192 M45 89 L84 113 L116 87 M19 128 L84 139 L148 125" fill="none" stroke="rgba(245,255,222,.89)" stroke-width="1.9"/>`;
+  }else if(['city','urban'].includes(family)){
+   shape=`<path d="M40 22 L104 10 L143 37 V183 L76 193 L25 164 V42 Z" ${shell}/><path d="M104 10 L104 168 L143 183 V37 Z" fill="#071d35" opacity=".71"/><path d="M40 22 L104 10 V168 L25 164 V42 Z" ${face}/><path d="M25 42 L76 58 L143 37" fill="none" stroke="#fff" stroke-width="2"/><g fill="rgba(243,250,255,.89)">${Array.from({length:12},(_,j)=>`<rect x="${39+(j%3)*18}" y="${63+Math.floor(j/3)*22}" width="7" height="10" rx="1"/>`).join('')}</g><path d="M110 52 L132 62 M110 77 L132 87 M110 101 L132 111 M110 127 L132 137" stroke="rgba(139,223,255,.88)" stroke-width="3"/>`;
+  }else if(['space','moon','aurora','galaxy','night'].includes(family)){
+   shape=`<ellipse cx="80" cy="102" rx="61" ry="65" ${shell}/><path d="M31 72 C53 32 115 34 132 76 C117 51 56 55 31 72" ${face}/><path d="M23 124 C49 168 111 174 137 123" fill="none" stroke="rgba(244,247,255,.72)" stroke-width="2"/><ellipse cx="80" cy="103" rx="77" ry="25" transform="rotate(-34 80 103)" fill="none" stroke="rgba(227,244,255,.94)" stroke-width="2.4"/><circle cx="57" cy="75" r="6" fill="#fff" opacity=".92"/><circle cx="105" cy="128" r="3" fill="#fff"/>`;
+  }else if(['water','ocean','lake','underwater','island','islands'].includes(family)){
+   shape=`<path d="M76 5 C94 42 140 72 134 117 C129 158 112 188 79 193 C46 189 19 166 22 119 C24 76 61 41 76 5 Z" ${shell}/><path d="M76 5 L79 193 C42 188 19 160 22 119 C28 92 59 40 76 5 Z" ${face}/><path d="M36 131 L89 61 L128 117 M43 157 L79 119 L115 157" stroke="rgba(226,255,255,.76)" stroke-width="2.2" fill="none"/><circle cx="49" cy="105" r="6" fill="#fff" opacity=".72"/>`;
+  }else if(['desert','volcano','rock','mountain','snow','ice','mist'].includes(family)){
+   shape=`<path d="M25 151 L35 57 L74 10 L115 43 L148 119 L124 184 L51 190 Z" ${shell}/><path d="M74 10 L80 184 L25 151 L35 57 Z" ${face}/><path d="M74 10 L115 43 L148 119 L80 184 Z" fill="rgba(5,18,38,.40)"/><path d="M35 57 L80 94 L115 43 M25 151 L80 145 L148 119 M80 94 L80 184" fill="none" stroke="rgba(250,252,255,.80)" stroke-width="2"/><path d="M49 52 L70 26 L92 57" fill="none" stroke="rgba(255,255,255,.86)" stroke-width="3"/>`;
+  }else{
+   shape=`<path d="M78 3 L136 58 L143 137 L81 195 L16 140 L31 60 Z" ${shell}/><path d="M78 3 L81 195 L16 140 L31 60 Z" ${face}/><path d="M78 3 L136 58 L143 137 L81 195 Z" fill="rgba(4,20,49,.34)"/><path d="M31 60 L80 99 L136 58 M16 140 L81 160 L143 137 M78 3 L80 99 L81 195" fill="none" stroke="rgba(255,255,255,.84)" stroke-width="1.8"/>`;
+  }
+  return `<svg class="qy55-vector" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">${defs}${shape}</svg>`;
  }
- return `<div class="qy52-passage" aria-hidden="true"><div class="qy52-horizon"></div><div class="qy52-gate"><i></i><i></i></div><div class="qy52-prisms">${shapes}</div><div class="qy52-sparks">${sparks}</div><div class="qy52-flare"></div></div>`;
-}
+ function qy55FillGeometry(family){
+  const target=curtain.querySelector('.qy52-prisms');if(!target)return;
+  target.innerHTML=qy55Coords.map(([x,y,z,r,d,scale,dx,dy],i)=>`<i class="qy52-prism qy55-prism" style="--px:${x};--py:${y};--pz:${z};--pr:${r};--pd:${d};--ps:${scale};--dx:${dx};--dy:${dy}">${qy55ShapeSVG(family,i)}</i>`).join('');
+ }
+ function passageHTML(){
+  const shapes=qy55Coords.map(([x,y,z,r,d,scale,dx,dy],i)=>`<i class="qy52-prism qy55-prism" style="--px:${x};--py:${y};--pz:${z};--pr:${r};--pd:${d};--ps:${scale};--dx:${dx};--dy:${dy}">${qy55ShapeSVG('mountain',i)}</i>`).join('');
+  let sparks='';for(let i=0;i<20;i++){
+   const x=4+(i*37)%92,y=5+(i*41)%90;
+   sparks+=`<i style="--sx:${x}%;--sy:${y}%;--sd:${(i%7)*-.095}s;--ss:${1+(i%4)*.28}"></i>`;
+  }
+  return `<div class="qy52-passage" aria-hidden="true"><div class="qy52-horizon"></div><div class="qy52-gate"><i></i><i></i><i></i></div><div class="qy52-prisms">${shapes}</div><div class="qy52-sparks">${sparks}</div><div class="qy52-flare"></div></div>`;
+ }
 const hint=document.createElement('button');hint.type='button';hint.id='qy49-hint';hint.setAttribute('aria-haspopup','dialog');hint.setAttribute('aria-controls','qy49-overlay');front.append(hint);
 const overlay=document.createElement('div');overlay.id='qy49-overlay';overlay.hidden=true;overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-labelledby','qy49-title');
 overlay.innerHTML=sceneHTML()+'<div class="qy51-landscape" aria-hidden="true"><img id="qy51-landscape-img" alt=""></div><div class="qy49-vortex" aria-hidden="true"><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-core"></span></div><section class="qy49-card"><div class="qy49-eyebrow" id="qy49-eyebrow"></div><h2 id="qy49-title"></h2><p id="qy49-desc"></p><div class="qy50-journey"><span id="qy50-journey-caption"></span><strong id="qy50-journey-name"></strong></div><div class="qy51-thumb"><img id="qy51-thumb-img" alt="" decoding="async"><span id="qy51-thumb-note"></span></div><div class="qy49-choices"><button type="button" id="qy49-next"></button><button type="button" id="qy49-gallery"></button><button type="button" id="qy49-back"></button></div><label class="qy49-stylelabel" id="qy49-stylelabel"></label><div class="qy49-styles" role="group" aria-label="Transition style"><button type="button" data-portal-style="realm"></button><button type="button" data-portal-style="tunnel"></button><button type="button" data-portal-style="light"></button><button type="button" data-portal-style="mist"></button></div></section>';
@@ -4793,7 +4874,7 @@ const motionReduced=()=>matchMedia('(prefers-reduced-motion:reduce)').matches;
 function paintScene(element,id){const spec=sceneSpec(id);element.dataset.family=spec.family;
   element.style.setProperty('--qy49-a',spec.a);element.style.setProperty('--qy49-b',spec.b);
 }
-function labels(){hint.textContent=tr(0);$('qy49-eyebrow').textContent=tr(1)+' · v54';$('qy49-title').textContent=tr(2);$('qy49-desc').textContent=tr(3);
+function labels(){hint.textContent=tr(0);$('qy49-eyebrow').textContent=tr(1)+' · v55';$('qy49-title').textContent=tr(2);$('qy49-desc').textContent=tr(3);
   $('qy49-next').textContent=tr(4);$('qy49-gallery').textContent=tr(5);$('qy49-back').textContent=tr(6);$('qy49-stylelabel').textContent='';
   for(const [i,b] of [...overlay.querySelectorAll('[data-portal-style]')].entries())b.textContent=tr(8+i);
   $('qy50-journey-caption').textContent=tr(12)+':';$('qy50-copy-caption').textContent='';updateDestination();}
@@ -4809,10 +4890,10 @@ function open(){if(busy||!overlay.hidden||!document.body.classList.contains('qy4
   labels();applyStyle(style);clearTimeout(stageTimer);stageTimer=setTimeout(()=>{overlay.classList.add('qy49-ready');$('qy49-next').focus();busy=false},motionReduced()?10:210)}
 function close(){qy51Request++;clearTimeout(stageTimer);clearTimeout(travelTimer);overlay.classList.remove('qy49-ready','qy49-travel');overlay.hidden=true;
   document.body.style.overflow=oldOverflow;busy=false;if(focusFrom?.isConnected)focusFrom.focus({preventScroll:true})}
-function travel(fn){if(busy)return;busy=true;overlay.classList.add('qy49-travel');travelTimer=setTimeout(()=>{try{fn()}finally{close()}},motionReduced()?20:160)}
+function travel(fn){if(busy)return;busy=true;overlay.classList.add('qy49-travel');travelTimer=setTimeout(()=>{try{fn()}finally{close()}},motionReduced()?20:120)}
 function nextWorld(){const opt=nextOption();if(!opt)return;showCurtain(opt.value);suppressCurtain=true;theme.value=opt.value;theme.dispatchEvent(new Event('change',{bubbles:true}));previousTheme=opt.value;suppressCurtain=false;}
 function showCurtain(id){
- clearTimeout(curtainTimer);paintScene(curtain,id);
+ clearTimeout(curtainTimer);paintScene(curtain,id);qy55FillGeometry(sceneSpec(id).family);
  /* Visual-only passage: no text over the landscape. */
  const url=qy51URL(id);
  qy51Curtain.removeAttribute('src');
@@ -4829,7 +4910,7 @@ function showCurtain(id){
       image.src=url;
    }
  }
- curtainTimer=setTimeout(()=>{curtain.hidden=true},motionReduced()?100:1080);
+ curtainTimer=setTimeout(()=>{curtain.hidden=true},motionReduced()?100:920);
 }
 
 $('qy49-next').addEventListener('click',()=>travel(nextWorld));
