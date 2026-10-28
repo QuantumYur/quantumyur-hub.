@@ -1174,6 +1174,31 @@ html[data-qy-forest-active="1"] .hero{background-image:linear-gradient(100deg,rg
 html[data-qy-forest-active="1"] #qy-v28-forest-bg{isolation:isolate}
 @media(max-width:660px){#qy-v28-forest-preview{min-height:210px}#qy-v28-forest{padding:14px}}
 </style>
+
+<style id="qy-v30-mobile-fix">
+/* QuantumYur v30: avoid Android/Chrome tile disappearance on fast scroll.
+   Keep one wallpaper instead of compositing multiple fullscreen animated layers. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+ html { scroll-behavior: auto!important; }
+ body { background-attachment: scroll!important; transition: none!important; }
+ body::before { display:none!important; }
+ /* Mobile GPU: blur of many panels on a fixed photo causes dropped frames / blank tiles. */
+ body * { -webkit-backdrop-filter:none!important; backdrop-filter:none!important; }
+ #qy-cosmos-background,#qy-v13-canvas,#qy-v16-atmosphere { display:none!important; }
+ #qy-v14-theme-photo { animation:none!important; transition:none!important; transform:none!important; will-change:auto!important; }
+ #qy-v28-forest-bg,#qy-lake-preview-bg { animation:none!important;transition:none!important;transform:none!important;will-change:auto!important; }
+ html[data-qy-forest-active="1"] #qy-v14-theme-photo,
+ html[data-qy-lake-active="1"] #qy-v14-theme-photo { display:none!important; }
+ :is(#qy-v18-realm-grid,#qy-v22-country-grid,#qy-v23-grid) button {
+   content-visibility:visible!important; contain-intrinsic-size:none!important;
+ }
+ *,*::before,*::after { animation-duration:0.001ms!important;animation-iteration-count:1!important;transition-duration:0s!important; }
+ /* Keep legible, colored panels even without backdrop blur. */
+ :is(.sky-scene,.daily-panel,.qy-install-card,.qy-discover,.qy-twitch-promo,.qy-news-card,.qy-reminders,.astro-panel,.q-vault-panel,.q-comp-panel) {
+   background-color:rgba(9,21,39,.93);
+ }
+}
+</style>
 </head>
 <body>
 <div id="qy-cosmos-background" aria-hidden="true"></div>
@@ -2773,7 +2798,7 @@ applyDetail(detail);syncLabels();
 const selectors='#qy-v18-realm-grid button,#qy-v22-country-grid button,#qy-v23-grid button';
 const nodes=Array.from(document.querySelectorAll(selectors));
 if('IntersectionObserver' in window){
- const observer=new IntersectionObserver(items=>{for(const x of items){x.target.classList.toggle('qy-v25-visible',x.isIntersecting)}},{rootMargin:'260px 0px',threshold:0.001});nodes.forEach(x=>observer.observe(x));
+ const observer=new IntersectionObserver(items=>{for(const x of items){if(x.isIntersecting){x.target.classList.add('qy-v25-visible');observer.unobserve(x.target)}}},{rootMargin:'260px 0px',threshold:0.001});nodes.forEach(x=>observer.observe(x));
 }else nodes.forEach(x=>x.classList.add('qy-v25-visible'));
 })();</script>
 
