@@ -1485,6 +1485,38 @@ html[data-qy-lake-active="1"]:not([data-qy-forest-active="1"]) #qy-lake-preview-
   background-clip:padding-box!important;
 }
 </style>
+<style id="qy-v37-style">
+/* v37 additions. One wallpaper, no GPU animation, stable in mobile Chrome. */
+#qy-v37-wallpaper{position:fixed!important;inset:0!important;width:100%!important;height:100vh!important;height:100lvh!important;z-index:0!important;pointer-events:none!important;background-position:center center!important;background-size:cover!important;background-repeat:no-repeat!important;background-color:transparent;transform:none!important;animation:none!important;transition:none!important;will-change:auto!important}
+html[data-qy-v37="off"] #qy-v37-wallpaper{display:none!important}
+html[data-qy-v37="on"] :is(#qy-v28-forest-bg,#qy-lake-preview-bg,#qy-v16-atmosphere,#qy-v13-canvas,#qy-cosmos-background,#qy-v14-theme-photo){display:none!important;opacity:0!important}
+html[data-qy-v37="on"] body::before{display:none!important}
+html[data-qy-v37="on"] body > .wrap{position:relative!important;z-index:1!important}
+html[data-qy-v37="on"] .hero{background-image:linear-gradient(100deg,rgba(5,15,20,.82),rgba(5,15,20,.60))!important}
+#qy-v37-controls,#qy-v37-controls *{box-sizing:border-box}
+#qy-v37-controls{position:relative;z-index:10;max-width:100%;padding:15px 18px;margin:12px 0 17px;border:1px solid #83cdd4a0;border-radius:18px;background:rgba(9,26,34,.92);box-shadow:0 7px 24px #001c2870;color:#eaffff;font:500 clamp(13px,1.5vw,16px)/1.55 ui-monospace,SFMono-Regular,Consolas,'Liberation Mono',monospace}
+#qy-v37-controls .qy37-head{display:flex;justify-content:space-between;align-items:start;gap:8px;flex-wrap:wrap}
+#qy-v37-controls .qy37-head strong{display:block;font-size:clamp(17px,2.2vw,22px);color:#e4ffec}
+#qy-v37-controls .qy37-head p{font-size:12px;color:#bfd8dc;margin:3px 0 9px}
+#qy-v37-controls .qy37-clock{color:#cce6fa;white-space:nowrap}
+#qy-v37-controls .qy37-row{display:flex;flex-wrap:wrap;gap:8px;align-items:end}
+#qy-v37-controls .qy37-field{display:grid;gap:3px;flex:1 1 220px;font-weight:650;color:#dceef8}
+#qy-v37-controls select,#qy-v37-controls button{font:inherit;color:#fff;background:#183c4c;border:1px solid #6dabb6;border-radius:11px;padding:9px 11px;min-height:44px;max-width:100%;cursor:pointer}
+#qy-v37-controls .qy37-field:first-child{flex:2 1 260px}
+#qy-v37-controls button:hover,#qy-v37-controls select:hover{filter:brightness(1.12)}
+#qy-v37-controls button:focus-visible,#qy-v37-controls select:focus-visible,#qy-v37-controls summary:focus-visible{outline:3px solid #fce88a;outline-offset:3px}
+#qy-v37-controls .qy37-mono{background:#264e38}
+#qy-v37-controls .qy37-status{font-size:12px;color:#c6e3ef;margin:9px 0 0}
+#qy37-preview{margin-top:9px}#qy37-preview summary{cursor:pointer;display:list-item;color:#a8e9ff;font-weight:700}
+#qy37-shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;padding-top:8px}
+#qy37-shots .qy37-shot{position:relative;overflow:hidden;padding:0!important;height:115px;min-height:0;background:#143443;text-align:left}
+#qy37-shots .qy37-shot[aria-pressed="true"]{border:3px solid #e1fbaa}
+#qy37-shots img{width:100%;height:100%;object-fit:cover;display:block}
+#qy37-shots span{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,#001d32);padding:22px 8px 5px;text-shadow:0 1px 3px #000}
+@media(max-width:650px){#qy-v37-controls{margin:7px 0 12px;padding:11px;border-radius:12px}#qy37-shots{gap:5px}#qy37-shots .qy37-shot{height:84px;font-size:11px}#qy-v37-controls .qy37-field{flex-basis:140px}}
+@media(prefers-reduced-motion:reduce){#qy-v37-wallpaper,#qy-v37-controls *{animation:none!important;transition:none!important}}
+
+</style>
 </head>
 <body>
 <div id="qy-v35-startup" role="status" aria-label="Завантаження оформлення"><div class="qy-v35-inside"><div class="qy-v35-mark">✦ QuantumYur</div><div class="qy-v35-sub">Відновлюємо вибрану тему…</div></div></div>
@@ -3382,4 +3414,73 @@ update();
 })();
 </script>
 
+<script id="qy-v37-script">
+/* QuantumYur v37 — 53 exact themes; photo selection is local and stable. */
+(()=>{'use strict';
+if(document.getElementById('qy-v37-controls'))return;
+const THEMES=[{"id":1,"name":"Гірський захід","category":"Початкові атмосфери","photos":["photo-1470252649378-9c29740c9fa8","photo-1501785888041-af3ef285b470","photo-1519681393784-d120267933ba"]},{"id":2,"name":"Гірське озеро","category":"Початкові атмосфери","photos":["photo-1501785888041-af3ef285b470","photo-1493246507139-91e8fad9978e","photo-1519681393784-d120267933ba"]},{"id":3,"name":"Лісова тиша","category":"Початкові атмосфери","photos":["photo-1441974231531-c6227db76b6e","photo-1473448912268-2022ce9509d8","photo-1470071459604-3b5ec3a7fe05"]},{"id":4,"name":"Водоспад","category":"Початкові атмосфери","photos":["photo-1433086966358-54859d0ed716","photo-1500375592092-40eb2168fd21","photo-1518837695005-2083093ee35b"]},{"id":5,"name":"Морський берег","category":"Початкові атмосфери","photos":["photo-1507525428034-b723cf961d3e","photo-1500375592092-40eb2168fd21","photo-1470252649378-9c29740c9fa8"]},{"id":6,"name":"Тропічний острів","category":"Початкові атмосфери","photos":["photo-1507525428034-b723cf961d3e","photo-1520052205864-92d242b3a76b","photo-1518837695005-2083093ee35b"]},{"id":7,"name":"Пустеля","category":"Початкові атмосфери","photos":["photo-1509316785289-025f5b846b35","photo-1500534623283-312aade485b7","photo-1519681393784-d120267933ba"]},{"id":8,"name":"Північне сяйво","category":"Початкові атмосфери","photos":["photo-1476610182048-b716b8518aae","photo-1531366936337-7c912a4589a7","photo-1519681393784-d120267933ba"]},{"id":9,"name":"Нічне місто","category":"Початкові атмосфери","photos":["photo-1480714378408-67cf0d13bc1b","photo-1477959858617-67f85cf4f1df","photo-1519608487953-e999c86e7455"]},{"id":10,"name":"Космічний простір","category":"Початкові атмосфери","photos":["photo-1446776811953-b23d57bd21aa","photo-1462331940025-496dfbfc7564","photo-1519681393784-d120267933ba"]},{"id":11,"name":"Місячна поверхня","category":"Початкові атмосфери","photos":["photo-1446776811953-b23d57bd21aa","photo-1462331940025-496dfbfc7564","photo-1519681393784-d120267933ba"]},{"id":12,"name":"Сонячний світанок","category":"Початкові атмосфери","photos":["photo-1470252649378-9c29740c9fa8","photo-1501785888041-af3ef285b470","photo-1519681393784-d120267933ba"]},{"id":13,"name":"Зоряне небо","category":"Початкові атмосфери","photos":["photo-1446776811953-b23d57bd21aa","photo-1462331940025-496dfbfc7564","photo-1519681393784-d120267933ba"]},{"id":14,"name":"Підводний світ","category":"Живі світи","photos":["photo-1433086966358-54859d0ed716","photo-1500375592092-40eb2168fd21","photo-1518837695005-2083093ee35b"]},{"id":15,"name":"Кораловий риф","category":"Живі світи","photos":["photo-1507525428034-b723cf961d3e","photo-1520052205864-92d242b3a76b","photo-1518837695005-2083093ee35b"]},{"id":16,"name":"Джунглі","category":"Живі світи","photos":["photo-1497436072909-60f362e1d4b1","photo-1441974231531-c6227db76b6e","photo-1470071459604-3b5ec3a7fe05"]},{"id":17,"name":"Саванна","category":"Живі світи","photos":["photo-1469474968028-56623f02e42e","photo-1472396961693-142e6e269027","photo-1519681393784-d120267933ba"]},{"id":18,"name":"Полярний лід","category":"Живі світи","photos":["photo-1476610182048-b716b8518aae","photo-1483664852095-d6cc6870702d","photo-1519681393784-d120267933ba"]},{"id":19,"name":"Арктичні гори","category":"Живі світи","photos":["photo-1470770841072-f978cf4d019e","photo-1464822759023-fed622ff2c3b","photo-1519681393784-d120267933ba"]},{"id":20,"name":"Квітуча долина","category":"Живі світи","photos":["photo-1490750967868-88aa4486c946","photo-1465146344425-f00d5f5c8f07","photo-1470252649378-9c29740c9fa8"]},{"id":21,"name":"Осінній ліс","category":"Живі світи","photos":["photo-1441974231531-c6227db76b6e","photo-1473448912268-2022ce9509d8","photo-1470071459604-3b5ec3a7fe05"]},{"id":22,"name":"Весняний сад","category":"Живі світи","photos":["photo-1490750967868-88aa4486c946","photo-1465146344425-f00d5f5c8f07","photo-1470252649378-9c29740c9fa8"]},{"id":23,"name":"Туманний ранок","category":"Живі світи","photos":["photo-1441974231531-c6227db76b6e","photo-1473448912268-2022ce9509d8","photo-1470071459604-3b5ec3a7fe05"]},{"id":24,"name":"Гроза","category":"Живі світи","photos":["photo-1476610182048-b716b8518aae","photo-1531366936337-7c912a4589a7","photo-1519681393784-d120267933ba"]},{"id":25,"name":"Подвійний захід","category":"Живі світи","photos":["photo-1470252649378-9c29740c9fa8","photo-1501785888041-af3ef285b470","photo-1519681393784-d120267933ba"]},{"id":26,"name":"Україна","category":"Теми країн і культур","photos":["photo-1470770841072-f978cf4d019e","photo-1464822759023-fed622ff2c3b","photo-1519681393784-d120267933ba"]},{"id":27,"name":"Японія","category":"Теми країн і культур","photos":["photo-1493976040374-85c8e12f0c0e","photo-1528360983277-13d401cdc186","photo-1519608487953-e999c86e7455"]},{"id":28,"name":"Китай","category":"Теми країн і культур","photos":["photo-1508804185872-d7badad00f7d","photo-1547981609-4b6bfe67ca0b","photo-1519501025264-65ba15a82390"]},{"id":29,"name":"США","category":"Теми країн і культур","photos":["photo-1480714378408-67cf0d13bc1b","photo-1477959858617-67f85cf4f1df","photo-1519608487953-e999c86e7455"]},{"id":30,"name":"Франція","category":"Теми країн і культур","photos":["photo-1500530855697-b586d89ba3ee","photo-1501785888041-af3ef285b470","photo-1519681393784-d120267933ba"]},{"id":31,"name":"Італія","category":"Теми країн і культур","photos":["photo-1500530855697-b586d89ba3ee","photo-1501785888041-af3ef285b470","photo-1519681393784-d120267933ba"]},{"id":32,"name":"Єгипет","category":"Теми країн і культур","photos":["photo-1509316785289-025f5b846b35","photo-1500534623283-312aade485b7","photo-1519681393784-d120267933ba"]},{"id":33,"name":"Ісландія","category":"Теми країн і культур","photos":["photo-1476610182048-b716b8518aae","photo-1483664852095-d6cc6870702d","photo-1519681393784-d120267933ba"]},{"id":34,"name":"Норвегія","category":"Теми країн і культур","photos":["photo-1476610182048-b716b8518aae","photo-1531366936337-7c912a4589a7","photo-1519681393784-d120267933ba"]},{"id":35,"name":"Туреччина","category":"Теми країн і культур","photos":["photo-1500530855697-b586d89ba3ee","photo-1501785888041-af3ef285b470","photo-1519681393784-d120267933ba"]},{"id":36,"name":"Фантастичне місто","category":"Ultra Realms — нові атмосфери","photos":["photo-1480714378408-67cf0d13bc1b","photo-1477959858617-67f85cf4f1df","photo-1519608487953-e999c86e7455"]},{"id":37,"name":"Інша планета","category":"Ultra Realms — нові атмосфери","photos":["photo-1446776811953-b23d57bd21aa","photo-1462331940025-496dfbfc7564","photo-1519681393784-d120267933ba"]},{"id":38,"name":"Крижана печера","category":"Ultra Realms — нові атмосфери","photos":["photo-1476610182048-b716b8518aae","photo-1483664852095-d6cc6870702d","photo-1519681393784-d120267933ba"]},{"id":39,"name":"Вулканічний світ","category":"Ultra Realms — нові атмосфери","photos":["photo-1532153354457-5fbe1a1205a4","photo-1500534623283-312aade485b7","photo-1519681393784-d120267933ba"]},{"id":40,"name":"Червона пустеля","category":"Ultra Realms — нові атмосфери","photos":["photo-1509316785289-025f5b846b35","photo-1500534623283-312aade485b7","photo-1519681393784-d120267933ba"]},{"id":41,"name":"Білий пляж","category":"Ultra Realms — нові атмосфери","photos":["photo-1507525428034-b723cf961d3e","photo-1500375592092-40eb2168fd21","photo-1470252649378-9c29740c9fa8"]},{"id":42,"name":"Захід у горах","category":"Ultra Realms — нові атмосфери","photos":["photo-1470770841072-f978cf4d019e","photo-1464822759023-fed622ff2c3b","photo-1519681393784-d120267933ba"]},{"id":43,"name":"Зимова казка","category":"Ultra Realms — нові атмосфери","photos":["photo-1476610182048-b716b8518aae","photo-1483664852095-d6cc6870702d","photo-1519681393784-d120267933ba"]},{"id":44,"name":"Небесні острови","category":"Ultra Realms — нові атмосфери","photos":["photo-1470770841072-f978cf4d019e","photo-1464822759023-fed622ff2c3b","photo-1519681393784-d120267933ba"]},{"id":45,"name":"Туманний ліс","category":"Ultra Realms — нові атмосфери","photos":["photo-1441974231531-c6227db76b6e","photo-1473448912268-2022ce9509d8","photo-1470071459604-3b5ec3a7fe05"]},{"id":46,"name":"Бамбуковий гай","category":"Ultra Realms — нові атмосфери","photos":["photo-1497436072909-60f362e1d4b1","photo-1441974231531-c6227db76b6e","photo-1470071459604-3b5ec3a7fe05"]},{"id":47,"name":"Лавандове поле","category":"Ultra Realms — нові атмосфери","photos":["photo-1490750967868-88aa4486c946","photo-1465146344425-f00d5f5c8f07","photo-1470252649378-9c29740c9fa8"]},{"id":48,"name":"Рожевий захід","category":"Ultra Realms — нові атмосфери","photos":["photo-1470252649378-9c29740c9fa8","photo-1501785888041-af3ef285b470","photo-1519681393784-d120267933ba"]},{"id":49,"name":"Дзеркальне озеро","category":"Ultra Realms — нові атмосфери","photos":["photo-1501785888041-af3ef285b470","photo-1493246507139-91e8fad9978e","photo-1519681393784-d120267933ba"]},{"id":50,"name":"Золоті дюни","category":"Ultra Realms — нові атмосфери","photos":["photo-1509316785289-025f5b846b35","photo-1500534623283-312aade485b7","photo-1519681393784-d120267933ba"]},{"id":51,"name":"Смарагдові води","category":"Ultra Realms — нові атмосфери","photos":["photo-1507525428034-b723cf961d3e","photo-1520052205864-92d242b3a76b","photo-1518837695005-2083093ee35b"]},{"id":52,"name":"Дика природа","category":"Ultra Realms — нові атмосфери","photos":["photo-1469474968028-56623f02e42e","photo-1472396961693-142e6e269027","photo-1519681393784-d120267933ba"]},{"id":53,"name":"Космічний горизонт","category":"Ultra Realms — нові атмосфери","photos":["photo-1446776811953-b23d57bd21aa","photo-1462331940025-496dfbfc7564","photo-1519681393784-d120267933ba"]}];
+const STORAGE='qy-v37-preferences';
+const root=document.documentElement;
+const read=(k)=>{try{return localStorage.getItem(k)}catch(e){return null}};
+const save=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+const stored=(()=>{try{return JSON.parse(read(STORAGE)||'{}')}catch(e){return {}}})();
+// A legacy choice is never deleted. Disabling this module restores the old scene.
+const initialTheme=stored.theme||((read('qy-v28-forest-active')==='1')?3:((read('qy-v26-lake-active')==='1')?2:1));
+const state={theme:THEMES.some(t=>t.id===Number(initialTheme))?Number(initialTheme):1,
+ mode:/^(auto|0|1|2)$/.test(stored.mode)?stored.mode:'auto',on:stored.on!==false,
+ activeUrl:'',pending:0,slot:''};
+const langNames={uk:['Авто · місцевий час','Фото 1','Фото 2','Фото 3','Пейзаж','Кадр','Вибраний фон','Повернути попередній фон','Увімкнути фотофон','Великий Mono','Фотографії завантажуються з інтернету'],pl:['Auto · czas lokalny','Zdjęcie 1','Zdjęcie 2','Zdjęcie 3','Krajobraz','Ujęcie','Aktywne tło','Przywróć poprzednie tło','Włącz tło zdjęciowe','Duży Mono','Zdjęcia wymagają internetu'],en:['Auto · local time','Photo 1','Photo 2','Photo 3','Landscape','Scene','Current background','Restore previous background','Enable photo background','Large Mono','Photos require internet']};
+function language(){const val=document.getElementById('site-language')?.value||root.lang||'uk';return langNames[val]?val:'en'}
+function tr(n){return langNames[language()][n]}
+function activeTheme(){return THEMES.find(t=>t.id===state.theme)||THEMES[0]}
+const periods=['Світанок','Ранок','День','Захід','Вечір','Ніч'];
+function localPhase(){const d=new Date(),hour=d.getHours()+d.getMinutes()/60;
+// Gentle seasonal adjustment: early dawn in summer, later in winter (northern hemisphere).
+ const m=d.getMonth(),shift=[11,0,1].includes(m)?1:[4,5,6,7].includes(m)?-1:0;
+ const bounds=[5+shift,8+shift,12,17+shift,20+shift,23];
+ return hour<bounds[0]||hour>=bounds[5]?5:hour<bounds[1]?0:hour<bounds[2]?1:hour<bounds[3]?2:hour<bounds[4]?3:4}
+function selectedImageIndex(){return state.mode==='auto'?[0,0,1,2,2,2][localPhase()]:Number(state.mode)}
+const imageUrl=(id,small=false)=>'https://images.unsplash.com/'+id+'?auto=format&fit=crop&w='+(small?'480':window.innerWidth<680?'1120':'2000')+'&q='+(small?'64':'83');
+const bg=document.createElement('div');bg.id='qy-v37-wallpaper';bg.setAttribute('aria-hidden','true');
+(document.body||document.documentElement).prepend(bg);
+const panel=document.createElement('section');panel.id='qy-v37-controls';panel.setAttribute('aria-label','53 фототеми QuantumYur');
+const h=document.createElement('div');h.className='qy37-head';
+h.innerHTML='<div><strong>🌌 QuantumYur · 53 атмосфери</strong><p>6 станів доби · 3 окремі фотографії · без стрибків під час гортання</p></div><span class="qy37-clock" id="qy37-clock"></span>';
+const controls=document.createElement('div');controls.className='qy37-row';
+const makeSelect=(id,label)=>{const holder=document.createElement('label');holder.className='qy37-field';holder.textContent=label;const select=document.createElement('select');select.id=id;holder.appendChild(select);controls.appendChild(holder);return select};
+const tselect=makeSelect('qy37-theme','Тема · 53');
+let category='';for(const t of THEMES){if(t.category!==category){category=t.category;const group=document.createElement('optgroup');group.label=category;tselect.appendChild(group)}const o=document.createElement('option');o.value=String(t.id);o.textContent=String(t.id).padStart(2,'0')+' · '+t.name;tselect.lastElementChild.appendChild(o)}
+const mode=makeSelect('qy37-mode','Зміна фону');for(const [v,name] of [['auto','Авто · час доби'],['0','Фото 1'],['1','Фото 2'],['2','Фото 3']]){const o=document.createElement('option');o.value=v;o.textContent=name;mode.appendChild(o)}
+const toggle=document.createElement('button');toggle.id='qy37-toggle';toggle.type='button';controls.appendChild(toggle);
+const mono=document.createElement('button');mono.type='button';mono.className='qy37-mono';mono.textContent='Aa · Mono +';controls.appendChild(mono);
+const preview=document.createElement('details');preview.id='qy37-preview';preview.innerHTML='<summary>Переглянути 3 фотографії теми</summary><div id="qy37-shots"></div>';
+const status=document.createElement('p');status.className='qy37-status';status.id='qy37-status';status.setAttribute('role','status');status.setAttribute('aria-live','polite');
+panel.append(h,controls,preview,status);
+const studio=document.getElementById('qy-atmosphere-studio');
+if(studio?.parentNode)studio.insertAdjacentElement('afterend',panel);
+else (document.querySelector('.wrap > main')||document.querySelector('main')||document.body).prepend(panel);
+const shots=preview.querySelector('#qy37-shots');
+function sync(){tselect.value=String(state.theme);mode.value=state.mode;toggle.textContent=state.on?tr(7):tr(8);toggle.setAttribute('aria-pressed',String(state.on));root.dataset.qyV37=state.on?(state.activeUrl?'on':'pending'):'off';save(STORAGE,JSON.stringify({theme:state.theme,mode:state.mode,on:state.on}));}
+function textStatus(extra=''){const phase=localPhase();document.getElementById('qy37-clock').textContent=periods[phase]+' · '+new Date().toLocaleTimeString(language()==='uk'?'uk-UA':language(),{hour:'2-digit',minute:'2-digit'});
+status.textContent=extra||`${activeTheme().name} · ${state.mode==='auto'?'Авто · '+periods[phase]:tr(5)+' '+(Number(state.mode)+1)} · ${state.on?'53 теми активні':'Попередній фон збережено'}`}
+function updateCards(){shots.replaceChildren();if(!preview.open)return;activeTheme().photos.forEach((photo,i)=>{const button=document.createElement('button');button.type='button';button.className='qy37-shot';button.setAttribute('aria-pressed',String(state.mode===String(i)));const img=document.createElement('img');img.alt=activeTheme().name+', '+tr(1+i);img.loading='lazy';img.decoding='async';img.src=imageUrl(photo,true);const span=document.createElement('span');span.textContent=tr(1+i);button.append(img,span);button.addEventListener('click',()=>{state.mode=String(i);refresh(true)});shots.append(button)})}
+let currentImage;
+function renderImage(force=false){if(!state.on){bg.style.backgroundImage='none';textStatus();return}const i=selectedImageIndex(),theme=activeTheme(),url=imageUrl(theme.photos[i]);const key=theme.id+':'+i+':'+(window.innerWidth<680?'phone':'full');if(!force&&state.slot===key){textStatus();return}state.slot=key;const request=++state.pending;const photo=new Image();photo.decoding='async';photo.onload=()=>{if(request!==state.pending||!state.on)return;currentImage=photo;state.activeUrl=url;root.dataset.qyV37='on';bg.style.backgroundImage='linear-gradient(180deg,rgba(0,9,20,.07),rgba(0,9,20,.21)),url("'+url+'")';textStatus();};photo.onerror=()=>{if(request!==state.pending)return;textStatus('Фотографія недоступна — залишено попередній фон. Перевірте інтернет.');};photo.src=url;textStatus('Завантаження реалістичного пейзажу…')}
+function refresh(force=false){sync();textStatus();updateCards();renderImage(force)}
+tselect.addEventListener('change',()=>{state.theme=Number(tselect.value);refresh(true)});
+mode.addEventListener('change',()=>{state.mode=mode.value;refresh(true)});
+toggle.addEventListener('click',()=>{state.on=!state.on;refresh(true)});
+mono.addEventListener('click',()=>{save('qy-v22-font','mono');save('qy-v22-size','large');root.dataset.qyV22Font='mono';root.dataset.qyV22Size='large';mono.textContent='✓ Mono · великий'});
+preview.addEventListener('toggle',updateCards);
+// When old controls are explicitly chosen, let the user's original site theme win.
+document.addEventListener('click',e=>{if(e.target.closest('#qy-v28-forest-buttons button,#qy-v26-lake-choices button,#qy-atmosphere-studio .qy-atmo-choice')){state.on=false;refresh(true)}},true);
+document.getElementById('site-language')?.addEventListener('change',()=>{refresh();updateCards()});
+window.addEventListener('pageshow',()=>refresh());
+// Smartphone toolbar changes must not cause wallpaper re-layout. Detect only width changes.
+let width=window.innerWidth;window.addEventListener('resize',()=>{if(Math.abs(window.innerWidth-width)>70){width=window.innerWidth;state.slot='';renderImage()}},{passive:true});
+setInterval(()=>{const ph=localPhase();if(state.mode==='auto'&&state.on){const key=activeTheme().id+':'+selectedImageIndex()+':'+(window.innerWidth<680?'phone':'full');if(key!==state.slot)renderImage()}textStatus()},60_000);
+refresh(true);
+})();
+
+</script>
 </body></html>
