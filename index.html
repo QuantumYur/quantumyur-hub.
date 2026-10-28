@@ -1161,6 +1161,19 @@ html[data-qy-forest-active="1"] .hero{background-image:linear-gradient(100deg,rg
 @media(max-width:660px){#qy-v28-forest-buttons{gap:5px}#qy-v28-forest-buttons button{min-height:125px}#qy-v28-forest-buttons button span{padding:22px 6px 7px;font-size:11px}}
 @media(prefers-reduced-motion:reduce){#qy-v28-forest *{transition:none!important;animation:none!important}}
 </style>
+
+<style id="qy-v29-japan-visibility-fix">
+/* v29: Forest wallpaper must remain visible while images load or fail. */
+#qy-v28-forest-bg{background-color:#153126;background-image:var(--qy-v25-pic-forest);background-position:center;background-size:cover}
+html[data-qy-forest-active="1"] .hero{background-image:linear-gradient(100deg,rgba(4,16,12,.45),rgba(4,19,14,.30)),var(--qy-forest-image,var(--qy-v25-pic-forest))!important}
+#qy-v28-forest-preview{min-height:clamp(190px,28vw,340px);width:100%;margin:14px 0 10px;border-radius:14px;border:1px solid #bad6c088;background:#0e2b1e center/cover no-repeat;box-shadow:inset 0 0 0 1px #ffffff20;position:relative}
+#qy-v28-forest-preview:after{content:'ПОПЕРЕДНІЙ ПЕРЕГЛЯД ФОНУ';position:absolute;bottom:10px;left:10px;font:700 12px ui-monospace,monospace;letter-spacing:.06em;color:#fff;padding:6px 10px;background:#092118bb;border-radius:7px}
+#qy-v28-forest-status[data-loading-state="fallback"]{color:#ffe2b0}
+#qy-v28-forest-status[data-loading-state="loaded"]{color:#d7ffeb}
+#qy-v28-forest-status[data-loading-state="loading"]{color:#c9e4ec}
+html[data-qy-forest-active="1"] #qy-v28-forest-bg{isolation:isolate}
+@media(max-width:660px){#qy-v28-forest-preview{min-height:210px}#qy-v28-forest{padding:14px}}
+</style>
 </head>
 <body>
 <div id="qy-cosmos-background" aria-hidden="true"></div>
@@ -2824,42 +2837,74 @@ update();
 })();
 </script>
 
-<script id="qy-v28-forest-switcher">
+<script id="qy-v29-forest-switcher">
 (()=>{'use strict';
 const root=document.documentElement;
-// Authentic Wikimedia Commons photos, external image loading requires an internet connection.
-const p='https://thumb.wikimedia.org/wikipedia/commons/thumb/';
+const prefix='https://thumb.wikimedia.org/wikipedia/commons/thumb/';
 const scenes=[
  {id:'pl',place:'Польща',title:'Біловезька пуща',author:'Rakoon',license:'CC0 1.0',licenseUrl:'https://creativecommons.org/publicdomain/zero/1.0/',source:'https://commons.wikimedia.org/wiki/File:7245_June_2021_in_Bia%C5%82owie%C5%BCa_Forest.jpg',path:'f/f1/7245_June_2021_in_Bia%C5%82owie%C5%BCa_Forest.jpg/',name:'7245_June_2021_in_Bia%C5%82owie%C5%BCa_Forest.jpg'},
  {id:'jp',place:'Японія',title:'Ліс Якусіма',author:'MaedaAkihiko',license:'CC0 1.0',licenseUrl:'https://creativecommons.org/publicdomain/zero/1.0/',source:'https://commons.wikimedia.org/wiki/File:Yaku-Island_Shiratani-Unsui-Gorge.jpg',path:'b/b5/Yaku-Island_Shiratani-Unsui-Gorge.jpg/',name:'Yaku-Island_Shiratani-Unsui-Gorge.jpg'},
  {id:'cl',place:'Чилі',title:'Ліс араукарій',author:'Delahimalaya-alosandes',license:'CC BY-SA 4.0',licenseUrl:'https://creativecommons.org/licenses/by-sa/4.0/',source:'https://commons.wikimedia.org/wiki/File:Araucaria_araucana,_Conguill%C3%ADo_National_Park,_Chile.jpg',path:'0/08/Araucaria_araucana%2C_Conguill%C3%ADo_National_Park%2C_Chile.jpg/',name:'Araucaria_araucana%2C_Conguill%C3%ADo_National_Park%2C_Chile.jpg'}
 ];
-function picture(s,size){return p+s.path+size+'px-'+s.name;}
-function read(k){try{return localStorage.getItem(k)}catch{return null}}
-function save(k,v){try{localStorage.setItem(k,v)}catch{}}
-let selected=scenes.some(s=>s.id===read('qy-v28-forest-choice'))?read('qy-v28-forest-choice'):'pl';
-let active=read('qy-v28-forest-active')==='1';
-const preview=document.createElement('div');preview.id='qy-v28-forest-bg';preview.setAttribute('aria-hidden','true');document.body.append(preview);
+function picture(s,size){return prefix+s.path+size+'px-'+s.name}
+const get=k=>{try{return localStorage.getItem(k)}catch{return null}};
+const put=(k,v)=>{try{localStorage.setItem(k,v)}catch{}};
+let selected=scenes.some(x=>x.id===get('qy-v28-forest-choice'))?get('qy-v28-forest-choice'):'pl';
+let active=get('qy-v28-forest-active')==='1';
+let latest=0;
+const fallback='var(--qy-v25-pic-forest)'; // Pre-existing embedded image: works offline.
+const scrim='linear-gradient(180deg,rgba(4,15,12,.14),rgba(3,14,11,.34)),';
+const wallpaper=document.createElement('div');wallpaper.id='qy-v28-forest-bg';wallpaper.setAttribute('aria-hidden','true');document.body.append(wallpaper);
 const panel=document.createElement('section');panel.id='qy-v28-forest';panel.setAttribute('aria-label','Лісова тиша — фони реальних лісів');
-panel.innerHTML='<h3>03 · Лісова тиша — три різні куточки світу</h3><p>Це справжні фотографії з Польщі, Японії та Чилі, а не повтори одного згенерованого лісу. Для завантаження потрібен інтернет.</p><div id="qy-v28-forest-buttons" role="group" aria-label="Вибір лісу"></div><button type="button" id="qy-v28-forest-off">Повернути попередній фон</button><p id="qy-v28-forest-status" role="status" aria-live="polite"></p><div class="qy-forest-attribution" id="qy-v28-forest-credit"></div>';
-const lakePanel=document.getElementById('qy-v26-lakes');const target=lakePanel||document.getElementById('qy-atmosphere-studio')||document.querySelector('main');
+panel.innerHTML='<h3>03 · Лісова тиша — три різні куточки світу</h3><p>Окремі фото з Польщі, Японії й Чилі. Якщо зовнішнє фото недоступне, показуємо резервний ліс замість порожнього темного фону.</p><div id="qy-v28-forest-buttons" role="group" aria-label="Вибір лісу"></div><div id="qy-v28-forest-preview" role="img" aria-label="Попередній перегляд обраного лісу"></div><button type="button" id="qy-v28-forest-off">Повернути попередній фон</button><p id="qy-v28-forest-status" role="status" aria-live="polite"></p><div class="qy-forest-attribution" id="qy-v28-forest-credit"></div>';
+const lakePanel=document.getElementById('qy-v26-lakes');
+const target=lakePanel||document.getElementById('qy-atmosphere-studio')||document.querySelector('main');
 if(target)target.insertAdjacentElement('afterend',panel);else document.body.append(panel);
 const buttons=panel.querySelector('#qy-v28-forest-buttons');
-for(const s of scenes){const btn=document.createElement('button');btn.type='button';btn.dataset.forest=s.id;btn.style.backgroundImage='linear-gradient(180deg,transparent,#06180f66),url("'+picture(s,330)+'")';btn.innerHTML='<span>'+s.place+'<small>'+s.title+'</small></span>';btn.setAttribute('aria-label',s.place+' — '+s.title);
-btn.addEventListener('click',()=>{selected=s.id;active=true;save('qy-v28-forest-choice',selected);save('qy-v28-forest-active','1');document.getElementById('qy-v26-lake-off')?.click();update()});buttons.append(btn)}
-function update(){root.dataset.qyForestActive=active?'1':'0';const s=scenes.find(x=>x.id===selected)||scenes[0];
-const size=window.matchMedia('(max-width:730px)').matches?1280:2560;const img='url("'+picture(s,size)+'")';
-if(active){preview.style.backgroundImage='linear-gradient(180deg,#081a1199,#05150b66),'+img;root.style.setProperty('--qy-forest-image',img)}else{preview.style.backgroundImage='none';root.style.removeProperty('--qy-forest-image')}
-buttons.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(active&&b.dataset.forest===selected)));
-panel.querySelector('#qy-v28-forest-status').textContent=active?'Обрано: '+s.place+' · '+s.title+'. Вибір збережений на цьому пристрої.':'Фон №3 вимкнено.';
-const credit=panel.querySelector('#qy-v28-forest-credit');credit.textContent='Фото: ';const a=document.createElement('a');a.href=s.source;a.target='_blank';a.rel='noopener noreferrer';a.textContent=s.author+' · джерело';credit.append(a);credit.append(' · ');const l=document.createElement('a');l.href=s.licenseUrl;l.target='_blank';l.rel='noopener noreferrer';l.textContent=s.license;credit.append(l);credit.append(' · фон адаптовано лише масштабуванням для перегляду.');}
-panel.querySelector('#qy-v28-forest-off').addEventListener('click',()=>{active=false;save('qy-v28-forest-active','0');update()});
+const sample=panel.querySelector('#qy-v28-forest-preview');
+const status=panel.querySelector('#qy-v28-forest-status');
+for(const s of scenes){
+ const btn=document.createElement('button');btn.type='button';btn.dataset.forest=s.id;
+ btn.style.backgroundImage='linear-gradient(180deg,transparent,#06180f66),url("'+picture(s,330)+'"),'+fallback;
+ btn.innerHTML='<span>'+s.place+'<small>'+s.title+'</small></span>';
+ btn.setAttribute('aria-label',s.place+' — '+s.title);
+ btn.addEventListener('click',()=>{selected=s.id;active=true;put('qy-v28-forest-choice',selected);put('qy-v28-forest-active','1');document.getElementById('qy-v26-lake-off')?.click();update()});
+ buttons.append(btn);
+}
+function setWallpaper(background){
+ wallpaper.style.backgroundImage=scrim+background;
+ sample.style.backgroundImage=scrim+background;
+ root.style.setProperty('--qy-forest-image',background);
+}
+function update(){
+ const token=++latest;
+ root.dataset.qyForestActive=active?'1':'0';
+ const s=scenes.find(x=>x.id===selected)||scenes[0];
+ const size=window.matchMedia('(max-width:730px)').matches?1280:2560;
+ buttons.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(active&&b.dataset.forest===selected)));
+ const credit=panel.querySelector('#qy-v28-forest-credit');credit.textContent='Фото: ';
+ const author=document.createElement('a');author.href=s.source;author.target='_blank';author.rel='noopener noreferrer';author.textContent=s.author+' · джерело';credit.append(author);
+ credit.append(' · ');const license=document.createElement('a');license.href=s.licenseUrl;license.target='_blank';license.rel='noopener noreferrer';license.textContent=s.license;credit.append(license);
+ credit.append(' · фотографія не змінена, лише масштабована для фону.');
+ sample.setAttribute('aria-label','Фон: '+s.place+' — '+s.title);
+ if(!active){wallpaper.style.backgroundImage='none';sample.style.backgroundImage=scrim+fallback;root.style.removeProperty('--qy-forest-image');status.dataset.loadingState='off';status.textContent='Фон №3 вимкнено. Для перегляду натисни на одну з країн.';return;}
+ // Show a real image immediately, even if the photo CDN is unreachable.
+ setWallpaper(fallback);
+ status.dataset.loadingState='loading';status.textContent='Обрано '+s.place+'. Завантажуємо фотографію…';
+ const req=new Image();req.decoding='async';
+ const url=picture(s,size);
+ let done=false;
+ const fail=()=>{if(done||token!==latest||!active)return;done=true;status.dataset.loadingState='fallback';status.textContent='Фото '+s.place+' зараз недоступне. Показано резервний лісовий фон — перевір інтернет або відкрий джерело нижче.'};
+ const timer=setTimeout(fail,8000);
+ req.onload=()=>{if(done||token!==latest||!active)return;done=true;clearTimeout(timer);setWallpaper('url("'+url+'")');status.dataset.loadingState='loaded';status.textContent='Завантажено: '+s.place+' · '+s.title+'. Натисни іншу країну для зміни фону.'};
+ req.onerror=()=>{clearTimeout(timer);fail()};
+ req.src=url;
+}
+panel.querySelector('#qy-v28-forest-off').addEventListener('click',()=>{active=false;put('qy-v28-forest-active','0');update()});
 window.addEventListener('resize',()=>{if(active)update()},{passive:true});
-const siteTheme=document.getElementById('qy-theme-switch-v1');let previousTheme=siteTheme?.value||null;
-function onSiteThemeChange(){if(!siteTheme)return;const current=siteTheme.value;if(current===previousTheme)return;previousTheme=current;if(active){active=false;save('qy-v28-forest-active','0');update()}}
-siteTheme?.addEventListener('change',onSiteThemeChange);
-window.addEventListener('qy:theme-changed',onSiteThemeChange);
-document.getElementById('qy-v26-lake-choices')?.addEventListener('click',()=>{if(active){active=false;save('qy-v28-forest-active','0');update()}});
+// Do not cancel an explicitly chosen forest when language, fonts, or palette change.
+// Only an explicit other-background click should replace it.
+document.getElementById('qy-v26-lake-choices')?.addEventListener('click',()=>{if(active){active=false;put('qy-v28-forest-active','0');update()}});
 window.addEventListener('pageshow',()=>{if(active){document.getElementById('qy-v26-lake-off')?.click();update()}});
 if(active)document.getElementById('qy-v26-lake-off')?.click();update();
 })();
