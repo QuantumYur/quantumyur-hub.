@@ -2,6 +2,20 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<script id="qy-v33-device-early">
+(()=>{'use strict';
+ function auto(){const w=window.innerWidth||document.documentElement.clientWidth||390;
+  const coarse=!!window.matchMedia&&window.matchMedia('(pointer:coarse)').matches;
+  const short=Math.min((window.screen&&screen.width)||w,(window.screen&&screen.height)||w);
+  if(w<=680||(coarse&&short<=650))return 'light';
+  if(w<=1180||coarse)return 'balanced';return 'full';}
+ let selected='auto';try{selected=localStorage.getItem('qy-v33-device-choice')||'auto'}catch(e){}
+ if(!['auto','light','balanced','full'].includes(selected))selected='auto';
+ const effective=selected==='auto'?auto():selected;
+ document.documentElement.dataset.qyDeviceChoice=selected;
+ document.documentElement.dataset.qyDevicePackage=effective;
+})();
+</script>
 <link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" href="./icons/icon-192.png"><meta name="theme-color" content="#080729"><meta name="description" content="QuantumYur — ігри, творчість, філософія та технології. Twitch yur4ukkk, YouTube @ASTROVEXxX і GitHub QuantumYur в одному місці.">
 <link rel="canonical" href="https://quantumyur.github.io/quantumyur-hub./">
 <meta property="og:type" content="website">
@@ -1285,6 +1299,48 @@ html[data-qy-forest-active="1"] #qy-v28-forest-bg{isolation:isolate}
  }
 }
 </style>
+<style id="qy-v33-device-packages-css">
+/* v33 — visible, accessible device package picker; never hides the site's content. */
+#qy-v33-device-banner{position:relative;z-index:12;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;box-sizing:border-box;margin:12px 0 20px;padding:14px 16px;border-radius:17px;border:1px solid rgba(145,211,243,.8);background:#102b43f2;color:#f7fbff;box-shadow:0 4px 16px #00162d55;font:500 15px/1.35 system-ui,sans-serif}
+#qy-v33-device-banner .qy-v33-banner-details{display:flex;flex-direction:column;gap:3px;flex:1 1 180px;min-width:0}
+#qy-v33-banner-title{font:800 16px/1.25 system-ui,sans-serif;color:#f4fcff}
+#qy-v33-banner-info{font:500 13px/1.4 system-ui,sans-serif;color:#c3e4f0}
+#qy-v33-banner-button{cursor:pointer;background:#b4eeff;color:#092c42;border:1px solid #d6f8ff;border-radius:12px;font:800 14px system-ui,sans-serif;min-height:44px;padding:9px 14px}
+#qy-v33-device-launch{position:fixed;left:12px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:2147481900;display:inline-flex;gap:7px;align-items:center;justify-content:center;background:#d0f5ff;color:#092d44;border:2px solid #0d7eae;border-radius:999px;min-height:48px;max-width:calc(100vw - 160px);padding:9px 13px;font:800 13px/1.1 system-ui,sans-serif;box-shadow:0 4px 20px #0009;cursor:pointer}
+#qy-v33-device-launch span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#qy-v33-device-launch:focus-visible,#qy-v33-banner-button:focus-visible,#qy-v33-modal button:focus-visible{outline:3px solid #ffe6a0;outline-offset:2px}
+#qy-v33-device-overlay{position:fixed;inset:0;z-index:2147482300;display:flex;justify-content:center;align-items:flex-end;box-sizing:border-box;padding:12px max(12px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px));background:rgba(2,12,24,.76)}
+#qy-v33-device-overlay[hidden]{display:none!important}
+#qy-v33-modal{box-sizing:border-box;width:min(100%,550px);max-height:90dvh;max-height:min(90dvh,820px);overflow-y:auto;overscroll-behavior:contain;border-radius:20px;background:#10283e;color:#f9fcff;border:2px solid #8dd5f4;padding:17px;box-shadow:0 20px 70px #000a;font:500 15px/1.45 system-ui,sans-serif}
+#qy-v33-modal *{box-sizing:border-box}
+#qy-v33-modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px}
+#qy-v33-modal-title{font:800 21px/1.2 system-ui,sans-serif;margin:2px 0;color:#fff}
+#qy-v33-close{border-radius:10px;border:1px solid #8cb5c9;background:#22445c;color:white;min-width:42px;min-height:42px;font-size:21px;cursor:pointer}
+#qy-v33-modal-intro{margin:0 0 10px;color:#c9e7f5;font-size:14px;line-height:1.45}
+#qy-v33-mode-choices{display:grid;grid-template-columns:1fr;gap:9px}
+#qy-v33-mode-choices button{appearance:none;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;width:100%;text-align:left;min-height:67px;padding:11px;border:1px solid #527a94;border-radius:13px;background:#18364d;color:#fff;cursor:pointer;font:inherit}
+#qy-v33-mode-choices button[aria-pressed="true"]{background:#d3f3ff;color:#0a2839;border:2px solid #80d8ff}
+.qy-v33-mode-icon{font-size:24px;line-height:1}
+.qy-v33-mode-text{display:flex;flex-direction:column;gap:2px}
+.qy-v33-mode-name{font-weight:800;font-size:15px;line-height:1.25}
+.qy-v33-mode-desc{font-size:12px;line-height:1.4;opacity:.85}
+.qy-v33-mode-check{font-size:19px;font-weight:bold}
+#qy-v33-current{margin-top:12px;font-size:13px;color:#d8eff9;background:#092538;padding:11px;border-radius:10px}
+#qy-v33-current strong{color:#fff}
+#qy-v33-modal-hint{margin:9px 0 0;color:#bfe1f1;font-size:12px}
+@media(max-width:450px){#qy-v33-device-banner{margin:9px 0 14px;padding:11px}#qy-v33-banner-button{width:100%;}#qy-v33-device-launch{left:8px;bottom:calc(12px + env(safe-area-inset-bottom,0px));max-width:48vw;min-height:46px;padding:8px 10px;font-size:12px}}
+/* Mobile-light package prioritizes continuous scrolling and readable text. */
+html[data-qy-device-package="light"] :is(#qy-cosmos-background,#qy-v13-canvas,#qy-v16-atmosphere){display:none!important}
+html[data-qy-device-package="light"] :is(.daily-panel,.card,.artwork,.quote,.qy-news-card,#qy-world-hub,.sky-scene,#qy-v23-exhibition,#qy-v28-forest,#qy-v26-lakes){-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important}
+html[data-qy-device-package="light"] :is(#qy-v23-grid button,#qy-v22-country-grid button,#qy-v18-realm-grid button){animation:none!important;transition:none!important;filter:none!important}
+html[data-qy-device-package="light"] #qy-v14-theme-photo{animation:none!important;transition:none!important;filter:none!important}
+html[data-qy-device-package="balanced"] :is(#qy-v13-canvas,#qy-v16-atmosphere){animation:none!important}
+html[data-qy-device-package="balanced"] :is(#qy-v23-grid button,#qy-v22-country-grid button,#qy-v18-realm-grid button){transition:none!important}
+/* Safety: even manually choosing Full on a small touch display must not reactivate
+   the v32 broken fixed layers, section virtualization, or disappearing blocks. */
+@media(max-width:900px),(hover:none) and (pointer:coarse){html[data-qy-device-package="full"] :is(#qy-cosmos-background,#qy-v13-canvas,#qy-v16-atmosphere){display:none!important}}
+@media(prefers-reduced-motion:reduce){#qy-v33-device-overlay *,#qy-v33-device-launch{animation:none!important;transition:none!important}}
+</style>
 </head>
 <body>
 <div id="qy-cosmos-background" aria-hidden="true"></div>
@@ -1293,6 +1349,10 @@ html[data-qy-forest-active="1"] #qy-v28-forest-bg{isolation:isolate}
 <div class="wrap">
 <header><a href="#top" class="brand"><span class="brand-mark">✦</span> QuantumYur</a><nav class="nav"><a href="#platforms">Платформи</a><a href="#concept">Як це працює</a><a href="#gallery" id="nav-gallery">Галерея</a><a href="#astrokhizm" id="nav-astro">Астрохізм</a><a href="#companion" id="nav-comp">Співрозмовник</a><a href="#idea">Ідея</a><a href="#reminders" id="qy-nav-reminders">⏰ Нагадування</a><a href="#qy-discover" id="qy-nav-discover">✨ Маршрут дня</a><a href="#gaming-news" id="qy-nav-gaming">🎮 Ігрові новини</a><a href="#twitch-promo" id="qy-nav-twitch">💜 Twitch</a><a href="#daily-pulse" id="nav-daily">🪐 Сьогодні</a><a href="#install-app" id="qy-install-nav">📲 Встановити</a><a href="#qy-world-hub" id="qy-nav-world">🌐 Світ</a></nav><select id="site-language" class="lang-select" aria-label="Мова сайту"><option value="uk">🇺🇦 Українська</option><option value="en">🇬🇧 English</option><option value="pl">🇵🇱 Polski</option><option value="ru">🇷🇺 Русский</option><option value="ja">🇯🇵 日本語</option><option value="ko">🇰🇷 한국어</option><option value="zh">🇨🇳 中文</option><option value="hi">🇮🇳 हिन्दी</option><option value="es">🌎 Español</option><option value="pt-BR">🇧🇷 Português (Brasil)</option></select><label class="qy-theme-control" for="qy-theme-switch-v1"><span id="qy-theme-caption">Тема сайту</span><select id="qy-theme-switch-v1" aria-label="Тема сайту"><option value="auto">Автоматично</option><option value="dark">Темна</option><option value="light">Світла</option></select></label></header>
 <main id="top">
+<section id="qy-v33-device-banner" aria-label="Пакети оформлення QuantumYur">
+  <div class="qy-v33-banner-details"><strong id="qy-v33-banner-title">⚙ Режим пристрою</strong><span id="qy-v33-banner-info">Автоматичне налаштування для вашого екрана</span></div>
+  <button type="button" id="qy-v33-banner-button" aria-haspopup="dialog" aria-controls="qy-v33-modal">Змінити режим</button>
+</section>
 
 <section id="qy-v19-cinema-scene" aria-labelledby="qy-v19-scene-title">
   <div class="qy-v19-inner">
@@ -3078,6 +3138,76 @@ update();
  const offLake=document.getElementById('qy-v26-lake-off');
  [control,lakes,offForest,offLake].forEach(el=>el&&el.addEventListener('click',()=>queueMicrotask(sync)));
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)sync()},{passive:true});
+})();
+</script>
+<script id="qy-v33-device-packages-js">
+(()=>{'use strict';
+ const root=document.documentElement;
+ const byId=id=>document.getElementById(id);
+ const language=byId('site-language');
+ const translations={
+ uk:{device:'Режим пристрою',change:'Змінити режим',auto:'Автоматично',light:'Телефон · легкий',balanced:'Планшет · баланс',full:'Комп’ютер · повний',intro:'Обери оптимізацію для пристрою. Це не змінює твої 53 теми чи записи.',desc:['Сам визначає оптимальний режим для цього екрана.','Швидке гортання, мінімум ефектів і легші фони.','Чіткі зображення та помірне навантаження.','Максимальний вигляд на потужних пристроях.'],active:'Зараз працює',saved:'Вибір зберігається лише в цьому браузері. Авто підлаштовується до ширини екрана.',close:'Закрити',manual:'Обрано вручну',automatic:'Автоматичний вибір'},
+ en:{device:'Device mode',change:'Change mode',auto:'Automatic',light:'Phone · light',balanced:'Tablet · balanced',full:'Computer · full',intro:'Choose performance for this device. All 53 themes and personal notes are preserved.',desc:['Detects the best mode for this screen.','Smooth scrolling, fewer effects and smaller photos.','Sharp images with moderate resource use.','Richest visual style on powerful devices.'],active:'Current mode',saved:'Saved in this browser only. Auto adapts to screen width.',close:'Close',manual:'Manual selection',automatic:'Automatic selection'},
+ pl:{device:'Tryb urządzenia',change:'Zmień tryb',auto:'Automatycznie',light:'Telefon · lekki',balanced:'Tablet · zrównoważony',full:'Komputer · pełny',intro:'Wybierz tryb wydajności. Wszystkie 53 motywy i notatki pozostają.',desc:['Dobiera tryb do ekranu.','Płynne przewijanie, mniej efektów i lżejsze obrazy.','Ostre obrazy przy umiarkowanym obciążeniu.','Pełny wygląd na mocniejszych urządzeniach.'],active:'Teraz działa',saved:'Wybór jest zapisany tylko w tej przeglądarce.',close:'Zamknij',manual:'Wybrano ręcznie',automatic:'Wybór automatyczny'},
+ ru:{device:'Режим устройства',change:'Изменить режим',auto:'Автоматически',light:'Телефон · лёгкий',balanced:'Планшет · баланс',full:'Компьютер · полный',intro:'Выбери режим для устройства. Все 53 темы и записи сохраняются.',desc:['Определяет режим автоматически.','Плавная прокрутка и лёгкие изображения.','Чёткие изображения и умеренная нагрузка.','Полный вид на мощном устройстве.'],active:'Сейчас работает',saved:'Выбор сохраняется только в этом браузере.',close:'Закрыть',manual:'Ручной выбор',automatic:'Автоматический выбор'},
+ ja:{device:'端末モード',change:'モード変更',auto:'自動',light:'スマホ・軽量',balanced:'タブレット・標準',full:'PC・フル',intro:'端末の表示と速度を選択。53のテーマとメモは保持されます。',desc:['画面に合わせて自動選択。','軽量画像とスムーズなスクロール。','鮮明な画像とバランスの良い処理。','高性能端末で豊かな表示。'],active:'現在',saved:'このブラウザーだけに保存されます。',close:'閉じる',manual:'手動選択',automatic:'自動選択'},
+ ko:{device:'기기 모드',change:'모드 변경',auto:'자동',light:'휴대폰 · 가볍게',balanced:'태블릿 · 균형',full:'컴퓨터 · 전체',intro:'기기별 성능 모드입니다. 53개 테마와 메모는 유지됩니다.',desc:['화면에 맞게 자동으로 선택합니다.','부드러운 스크롤과 가벼운 이미지.','선명한 이미지와 균형 잡힌 성능.','고성능 기기를 위한 전체 효과.'],active:'현재 모드',saved:'선택은 이 브라우저에만 저장됩니다.',close:'닫기',manual:'수동 선택',automatic:'자동 선택'},
+ zh:{device:'设备模式',change:'切换模式',auto:'自动',light:'手机 · 轻量',balanced:'平板 · 均衡',full:'电脑 · 完整',intro:'为设备选择模式，保留全部53个主题和笔记。',desc:['根据屏幕自动选择。','流畅滚动和轻量图像。','清晰图片和均衡性能。','高性能设备的完整视觉效果。'],active:'当前模式',saved:'仅保存在本浏览器中。',close:'关闭',manual:'手动选择',automatic:'自动选择'},
+ hi:{device:'डिवाइस मोड',change:'मोड बदलें',auto:'स्वचालित',light:'फ़ोन · हल्का',balanced:'टैबलेट · संतुलित',full:'कंप्यूटर · पूरा',intro:'अपने डिवाइस के लिए मोड चुनें। सभी 53 थीम और नोट्स सुरक्षित हैं।',desc:['स्क्रीन के लिए अपने आप मोड चुनता है।','आसान स्क्रॉलिंग और हल्की तस्वीरें।','स्पष्ट तस्वीरें और संतुलित प्रदर्शन।','शक्तिशाली डिवाइस पर पूरा अनुभव।'],active:'वर्तमान मोड',saved:'चयन केवल इस ब्राउज़र में सहेजा जाएगा।',close:'बंद करें',manual:'मैनुअल',automatic:'स्वचालित'},
+ es:{device:'Modo de dispositivo',change:'Cambiar modo',auto:'Automático',light:'Móvil · ligero',balanced:'Tableta · equilibrado',full:'Ordenador · completo',intro:'Elige el rendimiento del dispositivo. Se conservan los 53 temas y las notas.',desc:['Elige según la pantalla.','Desplazamiento fluido e imágenes ligeras.','Imágenes nítidas y rendimiento equilibrado.','Diseño completo en equipos potentes.'],active:'Modo actual',saved:'Se guarda solo en este navegador.',close:'Cerrar',manual:'Selección manual',automatic:'Selección automática'},
+ 'pt-BR':{device:'Modo do dispositivo',change:'Alterar modo',auto:'Automático',light:'Celular · leve',balanced:'Tablet · equilibrado',full:'Computador · completo',intro:'Escolha o desempenho do dispositivo. Os 53 temas e as notas permanecem.',desc:['Escolhe pelo tamanho da tela.','Rolagem suave e imagens leves.','Imagens nítidas e equilíbrio.','Visual completo em dispositivos potentes.'],active:'Modo atual',saved:'Salvo apenas neste navegador.',close:'Fechar',manual:'Seleção manual',automatic:'Seleção automática'}
+ };
+ const modes=['auto','light','balanced','full'];
+ const icons={auto:'✨',light:'📱',balanced:'📟',full:'🖥️'};
+ const panel=byId('qy-v33-device-banner');if(!panel||byId('qy-v33-device-launch'))return;
+ const launch=document.createElement('button');launch.type='button';launch.id='qy-v33-device-launch';launch.setAttribute('aria-haspopup','dialog');launch.setAttribute('aria-controls','qy-v33-modal');launch.setAttribute('aria-expanded','false');
+ const overlay=document.createElement('div');overlay.id='qy-v33-device-overlay';overlay.hidden=true;
+ overlay.innerHTML='<div id="qy-v33-modal" role="dialog" aria-modal="true" aria-labelledby="qy-v33-modal-title"><div id="qy-v33-modal-head"><h2 id="qy-v33-modal-title"></h2><button id="qy-v33-close" type="button" aria-label="Закрити">×</button></div><p id="qy-v33-modal-intro"></p><div id="qy-v33-mode-choices" role="group" aria-label="Режими для пристроїв"></div><div id="qy-v33-current" role="status" aria-live="polite"></div><p id="qy-v33-modal-hint"></p></div>';
+ document.body.append(launch,overlay);
+ const choiceBox=byId('qy-v33-mode-choices');
+ for(let i=0;i<modes.length;i++){const b=document.createElement('button');b.type='button';b.dataset.mode=modes[i];b.setAttribute('aria-pressed','false');b.innerHTML='<span class="qy-v33-mode-icon" aria-hidden="true"></span><span class="qy-v33-mode-text"><span class="qy-v33-mode-name"></span><span class="qy-v33-mode-desc"></span></span><span class="qy-v33-mode-check" aria-hidden="true"></span>';choiceBox.append(b);}
+ const t=()=>translations[language?.value]||translations.uk;
+ function detect(){const w=window.innerWidth||document.documentElement.clientWidth||390;const coarse=window.matchMedia&&matchMedia('(pointer:coarse)').matches;const short=Math.min(screen?.width||w,screen?.height||w);if(w<=680||(coarse&&short<=650))return 'light';if(w<=1180||coarse)return 'balanced';return 'full';}
+ let chosen=root.dataset.qyDeviceChoice||'auto';if(!modes.includes(chosen))chosen='auto';
+ let active=root.dataset.qyDevicePackage||'light';
+ function save(){try{localStorage.setItem('qy-v33-device-choice',chosen)}catch(e){}}
+ function apply(){const next=chosen==='auto'?detect():chosen;const changed=active!==next;active=next;
+ root.dataset.qyDeviceChoice=chosen;root.dataset.qyDevicePackage=active;
+ // Existing v24 canvas engines use this setting; eco avoids mobile GPU loops.
+ const speed=(active==='full'&&!matchMedia('(prefers-reduced-motion: reduce)').matches)?'live':'eco';
+ if(root.dataset.qyV24Perf!==speed){root.dataset.qyV24Perf=speed;try{localStorage.setItem('qy-v24-perf',speed)}catch(e){}window.dispatchEvent(new Event('qy:theme-changed'));}
+ if(changed)window.dispatchEvent(new CustomEvent('qy:device-package-changed',{detail:{package:active,choice:chosen}}));
+ render();}
+ function render(){const l=t();
+ byId('qy-v33-banner-title').textContent='⚙ '+l.device;
+ byId('qy-v33-banner-info').textContent=(chosen==='auto'?l.automatic:l.manual)+' · '+l[active];
+ byId('qy-v33-banner-button').textContent=l.change;
+ launch.innerHTML='<span>⚙ '+l[active]+'</span>';
+ launch.setAttribute('aria-label',l.device+': '+l[active]+'. '+l.change);
+ byId('qy-v33-modal-title').textContent=l.device;
+ byId('qy-v33-modal-intro').textContent=l.intro;
+ byId('qy-v33-close').setAttribute('aria-label',l.close);
+ byId('qy-v33-modal-hint').textContent=l.saved;
+ byId('qy-v33-current').innerHTML='<strong></strong> <span></span>';
+ byId('qy-v33-current').querySelector('strong').textContent=l.active+':';
+ byId('qy-v33-current').querySelector('span').textContent=l[active]+(chosen==='auto'?' ('+l.auto+')':'');
+ choiceBox.querySelectorAll('button').forEach((b,i)=>{const key=modes[i];b.setAttribute('aria-pressed',String(key===chosen));b.querySelector('.qy-v33-mode-icon').textContent=icons[key];b.querySelector('.qy-v33-mode-name').textContent=l[key];b.querySelector('.qy-v33-mode-desc').textContent=l.desc[i];b.querySelector('.qy-v33-mode-check').textContent=key===chosen?'✓':'';});
+ }
+ let previousFocus=null;
+ function open(){previousFocus=document.activeElement;overlay.hidden=false;launch.setAttribute('aria-expanded','true');render();byId('qy-v33-close').focus();}
+ function close(){overlay.hidden=true;launch.setAttribute('aria-expanded','false');if(previousFocus?.focus)previousFocus.focus();}
+ launch.addEventListener('click',open);byId('qy-v33-banner-button').addEventListener('click',open);
+ byId('qy-v33-close').addEventListener('click',close);
+ overlay.addEventListener('click',e=>{if(e.target===overlay)close();});
+ document.addEventListener('keydown',e=>{if(overlay.hidden)return;if(e.key==='Escape'){e.preventDefault();close();}else if(e.key==='Tab'){
+  const buttons=[byId('qy-v33-close'),...choiceBox.querySelectorAll('button')];const ix=buttons.indexOf(document.activeElement);if(e.shiftKey&&ix===0){e.preventDefault();buttons[buttons.length-1].focus();}else if(!e.shiftKey&&ix===buttons.length-1){e.preventDefault();buttons[0].focus();}}
+ });
+ choiceBox.addEventListener('click',e=>{const b=e.target.closest('button[data-mode]');if(!b)return;chosen=b.dataset.mode;save();apply();});
+ language?.addEventListener('change',render);
+ let previousWidth=window.innerWidth;
+ window.addEventListener('resize',()=>{const width=window.innerWidth;if(Math.abs(width-previousWidth)<2)return;previousWidth=width;if(chosen==='auto')apply();},{passive:true});
+ window.addEventListener('pageshow',apply);
+ apply();
 })();
 </script>
 </body></html>
