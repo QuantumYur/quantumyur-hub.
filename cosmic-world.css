@@ -1,0 +1,48 @@
+/* QuantumYur Cosmic World v10 — styles are scoped to avoid disturbing Release 9 */
+#qy-world-hub{--qh-text:#edf7ff;--qh-muted:#bfd2e6;--qh-line:#416488;--qh-card:rgba(13,29,65,.88);--qh-surface:#10254b;--qh-accent:#77dcff;position:relative;z-index:2;isolation:isolate;color:var(--qh-text);margin:40px auto;max-width:1550px;min-width:0;padding:clamp(15px,3vw,34px);border:1px solid var(--qh-line);border-radius:28px;background:linear-gradient(135deg,rgba(3,13,37,.96),rgba(22,17,57,.94));box-shadow:0 22px 80px rgba(0,4,25,.6);font:inherit}
+#qy-world-hub *,#qy-world-hub *::before,#qy-world-hub *::after{box-sizing:border-box}
+#qy-world-hub .qh-top,#qy-world-hub .qh-controls,#qy-world-hub .qh-inline,#qy-world-hub .qh-market-links,#qy-world-hub .qh-foot{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+#qy-world-hub .qh-top{justify-content:space-between;align-items:flex-start;margin-bottom:18px}
+#qy-world-hub .qh-eyebrow{text-transform:uppercase;letter-spacing:.21em;color:var(--qh-accent);font-weight:800;font-size:.72rem}
+#qy-world-hub h2{font-size:clamp(1.6rem,3.6vw,2.75rem);line-height:1.15;margin:8px 0 10px;letter-spacing:-.035em;color:var(--qh-text)}
+#qy-world-hub h3{font-size:clamp(1.06rem,2vw,1.33rem);margin:0 0 11px;color:var(--qh-text)}
+#qy-world-hub p{color:var(--qh-muted);line-height:1.6;margin:7px 0 12px}
+#qy-world-hub .qh-intro{max-width:680px;font-size:.95rem}
+#qy-world-hub .qh-controls{justify-content:flex-end}
+#qy-world-hub label{font-size:.84rem;font-weight:650;color:var(--qh-muted)}
+#qy-world-hub select,#qy-world-hub button,#qy-world-hub input{min-height:44px;border:1px solid var(--qh-line);border-radius:11px;padding:9px 12px;font:inherit;background:var(--qh-surface);color:var(--qh-text);max-width:100%}
+#qy-world-hub button{cursor:pointer;font-weight:650}#qy-world-hub button:hover{filter:brightness(1.23)}
+#qy-world-hub button:focus-visible,#qy-world-hub input:focus-visible,#qy-world-hub select:focus-visible,#qy-world-hub a:focus-visible{outline:3px solid #ffdf87;outline-offset:3px}
+#qy-world-hub .qh-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+#qy-world-hub .qh-panel{min-width:0;padding:clamp(14px,2vw,22px);background:var(--qh-card);border:1px solid var(--qh-line);border-radius:19px}
+#qy-world-hub .qh-wide{grid-column:1/-1}
+#qy-world-hub .qh-stat{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--qh-line);border-radius:12px;padding:9px 13px;margin:5px 8px 10px 0;font-variant-numeric:tabular-nums}
+#qy-world-hub .qh-stat strong{font-size:1.15rem;color:var(--qh-text)}
+#qy-world-hub .qh-muted{font-size:.83rem;color:var(--qh-muted)}
+#qy-world-hub .qh-value{font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;letter-spacing:-.04em;color:var(--qh-text);margin:12px 0;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+#qy-world-hub .qh-grid-country{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;max-height:620px;overflow-y:auto;overscroll-behavior:contain;padding:2px}
+#qy-world-hub .qh-country{border:1px solid var(--qh-line);background:var(--qh-surface);border-radius:14px;padding:13px;min-width:0;display:grid;grid-template-columns:42px minmax(0,1fr) 42px;align-items:start;gap:10px}
+#qy-world-hub .qh-country-name{font-size:.92rem;font-weight:750;overflow-wrap:anywhere;color:var(--qh-text)}
+#qy-world-hub .qh-flag{width:40px;height:29px;object-fit:cover;background:#34456a;border:1px solid #8090aa;border-radius:3px}
+#qy-world-hub .qh-coat{width:40px;height:44px;object-fit:contain}
+#qy-world-hub .qh-currency{font-size:.75rem;margin:5px 0 7px;color:var(--qh-muted)}
+#qy-world-hub .qh-coin{display:inline-flex;align-items:center;justify-content:center;width:35px;height:35px;vertical-align:middle;margin-left:5px;border-radius:50%;border:3px double #f7d389;box-shadow:inset 0 0 0 2px #a67235,0 2px 6px #0004;background:radial-gradient(circle at 30% 23%,#fff3be,#d7a44e 66%,#8b5a22);color:#412b13;font-size:.7rem;font-weight:850;overflow:hidden}
+#qy-world-hub a{color:var(--qh-accent);text-decoration:underline;text-underline-offset:3px}#qy-world-hub .qh-country a{font-size:.76rem}
+#qy-world-hub .qh-market-links{margin-top:13px}#qy-world-hub .qh-market-links a{display:inline-block;text-decoration:none;border:1px solid var(--qh-line);border-radius:12px;padding:10px 13px}
+#qy-world-hub .qh-chart{min-height:340px;border:1px solid var(--qh-line);border-radius:14px;overflow:hidden;background:#081930}
+#qy-world-hub .qh-chart iframe{width:100%;min-height:340px;border:0}
+#qy-world-hub .qh-foot{border-top:1px solid var(--qh-line);margin-top:24px;padding-top:14px;justify-content:space-between;color:var(--qh-muted);font-size:.84rem}
+#qy-world-hub [hidden]{display:none!important}
+html[data-qy-theme=light]{--bg:#eaf2ff;--card:#fff;--muted:#48617f;--ink:#112946;--line:#a4bbd7;--cyan:#08638a;--violet:#5c46a5;color-scheme:light}
+html[data-qy-theme=light] body{background-color:#eaf2ff;color:#112946}
+html[data-qy-theme=light] #qy-world-hub{--qh-text:#173150;--qh-muted:#4f6682;--qh-line:#b4c7dc;--qh-card:rgba(255,255,255,.94);--qh-surface:#edf5ff;--qh-accent:#145f90;background:linear-gradient(135deg,rgba(248,252,255,.96),rgba(220,233,249,.97));box-shadow:0 25px 65px #607da233}
+html[data-qy-theme=light] #qy-cosmos-background{opacity:.32}
+html[data-qy-theme=light] #qy-world-hub .qh-chart{background:#fff}
+html[data-qy-theme=light] .wrap>header,html[data-qy-theme=light] .wrap>footer{color:#183653}
+@media(max-width:940px){#qy-world-hub .qh-grid{grid-template-columns:1fr}#qy-world-hub .qh-grid-country{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:590px){#qy-world-hub{margin:22px 0;border-radius:18px;padding:13px}#qy-world-hub .qh-panel{padding:14px}#qy-world-hub .qh-grid-country{grid-template-columns:1fr;max-height:490px}#qy-world-hub .qh-top{gap:10px}#qy-world-hub .qh-controls{width:100%;justify-content:flex-start}#qy-world-hub .qh-chart{min-height:310px}#qy-world-hub .qh-market-links a{flex:1;text-align:center}}
+@media(min-width:1600px){#qy-world-hub .qh-grid-country{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(min-width:2000px){#qy-world-hub{font-size:1.22rem}#qy-world-hub select,#qy-world-hub button,#qy-world-hub input{min-height:60px}#qy-world-hub .qh-chart{min-height:440px}}
+@media(prefers-reduced-motion:reduce){#qy-world-hub *,#qy-world-hub *::before,#qy-world-hub *::after{animation:none!important;transition:none!important}}
+
+#qy-world-hub .qh-flag-emoji{font-size:1.8rem;line-height:1.2}html[data-qy-theme=light] .hero .actions a{color:#fff}
