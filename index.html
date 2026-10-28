@@ -1199,6 +1199,34 @@ html[data-qy-forest-active="1"] #qy-v28-forest-bg{isolation:isolate}
  }
 }
 </style>
+<style id="qy-v31-background-consistency">
+/* Prevent older theme layers appearing during Android fast scrolling. */
+@media (max-width:900px), (hover:none) and (pointer:coarse) {
+ html[data-qy-forest-active="1"] #qy-v14-theme-photo,
+ html[data-qy-forest-active="1"] #qy-cosmos-background,
+ html[data-qy-forest-active="1"] #qy-v13-canvas,
+ html[data-qy-forest-active="1"] #qy-v16-atmosphere,
+ html[data-qy-lake-active="1"] #qy-v14-theme-photo,
+ html[data-qy-lake-active="1"] #qy-cosmos-background,
+ html[data-qy-lake-active="1"] #qy-v13-canvas,
+ html[data-qy-lake-active="1"] #qy-v16-atmosphere { display:none!important; }
+ html:is([data-qy-forest-active="1"],[data-qy-lake-active="1"]) body {background:#09171a!important;}
+ html:is([data-qy-forest-active="1"],[data-qy-lake-active="1"]) .hero {
+  background-image:linear-gradient(100deg,rgba(5,15,20,.84),rgba(5,15,20,.58))!important;
+ }
+ /* Limit other-theme thumbnail repaints to their own rectangles. */
+ :is(#qy-v18-realm-grid,#qy-v22-country-grid,#qy-v23-grid,#qy-v26-lake-choices,#qy-v28-forest-buttons) button {
+  contain:paint; isolation:isolate;
+  background-clip:padding-box;
+ }
+ #qy-v28-forest-bg, #qy-lake-preview-bg {
+  backface-visibility:hidden;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+  background-size:cover!important;
+ }
+}
+</style>
 </head>
 <body>
 <div id="qy-cosmos-background" aria-hidden="true"></div>
@@ -2842,7 +2870,8 @@ function update(){
  wasActive=active;
 }
 panel.querySelector('#qy-v26-lake-off').addEventListener('click',()=>{active=false;save('qy-v26-lake-active','0');update()});
-window.addEventListener('resize',()=>{if(active)update()},{passive:true});
+let lastLakeMobile=window.matchMedia('(max-width:730px)').matches;
+window.addEventListener('resize',()=>{const mobile=window.matchMedia('(max-width:730px)').matches;if(mobile!==lastLakeMobile){lastLakeMobile=mobile;if(active)update();}},{passive:true});
 // Keep the lake choice when the site refreshes fonts, language or performance mode.
 // Turn it off only when the visitor explicitly selects another site theme.
 const siteTheme=document.getElementById('qy-theme-switch-v1');
@@ -2862,7 +2891,7 @@ update();
 })();
 </script>
 
-<script id="qy-v29-forest-switcher">
+<script id="qy-v31-forest-switcher">
 (()=>{'use strict';
 const root=document.documentElement;
 const prefix='https://thumb.wikimedia.org/wikipedia/commons/thumb/';
@@ -2877,7 +2906,12 @@ const put=(k,v)=>{try{localStorage.setItem(k,v)}catch{}};
 let selected=scenes.some(x=>x.id===get('qy-v28-forest-choice'))?get('qy-v28-forest-choice'):'pl';
 let active=get('qy-v28-forest-active')==='1';
 let latest=0;
-const fallback='var(--qy-v25-pic-forest)'; // Pre-existing embedded image: works offline.
+let lastImageSize=window.matchMedia('(max-width:730px)').matches?1280:2560;
+let displayedScene=null;
+let displayedUrl=null;
+const decodedCache=new Set();
+const fallback='var(--qy-v25-pic-forest)';
+const waitingBackground='linear-gradient(130deg,#163727,#071610)';
 const scrim='linear-gradient(180deg,rgba(4,15,12,.14),rgba(3,14,11,.34)),';
 const wallpaper=document.createElement('div');wallpaper.id='qy-v28-forest-bg';wallpaper.setAttribute('aria-hidden','true');document.body.append(wallpaper);
 const panel=document.createElement('section');panel.id='qy-v28-forest';panel.setAttribute('aria-label','Лісова тиша — фони реальних лісів');
@@ -2897,41 +2931,76 @@ for(const s of scenes){
  buttons.append(btn);
 }
 function setWallpaper(background){
- wallpaper.style.backgroundImage=scrim+background;
- sample.style.backgroundImage=scrim+background;
+ const composed=scrim+background;
+ if(wallpaper.style.backgroundImage!==composed)wallpaper.style.backgroundImage=composed;
+ if(sample.style.backgroundImage!==composed)sample.style.backgroundImage=composed;
  root.style.setProperty('--qy-forest-image',background);
 }
 function update(){
- const token=++latest;
- root.dataset.qyForestActive=active?'1':'0';
  const s=scenes.find(x=>x.id===selected)||scenes[0];
  const size=window.matchMedia('(max-width:730px)').matches?1280:2560;
+ lastImageSize=size;
+ const url=picture(s,size);
+ const wasShowingSameScene=displayedScene===s.id;
+ const token=++latest;
+ root.dataset.qyForestActive=active?'1':'0';
  buttons.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(active&&b.dataset.forest===selected)));
  const credit=panel.querySelector('#qy-v28-forest-credit');credit.textContent='Фото: ';
  const author=document.createElement('a');author.href=s.source;author.target='_blank';author.rel='noopener noreferrer';author.textContent=s.author+' · джерело';credit.append(author);
  credit.append(' · ');const license=document.createElement('a');license.href=s.licenseUrl;license.target='_blank';license.rel='noopener noreferrer';license.textContent=s.license;credit.append(license);
  credit.append(' · фотографія не змінена, лише масштабована для фону.');
  sample.setAttribute('aria-label','Фон: '+s.place+' — '+s.title);
- if(!active){wallpaper.style.backgroundImage='none';sample.style.backgroundImage=scrim+fallback;root.style.removeProperty('--qy-forest-image');status.dataset.loadingState='off';status.textContent='Фон №3 вимкнено. Для перегляду натисни на одну з країн.';return;}
- // Show a real image immediately, even if the photo CDN is unreachable.
- setWallpaper(fallback);
+ if(!active){
+  displayedScene=null;displayedUrl=null;
+  wallpaper.style.backgroundImage='none';sample.style.backgroundImage=scrim+fallback;
+  root.style.removeProperty('--qy-forest-image');
+  status.dataset.loadingState='off';status.textContent='Фон №3 вимкнено. Для перегляду натисни на одну з країн.';
+  return;
+ }
+ // Crucial v31: do not reset the selected forest when Chrome's URL bar causes resize on scroll.
+ if(wasShowingSameScene && displayedUrl===url){
+  status.dataset.loadingState='loaded';
+  status.textContent='Завантажено: '+s.place+' · '+s.title+'.';
+  return;
+ }
+ // Only ever show an old image while fetching a higher-resolution version of THE SAME scene.
+ if(!wasShowingSameScene){
+  displayedScene=null;displayedUrl=null;
+  setWallpaper(waitingBackground);
+ }
  status.dataset.loadingState='loading';status.textContent='Обрано '+s.place+'. Завантажуємо фотографію…';
+ const apply=()=>{if(token!==latest||!active||selected!==s.id)return;
+  setWallpaper('url("'+url+'")');displayedScene=s.id;displayedUrl=url;
+  status.dataset.loadingState='loaded';status.textContent='Завантажено: '+s.place+' · '+s.title+'. Натисни іншу країну для зміни фону.';
+ };
+ if(decodedCache.has(url)){apply();return;}
  const req=new Image();req.decoding='async';
- const url=picture(s,size);
  let done=false;
- const fail=()=>{if(done||token!==latest||!active)return;done=true;status.dataset.loadingState='fallback';status.textContent='Фото '+s.place+' зараз недоступне. Показано резервний лісовий фон — перевір інтернет або відкрий джерело нижче.'};
+ const fail=()=>{if(done||token!==latest||!active)return;done=true;
+   if(!wasShowingSameScene) setWallpaper(fallback);
+   status.dataset.loadingState='fallback';
+   status.textContent='Фото '+s.place+' зараз недоступне. Показано резервний фон — перевір інтернет або відкрий джерело нижче.';
+ };
  const timer=setTimeout(fail,8000);
- req.onload=()=>{if(done||token!==latest||!active)return;done=true;clearTimeout(timer);setWallpaper('url("'+url+'")');status.dataset.loadingState='loaded';status.textContent='Завантажено: '+s.place+' · '+s.title+'. Натисни іншу країну для зміни фону.'};
+ req.onload=()=>{if(done||token!==latest||!active)return;done=true;clearTimeout(timer);decodedCache.add(url);apply()};
  req.onerror=()=>{clearTimeout(timer);fail()};
  req.src=url;
 }
 panel.querySelector('#qy-v28-forest-off').addEventListener('click',()=>{active=false;put('qy-v28-forest-active','0');update()});
-window.addEventListener('resize',()=>{if(active)update()},{passive:true});
-// Do not cancel an explicitly chosen forest when language, fonts, or palette change.
-// Only an explicit other-background click should replace it.
-document.getElementById('qy-v26-lake-choices')?.addEventListener('click',()=>{if(active){active=false;put('qy-v28-forest-active','0');update()}});
-window.addEventListener('pageshow',()=>{if(active){document.getElementById('qy-v26-lake-off')?.click();update()}});
-if(active)document.getElementById('qy-v26-lake-off')?.click();update();
+// Mobile browser chrome changes the viewport HEIGHT when scrolling. Never reload for that.
+window.addEventListener('resize',()=>{
+ const next=window.matchMedia('(max-width:730px)').matches?1280:2560;
+ if(next!==lastImageSize&&active)update();
+},{passive:true});
+document.getElementById('qy-v26-lake-choices')?.addEventListener('click',()=>{
+ if(active){active=false;put('qy-v28-forest-active','0');update()}
+});
+window.addEventListener('pageshow',()=>{
+ if(active){document.getElementById('qy-v26-lake-off')?.click();
+  if(!displayedScene)update();}
+});
+if(active)document.getElementById('qy-v26-lake-off')?.click();
+update();
 })();
 </script>
 </body></html>
