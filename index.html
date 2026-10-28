@@ -3527,6 +3527,17 @@ function phaseLabel(){return activeTheme().id===1?FIRST_THEME_PERIODS[localPhase
 function selectedImageIndex(){return state.mode==='auto'?(activeTheme().id===1?localPhase8():[0,0,1,2,2,2][localPhase()]):Number(state.mode)}
 function themeImageURL(theme,i,small=false){return theme.id===1?FIRST_THEME_ASSETS[i]:imageUrl(theme.photos[i],small)}
 const imageUrl=(id,small=false)=>'https://images.unsplash.com/'+id+'?auto=format&fit=crop&w='+(small?'480':window.innerWidth<680?'1120':'2000')+'&q='+(small?'64':'83');
+// v51.1: read the real image of a destination from this site's 53-theme catalogue.
+// Theme 1 includes eight embedded scenes, so its portal works fully offline.
+window.qyHubPortalSource=Object.freeze({
+ themeCount:THEMES.length,
+ image(id,small=false){
+   const t=THEMES.find(entry=>entry.id===Number(id));if(!t)return '';
+   const index=t.id===1?localPhase8():[0,0,1,2,2,2][localPhase()];
+   return themeImageURL(t,index,small);
+ }
+});
+
 const bg=document.createElement('div');bg.id='qy-v37-wallpaper';bg.setAttribute('aria-hidden','true');
 (document.body||document.documentElement).prepend(bg);
 const panel=document.createElement('section');panel.id='qy-v37-controls';panel.setAttribute('aria-label','53 фототеми QuantumYur');
@@ -4481,6 +4492,17 @@ body.qy44-home #qy44-front :is(.qy44-middle,#qy44-time,.qy44-head,.qy44-greeting
 @media (max-width:900px) and (prefers-reduced-motion:no-preference), (hover:none) and (pointer:coarse) and (prefers-reduced-motion:no-preference){#qy50-change{animation-name:qy51-reveal!important;animation-duration:1.9s!important;animation-iteration-count:1!important}}
 </style>
 
+<style id="qy-v51-1-photo-backup-css">
+/* A theme-specific embedded landscape is the first visual layer. The actual
+   destination's photograph fades in above it if available online. */
+#qy49-overlay .qy51-landscape,#qy50-change .qy51-landscape{background-repeat:no-repeat}
+#qy49-overlay .qy51-thumb{background-repeat:no-repeat;background-size:cover;background-position:center}
+#qy49-overlay .qy51-landscape img,#qy50-change .qy51-landscape img{position:relative;z-index:0}
+#qy49-overlay .qy49-vortex{opacity:.08!important}
+#qy49-overlay[data-style="tunnel"] .qy49-vortex{opacity:.2!important}
+#qy49-overlay.qy51-photo-ready .qy51-landscape{opacity:.84}
+#qy50-change.qy51-photo-ready .qy51-landscape{opacity:.93}
+</style>
 <script id="qy-v50-realm-portal-js">
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
@@ -4566,25 +4588,37 @@ document.body.append(overlay);
 const curtain=document.createElement('div');curtain.id='qy50-change';curtain.hidden=true;curtain.setAttribute('aria-hidden','true');curtain.innerHTML=sceneHTML()+'<div class="qy51-landscape" aria-hidden="true"><img id="qy51-curtain-img" alt=""></div><div class="qy50-copy"><span id="qy50-copy-caption"></span><strong id="qy50-copy-destination"></strong></div>';document.body.append(curtain);
 
 // v51: landscape preview of the next actual theme, using the existing photo catalogue.
-const qy51Photos={"1":"photo-1470252649378-9c29740c9fa8","2":"photo-1501785888041-af3ef285b470","3":"photo-1441974231531-c6227db76b6e","4":"photo-1433086966358-54859d0ed716","5":"photo-1507525428034-b723cf961d3e","6":"photo-1507525428034-b723cf961d3e","7":"photo-1509316785289-025f5b846b35","8":"photo-1476610182048-b716b8518aae","9":"photo-1480714378408-67cf0d13bc1b","10":"photo-1446776811953-b23d57bd21aa","11":"photo-1446776811953-b23d57bd21aa","12":"photo-1470252649378-9c29740c9fa8","13":"photo-1446776811953-b23d57bd21aa","14":"photo-1433086966358-54859d0ed716","15":"photo-1507525428034-b723cf961d3e","16":"photo-1497436072909-60f362e1d4b1","17":"photo-1469474968028-56623f02e42e","18":"photo-1476610182048-b716b8518aae","19":"photo-1470770841072-f978cf4d019e","20":"photo-1490750967868-88aa4486c946","21":"photo-1441974231531-c6227db76b6e","22":"photo-1490750967868-88aa4486c946","23":"photo-1441974231531-c6227db76b6e","24":"photo-1476610182048-b716b8518aae","25":"photo-1470252649378-9c29740c9fa8","26":"photo-1470770841072-f978cf4d019e","27":"photo-1493976040374-85c8e12f0c0e","28":"photo-1508804185872-d7badad00f7d","29":"photo-1480714378408-67cf0d13bc1b","30":"photo-1500530855697-b586d89ba3ee","31":"photo-1500530855697-b586d89ba3ee","32":"photo-1509316785289-025f5b846b35","33":"photo-1476610182048-b716b8518aae","34":"photo-1476610182048-b716b8518aae","35":"photo-1500530855697-b586d89ba3ee","36":"photo-1480714378408-67cf0d13bc1b","37":"photo-1446776811953-b23d57bd21aa","38":"photo-1476610182048-b716b8518aae","39":"photo-1532153354457-5fbe1a1205a4","40":"photo-1509316785289-025f5b846b35","41":"photo-1507525428034-b723cf961d3e","42":"photo-1470770841072-f978cf4d019e","43":"photo-1476610182048-b716b8518aae","44":"photo-1470770841072-f978cf4d019e","45":"photo-1441974231531-c6227db76b6e","46":"photo-1497436072909-60f362e1d4b1","47":"photo-1490750967868-88aa4486c946","48":"photo-1470252649378-9c29740c9fa8","49":"photo-1501785888041-af3ef285b470","50":"photo-1509316785289-025f5b846b35","51":"photo-1507525428034-b723cf961d3e","52":"photo-1469474968028-56623f02e42e","53":"photo-1446776811953-b23d57bd21aa"};
-const qy51URL=id=>{const photo=qy51Photos[String(id)];return photo?'https://images.unsplash.com/'+photo+'?auto=format&fit=crop&w=1120&q=82':''};
+const qy51URL=id=>window.qyHubPortalSource?.image(id,false)||'';
 let qy51Request=0,qy51Loaded='',qy51Destination='';
 const qy51Backdrop=$('qy51-landscape-img'),qy51Thumb=$('qy51-thumb-img'),qy51Curtain=$('qy51-curtain-img');
+// The preview must never be a dark, empty tunnel when a photo host is unavailable.
+// Each fallback is a built-in, thematic WebP and requires no extra download.
+const qy51FallbackKeys=['alpine-sunset','moonlit-lake','qy23-forest','rainforest','ocean','qy23-tropics','desert','aurora','qy23-nightcity','qy23-galaxy','lunar-expanse','dawn','observatory','abyss','qy23-ocean','rainforest','storm-savanna','arctic','polar-night','qy23-europe','qy23-forest','jp-sakura','zh-mist','storm-savanna','qy23-alpine','uk-carpathians','jp-sakura','zh-mist','qy23-nightcity','qy23-europe','qy23-europe','qy23-eastern','polar-night','aurora','qy23-eastern','neon-city','qy23-galaxy','arctic','volcano','sandstorm','ocean','qy23-alpine','arctic','qy23-galaxy','qy23-forest','qy23-china','qy23-europe','alpine-sunset','moonlit-lake','desert','ocean','rainforest','galactic-dust'];
+function qy51Fallback(element,id){
+ const key=qy51FallbackKeys[Number(id)-1]||'cosmos';
+ element.style.backgroundImage='var(--qy-v25-pic-'+key+',var(--qy-cosmos-wide))';
+ element.style.backgroundSize='cover';element.style.backgroundPosition='center';
+}
+
 function qy51Load(id){
   const url=qy51URL(id);qy51Destination=url;
-  overlay.classList.remove('qy51-photo-ready');
-  qy51Thumb.removeAttribute('src');qy51Backdrop.removeAttribute('src');
-  $('qy51-thumb-note').textContent='✦ '+chooseName(id);
-  if(!url)return;
   const request=++qy51Request;
+  qy51Thumb.removeAttribute('src');qy51Backdrop.removeAttribute('src');
+  qy51Fallback(qy51Backdrop.parentElement,id);
+  qy51Fallback(qy51Thumb.parentElement,id);
+  $('qy51-thumb-note').textContent='✦ '+chooseName(id);
+  // The embedded fallback is visible instantly, even in offline mode.
+  overlay.classList.add('qy51-photo-ready');
+  if(!url||overlay.hidden)return;
   const img=new Image();img.decoding='async';
   img.onload=()=>{
     if(request!==qy51Request||overlay.hidden)return;
     qy51Backdrop.src=url;qy51Thumb.src=url;
     qy51Thumb.alt=chooseName(id);qy51Loaded=url;
-    overlay.classList.add('qy51-photo-ready');
   };
-  img.onerror=()=>{if(request===qy51Request){qy51Loaded='';$('qy51-thumb-note').textContent=chooseName(id)+' · '+(lang()==='uk'?'Фото тимчасово недоступне':'Photo unavailable')}};
+  img.onerror=()=>{if(request===qy51Request){
+    qy51Loaded='';$('qy51-thumb-note').textContent=(lang()==='uk'?'Резервний краєвид':'Scenic fallback')+' · '+chooseName(id);
+  }};
   img.src=url;
 }
 
@@ -4594,7 +4628,7 @@ const motionReduced=()=>matchMedia('(prefers-reduced-motion:reduce)').matches;
 function paintScene(element,id){const spec=sceneSpec(id);element.dataset.family=spec.family;
   element.style.setProperty('--qy49-a',spec.a);element.style.setProperty('--qy49-b',spec.b);
 }
-function labels(){hint.textContent=tr(0);$('qy49-eyebrow').textContent=tr(1)+' · v51';$('qy49-title').textContent=tr(2);$('qy49-desc').textContent=tr(3);
+function labels(){hint.textContent=tr(0);$('qy49-eyebrow').textContent=tr(1)+' · v51.1';$('qy49-title').textContent=tr(2);$('qy49-desc').textContent=tr(3);
   $('qy49-next').textContent=tr(4);$('qy49-gallery').textContent=tr(5);$('qy49-back').textContent=tr(6);$('qy49-stylelabel').textContent=tr(7);
   for(const [i,b] of [...overlay.querySelectorAll('[data-portal-style]')].entries())b.textContent=tr(8+i);
   $('qy50-journey-caption').textContent=tr(12)+':';$('qy50-copy-caption').textContent=tr(13);updateDestination();}
@@ -4615,15 +4649,20 @@ function nextWorld(){const opt=nextOption();if(!opt)return;showCurtain(opt.value
 function showCurtain(id){
  clearTimeout(curtainTimer);paintScene(curtain,id);
  $('qy50-copy-destination').textContent=sceneSpec(id).icon+' '+chooseName(id);
- const url=qy51URL(id);qy51Curtain.removeAttribute('src');curtain.classList.remove('qy51-photo-ready');
+ const url=qy51URL(id);
+ qy51Curtain.removeAttribute('src');
+ qy51Fallback(qy51Curtain.parentElement,id);
+ curtain.classList.add('qy51-photo-ready');
+ curtain.hidden=false;curtain.style.animation='none';void curtain.offsetWidth;curtain.style.animation='';
  if(url){
    const image=new Image();image.decoding='async';
-   image.onload=()=>{if(curtain.hidden)return;qy51Curtain.src=url;curtain.classList.add('qy51-photo-ready')};
+   image.onload=()=>{if(curtain.hidden||String(theme.value)!==String(id))return;
+     qy51Curtain.src=url};
    image.src=url;
  }
- curtain.hidden=false;curtain.style.animation='none';void curtain.offsetWidth;curtain.style.animation='';
  curtainTimer=setTimeout(()=>{curtain.hidden=true},motionReduced()?200:1900);
 }
+
 $('qy49-next').addEventListener('click',()=>travel(nextWorld));
 $('qy49-gallery').addEventListener('click',()=>travel(()=>{$('qy44-themes')?.click()}));
 $('qy49-back').addEventListener('click',close);
