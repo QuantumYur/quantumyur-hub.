@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="uk">
 <head>
-<!-- QuantumYur v42 / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
+<!-- QuantumYur v44 / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script id="qy-v35-before-paint">
@@ -3828,4 +3828,137 @@ window.addEventListener('pageshow',refresh);setInterval(()=>{if(mode==='auto')re
 }
 </style>
 
+
+<!-- v44: clean landing screen with all original sections intact -->
+<style id="qy-v44-minimal-css">
+
+/* QuantumYur v44 — minimal home. Existing content remains mounted and untouched. */
+body.qy44-ready .wrap > header,body.qy44-ready #qy41-compact{display:none!important}
+body.qy44-ready.qy44-home .wrap > footer{display:none!important}
+body.qy44-ready.qy44-home #qy-v24-launch,body.qy44-ready.qy44-home #qy-v33-device-launch{display:none!important}
+body.qy44-ready.qy44-home .wrap{width:min(1600px,calc(100% - 22px))!important;max-width:none!important}
+body.qy44-ready.qy44-home #top > :not(#qy44-front){display:none!important}
+body.qy44-ready.qy44-content #qy44-front{display:none!important}
+body.qy44-ready.qy44-content .wrap{width:min(1140px,calc(100% - 28px))!important}
+body.qy44-ready #qy44-front *{box-sizing:border-box}
+#qy44-front{position:relative;isolation:isolate;min-height:calc(100svh - 24px);margin:12px 0;padding:clamp(22px,4vw,64px);border:1px solid rgba(226,246,255,.22);border-radius:clamp(22px,3vw,34px);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;gap:24px;color:#fff;font-family:ui-monospace,'Cascadia Code',Consolas,monospace;box-shadow:0 14px 80px #0005;background:linear-gradient(180deg,rgba(3,12,28,.57) 0%,rgba(3,12,28,.07) 37%,rgba(3,12,28,.22) 60%,rgba(2,9,22,.74) 100%)}
+#qy44-front::before{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(ellipse at 58% 44%,rgba(255,255,255,.03),transparent 72%);pointer-events:none}
+.qy44-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.qy44-brand{display:inline-flex;align-items:center;gap:10px;padding:10px 15px;border:1px solid #e8faff50;border-radius:50px;background:#0715268c;backdrop-filter:blur(8px);font-size:clamp(15px,3vw,20px);font-weight:850;letter-spacing:.015em;box-shadow:0 5px 25px #0004}
+.qy44-brand .star{color:#b7f7f0;font-size:24px;line-height:1}
+.qy44-head-note{background:#071526a3;border:1px solid #ddf5ff4a;border-radius:50px;padding:11px 14px;color:#e4f5ff;font-size:clamp(12px,2vw,14px);max-width:70vw}
+.qy44-middle{width:100%;max-width:680px;align-self:center;text-align:center;text-shadow:0 4px 24px #000b;padding:8px 0}
+.qy44-greeting{text-transform:uppercase;letter-spacing:.23em;font-weight:700;color:#d9f2fb;font-size:clamp(12px,2vw,14px);margin:0 0 10px}
+#qy44-time{display:block;font-size:clamp(78px,15vw,162px);font-weight:700;line-height:1;letter-spacing:-.065em;font-variant-numeric:tabular-nums;text-shadow:0 5px 29px rgba(0,0,0,.83)}
+#qy44-date{font-size:clamp(15px,2.4vw,20px);font-weight:600;color:#f0f9ff;margin:14px 0 13px;text-transform:capitalize}
+#qy44-active{display:inline-block;padding:9px 15px;border:1px solid #fff5;border-radius:999px;background:rgba(4,15,31,.58);font-size:clamp(13px,2.4vw,16px);line-height:1.45;backdrop-filter:blur(8px)}
+.qy44-bottom{display:flex;align-items:stretch;flex-direction:column;gap:14px;max-width:720px;width:100%;align-self:center}
+#qy44-weather{border:1px solid #d1ebfa6b;display:flex;align-items:center;gap:11px;justify-content:center;min-height:53px;width:100%;padding:10px 15px;background:rgba(5,20,35,.7);border-radius:16px;color:#fff;font:650 clamp(14px,2.3vw,17px)/1.5 ui-monospace,Consolas,monospace;cursor:pointer;backdrop-filter:blur(9px)}
+.qy44-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.qy44-action{display:flex;align-items:center;justify-content:center;gap:9px;min-height:68px;border:1px solid #daf0ff7d!important;background:linear-gradient(160deg,rgba(9,34,52,.91),rgba(10,26,44,.88))!important;color:#fff!important;box-shadow:0 8px 24px #0004;border-radius:18px!important;font:800 clamp(15px,2.5vw,20px)/1.25 ui-monospace,Consolas,monospace!important;padding:12px 10px!important;cursor:pointer;backdrop-filter:blur(11px)}
+.qy44-action:hover,#qy44-weather:hover{background-color:rgba(40,81,112,.75)!important}
+.qy44-action:focus-visible,#qy44-weather:focus-visible,.qy44-close:focus-visible,.qy44-link:focus-visible,.qy44-smallbtn:focus-visible,.qy44-backbar button:focus-visible{outline:3px solid #ffe3a0!important;outline-offset:3px!important}
+#qy44-menu-overlay[hidden]{display:none!important}
+#qy44-menu-overlay{position:fixed!important;inset:0!important;z-index:2147482500!important;display:flex!important;justify-content:flex-end!important;background:rgba(1,7,17,.7)!important;backdrop-filter:blur(5px);color:#eef9ff!important;font-family:ui-monospace,Consolas,monospace!important}
+#qy44-menu-sheet{width:min(440px,100vw);height:100%;height:100dvh;overflow-y:auto;overscroll-behavior:contain;background:linear-gradient(145deg,#0c2132,#0b1828 88%);border-left:1px solid #9ec8d269;padding:22px clamp(16px,4vw,28px) calc(30px + env(safe-area-inset-bottom,0px));box-shadow:-8px 0 38px #000a}
+.qy44-menuhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}
+.qy44-menuhead h2{font-size:clamp(21px,5vw,27px);color:#fff;margin:0}
+.qy44-close{background:#213e53;border:1px solid #acd0dc;border-radius:12px;color:#fff;min-width:50px;min-height:50px;font-size:27px;cursor:pointer}
+.qy44-menulead{color:#d5e5ee;font-size:14px;line-height:1.5;margin:0 0 16px}
+.qy44-menugroup{margin:0 0 13px;padding:13px;background:#102c3d;border:1px solid #4b7987;border-radius:16px}
+.qy44-menugroup h3{font-size:15px;color:#ccedf5;margin:0 0 12px}
+.qy44-menulinks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.qy44-link{display:flex;align-items:center;text-align:left;min-height:49px;padding:10px 12px;color:#fff!important;border:1px solid #547c8c;border-radius:12px;background:#17394b;cursor:pointer;font:700 14px/1.45 ui-monospace,Consolas,monospace;text-decoration:none!important}
+.qy44-link:hover{background:#28586b}
+.qy44-menugroup label{color:#d5eef6;display:block;font:700 14px/1.5 ui-monospace,Consolas,monospace;margin-bottom:7px}
+.qy44-weatherrow{display:flex;gap:7px;align-items:stretch}
+#qy44-city{flex:1;min-width:0;min-height:49px;font:600 16px ui-monospace,Consolas,monospace;border-radius:12px;padding:9px 11px;background:#0a1d2d;color:#fff;border:1px solid #719dad}
+.qy44-smallbtn{border:1px solid #97c9dc;border-radius:12px;background:#21586c;color:#fff;padding:10px 13px;font:750 14px ui-monospace,Consolas,monospace;cursor:pointer}
+#qy44-weatherstate{color:#d7ecf4;font-size:13px;line-height:1.5;min-height:25px;margin-top:8px}
+#qy44-lang-slot select{width:100%;max-width:100%;min-height:49px;color:#fff!important;background:#0a1d2d!important;border:1px solid #719dad;border-radius:12px;padding:8px 10px;font:600 15px ui-monospace,Consolas,monospace}
+#qy44-contentbar{position:sticky;z-index:30;top:5px;margin:12px 0 15px;display:flex;justify-content:flex-start;gap:8px;flex-wrap:wrap;background:#061a2be8;padding:9px;border:1px solid #86aebc88;border-radius:16px;backdrop-filter:blur(12px)}
+body.qy44-home #qy44-contentbar{display:none!important}
+#qy44-contentbar button{min-height:45px;padding:8px 12px;border:1px solid #659aae;border-radius:12px;color:white;background:#214257;font:750 14px ui-monospace,Consolas,monospace;cursor:pointer}
+@media(max-width:640px){
+ #qy44-front{min-height:calc(100svh - 12px);margin:6px 0;padding:clamp(18px,5vw,28px) 18px 26px;border-radius:24px;gap:20px}
+ body.qy44-ready.qy44-home .wrap{width:calc(100% - 12px)!important}
+ .qy44-head{flex-direction:column;align-items:flex-start}
+ .qy44-brand{font-size:17px}
+ .qy44-head-note{font-size:12px;max-width:100%;padding:8px 12px}
+ #qy44-time{font-size:clamp(76px,21vw,119px)}
+ #qy44-date{font-size:15px}
+ .qy44-actions{gap:8px}
+ .qy44-action{font-size:15px!important;min-height:64px;flex-direction:column;gap:5px;padding:10px 4px!important;border-radius:14px!important}
+ .qy44-action .emoji{font-size:23px}
+ #qy44-weather{min-height:56px;font-size:14px}
+ .qy44-menulinks{grid-template-columns:1fr}
+ #qy44-contentbar{top:3px;margin:6px 0 12px}
+}
+@media(prefers-reduced-motion:reduce){#qy44-front *,#qy44-menu-overlay *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+</style>
+<script id="qy-v44-minimal-js">
+
+(()=>{'use strict';
+if(document.getElementById('qy44-front'))return;
+const $=s=>document.querySelector(s);const id=s=>document.getElementById(s);
+const lang=()=>id('site-language')?.value||'uk';
+const UI={
+ uk:['Живий світ','Теми','Рамки','Меню','Розділи сайту','Усі можливості — за одним натисканням','Головна','Час і природа','Світ і події','Творчість і спілкування','Інструменти','Сьогодні','Світ і валюти','Ігрові новини','Маршрут дня','Астрохізм','Співрозмовник','Нотатки','Нагадування','Twitch','Галерея зображень','Встановити сайт','Платформи','Місто для погоди','Введи місто','Знайти','Змінити мову','Погода: обери місто','Погода недоступна','Пошук міста…','Місто не знайдено','Завантаження погоди…','Погода','Авто','Ручний вибір','Налаштування'],
+ en:['Living world','Themes','Frames','Menu','Site sections','Everything one tap away','Home','Time and nature','World and events','Create and connect','Tools','Today','World and currencies','Gaming news','Daily explorer','Astrohism','Companion','Notes','Reminders','Twitch','Image gallery','Install site','Platforms','Weather city','Enter a city','Find','Language','Weather: choose a city','Weather unavailable','Finding city…','City not found','Loading weather…','Weather','Auto','Manual','Settings'],
+ pl:['Żywy świat','Motywy','Ramki','Menu','Sekcje strony','Wszystko w jednym miejscu','Start','Czas i natura','Świat i wydarzenia','Twórczość i rozmowa','Narzędzia','Dzisiaj','Świat i waluty','Nowości z gier','Plan dnia','Astrochizm','Rozmówca','Notatki','Przypomnienia','Twitch','Galeria obrazów','Zainstaluj','Platformy','Miasto pogody','Podaj miasto','Szukaj','Język','Pogoda: wybierz miasto','Pogoda niedostępna','Wyszukiwanie…','Nie znaleziono miasta','Pobieranie pogody…','Pogoda','Auto','Ręczny','Ustawienia'],
+ ru:['Живой мир','Темы','Рамки','Меню','Разделы сайта','Все разделы по нажатию','Главная','Время и природа','Мир и события','Творчество и общение','Инструменты','Сегодня','Мир и валюты','Игровые новости','Маршрут дня','Астрохизм','Собеседник','Заметки','Напоминания','Twitch','Галерея изображений','Установить сайт','Платформы','Город для погоды','Введите город','Найти','Язык','Погода: выберите город','Погода недоступна','Поиск города…','Город не найден','Загрузка погоды…','Погода','Авто','Вручную','Настройки'],
+ ja:['生きた世界','テーマ','フレーム','メニュー','サイトの各ページ','必要なときに開く','ホーム','時間と自然','世界とニュース','創作と交流','ツール','今日','世界と通貨','ゲームニュース','今日の発見','アストロヒズム','対話','メモ','リマインダー','Twitch','画像ギャラリー','インストール','プラットフォーム','天気の都市','都市名','検索','言語','天気：都市を選ぶ','天気を取得できません','検索中…','都市が見つかりません','天気を読込中…','天気','自動','手動','設定'],
+ ko:['살아있는 세계','테마','프레임','메뉴','사이트 메뉴','필요할 때만 열기','홈','시간과 자연','세계와 소식','창작과 대화','도구','오늘','세계와 환율','게임 뉴스','오늘의 발견','아스트로히즘','대화','메모','알림','Twitch','이미지 갤러리','설치','플랫폼','날씨 도시','도시 입력','검색','언어','날씨: 도시 선택','날씨 이용 불가','검색 중…','도시를 찾지 못함','날씨 로딩…','날씨','자동','수동','설정'],
+ zh:['鲜活世界','主题','边框','菜单','网站栏目','需要时再打开','首页','时间与自然','世界与新闻','创作与交流','工具','今日','世界与汇率','游戏新闻','每日探索','星宇哲学','交谈','笔记','提醒','Twitch','图片库','安装','平台','天气城市','输入城市','搜索','语言','天气：请选择城市','天气不可用','搜索中…','找不到城市','天气加载中…','天气','自动','手动','设置'],
+ hi:['जीवंत संसार','थीम','फ्रेम','मेनू','साइट अनुभाग','एक टैप में सब','होम','समय और प्रकृति','दुनिया और खबर','रचना और बातचीत','उपकरण','आज','दुनिया और मुद्रा','गेम समाचार','दैनिक खोज','एस्ट्रोहिज़्म','साथी','नोट्स','रिमाइंडर','Twitch','चित्र गैलरी','इंस्टॉल','प्लेटफ़ॉर्म','मौसम के लिए शहर','शहर लिखें','खोजें','भाषा','मौसम: शहर चुनें','मौसम उपलब्ध नहीं','खोज रहे हैं…','शहर नहीं मिला','मौसम लोड हो रहा है…','मौसम','ऑटो','मैनुअल','सेटिंग्स'],
+ es:['Mundo vivo','Temas','Marcos','Menú','Secciones','Todo a un toque','Inicio','Tiempo y naturaleza','Mundo y noticias','Crear y conversar','Herramientas','Hoy','Mundo y divisas','Noticias de juegos','Explorador diario','Astrohismo','Compañero','Notas','Recordatorios','Twitch','Galería','Instalar','Plataformas','Ciudad del tiempo','Escribe una ciudad','Buscar','Idioma','El tiempo: elige una ciudad','Tiempo no disponible','Buscando ciudad…','Ciudad no encontrada','Cargando el tiempo…','Tiempo','Auto','Manual','Ajustes'],
+ 'pt-BR':['Mundo vivo','Temas','Molduras','Menu','Seções do site','Tudo a um toque','Início','Tempo e natureza','Mundo e notícias','Criar e conversar','Ferramentas','Hoje','Mundo e moedas','Notícias de jogos','Explorar o dia','Astrohismo','Companheiro','Notas','Lembretes','Twitch','Galeria','Instalar','Plataformas','Cidade do clima','Digite a cidade','Buscar','Idioma','Clima: escolha uma cidade','Clima indisponível','Buscando cidade…','Cidade não encontrada','Carregando clima…','Clima','Auto','Manual','Configurações']
+};
+const tr=i=>(UI[lang()]||UI.uk)[i];
+const main=id('top'),wrap=$('.wrap'),oldheader=wrap?.querySelector(':scope > header');if(!main||!wrap||!oldheader)return;
+const front=document.createElement('section');front.id='qy44-front';front.innerHTML=`<div class="qy44-head"><div class="qy44-brand"><span aria-hidden="true" class="star">✦</span> QuantumYur</div><span class="qy44-head-note" id="qy44-phase" aria-live="off"></span></div><div class="qy44-middle"><p class="qy44-greeting" id="qy44-greeting"></p><time id="qy44-time"></time><p id="qy44-date"></p><div id="qy44-active"></div></div><div class="qy44-bottom"><button id="qy44-weather" type="button" aria-haspopup="dialog" aria-controls="qy44-menu-overlay"><span aria-hidden="true">☁️</span><span id="qy44-weathertext"></span></button><div class="qy44-actions"><button type="button" class="qy44-action" id="qy44-themes"><span class="emoji" aria-hidden="true">🎨</span><span class="label"></span></button><button type="button" class="qy44-action" id="qy44-frames"><span class="emoji" aria-hidden="true">🎭</span><span class="label"></span></button><button type="button" class="qy44-action" id="qy44-menu"><span class="emoji" aria-hidden="true">☰</span><span class="label"></span></button></div></div>`;
+main.prepend(front);
+const backbar=document.createElement('div');backbar.id='qy44-contentbar';backbar.innerHTML='<button type="button" id="qy44-homebutton"></button><button type="button" id="qy44-c-themes"></button><button type="button" id="qy44-c-frames"></button><button type="button" id="qy44-c-menu"></button>';main.prepend(backbar);
+const drawer=document.createElement('div');drawer.id='qy44-menu-overlay';drawer.hidden=true;drawer.setAttribute('role','dialog');drawer.setAttribute('aria-modal','true');drawer.setAttribute('aria-labelledby','qy44-menutitle');
+drawer.innerHTML=`<div id="qy44-menu-sheet"><div class="qy44-menuhead"><h2 id="qy44-menutitle"></h2><button class="qy44-close" id="qy44-menuclose" type="button" aria-label="Close">×</button></div><p class="qy44-menulead" id="qy44-menulead"></p><div id="qy44-navgroups"></div><div class="qy44-menugroup"><label for="qy44-city" id="qy44-weatherlabel"></label><div class="qy44-weatherrow"><input id="qy44-city" type="search" autocomplete="off" maxlength="80"><button type="button" class="qy44-smallbtn" id="qy44-findcity"></button></div><div id="qy44-weatherstate" role="status" aria-live="polite"></div></div><div class="qy44-menugroup"><label id="qy44-langlabel" for="site-language"></label><div id="qy44-lang-slot"></div></div></div>`;
+document.body.append(drawer);
+// Move the existing language selector, keeping the existing translation listeners.
+const currentLanguage=id('site-language');id('qy44-lang-slot').append(currentLanguage);
+const groups=[{idx:8,links:[[11,'daily-pulse'],[12,'qy-world-hub'],[13,'gaming-news'],[14,'qy-discover']]},{idx:9,links:[[15,'astrokhizm'],[16,'companion'],[17,'idea'],[18,'reminders']]},{idx:10,links:[[19,'twitch-promo'],[20,'gallery'],[21,'install-app'],[22,'platforms']]}];
+let focusBefore=null,priorOverflow='';
+function makeMenu(){const box=id('qy44-navgroups');box.replaceChildren();for(const g of groups){const sec=document.createElement('section');sec.className='qy44-menugroup';const title=document.createElement('h3');title.textContent=tr(g.idx);const links=document.createElement('div');links.className='qy44-menulinks';for(const [i,target] of g.links){if(!id(target))continue;const a=document.createElement('a');a.className='qy44-link';a.href='#'+target;a.textContent=tr(i);a.addEventListener('click',e=>{e.preventDefault();closeMenu(false);showContent(target)});links.append(a)}sec.append(title,links);box.append(sec)}}
+function updateLabels(){id('qy44-greeting').textContent=tr(0);id('qy44-menutitle').textContent='☰ '+tr(4);id('qy44-menulead').textContent=tr(5);id('qy44-menuclose').setAttribute('aria-label',tr(6));id('qy44-weatherlabel').textContent=tr(23);id('qy44-city').placeholder=tr(24);id('qy44-findcity').textContent=tr(25);id('qy44-langlabel').textContent=tr(26);for(const [k,i] of [['qy44-themes',1],['qy44-frames',2],['qy44-menu',3]])id(k).querySelector('.label').textContent=tr(i);
+ for(const [k,i] of [['qy44-homebutton',6],['qy44-c-themes',1],['qy44-c-frames',2],['qy44-c-menu',3]])id(k).textContent=({qy44_homebutton:'⌂ ',qy44_c_themes:'🎨 ',qy44_c_frames:'🎭 ',qy44_c_menu:'☰ '}[k.replaceAll('-','_')]||'')+tr(i);
+ makeMenu();renderWeather()}
+function openMenu(focusCity=false){focusBefore=document.activeElement;priorOverflow=document.body.style.overflow;drawer.hidden=false;document.body.style.overflow='hidden';(focusCity?id('qy44-city'):id('qy44-menuclose')).focus()}
+function closeMenu(restore=true){drawer.hidden=true;document.body.style.overflow=priorOverflow;if(restore&&focusBefore?.isConnected)focusBefore.focus()}
+function showHome(){document.body.classList.add('qy44-home');document.body.classList.remove('qy44-content');try{history.replaceState(null,'',location.pathname+location.search)}catch(_){ }window.scrollTo({top:0,behavior:'instant'});updateClock()}
+function showContent(target){document.body.classList.add('qy44-content');document.body.classList.remove('qy44-home');requestAnimationFrame(()=>{const el=id(target);if(el){el.scrollIntoView({behavior:'instant',block:'start'});}else window.scrollTo(0,0)})}
+function openThemes(){const b=id('qy41-open');if(b)b.click();else showContent('top')}
+function openFrames(){const b=id('qy42-launch');if(b)b.click();else openMenu()}
+id('qy44-themes').addEventListener('click',openThemes);id('qy44-frames').addEventListener('click',openFrames);id('qy44-menu').addEventListener('click',()=>openMenu());id('qy44-weather').addEventListener('click',()=>openMenu(true));
+id('qy44-homebutton').addEventListener('click',showHome);id('qy44-c-themes').addEventListener('click',openThemes);id('qy44-c-frames').addEventListener('click',openFrames);id('qy44-c-menu').addEventListener('click',()=>openMenu());
+id('qy44-menuclose').addEventListener('click',()=>closeMenu());drawer.addEventListener('click',e=>{if(e.target===drawer)closeMenu()});
+drawer.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();closeMenu();return}if(e.key==='Tab'){const targets=[...drawer.querySelectorAll('button,input,select,a')].filter(x=>!x.disabled&&x.offsetParent!==null);if(!targets.length)return;const first=targets[0],last=targets[targets.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
+const timeIntl=()=>{let l=lang();return l==='uk'?'uk-UA':l==='pt-BR'?'pt-BR':l};
+function updateClock(){const now=new Date();id('qy44-time').textContent=new Intl.DateTimeFormat(timeIntl(),{hour:'2-digit',minute:'2-digit',hour12:false}).format(now);id('qy44-time').setAttribute('datetime',now.toISOString());id('qy44-date').textContent=new Intl.DateTimeFormat(timeIntl(),{weekday:'long',day:'numeric',month:'long'}).format(now);
+const selected=id('qy37-theme')?.selectedOptions?.[0]?.textContent?.trim().replace(/^\d+\s*[·.-]\s*/,'')||'QuantumYur';const mode=id('qy37-mode')?.value||'auto';id('qy44-active').textContent=selected+' · '+(mode==='auto'?tr(33):tr(34));
+const h=now.getHours(),state=h>=22||h<4?7:h<6?0:h<8?1:h<11?2:h<14?3:h<17?4:h<19?5:6;const icons=['🌌','🌄','🌤️','☀️','🌿','🌇','🌆','🌙'];const periods={uk:['Передсвітанок','Світанок','Ранок','Полудень','Післяобіддя','Захід сонця','Вечір','Ніч'],en:['Predawn','Dawn','Morning','Noon','Afternoon','Sunset','Evening','Night'],pl:['Przedświt','Świt','Rano','Południe','Popołudnie','Zachód słońca','Wieczór','Noc'],ru:['Предрассвет','Рассвет','Утро','Полдень','После полудня','Закат','Вечер','Ночь']};id('qy44-phase').textContent=icons[state]+' '+(periods[lang()]||periods.en)[state];}
+// Weather uses the selected city only. No geolocation or location sharing until a city is entered.
+const STORAGE='qy44-weather-city';let city=null,weather=null,weatherError='',inflight=false;
+try{const item=JSON.parse(localStorage.getItem(STORAGE)||'null');if(item&&Number.isFinite(item.latitude)&&Number.isFinite(item.longitude)&&typeof item.name==='string')city=item}catch(_){ }
+const emoji=(code,day)=>{if(code===0)return day?'☀️':'🌙';if([1,2].includes(code))return day?'🌤️':'☁️';if(code===3)return '☁️';if([45,48].includes(code))return '🌫️';if([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(code))return '🌧️';if([71,73,75,77,85,86].includes(code))return '❄️';if([95,96,99].includes(code))return '⛈️';return '🌦️'};
+function renderWeather(){const text=id('qy44-weathertext'),status=id('qy44-weatherstate');let label='';if(!city)label=tr(27);else if(weather&&Number.isFinite(weather.temp))label=`${emoji(weather.code,weather.day)} ${city.name}${city.country?' · '+city.country:''} · ${Math.round(weather.temp)}°C`;else label=city.name+' · '+(inflight?tr(31):weatherError||tr(28));text.textContent=label;status.textContent=(!city?tr(27):label);if(city)id('qy44-city').value=city.name}
+async function fetchWeather(){if(!city)return;inflight=true;weatherError='';renderWeather();try{const url='https://api.open-meteo.com/v1/forecast?latitude='+encodeURIComponent(city.latitude)+'&longitude='+encodeURIComponent(city.longitude)+'&current=temperature_2m,weather_code,is_day&timezone=auto';const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error(String(r.status));const data=await r.json();const c=data.current;if(!c||!Number.isFinite(c.temperature_2m))throw Error('Empty');weather={temp:c.temperature_2m,code:Number(c.weather_code),day:Boolean(c.is_day)};weatherError='';}catch(_){weather=null;weatherError=tr(28)}finally{inflight=false;renderWeather()}}
+async function lookupCity(){const input=id('qy44-city');const value=input.value.trim();if(!value)return;inflight=true;weatherError=tr(29);id('qy44-weatherstate').textContent=tr(29);const button=id('qy44-findcity');button.disabled=true;try{const url='https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(value)+'&count=1&language='+encodeURIComponent(['uk','pl','en','ru','ja','ko','zh','hi','es'].includes(lang())?lang():'en')+'&format=json';const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error(String(r.status));const data=await r.json();const found=data.results?.[0];if(!found)throw Error('Not found');city={name:found.name,country:found.country||'',latitude:Number(found.latitude),longitude:Number(found.longitude)};if(!Number.isFinite(city.latitude)||!Number.isFinite(city.longitude))throw Error('Coordinates');try{localStorage.setItem(STORAGE,JSON.stringify(city))}catch(_){ }weather=null;await fetchWeather()}catch(err){weatherError=String(err).includes('Not found')?tr(30):tr(28);id('qy44-weatherstate').textContent=weatherError;}finally{inflight=false;button.disabled=false;renderWeather()}}
+id('qy44-findcity').addEventListener('click',lookupCity);id('qy44-city').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();lookupCity()}});
+currentLanguage.addEventListener('change',()=>{updateLabels();updateClock()});
+id('qy37-theme')?.addEventListener('change',updateClock);id('qy37-mode')?.addEventListener('change',updateClock);
+id('qy41-overlay')?.addEventListener('click',()=>setTimeout(updateClock,0));
+// The 53 themes, frames, seasons and original sections are kept in the document.
+document.body.classList.add('qy44-ready','qy44-home');updateLabels();updateClock();renderWeather();if(city)fetchWeather();setInterval(updateClock,30_000);setInterval(()=>{if(city)fetchWeather()},15*60_000);
+})();
+
+</script>
 </body></html>
