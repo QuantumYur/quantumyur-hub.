@@ -1110,6 +1110,57 @@ html[data-qy-palette] #qy-v14-theme-photo{background-image:linear-gradient(180de
 #qy-v22-country-grid button.qy-v25-visible{background-image:linear-gradient(180deg,rgba(5,12,24,.11),rgba(3,9,19,.93)),var(--qy-country-bg)!important}
 @media(prefers-reduced-motion:reduce){#qy-v14-theme-photo{animation:none!important}}
 </style>
+
+<!-- QuantumYur v26 · 3 independent lake backgrounds, no heavy effects -->
+<style id="qy-v26-lake-style">
+#qy-lake-preview-bg{position:fixed;inset:0;z-index:1;pointer-events:none;display:none;
+ background-color:#0b2336;background-position:center center;background-size:cover;background-repeat:no-repeat;
+ filter:none!important;animation:none!important;transform:none!important;}
+html[data-qy-lake-active="1"] #qy-lake-preview-bg{display:block;}
+html[data-qy-lake-active="1"] #qy-v16-atmosphere,html[data-qy-lake-active="1"] #qy-v13-canvas{opacity:0!important;}
+html[data-qy-lake-active="1"] #qy-cosmos-background,html[data-qy-lake-active="1"] #qy-v14-theme-photo{opacity:0!important;}
+html[data-qy-lake-active="1"] .hero{background-image:linear-gradient(95deg,rgba(3,9,18,.86),rgba(6,17,31,.66)),var(--qy-lake-bg-image)!important;
+ background-position:center!important;background-size:cover!important;}
+#qy-v26-lakes{position:relative;z-index:3;margin:18px auto;padding:clamp(14px,3vw,22px);border-radius:20px;
+ background:rgba(8,22,39,.93);border:1px solid rgba(157,212,238,.55);color:#f4fbff;
+ box-shadow:0 13px 34px rgba(0,0,0,.22);}
+#qy-v26-lakes h3{margin:0 0 6px;font-size:clamp(18px,2.6vw,25px);color:#f4fbff;}
+#qy-v26-lakes p{color:#cfe4f4;font-size:clamp(13px,1.6vw,15px);line-height:1.5;margin:0 0 12px;}
+#qy-v26-lake-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+#qy-v26-lakes button{cursor:pointer;color:#fff;border:1px solid #91bbd877;border-radius:13px;
+ background-color:#14314a;font:600 clamp(12px,1.5vw,15px)/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;}
+#qy-v26-lake-choices button{position:relative;overflow:hidden;min-height:140px;text-align:left;
+ background-size:cover;background-position:center;}
+#qy-v26-lake-choices button span{position:absolute;inset:auto 0 0;padding:25px 10px 10px;
+ background:linear-gradient(transparent,rgba(0,7,20,.95));}
+#qy-v26-lake-choices button[aria-pressed="true"]{outline:3px solid #a7e6ff;outline-offset:0;}
+#qy-v26-lake-off{margin-top:11px;padding:10px 15px;}
+#qy-v26-lake-status{font-size:13px;margin:9px 0 0;color:#c3e8ed;}
+@media(max-width:630px){#qy-v26-lake-choices{grid-template-columns:1fr 1fr 1fr;gap:5px;}
+#qy-v26-lake-choices button{min-height:115px;}#qy-v26-lake-choices button span{font-size:11px;padding:22px 5px 8px;}}
+@media(prefers-reduced-motion:reduce){#qy-v26-lakes *{transition:none!important;animation:none!important;}}
+</style>
+
+<style id="qy-v28-forest-style">
+#qy-v28-forest-bg{position:fixed;inset:0;z-index:1;pointer-events:none;display:none;background:#091d14 center / cover no-repeat;filter:none!important;animation:none!important;transform:none!important}
+html[data-qy-forest-active="1"] #qy-v28-forest-bg{display:block}
+html[data-qy-forest-active="1"] #qy-lake-preview-bg{display:none!important}
+html[data-qy-forest-active="1"] #qy-v16-atmosphere,html[data-qy-forest-active="1"] #qy-v13-canvas,html[data-qy-forest-active="1"] #qy-cosmos-background,html[data-qy-forest-active="1"] #qy-v14-theme-photo{opacity:0!important}
+html[data-qy-forest-active="1"] .hero{background-image:linear-gradient(100deg,rgba(3,14,10,.83),rgba(4,19,14,.60)),var(--qy-forest-image)!important;background-size:cover!important;background-position:center!important}
+#qy-v28-forest{position:relative;z-index:4;margin:20px auto;padding:clamp(14px,3vw,22px);border:1px solid #8bb59b88;background:#081d18ef;border-radius:20px;color:#f2fff4;font:inherit}
+#qy-v28-forest h3{margin:0 0 6px;color:#eaffed;font-size:clamp(20px,2.6vw,26px)}
+#qy-v28-forest p{margin:0 0 12px;color:#cce8d2;font-size:clamp(13px,1.6vw,15px);line-height:1.55}
+#qy-v28-forest-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+#qy-v28-forest-buttons button{cursor:pointer;min-width:0;min-height:170px;position:relative;overflow:hidden;text-align:left;color:#fff;border:1px solid #a4d4aa77;border-radius:12px;background:#122b21 center/cover no-repeat;font:600 clamp(12px,1.6vw,16px)/1.4 ui-monospace,SFMono-Regular,Consolas,monospace}
+#qy-v28-forest-buttons button span{position:absolute;inset:auto 0 0;padding:36px 10px 9px;background:linear-gradient(transparent,rgba(0,10,7,.95))}
+#qy-v28-forest-buttons button small{display:block;font-size:0.8em;font-weight:400}
+#qy-v28-forest-buttons button[aria-pressed="true"]{outline:3px solid #d5ffe2;outline-offset:0}
+#qy-v28-forest-off{border:1px solid #aad0b1;cursor:pointer;color:#f1fff2;background:#173f2b;padding:10px 15px;border-radius:10px;font:600 13px ui-monospace,monospace;margin:10px 0}
+#qy-v28-forest .qy-forest-attribution{font-size:12px;line-height:1.6;opacity:.95}
+#qy-v28-forest a{color:#a7e8ff;text-decoration:underline}
+@media(max-width:660px){#qy-v28-forest-buttons{gap:5px}#qy-v28-forest-buttons button{min-height:125px}#qy-v28-forest-buttons button span{padding:22px 6px 7px;font-size:11px}}
+@media(prefers-reduced-motion:reduce){#qy-v28-forest *{transition:none!important;animation:none!important}}
+</style>
 </head>
 <body>
 <div id="qy-cosmos-background" aria-hidden="true"></div>
@@ -2712,4 +2763,105 @@ if('IntersectionObserver' in window){
  const observer=new IntersectionObserver(items=>{for(const x of items){x.target.classList.toggle('qy-v25-visible',x.isIntersecting)}},{rootMargin:'260px 0px',threshold:0.001});nodes.forEach(x=>observer.observe(x));
 }else nodes.forEach(x=>x.classList.add('qy-v25-visible'));
 })();</script>
+
+<script id="qy-v26-lake-switcher-js">
+(()=>{'use strict';
+const root=document.documentElement;
+const base='assets/theme-02-mountain-lake/';
+const entries=[
+ {id:'a',name:'Варіант 1',detail:'Золотий берег',src:'02-hirske-ozero-a.webp',mobile:'02-hirske-ozero-a-mobile.webp'},
+ {id:'b',name:'Варіант 2',detail:'Смарагдова вода',src:'02-hirske-ozero-b.webp',mobile:'02-hirske-ozero-b-mobile.webp'},
+ {id:'c',name:'Варіант 3',detail:'Дзеркальна гладінь',src:'02-hirske-ozero-c.webp',mobile:'02-hirske-ozero-c-mobile.webp'}
+];
+const read=(k)=>{try{return localStorage.getItem(k)}catch{return null;}};
+const save=(k,v)=>{try{localStorage.setItem(k,v)}catch{}};
+let selected=entries.some(e=>e.id===read('qy-v26-lake-choice'))?read('qy-v26-lake-choice'):'a';
+let active=read('qy-v26-lake-active')==='1';
+const preview=document.createElement('div');preview.id='qy-lake-preview-bg';preview.setAttribute('aria-hidden','true');document.body.append(preview);
+const panel=document.createElement('section');panel.id='qy-v26-lakes';panel.setAttribute('aria-label','Варіанти фону №2 — Гірське озеро');
+panel.innerHTML='<h3>02 · Гірське озеро — три фони</h3><p>Усі три зображення збережено. Обери фон, щоб переглянути його на сторінці. Можна змінювати будь-коли.</p><div id="qy-v26-lake-choices" role="group" aria-label="Вибір озера"></div><button type="button" id="qy-v26-lake-off">Повернути попередню тему</button><p id="qy-v26-lake-status" role="status" aria-live="polite"></p>';
+const target=document.getElementById('qy-atmosphere-studio')||document.getElementById('qy-v23-exhibition')||document.querySelector('.hero')||document.querySelector('main');
+if(target)target.insertAdjacentElement('afterend',panel);else document.body.append(panel);
+const choices=panel.querySelector('#qy-v26-lake-choices');
+for(const entry of entries){
+ const b=document.createElement('button');b.type='button';b.dataset.lake=entry.id;b.innerHTML='<span>'+entry.name+'<small style="display:block;font-weight:400">'+entry.detail+'</small></span>';
+ b.style.backgroundImage='url("'+base+entry.mobile+'")';b.setAttribute('aria-label',entry.name+' — '+entry.detail);
+ b.addEventListener('click',()=>{selected=entry.id;active=true;save('qy-v26-lake-choice',selected);save('qy-v26-lake-active','1');update()});choices.append(b);
+}
+let wasActive=active;
+function update(){
+ root.dataset.qyLakeActive=active?'1':'0';
+ const entry=entries.find(e=>e.id===selected)||entries[0];
+ // Only the selected full-size image is loaded; on mobile use an optimized small version.
+ const useSmall=window.matchMedia('(max-width:730px)').matches;
+ const picture='url("'+base+(useSmall?entry.mobile:entry.src)+'")';
+ if(active){
+  preview.style.backgroundImage='linear-gradient(180deg,rgba(5,16,29,.12),rgba(2,7,17,.42)),'+picture;
+  root.style.setProperty('--qy-lake-bg-image',picture);
+ }else {preview.style.backgroundImage='none';root.style.removeProperty('--qy-lake-bg-image');}
+ for(const b of choices.querySelectorAll('button'))b.setAttribute('aria-pressed',String(active&&b.dataset.lake===selected));
+ panel.querySelector('#qy-v26-lake-status').textContent=active?'Увімкнено: '+entry.name+' · фон №2. Обраний варіант зберігається на цьому пристрої.':'Фон №2 вимкнено — показана попередня тема.';
+ wasActive=active;
+}
+panel.querySelector('#qy-v26-lake-off').addEventListener('click',()=>{active=false;save('qy-v26-lake-active','0');update()});
+window.addEventListener('resize',()=>{if(active)update()},{passive:true});
+// Keep the lake choice when the site refreshes fonts, language or performance mode.
+// Turn it off only when the visitor explicitly selects another site theme.
+const siteTheme=document.getElementById('qy-theme-switch-v1');
+let previousSiteTheme=siteTheme?siteTheme.value:null;
+function onOtherTheme(){
+ if(!siteTheme)return;
+ const current=siteTheme.value;
+ if(current===previousSiteTheme)return;
+ previousSiteTheme=current;
+ if(active){active=false;save('qy-v26-lake-active','0');update()}
+}
+siteTheme?.addEventListener('change',onOtherTheme);
+window.addEventListener('qy:theme-changed',onOtherTheme);
+// Reapply after restoration from browser cache.
+window.addEventListener('pageshow',()=>{if(active)update()});
+update();
+})();
+</script>
+
+<script id="qy-v28-forest-switcher">
+(()=>{'use strict';
+const root=document.documentElement;
+// Authentic Wikimedia Commons photos, external image loading requires an internet connection.
+const p='https://thumb.wikimedia.org/wikipedia/commons/thumb/';
+const scenes=[
+ {id:'pl',place:'Польща',title:'Біловезька пуща',author:'Rakoon',license:'CC0 1.0',licenseUrl:'https://creativecommons.org/publicdomain/zero/1.0/',source:'https://commons.wikimedia.org/wiki/File:7245_June_2021_in_Bia%C5%82owie%C5%BCa_Forest.jpg',path:'f/f1/7245_June_2021_in_Bia%C5%82owie%C5%BCa_Forest.jpg/',name:'7245_June_2021_in_Bia%C5%82owie%C5%BCa_Forest.jpg'},
+ {id:'jp',place:'Японія',title:'Ліс Якусіма',author:'MaedaAkihiko',license:'CC0 1.0',licenseUrl:'https://creativecommons.org/publicdomain/zero/1.0/',source:'https://commons.wikimedia.org/wiki/File:Yaku-Island_Shiratani-Unsui-Gorge.jpg',path:'b/b5/Yaku-Island_Shiratani-Unsui-Gorge.jpg/',name:'Yaku-Island_Shiratani-Unsui-Gorge.jpg'},
+ {id:'cl',place:'Чилі',title:'Ліс араукарій',author:'Delahimalaya-alosandes',license:'CC BY-SA 4.0',licenseUrl:'https://creativecommons.org/licenses/by-sa/4.0/',source:'https://commons.wikimedia.org/wiki/File:Araucaria_araucana,_Conguill%C3%ADo_National_Park,_Chile.jpg',path:'0/08/Araucaria_araucana%2C_Conguill%C3%ADo_National_Park%2C_Chile.jpg/',name:'Araucaria_araucana%2C_Conguill%C3%ADo_National_Park%2C_Chile.jpg'}
+];
+function picture(s,size){return p+s.path+size+'px-'+s.name;}
+function read(k){try{return localStorage.getItem(k)}catch{return null}}
+function save(k,v){try{localStorage.setItem(k,v)}catch{}}
+let selected=scenes.some(s=>s.id===read('qy-v28-forest-choice'))?read('qy-v28-forest-choice'):'pl';
+let active=read('qy-v28-forest-active')==='1';
+const preview=document.createElement('div');preview.id='qy-v28-forest-bg';preview.setAttribute('aria-hidden','true');document.body.append(preview);
+const panel=document.createElement('section');panel.id='qy-v28-forest';panel.setAttribute('aria-label','Лісова тиша — фони реальних лісів');
+panel.innerHTML='<h3>03 · Лісова тиша — три різні куточки світу</h3><p>Це справжні фотографії з Польщі, Японії та Чилі, а не повтори одного згенерованого лісу. Для завантаження потрібен інтернет.</p><div id="qy-v28-forest-buttons" role="group" aria-label="Вибір лісу"></div><button type="button" id="qy-v28-forest-off">Повернути попередній фон</button><p id="qy-v28-forest-status" role="status" aria-live="polite"></p><div class="qy-forest-attribution" id="qy-v28-forest-credit"></div>';
+const lakePanel=document.getElementById('qy-v26-lakes');const target=lakePanel||document.getElementById('qy-atmosphere-studio')||document.querySelector('main');
+if(target)target.insertAdjacentElement('afterend',panel);else document.body.append(panel);
+const buttons=panel.querySelector('#qy-v28-forest-buttons');
+for(const s of scenes){const btn=document.createElement('button');btn.type='button';btn.dataset.forest=s.id;btn.style.backgroundImage='linear-gradient(180deg,transparent,#06180f66),url("'+picture(s,330)+'")';btn.innerHTML='<span>'+s.place+'<small>'+s.title+'</small></span>';btn.setAttribute('aria-label',s.place+' — '+s.title);
+btn.addEventListener('click',()=>{selected=s.id;active=true;save('qy-v28-forest-choice',selected);save('qy-v28-forest-active','1');document.getElementById('qy-v26-lake-off')?.click();update()});buttons.append(btn)}
+function update(){root.dataset.qyForestActive=active?'1':'0';const s=scenes.find(x=>x.id===selected)||scenes[0];
+const size=window.matchMedia('(max-width:730px)').matches?1280:2560;const img='url("'+picture(s,size)+'")';
+if(active){preview.style.backgroundImage='linear-gradient(180deg,#081a1199,#05150b66),'+img;root.style.setProperty('--qy-forest-image',img)}else{preview.style.backgroundImage='none';root.style.removeProperty('--qy-forest-image')}
+buttons.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(active&&b.dataset.forest===selected)));
+panel.querySelector('#qy-v28-forest-status').textContent=active?'Обрано: '+s.place+' · '+s.title+'. Вибір збережений на цьому пристрої.':'Фон №3 вимкнено.';
+const credit=panel.querySelector('#qy-v28-forest-credit');credit.textContent='Фото: ';const a=document.createElement('a');a.href=s.source;a.target='_blank';a.rel='noopener noreferrer';a.textContent=s.author+' · джерело';credit.append(a);credit.append(' · ');const l=document.createElement('a');l.href=s.licenseUrl;l.target='_blank';l.rel='noopener noreferrer';l.textContent=s.license;credit.append(l);credit.append(' · фон адаптовано лише масштабуванням для перегляду.');}
+panel.querySelector('#qy-v28-forest-off').addEventListener('click',()=>{active=false;save('qy-v28-forest-active','0');update()});
+window.addEventListener('resize',()=>{if(active)update()},{passive:true});
+const siteTheme=document.getElementById('qy-theme-switch-v1');let previousTheme=siteTheme?.value||null;
+function onSiteThemeChange(){if(!siteTheme)return;const current=siteTheme.value;if(current===previousTheme)return;previousTheme=current;if(active){active=false;save('qy-v28-forest-active','0');update()}}
+siteTheme?.addEventListener('change',onSiteThemeChange);
+window.addEventListener('qy:theme-changed',onSiteThemeChange);
+document.getElementById('qy-v26-lake-choices')?.addEventListener('click',()=>{if(active){active=false;save('qy-v28-forest-active','0');update()}});
+window.addEventListener('pageshow',()=>{if(active){document.getElementById('qy-v26-lake-off')?.click();update()}});
+if(active)document.getElementById('qy-v26-lake-off')?.click();update();
+})();
+</script>
 </body></html>
