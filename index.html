@@ -1419,6 +1419,72 @@ html[data-qy-device-package="balanced"] :is(#qy-v23-grid button,#qy-v22-country-
  #qy-v19-cinema-scene::before {animation:none!important;transform:none!important;}
 }
 </style>
+<style id="qy-v36-one-active-wallpaper">
+/* QuantumYur v36 — SINGLE ACTIVE WALLPAPER. Applied last, wins over legacy
+   v10–v25 scenery. Decorative previews follow selected wallpaper rather than
+   painting a separate historical palette while the visitor scrolls. */
+html[data-qy-forest-active="1"] {
+  --qy-v36-scene:var(--qy-forest-image,var(--qy-v25-pic-forest));
+  --qy-v36-base:#10261c;
+}
+html[data-qy-lake-active="1"]:not([data-qy-forest-active="1"]) {
+  --qy-v36-scene:var(--qy-lake-bg-image,var(--qy-v25-pic-alpine));
+  --qy-v36-base:#0d2534;
+}
+/* Only one full-page wallpaper is allowed, on EVERY device package. */
+html:is([data-qy-forest-active="1"],[data-qy-lake-active="1"])
+  :is(#qy-cosmos-background,#qy-v13-canvas,#qy-v16-atmosphere,#qy-v14-theme-photo){
+  display:none!important;opacity:0!important;visibility:hidden!important;
+  background-image:none!important;
+}
+html:is([data-qy-forest-active="1"],[data-qy-lake-active="1"])
+  body::before,
+html:is([data-qy-forest-active="1"],[data-qy-lake-active="1"])
+  body::after{display:none!important;content:none!important;}
+html:is([data-qy-forest-active="1"],[data-qy-lake-active="1"])
+  body{background-image:none!important;background-color:var(--qy-v36-base)!important;}
+html[data-qy-forest-active="1"] #qy-lake-preview-bg{display:none!important;}
+html[data-qy-lake-active="1"]:not([data-qy-forest-active="1"]) #qy-v28-forest-bg{display:none!important;}
+/* Legacy scenery in the middle/end of this very long page used --qy-photo,
+   which differs from the selected Japanese forest or lake. Remove it here. */
+html:is([data-qy-forest-active="1"],[data-qy-lake-active="1"])
+  #qy-v19-cinema-scene::before{
+  background-image:linear-gradient(180deg,rgba(4,11,17,.12),rgba(4,11,17,.78)),var(--qy-v36-scene)!important;
+  background-position:center!important;background-size:cover!important;
+  animation:none!important;transform:none!important;transition:none!important;
+}
+html:is([data-qy-forest-active="1"],[data-qy-lake-active="1"])
+  #qy-world-v13 .qy-v13-preview{
+  background-image:linear-gradient(180deg,rgba(3,12,19,.24),rgba(3,12,19,.58)),var(--qy-v36-scene)!important;
+  background-position:center!important;background-size:cover!important;
+  transition:none!important;animation:none!important;
+}
+/* The hero is a readable glass panel over ONE wallpaper; not a separate scene. */
+html:is([data-qy-forest-active="1"],[data-qy-lake-active="1"])
+  .hero{background-image:linear-gradient(125deg,rgba(6,18,31,.90),rgba(6,18,31,.66))!important;
+  background-attachment:scroll!important;}
+/* Fixed active wallpaper is stable across Chrome toolbar resizing & all modes. */
+html[data-qy-forest-active="1"] #qy-v28-forest-bg,
+html[data-qy-lake-active="1"]:not([data-qy-forest-active="1"]) #qy-lake-preview-bg{
+  position:fixed!important;top:0!important;left:0!important;right:0!important;
+  bottom:auto!important;width:100%!important;height:100lvh!important;
+  min-height:100vh!important;background-position:center center!important;
+  background-size:cover!important;background-repeat:no-repeat!important;
+  background-attachment:scroll!important;transform:none!important;animation:none!important;
+  transition:none!important;filter:none!important;will-change:auto!important;
+  backface-visibility:visible!important;
+}
+@supports not (height:100lvh){
+ html[data-qy-forest-active="1"] #qy-v28-forest-bg,
+ html[data-qy-lake-active="1"]:not([data-qy-forest-active="1"]) #qy-lake-preview-bg{height:100vh!important;}
+}
+/* Keep legitimate theme-selection miniatures, but do not let their paint
+   leak outside their cards when Android performs fast-scrolling. */
+:is(#qy-v18-realm-grid,#qy-v22-country-grid,#qy-v23-grid,#qy-v26-lake-choices,#qy-v28-forest-buttons) button{
+  overflow:hidden!important;contain:paint!important;isolation:isolate!important;
+  background-clip:padding-box!important;
+}
+</style>
 </head>
 <body>
 <div id="qy-v35-startup" role="status" aria-label="Завантаження оформлення"><div class="qy-v35-inside"><div class="qy-v35-mark">✦ QuantumYur</div><div class="qy-v35-sub">Відновлюємо вибрану тему…</div></div></div>
