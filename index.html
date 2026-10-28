@@ -4365,7 +4365,7 @@ body.qy44-home #qy44-front :is(.qy44-middle,#qy44-time,.qy44-head,.qy44-greeting
 @media(prefers-reduced-motion:reduce){#qy49-overlay *,#qy49-overlay::before,#qy49-overlay::after{animation:none!important;transition:none!important}#qy49-overlay.qy49-ready .qy49-card{opacity:1;visibility:visible;transform:none}}
 </style>
 <style id="qy-v50-realm-portal-css">
-/* QuantumYur v50 — theme-specific lightweight portal scenes; v48 controls preserved. */
+/* QuantumYur v51 — theme-specific lightweight portal scenes plus photo reveal. */
 #qy49-overlay[data-style="realm"]{
   background:radial-gradient(ellipse at 50% 45%,rgba(var(--qy49-a),.24) 0%,rgba(var(--qy49-b),.09) 36%,#040b1c 75%,#02040a 100%);
 }
@@ -4448,23 +4448,39 @@ body.qy44-home #qy44-front :is(.qy44-middle,#qy44-time,.qy44-head,.qy44-greeting
 @keyframes qy50-curtain{0%{opacity:0}23%{opacity:1}72%{opacity:1}100%{opacity:0}}
 @media(max-width:430px){.qy50-journey{font-size:12px}#qy49-overlay .qy49-card{padding:17px 14px}.qy50-mini{font-size:11px}}
 @media(prefers-reduced-motion:reduce){#qy50-change{animation:none!important}#qy50-change *,#qy49-overlay .qy50-scene *,#qy49-overlay .qy50-scene{animation:none!important;transition:none!important}}
-/* v30's global low-power rule disables EVERY animation on mobile.
-   Restore motion ONLY for the on-demand portal / brief curtain, not the page. */
-@media (max-width:900px) and (prefers-reduced-motion:no-preference), (hover:none) and (pointer:coarse) and (prefers-reduced-motion:no-preference) {
- #qy50-change {animation-duration:.88s!important;animation-iteration-count:1!important}
- #qy49-overlay .qy49-ring{animation-duration:3.1s!important;animation-iteration-count:infinite!important}
- #qy49-overlay .qy49-core{animation-duration:2.4s!important;animation-iteration-count:infinite!important}
- #qy49-overlay::before{animation-duration:24s!important;animation-iteration-count:infinite!important}
- #qy49-overlay .qy50-orb,#qy50-change .qy50-orb{animation-duration:4s!important;animation-iteration-count:infinite!important}
- #qy49-overlay .qy50-clouds,#qy50-change .qy50-clouds{animation-duration:7s!important;animation-iteration-count:infinite!important}
- #qy49-overlay[data-family="aurora"] .qy50-clouds{animation-duration:5s!important}
- #qy49-overlay[data-family="storm"] .qy50-clouds{animation-duration:6s!important}
- #qy49-overlay .qy50-land,#qy49-overlay .qy50-land2,#qy50-change .qy50-land,#qy50-change .qy50-land2{animation-duration:1.7s!important;animation-iteration-count:1!important}
- #qy49-overlay .qy50-specks i,#qy50-change .qy50-specks i{animation-duration:var(--p-speed)!important;animation-iteration-count:infinite!important}
- #qy49-overlay.qy49-travel .qy49-vortex{animation-duration:.7s!important;animation-iteration-count:1!important}
-}
 
 </style>
+
+<style id="qy-v51-world-reveal">
+/* v51: actual next-world photos, not only abstract circles. Lightweight and tap safe. */
+#qy49-overlay .qy51-landscape,#qy50-change .qy51-landscape{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;opacity:0;transition:opacity .5s ease}
+#qy49-overlay.qy51-photo-ready .qy51-landscape{opacity:.70}
+#qy50-change.qy51-photo-ready .qy51-landscape{opacity:.87}
+.qy51-landscape::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#03091665,#06132b3b 32%,#0209159c 100%)}
+.qy51-landscape img{width:100%;height:100%;display:block;object-fit:cover;object-position:center;transform:scale(1.03);filter:saturate(.93);transition:transform 1.65s cubic-bezier(.21,.75,.28,1),filter 1.65s}
+#qy49-overlay.qy49-travel .qy51-landscape img,#qy50-change.qy51-photo-ready .qy51-landscape img{transform:scale(1.30);filter:saturate(1.12)}
+#qy49-overlay .qy50-scene{z-index:0}
+#qy49-overlay.qy51-photo-ready .qy50-scene{opacity:.14!important}
+#qy49-overlay .qy49-vortex{z-index:1;opacity:.13!important}
+#qy49-overlay[data-style="tunnel"] .qy49-vortex{opacity:.3!important}
+#qy49-overlay .qy49-card{z-index:3}
+#qy49-overlay .qy49-card p{margin-bottom:8px}
+#qy49-overlay .qy51-thumb{height:clamp(116px,19svh,185px);margin:5px auto 12px;border:1px solid #ddceae99;border-radius:15px;position:relative;overflow:hidden;background:linear-gradient(130deg,#112c48,#263653 50%,#0e1d32);box-shadow:0 7px 21px #0006}
+#qy49-overlay .qy51-thumb img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:1}
+#qy49-overlay .qy51-thumb img:not([src]){display:none}
+#qy49-overlay .qy51-thumb span{position:absolute;z-index:2;bottom:0;left:0;right:0;padding:11px;background:linear-gradient(transparent,#041327cd);font:700 14px/1.3 ui-monospace,monospace;text-align:left;text-shadow:0 2px 4px #000}
+#qy49-overlay .qy49-choices{margin:10px 0 12px}
+#qy49-overlay .qy49-card{background:linear-gradient(160deg,#091a31e9,#091226f2)}
+#qy50-change{animation:qy51-reveal 1.9s ease-in-out forwards}
+#qy50-change .qy50-copy{background:#061225d9}
+@keyframes qy51-reveal{0%{opacity:0}12%{opacity:1}65%{opacity:1}100%{opacity:0}}
+@media(max-width:480px){#qy49-overlay .qy49-card{padding:14px 13px}#qy49-overlay .qy49-card p{margin:0 0 6px}#qy49-overlay .qy51-thumb{height:128px;margin-bottom:8px}#qy49-overlay .qy49-choices button{min-height:50px}#qy49-overlay .qy49-styles button{min-height:37px;padding:7px}}
+@media(max-height:640px){#qy49-overlay .qy51-thumb{height:90px}#qy49-overlay .qy49-card{padding:10px}}
+@media(prefers-reduced-motion:reduce){#qy49-overlay .qy51-landscape img,#qy50-change .qy51-landscape img{transform:none!important;transition:none!important}#qy50-change{animation:none!important}}
+/* Override the earlier mobile low-power rule for this short reveal alone. */
+@media (max-width:900px) and (prefers-reduced-motion:no-preference), (hover:none) and (pointer:coarse) and (prefers-reduced-motion:no-preference){#qy50-change{animation-name:qy51-reveal!important;animation-duration:1.9s!important;animation-iteration-count:1!important}}
+</style>
+
 <script id="qy-v50-realm-portal-js">
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
@@ -4545,35 +4561,69 @@ particles+=`<i style="--p-x:${x}%;--p-y:${y}%;--p-size:${size}px;--p-speed:${spe
 return `<div class="qy50-scene" aria-hidden="true"><div class="qy50-orb"></div><div class="qy50-clouds"></div><div class="qy50-land"></div><div class="qy50-land2"></div><div class="qy50-specks">${particles}</div></div>`}
 const hint=document.createElement('button');hint.type='button';hint.id='qy49-hint';hint.setAttribute('aria-haspopup','dialog');hint.setAttribute('aria-controls','qy49-overlay');front.append(hint);
 const overlay=document.createElement('div');overlay.id='qy49-overlay';overlay.hidden=true;overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-labelledby','qy49-title');
-overlay.innerHTML=sceneHTML()+'<div class="qy49-vortex" aria-hidden="true"><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-core"></span></div><section class="qy49-card"><div class="qy49-eyebrow" id="qy49-eyebrow"></div><h2 id="qy49-title"></h2><p id="qy49-desc"></p><div class="qy50-journey"><span id="qy50-journey-caption"></span><strong id="qy50-journey-name"></strong></div><div class="qy49-choices"><button type="button" id="qy49-next"></button><button type="button" id="qy49-gallery"></button><button type="button" id="qy49-back"></button></div><label class="qy49-stylelabel" id="qy49-stylelabel"></label><div class="qy49-styles" role="group" aria-label="Transition style"><button type="button" data-portal-style="realm"></button><button type="button" data-portal-style="tunnel"></button><button type="button" data-portal-style="light"></button><button type="button" data-portal-style="mist"></button></div></section>';
+overlay.innerHTML=sceneHTML()+'<div class="qy51-landscape" aria-hidden="true"><img id="qy51-landscape-img" alt=""></div><div class="qy49-vortex" aria-hidden="true"><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-core"></span></div><section class="qy49-card"><div class="qy49-eyebrow" id="qy49-eyebrow"></div><h2 id="qy49-title"></h2><p id="qy49-desc"></p><div class="qy50-journey"><span id="qy50-journey-caption"></span><strong id="qy50-journey-name"></strong></div><div class="qy51-thumb"><img id="qy51-thumb-img" alt="" decoding="async"><span id="qy51-thumb-note"></span></div><div class="qy49-choices"><button type="button" id="qy49-next"></button><button type="button" id="qy49-gallery"></button><button type="button" id="qy49-back"></button></div><label class="qy49-stylelabel" id="qy49-stylelabel"></label><div class="qy49-styles" role="group" aria-label="Transition style"><button type="button" data-portal-style="realm"></button><button type="button" data-portal-style="tunnel"></button><button type="button" data-portal-style="light"></button><button type="button" data-portal-style="mist"></button></div></section>';
 document.body.append(overlay);
-const curtain=document.createElement('div');curtain.id='qy50-change';curtain.hidden=true;curtain.setAttribute('aria-hidden','true');curtain.innerHTML=sceneHTML()+'<div class="qy50-copy"><span id="qy50-copy-caption"></span><strong id="qy50-copy-destination"></strong></div>';document.body.append(curtain);
+const curtain=document.createElement('div');curtain.id='qy50-change';curtain.hidden=true;curtain.setAttribute('aria-hidden','true');curtain.innerHTML=sceneHTML()+'<div class="qy51-landscape" aria-hidden="true"><img id="qy51-curtain-img" alt=""></div><div class="qy50-copy"><span id="qy50-copy-caption"></span><strong id="qy50-copy-destination"></strong></div>';document.body.append(curtain);
+
+// v51: landscape preview of the next actual theme, using the existing photo catalogue.
+const qy51Photos={"1":"photo-1470252649378-9c29740c9fa8","2":"photo-1501785888041-af3ef285b470","3":"photo-1441974231531-c6227db76b6e","4":"photo-1433086966358-54859d0ed716","5":"photo-1507525428034-b723cf961d3e","6":"photo-1507525428034-b723cf961d3e","7":"photo-1509316785289-025f5b846b35","8":"photo-1476610182048-b716b8518aae","9":"photo-1480714378408-67cf0d13bc1b","10":"photo-1446776811953-b23d57bd21aa","11":"photo-1446776811953-b23d57bd21aa","12":"photo-1470252649378-9c29740c9fa8","13":"photo-1446776811953-b23d57bd21aa","14":"photo-1433086966358-54859d0ed716","15":"photo-1507525428034-b723cf961d3e","16":"photo-1497436072909-60f362e1d4b1","17":"photo-1469474968028-56623f02e42e","18":"photo-1476610182048-b716b8518aae","19":"photo-1470770841072-f978cf4d019e","20":"photo-1490750967868-88aa4486c946","21":"photo-1441974231531-c6227db76b6e","22":"photo-1490750967868-88aa4486c946","23":"photo-1441974231531-c6227db76b6e","24":"photo-1476610182048-b716b8518aae","25":"photo-1470252649378-9c29740c9fa8","26":"photo-1470770841072-f978cf4d019e","27":"photo-1493976040374-85c8e12f0c0e","28":"photo-1508804185872-d7badad00f7d","29":"photo-1480714378408-67cf0d13bc1b","30":"photo-1500530855697-b586d89ba3ee","31":"photo-1500530855697-b586d89ba3ee","32":"photo-1509316785289-025f5b846b35","33":"photo-1476610182048-b716b8518aae","34":"photo-1476610182048-b716b8518aae","35":"photo-1500530855697-b586d89ba3ee","36":"photo-1480714378408-67cf0d13bc1b","37":"photo-1446776811953-b23d57bd21aa","38":"photo-1476610182048-b716b8518aae","39":"photo-1532153354457-5fbe1a1205a4","40":"photo-1509316785289-025f5b846b35","41":"photo-1507525428034-b723cf961d3e","42":"photo-1470770841072-f978cf4d019e","43":"photo-1476610182048-b716b8518aae","44":"photo-1470770841072-f978cf4d019e","45":"photo-1441974231531-c6227db76b6e","46":"photo-1497436072909-60f362e1d4b1","47":"photo-1490750967868-88aa4486c946","48":"photo-1470252649378-9c29740c9fa8","49":"photo-1501785888041-af3ef285b470","50":"photo-1509316785289-025f5b846b35","51":"photo-1507525428034-b723cf961d3e","52":"photo-1469474968028-56623f02e42e","53":"photo-1446776811953-b23d57bd21aa"};
+const qy51URL=id=>{const photo=qy51Photos[String(id)];return photo?'https://images.unsplash.com/'+photo+'?auto=format&fit=crop&w=1120&q=82':''};
+let qy51Request=0,qy51Loaded='',qy51Destination='';
+const qy51Backdrop=$('qy51-landscape-img'),qy51Thumb=$('qy51-thumb-img'),qy51Curtain=$('qy51-curtain-img');
+function qy51Load(id){
+  const url=qy51URL(id);qy51Destination=url;
+  overlay.classList.remove('qy51-photo-ready');
+  qy51Thumb.removeAttribute('src');qy51Backdrop.removeAttribute('src');
+  $('qy51-thumb-note').textContent='✦ '+chooseName(id);
+  if(!url)return;
+  const request=++qy51Request;
+  const img=new Image();img.decoding='async';
+  img.onload=()=>{
+    if(request!==qy51Request||overlay.hidden)return;
+    qy51Backdrop.src=url;qy51Thumb.src=url;
+    qy51Thumb.alt=chooseName(id);qy51Loaded=url;
+    overlay.classList.add('qy51-photo-ready');
+  };
+  img.onerror=()=>{if(request===qy51Request){qy51Loaded='';$('qy51-thumb-note').textContent=chooseName(id)+' · '+(lang()==='uk'?'Фото тимчасово недоступне':'Photo unavailable')}};
+  img.src=url;
+}
+
 let style='realm';try{const v=localStorage.getItem('qy50-portal-style');if(['realm','tunnel','light','mist'].includes(v))style=v}catch(_){ }
 let stageTimer=null,travelTimer=null,curtainTimer=null,focusFrom=null,oldOverflow='',busy=false,suppressCurtain=false,previousTheme=String(theme.value);
 const motionReduced=()=>matchMedia('(prefers-reduced-motion:reduce)').matches;
 function paintScene(element,id){const spec=sceneSpec(id);element.dataset.family=spec.family;
   element.style.setProperty('--qy49-a',spec.a);element.style.setProperty('--qy49-b',spec.b);
 }
-function labels(){hint.textContent=tr(0);$('qy49-eyebrow').textContent=tr(1);$('qy49-title').textContent=tr(2);$('qy49-desc').textContent=tr(3);
+function labels(){hint.textContent=tr(0);$('qy49-eyebrow').textContent=tr(1)+' · v51';$('qy49-title').textContent=tr(2);$('qy49-desc').textContent=tr(3);
   $('qy49-next').textContent=tr(4);$('qy49-gallery').textContent=tr(5);$('qy49-back').textContent=tr(6);$('qy49-stylelabel').textContent=tr(7);
   for(const [i,b] of [...overlay.querySelectorAll('[data-portal-style]')].entries())b.textContent=tr(8+i);
   $('qy50-journey-caption').textContent=tr(12)+':';$('qy50-copy-caption').textContent=tr(13);updateDestination();}
 function updateDestination(){const destination=nextOption();const id=destination?.value||theme.value;const s=sceneSpec(id);paintScene(overlay,id);
   $('qy50-journey-name').textContent=s.icon+' '+chooseName(id);
+  if(qy51URL(id)!==qy51Destination||!overlay.classList.contains('qy51-photo-ready'))qy51Load(id);
   $('qy49-next').disabled=!destination||destination.value===theme.value;
 }
 function applyStyle(v){style=v;overlay.dataset.style=v;overlay.querySelectorAll('[data-portal-style]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.portalStyle===v)));
  try{localStorage.setItem('qy50-portal-style',v)}catch(_){}}
 function open(){if(busy||!overlay.hidden||!document.body.classList.contains('qy44-home'))return;
-  busy=true;focusFrom=document.activeElement;oldOverflow=document.body.style.overflow;overlay.hidden=false;overlay.classList.remove('qy49-ready','qy49-travel');document.body.style.overflow='hidden';
+  busy=true;focusFrom=document.activeElement;oldOverflow=document.body.style.overflow;overlay.hidden=false;overlay.classList.remove('qy49-ready','qy49-travel','qy51-photo-ready');document.body.style.overflow='hidden';
   labels();applyStyle(style);clearTimeout(stageTimer);stageTimer=setTimeout(()=>{overlay.classList.add('qy49-ready');$('qy49-next').focus();busy=false},motionReduced()?10:480)}
-function close(){clearTimeout(stageTimer);clearTimeout(travelTimer);overlay.classList.remove('qy49-ready','qy49-travel');overlay.hidden=true;
+function close(){qy51Request++;clearTimeout(stageTimer);clearTimeout(travelTimer);overlay.classList.remove('qy49-ready','qy49-travel');overlay.hidden=true;
   document.body.style.overflow=oldOverflow;busy=false;if(focusFrom?.isConnected)focusFrom.focus({preventScroll:true})}
 function travel(fn){if(busy)return;busy=true;overlay.classList.add('qy49-travel');travelTimer=setTimeout(()=>{try{fn()}finally{close()}},motionReduced()?20:550)}
-function nextWorld(){const opt=nextOption();if(!opt)return;suppressCurtain=true;theme.value=opt.value;theme.dispatchEvent(new Event('change',{bubbles:true}));previousTheme=opt.value;suppressCurtain=false;}
-function showCurtain(id){clearTimeout(curtainTimer);paintScene(curtain,id);$('qy50-copy-destination').textContent=sceneSpec(id).icon+' '+chooseName(id);
+function nextWorld(){const opt=nextOption();if(!opt)return;showCurtain(opt.value);suppressCurtain=true;theme.value=opt.value;theme.dispatchEvent(new Event('change',{bubbles:true}));previousTheme=opt.value;suppressCurtain=false;}
+function showCurtain(id){
+ clearTimeout(curtainTimer);paintScene(curtain,id);
+ $('qy50-copy-destination').textContent=sceneSpec(id).icon+' '+chooseName(id);
+ const url=qy51URL(id);qy51Curtain.removeAttribute('src');curtain.classList.remove('qy51-photo-ready');
+ if(url){
+   const image=new Image();image.decoding='async';
+   image.onload=()=>{if(curtain.hidden)return;qy51Curtain.src=url;curtain.classList.add('qy51-photo-ready')};
+   image.src=url;
+ }
  curtain.hidden=false;curtain.style.animation='none';void curtain.offsetWidth;curtain.style.animation='';
- curtainTimer=setTimeout(()=>{curtain.hidden=true},motionReduced()?80:850)}
+ curtainTimer=setTimeout(()=>{curtain.hidden=true},motionReduced()?200:1900);
+}
 $('qy49-next').addEventListener('click',()=>travel(nextWorld));
 $('qy49-gallery').addEventListener('click',()=>travel(()=>{$('qy44-themes')?.click()}));
 $('qy49-back').addEventListener('click',close);
