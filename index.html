@@ -4364,41 +4364,232 @@ body.qy44-home #qy44-front :is(.qy44-middle,#qy44-time,.qy44-head,.qy44-greeting
 @media(max-width:470px){#qy49-hint{font-size:11px;padding:6px 8px;right:18px;top:90px}#qy49-overlay .qy49-card{padding:18px 15px}.qy49-choices button{min-height:53px}}
 @media(prefers-reduced-motion:reduce){#qy49-overlay *,#qy49-overlay::before,#qy49-overlay::after{animation:none!important;transition:none!important}#qy49-overlay.qy49-ready .qy49-card{opacity:1;visibility:visible;transform:none}}
 </style>
-<script id="qy-v49-portal-js">
+<style id="qy-v50-realm-portal-css">
+/* QuantumYur v50 — theme-specific lightweight portal scenes; v48 controls preserved. */
+#qy49-overlay[data-style="realm"]{
+  background:radial-gradient(ellipse at 50% 45%,rgba(var(--qy49-a),.24) 0%,rgba(var(--qy49-b),.09) 36%,#040b1c 75%,#02040a 100%);
+}
+#qy49-overlay .qy50-scene,#qy50-change .qy50-scene{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;isolation:isolate;
+  background:radial-gradient(ellipse at 50% 38%,rgba(var(--qy49-a),.16),transparent 68%);}
+#qy49-overlay .qy50-scene{opacity:0;transition:opacity .3s}
+#qy49-overlay[data-style="realm"] .qy50-scene{opacity:1}
+#qy49-overlay[data-style="realm"] .qy49-vortex{opacity:.14;transition:opacity .3s}
+#qy49-overlay[data-style="realm"][data-family="space"] .qy49-vortex,
+#qy49-overlay[data-style="realm"][data-family="moon"] .qy49-vortex{opacity:.55}
+#qy49-overlay[data-style="realm"]::before{opacity:.35}
+#qy49-overlay .qy49-card{max-height:calc(100svh - 24px);overflow:auto;overscroll-behavior:contain}
+.qy50-orb{position:absolute;left:calc(50% - 55px);top:15%;width:110px;height:110px;border-radius:50%;
+ background:radial-gradient(circle at 40% 30%,rgba(255,255,255,.73),rgba(var(--qy49-a),.5) 28%,rgba(var(--qy49-b),.16) 56%,transparent 70%);
+ box-shadow:0 0 65px 20px rgba(var(--qy49-a),.15);animation:qy50-orbit 4s ease-in-out infinite alternate}
+.qy50-clouds{position:absolute;inset:0;opacity:.32;background:radial-gradient(ellipse at 10% 53%,rgba(236,246,255,.65),transparent 33%),radial-gradient(ellipse at 70% 60%,rgba(236,246,255,.45),transparent 38%);animation:qy50-drift 7s ease-in-out infinite alternate}
+.qy50-land{position:absolute;left:-8%;right:-8%;bottom:-7%;height:53%;opacity:.83;
+ background:linear-gradient(0deg,#030a17,rgba(var(--qy49-a),.48) 60%,rgba(var(--qy49-b),.19));
+ clip-path:polygon(0 100%,0 74%,13% 58%,23% 67%,37% 24%,48% 54%,61% 18%,72% 52%,83% 31%,100% 72%,100% 100%);
+ animation:qy50-land-enter 1.7s ease-out both}
+.qy50-land2{position:absolute;left:-7%;right:-7%;bottom:-12%;height:36%;background:linear-gradient(0deg,#020712,rgba(var(--qy49-b),.31));
+ clip-path:polygon(0 100%,0 55%,24% 84%,43% 25%,58% 79%,76% 39%,100% 71%,100% 100%);animation:qy50-land-enter 2.1s ease-out both}
+.qy50-specks{position:absolute;inset:0;overflow:hidden}
+.qy50-specks i{position:absolute;display:block;left:var(--p-x);top:var(--p-y);width:var(--p-size);height:var(--p-size);border-radius:50%;
+ background:rgba(var(--qy49-a),.83);box-shadow:0 0 10px rgba(var(--qy49-a),.65);opacity:0;
+ animation:qy50-particle var(--p-speed) linear var(--p-delay) infinite;will-change:transform,opacity}
+/* Mountain: rock silhouettes and clouds fly past the viewpoint. */
+[data-family="mountain"] .qy50-clouds,[data-family="mist"] .qy50-clouds{opacity:.7}
+/* Forest/jungle: trunks and canopy with green drifting fireflies. */
+[data-family="forest"] .qy50-land,[data-family="jungle"] .qy50-land,[data-family="savanna"] .qy50-land{height:82%;opacity:.7;
+ background:repeating-linear-gradient(90deg,transparent 0 10%,rgba(2,18,16,.7) 11% 13%,transparent 14% 25%),
+ linear-gradient(0deg,#03120d,rgba(var(--qy49-a),.2));clip-path:none}
+[data-family="forest"] .qy50-land2,[data-family="jungle"] .qy50-land2{height:45%;opacity:.72;
+ background:radial-gradient(ellipse at 10% 20%,rgba(var(--qy49-a),.4) 0 12%,transparent 26%),radial-gradient(ellipse at 42% 40%,rgba(var(--qy49-a),.5) 0 20%,transparent 31%),radial-gradient(ellipse at 75% 33%,rgba(var(--qy49-b),.5) 0 19%,transparent 29%);clip-path:none}
+[data-family="savanna"] .qy50-land2{height:34%;clip-path:ellipse(75% 52% at 40% 100%)}
+/* Water: horizon, translucent waves and reflective ripples. */
+[data-family="lake"] .qy50-land,[data-family="water"] .qy50-land,[data-family="ocean"] .qy50-land,[data-family="island"] .qy50-land,[data-family="underwater"] .qy50-land{height:50%;clip-path:ellipse(86% 32% at 50% 99%);background:linear-gradient(180deg,rgba(var(--qy49-a),.34),#04192a 82%)}
+[data-family="lake"] .qy50-land2,[data-family="water"] .qy50-land2,[data-family="ocean"] .qy50-land2,[data-family="island"] .qy50-land2,[data-family="underwater"] .qy50-land2{bottom:0;clip-path:none;height:40%;background:repeating-radial-gradient(ellipse at 50% -35%,transparent 0 20px,rgba(var(--qy49-a),.18) 22px 24px,transparent 25px 45px);animation:qy50-water 3.4s ease-in-out infinite alternate}
+[data-family="underwater"] .qy50-orb{opacity:.18}
+/* Desert and fields: rolling dunes and soft airborne particles. */
+[data-family="desert"] .qy50-land,[data-family="meadow"] .qy50-land,[data-family="bloom"] .qy50-land{height:39%;clip-path:ellipse(90% 63% at 44% 100%)}
+[data-family="desert"] .qy50-land2,[data-family="meadow"] .qy50-land2,[data-family="bloom"] .qy50-land2{height:26%;clip-path:ellipse(86% 76% at 77% 100%)}
+[data-family="bloom"] .qy50-specks i,[data-family="meadow"] .qy50-specks i{border-radius:65% 15% 65% 15%;width:calc(var(--p-size) * 1.7);height:calc(var(--p-size) * 1.1)}
+/* Cities: distinct glowing skyline, without downloading assets. */
+[data-family="city"] .qy50-land{height:57%;clip-path:polygon(0 100%,0 55%,6% 55%,6% 30%,16% 30%,16% 65%,23% 65%,23% 11%,30% 11%,30% 43%,39% 43%,39% 23%,47% 23%,47% 57%,55% 57%,55% 18%,65% 18%,65% 48%,72% 48%,72% 37%,81% 37%,81% 13%,87% 13%,87% 48%,100% 48%,100% 100%)}
+[data-family="city"] .qy50-land2{height:44%;background:repeating-linear-gradient(90deg,rgba(var(--qy49-a),.3) 0 2px,transparent 3px 21px),linear-gradient(0deg,#050b1b,#091c2e);clip-path:none;opacity:.45}
+/* Snow and ice: crystalline cliff cuts. */
+[data-family="ice"] .qy50-land,[data-family="snow"] .qy50-land{clip-path:polygon(0 100%,0 65%,11% 44%,21% 72%,39% 11%,50% 58%,65% 18%,75% 47%,90% 20%,100% 65%,100% 100%);background:linear-gradient(135deg,rgba(var(--qy49-a),.72),#0a1e39 67%,#040b16)}
+[data-family="ice"] .qy50-specks i,[data-family="snow"] .qy50-specks i{border-radius:2px;transform:rotate(25deg)}
+/* Aurora: an atmospheric moving curtain. */
+[data-family="aurora"] .qy50-clouds{opacity:.8;transform:rotate(-16deg);background:linear-gradient(105deg,transparent 10%,rgba(39,255,185,.1) 34%,rgba(var(--qy49-a),.6) 43%,transparent 52%,rgba(var(--qy49-b),.43) 67%,transparent 85%);filter:blur(22px);animation:qy50-aurora 5s ease-in-out infinite alternate}
+/* Storm: flash across a dark valley. */
+[data-family="storm"] .qy50-clouds{opacity:.5;animation:qy50-flash 6s linear infinite}
+[data-family="storm"] .qy50-land{opacity:.85}
+/* Volcano: ember glow and fissures in dark rock. */
+[data-family="volcano"] .qy50-land{background:linear-gradient(0deg,#040309 8%,#230e18 40%,rgba(var(--qy49-a),.8) 87%)}
+[data-family="volcano"] .qy50-specks i{background:rgba(255,158,59,.95);box-shadow:0 0 13px rgba(255,97,32,.8)}
+/* Space and moon: keep the warp stars without landscape. */
+[data-family="space"] .qy50-land,[data-family="space"] .qy50-land2,[data-family="moon"] .qy50-land2{display:none}
+[data-family="moon"] .qy50-land{height:26%;clip-path:ellipse(85% 56% at 44% 100%);background:linear-gradient(0deg,#10121d,rgba(var(--qy49-a),.54))}
+/* Fantastical islands hovering over low clouds. */
+[data-family="islands"] .qy50-land{height:37%;left:10%;right:38%;bottom:34%;clip-path:ellipse(50% 36% at 50% 50%);background:linear-gradient(0deg,rgba(var(--qy49-a),.15),rgba(var(--qy49-b),.73))}
+[data-family="islands"] .qy50-land2{height:30%;left:58%;right:8%;bottom:48%;clip-path:ellipse(50% 35% at 50% 50%)}
+/* Warm golden sunsets. */
+[data-family="sunset"] .qy50-orb{background:radial-gradient(circle,rgba(255,254,231,.9) 0%,rgba(var(--qy49-a),.65) 32%,transparent 72%)}
+.qy50-journey{display:inline-flex;gap:7px;align-items:center;justify-content:center;margin:0 0 8px;color:#ffe8c0;font:700 13px/1.5 ui-monospace,Consolas,monospace;letter-spacing:.01em}
+.qy50-journey strong{font-weight:800}
+.qy50-mini{margin:0 0 15px;color:#cbddeb;font-size:12px}
+#qy50-change[hidden]{display:none!important}
+#qy50-change{position:fixed;inset:0;z-index:2147483601;pointer-events:none;isolation:isolate;overflow:hidden;color:#fff;background:radial-gradient(circle at center,rgba(var(--qy49-a),.37),#040916 76%);display:grid;place-items:center;animation:qy50-curtain .88s ease-in-out forwards}
+#qy50-change .qy50-copy{position:relative;z-index:3;text-align:center;padding:18px 23px;border:1px solid rgba(255,230,193,.5);border-radius:18px;background:#07152ecc;max-width:calc(100% - 38px);font:700 clamp(17px,5vw,25px)/1.4 ui-monospace,Consolas,monospace;box-shadow:0 10px 30px #0007}
+#qy50-change .qy50-copy span{display:block;color:#d5e6ef;font:600 12px/1.5 ui-monospace,Consolas,monospace;letter-spacing:.12em}
+@keyframes qy50-drift{to{transform:translate3d(6%,0,0)}}
+@keyframes qy50-land-enter{from{transform:translateY(35px) scale(1.07);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+@keyframes qy50-orbit{to{transform:translateY(15px) scale(1.08)}}
+@keyframes qy50-particle{0%{transform:translate3d(0,18px,0) scale(.4);opacity:0}22%{opacity:.8}78%{opacity:.6}100%{transform:translate3d(25px,-60px,0) scale(1.3);opacity:0}}
+@keyframes qy50-water{to{transform:translateY(16px) scale(1.1)}}
+@keyframes qy50-aurora{to{transform:translateX(7%) rotate(-8deg) scale(1.12)}}
+@keyframes qy50-flash{0%,42%,48%,100%{opacity:.22}44%,46%{opacity:.86}}
+@keyframes qy50-curtain{0%{opacity:0}23%{opacity:1}72%{opacity:1}100%{opacity:0}}
+@media(max-width:430px){.qy50-journey{font-size:12px}#qy49-overlay .qy49-card{padding:17px 14px}.qy50-mini{font-size:11px}}
+@media(prefers-reduced-motion:reduce){#qy50-change{animation:none!important}#qy50-change *,#qy49-overlay .qy50-scene *,#qy49-overlay .qy50-scene{animation:none!important;transition:none!important}}
+/* v30's global low-power rule disables EVERY animation on mobile.
+   Restore motion ONLY for the on-demand portal / brief curtain, not the page. */
+@media (max-width:900px) and (prefers-reduced-motion:no-preference), (hover:none) and (pointer:coarse) and (prefers-reduced-motion:no-preference) {
+ #qy50-change {animation-duration:.88s!important;animation-iteration-count:1!important}
+ #qy49-overlay .qy49-ring{animation-duration:3.1s!important;animation-iteration-count:infinite!important}
+ #qy49-overlay .qy49-core{animation-duration:2.4s!important;animation-iteration-count:infinite!important}
+ #qy49-overlay::before{animation-duration:24s!important;animation-iteration-count:infinite!important}
+ #qy49-overlay .qy50-orb,#qy50-change .qy50-orb{animation-duration:4s!important;animation-iteration-count:infinite!important}
+ #qy49-overlay .qy50-clouds,#qy50-change .qy50-clouds{animation-duration:7s!important;animation-iteration-count:infinite!important}
+ #qy49-overlay[data-family="aurora"] .qy50-clouds{animation-duration:5s!important}
+ #qy49-overlay[data-family="storm"] .qy50-clouds{animation-duration:6s!important}
+ #qy49-overlay .qy50-land,#qy49-overlay .qy50-land2,#qy50-change .qy50-land,#qy50-change .qy50-land2{animation-duration:1.7s!important;animation-iteration-count:1!important}
+ #qy49-overlay .qy50-specks i,#qy50-change .qy50-specks i{animation-duration:var(--p-speed)!important;animation-iteration-count:infinite!important}
+ #qy49-overlay.qy49-travel .qy49-vortex{animation-duration:.7s!important;animation-iteration-count:1!important}
+}
+
+</style>
+<script id="qy-v50-realm-portal-js">
 (()=>{'use strict';
-const front=document.getElementById('qy44-front'),theme=document.getElementById('qy37-theme');
-if(!front||!theme||document.getElementById('qy49-overlay'))return;
 const $=id=>document.getElementById(id);
-const text={
-uk:['✦ Доторкнись до світу','ПОРТАЛ QUANTUMYUR','Куди вирушимо?','Тунель між світами','🪐 Наступний світ','🎨 Галерея','↩ Повернутись','Стиль переходу','🌌 Тунель','✨ Світло','🌫️ Туман'],
-pl:['✦ Dotknij świata','PORTAL QUANTUMYUR','Dokąd ruszamy?','Tunel między światami','🪐 Następny świat','🎨 Galeria','↩ Powrót','Styl przejścia','🌌 Tunel','✨ Światło','🌫️ Mgła'],
-en:['✦ Touch the world','QUANTUMYUR PORTAL','Where shall we go?','A tunnel between worlds','🪐 Next world','🎨 Gallery','↩ Go back','Transition style','🌌 Tunnel','✨ Light','🌫️ Mist'],
-ru:['✦ Прикоснись к миру','ПОРТАЛ QUANTUMYUR','Куда отправимся?','Туннель между мирами','🪐 Следующий мир','🎨 Галерея','↩ Назад','Стиль перехода','🌌 Туннель','✨ Свет','🌫️ Туман']};
-const language=()=>$('site-language')?.value||'uk';
-const tr=i=>(text[language()]||text.en)[i];
+const front=$('qy44-front'),theme=$('qy37-theme');
+if(!front||!theme||$('qy49-overlay'))return;
+/* All 53 themes are explicitly assigned their own scene type and two palette colors.
+   Every world uses its own color, symbol and destination name while 15 efficient
+   CSS scenery families supply the physically appropriate motion. */
+const specs=[
+[1,'mountain','⛰️','145,180,224','207,189,165'],
+[2,'lake','🏞️','92,185,203','100,140,215'],
+[3,'forest','🌲','76,188,122','168,210,112'],
+[4,'water','💦','84,202,227','121,164,255'],
+[5,'ocean','🌊','64,178,223','104,235,206'],
+[6,'island','🏝️','85,221,201','253,207,121'],
+[7,'desert','🏜️','249,175,95','187,106,70'],
+[8,'aurora','🌌','72,240,171','125,115,239'],
+[9,'city','🌃','88,178,255','231,100,188'],
+[10,'space','🪐','111,135,255','201,99,241'],
+[11,'moon','🌕','181,197,234','109,129,203'],
+[12,'sunset','🌅','255,187,101','255,118,112'],
+[13,'space','✨','157,183,255','139,100,219'],
+[14,'underwater','🐠','55,203,220','77,105,226'],
+[15,'underwater','🪸','108,224,209','241,133,176'],
+[16,'jungle','🌿','58,186,106','176,208,70'],
+[17,'savanna','🌾','231,171,76','146,193,98'],
+[18,'ice','🧊','153,223,244','89,142,206'],
+[19,'mountain','🏔️','150,208,249','105,148,212'],
+[20,'bloom','🌼','151,223,132','255,195,145'],
+[21,'forest','🍂','226,139,64','171,94,53'],
+[22,'bloom','🌸','248,173,202','183,213,148'],
+[23,'mist','🌫️','172,193,207','99,162,155'],
+[24,'storm','⛈️','95,128,208','218,215,248'],
+[25,'sunset','🌇','241,130,122','163,105,215'],
+[26,'meadow','🇺🇦','102,189,225','243,211,104'],
+[27,'bloom','🇯🇵','252,178,205','147,188,226'],
+[28,'mist','🇨🇳','245,162,100','225,92,95'],
+[29,'city','🇺🇸','131,173,240','218,110,143'],
+[30,'city','🇫🇷','156,173,233','240,180,136'],
+[31,'ocean','🇮🇹','102,219,153','231,182,121'],
+[32,'desert','🇪🇬','242,194,100','213,150,85'],
+[33,'ice','🇮🇸','147,227,242','157,155,223'],
+[34,'mountain','🇳🇴','125,198,243','94,147,215'],
+[35,'sunset','🇹🇷','236,148,111','239,186,103'],
+[36,'city','🏙️','102,234,226','184,105,252'],
+[37,'space','🪐','123,218,226','146,108,246'],
+[38,'ice','💎','108,220,249','105,118,238'],
+[39,'volcano','🌋','255,124,56','232,59,73'],
+[40,'desert','🔴','250,130,94','163,76,67'],
+[41,'island','🏖️','149,230,223','249,232,179'],
+[42,'mountain','⛰️','247,170,121','159,132,225'],
+[43,'snow','❄️','194,232,255','133,175,235'],
+[44,'islands','🏝️','142,233,221','176,161,246'],
+[45,'mist','🌲','118,190,162','142,163,221'],
+[46,'forest','🎋','121,224,131','74,156,112'],
+[47,'bloom','🪻','191,151,245','143,191,188'],
+[48,'sunset','🌺','249,156,184','237,162,124'],
+[49,'lake','🪞','126,214,226','151,181,223'],
+[50,'desert','🏜️','248,201,108','216,144,65'],
+[51,'water','💧','90,232,195','92,184,213'],
+[52,'forest','🦌','120,204,137','202,188,118'],
+[53,'space','🌠','129,167,253','224,158,238']
+];
+const scenes=new Map(specs.map(([id,family,icon,a,b])=>[String(id),{id,family,icon,a,b}]));
+const languages={
+uk:['✦ Доторкнись до світу','ПОРТАЛ QUANTUMYUR','Куди вирушимо?','Кожен світ має свій шлях','🪐 Наступний світ','🎨 Галерея','↩ Повернутись','Перехід','🌍 За світом','🌌 Тунель','✨ Світло','🌫️ Туман','Попереду','ПОДОРОЖ МІЖ СВІТАМИ'],
+en:['✦ Touch the world','QUANTUMYUR PORTAL','Where shall we go?','Every world has a different path','🪐 Next world','🎨 Gallery','↩ Go back','Transition','🌍 By world','🌌 Tunnel','✨ Light','🌫️ Mist','Destination','TRAVEL BETWEEN WORLDS'],
+pl:['✦ Dotknij świata','PORTAL QUANTUMYUR','Dokąd ruszamy?','Każdy świat ma własną drogę','🪐 Następny świat','🎨 Galeria','↩ Powrót','Przejście','🌍 Według świata','🌌 Tunel','✨ Światło','🌫️ Mgła','Cel','PODRÓŻ MIĘDZY ŚWIATAMI'],
+ru:['✦ Прикоснись к миру','ПОРТАЛ QUANTUMYUR','Куда отправимся?','У каждого мира свой путь','🪐 Следующий мир','🎨 Галерея','↩ Назад','Переход','🌍 По миру','🌌 Туннель','✨ Свет','🌫️ Туман','Направление','ПУТЕШЕСТВИЕ МЕЖДУ МИРАМИ']
+};
+const lang=()=>$('site-language')?.value||'uk';const tr=i=>(languages[lang()]||languages.en)[i];
+const chooseName=(id)=>{const opt=[...theme.options].find(o=>o.value===id);return opt?.textContent?.trim().replace(/^\d+\s*[·.\-–]\s*/,'')||'QuantumYur'};
+const nextOption=()=>{const opts=[...theme.options].filter(o=>!o.disabled&&o.value&&o.value!=='all');if(!opts.length)return null;const i=opts.findIndex(o=>o.value===theme.value);return opts[(i+1+opts.length)%opts.length]};
+const sceneSpec=id=>scenes.get(String(id))||scenes.get('10');
+function sceneHTML(){let particles='';for(let i=0;i<19;i++){
+const x=(i*37+13)%96,y=(i*53+11)%88,size=2+(i%4),speed=3.3+(i%5)*.8,delay=-(i*.41)%5;
+particles+=`<i style="--p-x:${x}%;--p-y:${y}%;--p-size:${size}px;--p-speed:${speed}s;--p-delay:${delay}s"></i>`}
+return `<div class="qy50-scene" aria-hidden="true"><div class="qy50-orb"></div><div class="qy50-clouds"></div><div class="qy50-land"></div><div class="qy50-land2"></div><div class="qy50-specks">${particles}</div></div>`}
 const hint=document.createElement('button');hint.type='button';hint.id='qy49-hint';hint.setAttribute('aria-haspopup','dialog');hint.setAttribute('aria-controls','qy49-overlay');front.append(hint);
 const overlay=document.createElement('div');overlay.id='qy49-overlay';overlay.hidden=true;overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-labelledby','qy49-title');
-overlay.innerHTML='<div class="qy49-vortex" aria-hidden="true"><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-core"></span></div><section class="qy49-card"><div class="qy49-eyebrow" id="qy49-eyebrow"></div><h2 id="qy49-title"></h2><p id="qy49-desc"></p><div class="qy49-choices"><button type="button" id="qy49-next"></button><button type="button" id="qy49-gallery"></button><button type="button" id="qy49-back"></button></div><label class="qy49-stylelabel" id="qy49-stylelabel"></label><div class="qy49-styles" role="group" aria-label="Transition style"><button type="button" data-portal-style="tunnel" aria-pressed="true"></button><button type="button" data-portal-style="light" aria-pressed="false"></button><button type="button" data-portal-style="mist" aria-pressed="false"></button></div></section>';
+overlay.innerHTML=sceneHTML()+'<div class="qy49-vortex" aria-hidden="true"><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-ring"></span><span class="qy49-core"></span></div><section class="qy49-card"><div class="qy49-eyebrow" id="qy49-eyebrow"></div><h2 id="qy49-title"></h2><p id="qy49-desc"></p><div class="qy50-journey"><span id="qy50-journey-caption"></span><strong id="qy50-journey-name"></strong></div><div class="qy49-choices"><button type="button" id="qy49-next"></button><button type="button" id="qy49-gallery"></button><button type="button" id="qy49-back"></button></div><label class="qy49-stylelabel" id="qy49-stylelabel"></label><div class="qy49-styles" role="group" aria-label="Transition style"><button type="button" data-portal-style="realm"></button><button type="button" data-portal-style="tunnel"></button><button type="button" data-portal-style="light"></button><button type="button" data-portal-style="mist"></button></div></section>';
 document.body.append(overlay);
-let style='tunnel';try{const saved=localStorage.getItem('qy49-portal-style');if(['tunnel','light','mist'].includes(saved))style=saved}catch(_){}
-let stageTimer=null,travelTimer=null,busy=false,focusFrom=null,oldOverflow='';
-const motionReduced=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-function labels(){hint.textContent=tr(0);$('qy49-eyebrow').textContent=tr(1);$('qy49-title').textContent=tr(2);$('qy49-desc').textContent=tr(3);$('qy49-next').textContent=tr(4);$('qy49-gallery').textContent=tr(5);$('qy49-back').textContent=tr(6);$('qy49-stylelabel').textContent=tr(7);for(const [i,b] of [...overlay.querySelectorAll('[data-portal-style]')].entries())b.textContent=tr(8+i)}
-function applyStyle(v){style=v;overlay.dataset.style=v;overlay.querySelectorAll('[data-portal-style]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.portalStyle===v)));try{localStorage.setItem('qy49-portal-style',v)}catch(_){}}
-function open(){if(busy||!overlay.hidden||!document.body.classList.contains('qy44-home'))return;busy=true;focusFrom=document.activeElement;oldOverflow=document.body.style.overflow;overlay.hidden=false;overlay.classList.remove('qy49-ready','qy49-travel');document.body.style.overflow='hidden';labels();applyStyle(style);stageTimer=setTimeout(()=>{overlay.classList.add('qy49-ready');$('qy49-next').focus();busy=false},motionReduced()?40:850)}
-function close(){clearTimeout(stageTimer);clearTimeout(travelTimer);overlay.classList.remove('qy49-ready','qy49-travel');overlay.hidden=true;document.body.style.overflow=oldOverflow;busy=false;focusFrom?.isConnected&&focusFrom.focus({preventScroll:true})}
-function travel(fn){if(busy)return;busy=true;overlay.classList.add('qy49-travel');travelTimer=setTimeout(()=>{try{fn()}finally{close()}},motionReduced()?45:660)}
-function nextWorld(){const opts=[...theme.options].filter(o=>!o.disabled&&o.value&&o.value!=='all');if(opts.length<2)return;const index=opts.findIndex(o=>o.value===theme.value);const next=opts[(index+1+opts.length)%opts.length];if(next){theme.value=next.value;theme.dispatchEvent(new Event('change',{bubbles:true}))}}
+const curtain=document.createElement('div');curtain.id='qy50-change';curtain.hidden=true;curtain.setAttribute('aria-hidden','true');curtain.innerHTML=sceneHTML()+'<div class="qy50-copy"><span id="qy50-copy-caption"></span><strong id="qy50-copy-destination"></strong></div>';document.body.append(curtain);
+let style='realm';try{const v=localStorage.getItem('qy50-portal-style');if(['realm','tunnel','light','mist'].includes(v))style=v}catch(_){ }
+let stageTimer=null,travelTimer=null,curtainTimer=null,focusFrom=null,oldOverflow='',busy=false,suppressCurtain=false,previousTheme=String(theme.value);
+const motionReduced=()=>matchMedia('(prefers-reduced-motion:reduce)').matches;
+function paintScene(element,id){const spec=sceneSpec(id);element.dataset.family=spec.family;
+  element.style.setProperty('--qy49-a',spec.a);element.style.setProperty('--qy49-b',spec.b);
+}
+function labels(){hint.textContent=tr(0);$('qy49-eyebrow').textContent=tr(1);$('qy49-title').textContent=tr(2);$('qy49-desc').textContent=tr(3);
+  $('qy49-next').textContent=tr(4);$('qy49-gallery').textContent=tr(5);$('qy49-back').textContent=tr(6);$('qy49-stylelabel').textContent=tr(7);
+  for(const [i,b] of [...overlay.querySelectorAll('[data-portal-style]')].entries())b.textContent=tr(8+i);
+  $('qy50-journey-caption').textContent=tr(12)+':';$('qy50-copy-caption').textContent=tr(13);updateDestination();}
+function updateDestination(){const destination=nextOption();const id=destination?.value||theme.value;const s=sceneSpec(id);paintScene(overlay,id);
+  $('qy50-journey-name').textContent=s.icon+' '+chooseName(id);
+  $('qy49-next').disabled=!destination||destination.value===theme.value;
+}
+function applyStyle(v){style=v;overlay.dataset.style=v;overlay.querySelectorAll('[data-portal-style]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.portalStyle===v)));
+ try{localStorage.setItem('qy50-portal-style',v)}catch(_){}}
+function open(){if(busy||!overlay.hidden||!document.body.classList.contains('qy44-home'))return;
+  busy=true;focusFrom=document.activeElement;oldOverflow=document.body.style.overflow;overlay.hidden=false;overlay.classList.remove('qy49-ready','qy49-travel');document.body.style.overflow='hidden';
+  labels();applyStyle(style);clearTimeout(stageTimer);stageTimer=setTimeout(()=>{overlay.classList.add('qy49-ready');$('qy49-next').focus();busy=false},motionReduced()?10:480)}
+function close(){clearTimeout(stageTimer);clearTimeout(travelTimer);overlay.classList.remove('qy49-ready','qy49-travel');overlay.hidden=true;
+  document.body.style.overflow=oldOverflow;busy=false;if(focusFrom?.isConnected)focusFrom.focus({preventScroll:true})}
+function travel(fn){if(busy)return;busy=true;overlay.classList.add('qy49-travel');travelTimer=setTimeout(()=>{try{fn()}finally{close()}},motionReduced()?20:550)}
+function nextWorld(){const opt=nextOption();if(!opt)return;suppressCurtain=true;theme.value=opt.value;theme.dispatchEvent(new Event('change',{bubbles:true}));previousTheme=opt.value;suppressCurtain=false;}
+function showCurtain(id){clearTimeout(curtainTimer);paintScene(curtain,id);$('qy50-copy-destination').textContent=sceneSpec(id).icon+' '+chooseName(id);
+ curtain.hidden=false;curtain.style.animation='none';void curtain.offsetWidth;curtain.style.animation='';
+ curtainTimer=setTimeout(()=>{curtain.hidden=true},motionReduced()?80:850)}
 $('qy49-next').addEventListener('click',()=>travel(nextWorld));
 $('qy49-gallery').addEventListener('click',()=>travel(()=>{$('qy44-themes')?.click()}));
 $('qy49-back').addEventListener('click',close);
 for(const b of overlay.querySelectorAll('[data-portal-style]'))b.addEventListener('click',()=>applyStyle(b.dataset.portalStyle));
 overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
-overlay.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();close();return}if(e.key==='Tab'&&overlay.classList.contains('qy49-ready')){const buttons=[...overlay.querySelectorAll('button')];const first=buttons[0],last=buttons[buttons.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
+overlay.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();close();return}
+ if(e.key==='Tab'&&overlay.classList.contains('qy49-ready')){const buttons=[...overlay.querySelectorAll('button:not(:disabled)')],first=buttons[0],last=buttons[buttons.length-1];if(!first||!last)return;
+ if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
 hint.addEventListener('click',e=>{e.stopPropagation();open()});
 front.addEventListener('click',e=>{if(e.target.closest('button,a,input,select,textarea,label,summary,[role="button"],[contenteditable],#qy47-controls,#qy48-photo-row,.qy44-actions,.qy44-bottom'))return;open()});
+theme.addEventListener('change',()=>{const now=String(theme.value);if(previousTheme===now)return;previousTheme=now;
+ if(!suppressCurtain&&document.body.classList.contains('qy44-home')&&overlay.hidden)showCurtain(now);
+ if(!overlay.hidden)updateDestination()});
 $('site-language')?.addEventListener('change',labels);
 labels();applyStyle(style);
 })();
+
 </script>
 </body></html>
