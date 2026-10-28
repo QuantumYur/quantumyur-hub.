@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="uk">
 <head>
-<!-- QuantumYur v53 / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
+<!-- QuantumYur v54 / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script id="qy-v35-before-paint">
@@ -3526,7 +3526,33 @@ if(h<17)return 4;if(h<19)return 5;return 6;
 function phaseLabel(){return activeTheme().id===1?FIRST_THEME_PERIODS[localPhase8()]:periods[localPhase()]}
 function selectedImageIndex(){return state.mode==='auto'?(activeTheme().id===1?localPhase8():[0,0,1,2,2,2][localPhase()]):Number(state.mode)}
 function themeImageURL(theme,i,small=false){return theme.id===1?FIRST_THEME_ASSETS[i]:imageUrl(theme.photos[i],small)}
-const imageUrl=(id,small=false)=>'https://images.unsplash.com/'+id+'?auto=format&fit=crop&w='+(small?'480':window.innerWidth<680?'1120':'2000')+'&q='+(small?'64':'83');
+/* v54: portrait-aware image delivery. Only the visited world is fetched;
+   the small embedded fallback remains instantly visible without a network.
+   Two dimension tiers respect data saver, never fetch all 53 photos. */
+function qy54PhotoParams(small=false){
+ if(small)return 'w=480&h=360&q=68';
+ const conn=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+ const saver=Boolean(conn?.saveData)||/^(slow-2g|2g)$/.test(conn?.effectiveType||'');
+ const mem=Number(navigator.deviceMemory||4);
+ const restrained=saver||mem<3;
+ const portrait=window.matchMedia('(max-width:760px) and (orientation:portrait)').matches;
+ const dpr=Math.max(1,Math.min(Number(window.devicePixelRatio)||1,2.8));
+ const even64=x=>Math.round(x/64)*64;
+ let w,h,q;
+ if(portrait){
+   w=even64(Math.max(800,Math.min(restrained?864:1152,window.innerWidth*dpr*1.02)));
+   h=even64(Math.max(1280,Math.min(restrained?1536:2048,window.innerHeight*dpr*0.94)));
+   q=restrained?77:85;
+ }else{
+   w=even64(Math.max(restrained?1280:1920,Math.min(restrained?1600:2304,window.innerWidth*dpr*0.88)));
+   h=even64(Math.max(restrained?768:1088,Math.min(restrained?1024:1536,window.innerHeight*dpr*0.88)));
+   q=restrained?78:86;
+ }
+ return 'w='+w+'&h='+h+'&q='+q;
+}
+const imageUrl=(id,small=false)=>'https://images.unsplash.com/'+id+'?auto=format&fit=crop&'+qy54PhotoParams(small);
+/* Debug-only metrics; not visible in the user interface. */
+window.qyHubImageQuality=Object.freeze({version:'54',dimensions:()=>qy54PhotoParams(false),lazy:true});
 // v51.1: read the real image of a destination from this site's 53-theme catalogue.
 // Theme 1 includes eight embedded scenes, so its portal works fully offline.
 window.qyHubPortalSource=Object.freeze({
@@ -4767,7 +4793,7 @@ const motionReduced=()=>matchMedia('(prefers-reduced-motion:reduce)').matches;
 function paintScene(element,id){const spec=sceneSpec(id);element.dataset.family=spec.family;
   element.style.setProperty('--qy49-a',spec.a);element.style.setProperty('--qy49-b',spec.b);
 }
-function labels(){hint.textContent=tr(0);$('qy49-eyebrow').textContent=tr(1)+' · v53';$('qy49-title').textContent=tr(2);$('qy49-desc').textContent=tr(3);
+function labels(){hint.textContent=tr(0);$('qy49-eyebrow').textContent=tr(1)+' · v54';$('qy49-title').textContent=tr(2);$('qy49-desc').textContent=tr(3);
   $('qy49-next').textContent=tr(4);$('qy49-gallery').textContent=tr(5);$('qy49-back').textContent=tr(6);$('qy49-stylelabel').textContent='';
   for(const [i,b] of [...overlay.querySelectorAll('[data-portal-style]')].entries())b.textContent=tr(8+i);
   $('qy50-journey-caption').textContent=tr(12)+':';$('qy50-copy-caption').textContent='';updateDestination();}
@@ -4824,4 +4850,15 @@ labels();applyStyle(style);
 })();
 
 </script>
+
+<style id="qy-v54-photo-detail">
+/* v54: full-resolution on demand; keep instant thematic backup beneath the loaded photo. */
+#qy49-overlay .qy51-landscape img,#qy51-thumb-img{
+ opacity:0;transition:opacity .16s linear!important;
+ image-rendering:auto;
+}
+#qy49-overlay .qy51-landscape img[src],#qy51-thumb-img[src]{opacity:1}
+#qy50-change .qy51-landscape img{image-rendering:auto}
+@media(prefers-reduced-motion:reduce){#qy49-overlay .qy51-landscape img,#qy51-thumb-img{transition:none!important}}
+</style>
 </body></html>
