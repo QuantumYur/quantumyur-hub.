@@ -1,0 +1,12 @@
+{
+ "name":"QuantumYur · Cosmic Edition",
+ "short_name":"QuantumYur",
+ "description":"Космос, 10 мов, країни, валюти й світові біржі",
+ "start_url":"./",
+ "scope":"./",
+ "display":"standalone",
+ "background_color":"#080729",
+ "theme_color":"#080729",
+ "lang":"uk",
+ "icons":[{"src":"./icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},{"src":"./icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}]
+}
