@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="uk">
 <head>
-<!-- QuantumYur v44 / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
+<!-- QuantumYur v46 / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script id="qy-v35-before-paint">
@@ -4085,6 +4085,128 @@ document.body.classList.add('qy44-ready','qy44-home');updateLabels();updateClock
 }
 @media(prefers-reduced-motion:reduce){
  :is(#qy44-front,main#top > .section,#sky-scene){transition:none!important}
+}
+</style>
+
+<style id="qy-v46-corner-ornaments">
+/* v46: lightweight frame-synced ornamental corners, no images, no JS, no extra requests.
+   Existing #qy42-frame[data-frame] is the only state source; "none" hides every ornament.
+   Symbols are intentionally small, inert, and placed near the rim, not over controls. */
+:root{
+  --qy46-visible:none;
+  --qy46-mark-a:"✧";
+  --qy46-mark-b:"✦";
+  --qy46-mark-color:#d7dfea;
+  --qy46-mark-bg:rgba(12,25,42,.96);
+}
+:root:has(#qy42-frame[data-frame="halloween"]:not([hidden])){
+  --qy46-visible:grid;
+  --qy46-mark-a:"🎃";
+  --qy46-mark-b:"🕸";
+  --qy46-mark-color:#ffd49b;
+  --qy46-mark-bg:rgba(39,20,26,.96);
+}
+:root:has(#qy42-frame[data-frame="autumn"]:not([hidden])){
+  --qy46-visible:grid;
+  --qy46-mark-a:"🍁";
+  --qy46-mark-b:"🍂";
+  --qy46-mark-color:#eec18b;
+  --qy46-mark-bg:rgba(38,26,21,.96);
+}
+:root:has(#qy42-frame[data-frame="winter"]:not([hidden])){
+  --qy46-visible:grid;
+  --qy46-mark-a:"❄";
+  --qy46-mark-b:"✧";
+  --qy46-mark-color:#beeaff;
+  --qy46-mark-bg:rgba(9,32,52,.97);
+}
+:root:has(#qy42-frame[data-frame="cosmos"]:not([hidden])){
+  --qy46-visible:grid;
+  --qy46-mark-a:"✦";
+  --qy46-mark-b:"☾";
+  --qy46-mark-color:#e2d7ff;
+  --qy46-mark-bg:rgba(23,19,50,.97);
+}
+:root:has(#qy42-frame[data-frame="classic"]:not([hidden])){
+  --qy46-visible:grid;
+  --qy46-mark-a:"❖";
+  --qy46-mark-b:"✧";
+  --qy46-mark-color:#f3daa1;
+  --qy46-mark-bg:rgba(35,29,25,.97);
+}
+/* Only card-level boxes; never headings, controls, text containers or scrollable grid items. */
+:is(.daily-panel,.card,.qh-panel,.qy44-menugroup,
+    .qy-install-card,.qy-news-card,.qy-discover-item,
+    .astro-panel,.q-note-entry,#qy41-compact,#qy44-contentbar,
+    #qy44-front, main#top > .section) {
+  position:relative;
+}
+:is(.daily-panel,.card,.qh-panel,.qy44-menugroup,
+    .qy-install-card,.qy-news-card,.qy-discover-item,
+    .astro-panel,.q-note-entry,#qy41-compact,#qy44-contentbar,
+    #qy44-front, main#top > .section)::after {
+  content:var(--qy46-mark-a);
+  display:var(--qy46-visible);
+  place-items:center;
+  position:absolute;
+  top:4px;
+  right:5px;
+  width:21px;
+  height:21px;
+  border:1px solid var(--qy45-strong);
+  border-radius:7px;
+  background:var(--qy46-mark-bg);
+  box-shadow:0 0 7px var(--qy45-glow);
+  color:var(--qy46-mark-color);
+  font-family:system-ui,"Segoe UI Emoji",sans-serif;
+  font-size:13px;
+  line-height:1;
+  font-weight:400;
+  opacity:.82;
+  pointer-events:none!important;
+  user-select:none!important;
+  z-index:1;
+}
+:is(.daily-panel,.card,.qh-panel,.qy44-menugroup,
+    .qy-install-card,.qy-news-card,.qy-discover-item,
+    .astro-panel,.q-note-entry,#qy41-compact,#qy44-contentbar,
+    main#top > .section)::before {
+  content:var(--qy46-mark-b);
+  display:var(--qy46-visible);
+  place-items:center;
+  position:absolute;
+  bottom:5px;
+  left:6px;
+  width:15px;
+  height:15px;
+  color:var(--qy46-mark-color);
+  font-family:system-ui,"Segoe UI Emoji",sans-serif;
+  font-size:10px;
+  font-weight:400;
+  line-height:1;
+  opacity:.44;
+  pointer-events:none!important;
+  user-select:none!important;
+  z-index:1;
+}
+/* Existing ::before art on the homepage is not overridden. */
+@media (max-width:640px){
+  :is(.daily-panel,.card,.qh-panel,.qy44-menugroup,
+      .qy-install-card,.qy-news-card,.qy-discover-item,
+      .astro-panel,.q-note-entry,#qy41-compact,#qy44-contentbar,
+      #qy44-front,main#top > .section)::after {
+    width:18px;height:18px;font-size:11px;top:3px;right:4px;
+    opacity:.73;border-radius:6px;
+  }
+  :is(.daily-panel,.card,.qh-panel,.qy44-menugroup,
+      .qy-install-card,.qy-news-card,.qy-discover-item,
+      .astro-panel,.q-note-entry,#qy41-compact,#qy44-contentbar,
+      main#top > .section)::before {font-size:9px;opacity:.30;}
+  /* Front status needs a softer motif than full-sized panels. */
+  #qy41-compact::after,#qy44-contentbar::after{opacity:.45}
+}
+@media (prefers-reduced-transparency:reduce){
+ :root{--qy46-mark-bg:rgb(18,25,37)}
 }
 </style>
 </body></html>
