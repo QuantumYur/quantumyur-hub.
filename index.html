@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="uk">
 <head>
-<!-- QuantumYur v80 (adaptive lab rendering + repeatable seeded simulations; v47 design preserved) / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
-<meta charset="UTF-8"><meta name="qy-build" content="79"><meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- QuantumYur v81 (Genesis autonomous generational data laboratory; v47 design preserved) / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
+<meta charset="UTF-8"><meta name="qy-build" content="81"><meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script id="qy-v35-before-paint">
 (()=>{'use strict';
@@ -6062,6 +6062,22 @@ wrap.innerHTML=`<div id="qy72-apps-portal" aria-hidden="true"><i class="qy72-rin
     <div class="qy75-stats"><div><small id="qy75-step-label">Кроки</small><strong id="qy75-steps">0</strong></div><div><small id="qy75-count-label">Елементи</small><strong id="qy75-count">0</strong></div><div><small id="qy75-rule-label">Правило</small><strong id="qy75-rule">B3/S23</strong></div></div>
     <div class="qy75-actions"><button type="button" class="qy72-btn" id="qy75-pause">⏸ Пауза</button><button type="button" class="qy72-btn" id="qy75-reset">↻ Новий дослід</button><label id="qy75-speed-wrap">Швидкість <select id="qy75-speed"><option value="1">×1</option><option value="2" selected>×2</option><option value="4">×4</option></select></label></div>
 
+
+    <section id="qy81-genesis" class="qy81-panel" aria-label="QuantumYur Genesis — еволюція даних">
+      <header class="qy81-head"><div><small>QUANTUMYUR · GENESIS v81</small><h3 id="qy81-title">✧ Лабораторія еволюції даних</h3><p id="qy81-description">Автоматичні досліди, покоління та перевірювані гіпотези.</p></div><span id="qy81-status" class="qy81-state">● Вимкнено</span></header>
+      <div class="qy81-controls">
+        <label class="qy81-toggle"><input id="qy81-auto" type="checkbox"/><span id="qy81-toggle-label">Автоматичні покоління</span></label>
+        <label class="qy81-field"><span id="qy81-interval-label">Збір кожні</span><select id="qy81-interval"><option value="10">10 с</option><option value="30" selected>30 с</option><option value="60">60 с</option></select></label>
+        <label class="qy81-field"><span id="qy81-strategy-label">Стратегія</span><select id="qy81-strategy"><option value="exploration">Пошук нового</option><option value="stability">Стабільність</option><option value="comparison">Порівняння моделей</option></select></label>
+      </div>
+      <div class="qy81-stats"><div><span id="qy81-count-label">Збережених поколінь</span><strong id="qy81-count">0</strong></div><div><span id="qy81-generation-label">Поточне покоління</span><strong id="qy81-generation">—</strong></div><div><span id="qy81-anomalies-label">Змін структури</span><strong id="qy81-anomalies">0</strong></div></div>
+      <div class="qy81-progress"><div class="qy81-progress-track"><span id="qy81-progress-bar"></span></div><small id="qy81-progress-label">Увімкни автоматичні покоління, щоб почати.</small></div>
+      <div class="qy81-buttons"><button type="button" class="qy72-btn" id="qy81-next">↻ Завершити покоління</button><button type="button" class="qy72-btn" id="qy81-json">↓ Genesis JSON</button><button type="button" class="qy72-btn" id="qy81-csv">↓ CSV</button></div>
+      <div class="qy81-evolution"><strong id="qy81-chart-title">Еволюція нормалізованих показників</strong><canvas id="qy81-chart" width="680" height="170" role="img" aria-label="Графік поколінь"></canvas></div>
+      <div class="qy81-history"><label for="qy81-list" id="qy81-history-label">Дерево поколінь (останнє зверху)</label><select id="qy81-list" aria-label="Історія поколінь"><option value="">Поки що порожньо</option></select><p class="qy81-details" id="qy81-details">Параметри, зміни та походження покоління з'являться тут.</p><div class="qy81-buttons"><button type="button" class="qy72-btn" id="qy81-replay">↻ Відтворити вибране</button><button type="button" class="qy72-btn" id="qy81-clear">✕ Очистити Genesis</button></div></div>
+      <p id="qy81-notice" class="qy81-notice" role="status">Дані зберігаються тільки в цьому браузері. Це результати чисельних симуляцій, не виміри реального світу. Робота зупиняється, коли вкладка прихована або лабораторія закрита.</p>
+    </section>
+
     <section class="qy79-studio" id="qy79-studio" aria-label="Наукові вимірювання">
       <div class="qy79-head"><div><span class="qy79-overline">QUANTUMYUR · DATA LAB</span><h3 id="qy79-title">📈 Історія вимірювань</h3><p id="qy79-subtitle">Справжні числові вимірювання поточного досліду, а не декоративний графік.</p></div><span class="qy79-live" id="qy79-live">● Запис</span></div>
       <div class="qy79-metrics"><div><span id="qy79-primary-label">Кількість елементів</span><strong id="qy79-primary">0</strong></div><div><span id="qy79-secondary-label">Щільність</span><strong id="qy79-secondary">0%</strong></div><div><span id="qy79-samples-label">Вимірювань</span><strong id="qy79-samples">1</strong></div></div>
@@ -6345,6 +6361,41 @@ html:has(#qy78-view.qy78-expanded),html:has(#qy78-view.qy78-expanded) body{overf
 #qy72-apps-overlay .qy80-archive-replay:disabled{opacity:.48;cursor:not-allowed}
 @media(max-width:480px){#qy72-apps-overlay .qy80-runbar{grid-template-columns:minmax(0,1fr) auto}#qy72-apps-overlay .qy80-runbar label{grid-column:1/-1}#qy72-apps-overlay #qy80-seed{max-width:100%}}
 </style>
+
+<style id="qy81-genesis-css">
+#qy72-apps-overlay .qy81-panel{margin:14px 0;padding:clamp(13px,2vw,20px);background:linear-gradient(148deg,rgba(9,35,59,.93),rgba(7,25,48,.94));border:1px solid rgba(107,190,205,.55);box-shadow:inset 0 0 28px rgba(24,114,146,.08);border-radius:16px;color:#d8eef4;font-family:ui-monospace,Consolas,monospace;display:grid;gap:13px;min-width:0;}
+#qy72-apps-overlay .qy81-panel *{box-sizing:border-box;min-width:0}
+#qy72-apps-overlay .qy81-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap}
+#qy72-apps-overlay .qy81-head small{letter-spacing:.09em;color:#7db9c8;font-size:10px}
+#qy72-apps-overlay .qy81-head h3{margin:5px 0;font-size:clamp(16px,3vw,21px);color:#e1fff5;line-height:1.3}
+#qy72-apps-overlay .qy81-head p{margin:3px 0;font-size:12px;color:#a8ccd6;line-height:1.5}
+#qy72-apps-overlay .qy81-state{font-size:11px;font-weight:700;color:#c7d3dc;border:1px solid rgba(160,193,208,.36);padding:7px 10px;border-radius:99px;white-space:nowrap}
+#qy72-apps-overlay .qy81-state[data-on="true"]{color:#9cf7c9;border-color:rgba(95,222,155,.60)}
+#qy72-apps-overlay .qy81-controls{display:grid;grid-template-columns:1.2fr 1fr 1.3fr;gap:10px;align-items:end}
+#qy72-apps-overlay .qy81-controls .qy81-toggle{min-height:42px;display:flex;gap:9px;align-items:center;color:#d7f6f6;font-size:12px;cursor:pointer}
+#qy72-apps-overlay .qy81-toggle input{accent-color:#61dfbb;width:18px;height:18px;flex-shrink:0}
+#qy72-apps-overlay .qy81-field{display:grid;gap:5px;font-size:11px;color:#b6d3e3}
+#qy72-apps-overlay .qy81-field select,#qy72-apps-overlay .qy81-history select{width:100%;min-height:42px;background:#102e49;border:1px solid rgba(116,202,220,.6);border-radius:8px;color:#ebfcff;padding:8px;font:12px ui-monospace,Consolas,monospace}
+#qy72-apps-overlay .qy81-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+#qy72-apps-overlay .qy81-stats>div{border:1px solid rgba(111,174,200,.25);background:rgba(18,52,76,.6);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:5px}
+#qy72-apps-overlay .qy81-stats span{font-size:10px;color:#a8ccda;line-height:1.3}
+#qy72-apps-overlay .qy81-stats strong{font-size:clamp(17px,3vw,23px);color:#d4fff0}
+#qy72-apps-overlay .qy81-progress{display:grid;gap:7px}
+#qy72-apps-overlay .qy81-progress-track{height:7px;background:rgba(94,131,158,.25);border-radius:99px;overflow:hidden}
+#qy72-apps-overlay .qy81-progress-track span{display:block;height:100%;width:0%;background:linear-gradient(90deg,#5ab0d5,#6ceec4);border-radius:99px;transition:width .4s}
+#qy72-apps-overlay .qy81-progress small{font-size:11px;color:#b3d1dc}
+#qy72-apps-overlay .qy81-buttons{display:flex;flex-wrap:wrap;gap:8px}
+#qy72-apps-overlay .qy81-buttons .qy72-btn{min-height:40px;flex:1 1 126px;white-space:normal}
+#qy72-apps-overlay .qy81-buttons button:disabled{opacity:.48;cursor:not-allowed}
+#qy72-apps-overlay .qy81-evolution{border:1px solid rgba(117,185,206,.23);border-radius:10px;padding:9px;background:#081c33}
+#qy72-apps-overlay .qy81-evolution strong{display:block;font-size:11px;color:#b7dee7;margin-bottom:8px}
+#qy72-apps-overlay .qy81-evolution canvas{display:block;width:100%;height:150px;max-width:100%;border-radius:6px}
+#qy72-apps-overlay .qy81-history{display:grid;gap:8px}
+#qy72-apps-overlay .qy81-history label{font-size:12px;color:#d4eff3}
+#qy72-apps-overlay .qy81-details{font-size:11px;color:#a6d4df;line-height:1.65;background:rgba(17,54,78,.45);border-radius:9px;padding:10px;white-space:pre-wrap;overflow-wrap:anywhere;margin:0;min-height:55px}
+#qy72-apps-overlay .qy81-notice{font-size:11px;color:#99b9c6;line-height:1.55;margin:0}
+@media(max-width:600px){#qy72-apps-overlay .qy81-controls{grid-template-columns:repeat(2,minmax(0,1fr))}#qy72-apps-overlay .qy81-toggle{grid-column:1/-1}#qy72-apps-overlay .qy81-stats{gap:5px}#qy72-apps-overlay .qy81-stats>div{padding:8px 5px}}
+</style>
 <script id="qy75-science-js">
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
@@ -6359,13 +6410,14 @@ const L=()=>names[$('site-language')?.value]||names.uk;
 let mode='life',active=false,running=true,raf=0,last=0,steps=0,pop=0,acc=0;
 // v80: seeded PRNG, isolated to this laboratory. Original data and UI remain intact.
 let seed=Date.now()>>>0, randomState=seed, manualEdits=0, perfMs=0, computeMs=0, displayMs=0;
+let genesisInfluence=null; // null preserves the original v80 model and v80 seed compatibility
 function newSeed(){try{const values=new Uint32Array(1);crypto.getRandomValues(values);return values[0]>>>0}catch(_){return (Date.now()^Math.floor(Math.random()*4294967296))>>>0}}
 seed=newSeed();randomState=seed;
 function random(){let t=(randomState+=0x6D2B79F5);t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return ((t^(t>>>14))>>>0)/4294967296}
 function setSeed(next){const n=Number(next);if(!Number.isInteger(n)||n<0||n>4294967295)return false;seed=n>>>0;return true}
 function updateRunBar(){const el=$('qy80-seed');if(el&&document.activeElement!==el)el.value=String(seed);const k=$('qy80-perf');if(k)k.textContent=`${GW}×${GH} · ${perfMs.toFixed(1)} ms/frame · ${manualEdits?'modified':'seeded'}`;}
-function startNewExperiment(){seed=newSeed();running=true;clearMode();schedule()}
-function repeatExperiment(value){if(!setSeed(value)){$('qy80-seed').value=String(seed);return false}running=true;clearMode();schedule();return true}
+function startNewExperiment(){genesisStop();genesisInfluence=null;seed=newSeed();running=true;clearMode();schedule()}
+function repeatExperiment(value){genesisStop();if(!setSeed(value)){$('qy80-seed').value=String(seed);return false}running=true;clearMode();schedule();return true}
 
 const QUALITY_KEY='qy-lab-detail-v78';
 let detail=2;try{const val=Number(localStorage.getItem(QUALITY_KEY));if([1,2,4].includes(val))detail=val}catch(_e){}
@@ -6379,7 +6431,7 @@ low.width=GW;low.height=GH;let lowImage=lctx.createImageData(GW,GH);
 function resizeDisplay(){const rect=c.getBoundingClientRect(),dpr=Math.min(2,Math.max(1,window.devicePixelRatio||1));const visibleWidth=rect.width||Math.min(640,480*detail);const visibleHeight=rect.height||visibleWidth*.75;const w=Math.max(GW,Math.min(1600,Math.round(visibleWidth*dpr)));const h=Math.max(GH,Math.min(1200,Math.round(visibleHeight*dpr)));if(c.width!==w||c.height!==h){c.width=w;c.height=h;return true}return false}
 function allocateGrid(){GW=80*detail;GH=58*detail;cells=new Uint8Array(GW*GH);scratch=new Uint8Array(GW*GH);crystal=new Uint8Array(GW*GH);wave=new Float32Array(GW*GH);prior=new Float32Array(GW*GH);next=new Float32Array(GW*GH);low.width=GW;low.height=GH;lowImage=lctx.createImageData(GW,GH);resizeDisplay()}
 
-function setDetail(next){if(![1,2,4].includes(next)||detail===next)return;detail=next;try{localStorage.setItem(QUALITY_KEY,String(detail))}catch(_e){}allocateGrid();seed=newSeed();clearMode();updateQuality()}
+function setDetail(next){if(![1,2,4].includes(next)||detail===next)return;genesisStop();genesisInfluence=null;detail=next;try{localStorage.setItem(QUALITY_KEY,String(detail))}catch(_e){}allocateGrid();seed=newSeed();clearMode();updateQuality()}
 
 function updateQuality(){document.querySelectorAll('#qy78-quality-switch button').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.detail)===detail)));$('qy78-detail-info').textContent=GW+' × '+GH+' · '+detail+'×';updateRunBar()}
 
@@ -6406,7 +6458,7 @@ function q79Measure(){let primary=pop,secondary=0;
 function q79Capture(force){if(!force&&steps%Math.max(8,detail*8)!==0)return;const m=q79Measure();if(q79Samples.length&&q79Samples[q79Samples.length-1].step===steps)q79Samples[q79Samples.length-1]=m;else q79Samples.push(m);if(q79Samples.length>320)q79Samples.splice(0,q79Samples.length-320);if(!q79Viewed&&++q79DrawCounter%3===0)q79RenderChart()}
 function q79Reset(){q79Samples=[];q79Viewed=null;q79Capture(true);q79Render()}
 function q79DisplayNumber(v){return mode==='waves'?Number(v).toFixed(4):Number(v).toLocaleString(undefined,{maximumFractionDigits:3})}
-function q79Current(){q79Capture(true);return {schema:'quantumyur.lab.v1',id:'lab-'+Date.now()+'-'+Math.floor(Math.random()*100000),createdAt:new Date().toISOString(),model:mode,detail,grid:[GW,GH],steps,elements:pop,seed,prng:'mulberry32-v1',algorithm:'quantumyur-lab-v80',manualEdits,replayable:manualEdits===0,metric:q79Samples[q79Samples.length-1],samples:q79Samples.slice(),note:'Simplified numerical simulation, not experimental footage. Seeded automatic runs are repeatable with identical model, detail and step count; manual canvas interventions are not replayed.'}}
+function q79Current(){q79Capture(true);return {schema:'quantumyur.lab.v1',id:'lab-'+Date.now()+'-'+Math.floor(Math.random()*100000),createdAt:new Date().toISOString(),model:mode,detail,grid:[GW,GH],steps,elements:pop,seed,prng:'mulberry32-v1',algorithm:genesisInfluence===null?'quantumyur-lab-v80':'quantumyur-lab-v81',influence:genesisInfluence,manualEdits,replayable:manualEdits===0,metric:q79Samples[q79Samples.length-1],samples:q79Samples.slice(),note:'Simplified numerical simulation, not experimental footage. Seeded automatic runs are repeatable with identical model, detail and step count; manual canvas interventions are not replayed.'}}
 function q79Download(blob,name){const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),30000)}
 function q79JSON(e){return new Blob([JSON.stringify(e,null,2)],{type:'application/json;charset=utf-8'})}
 function q79CSV(e){const rows=['step,elements,primary,secondary',...(e.samples||[]).map(s=>[s.step,s.elements,s.primary,s.secondary].join(','))];const head=['# QuantumYur Data Lab','# model='+e.model+', detail='+e.detail+'x, grid='+e.grid.join('x'),'# createdAt='+e.createdAt,'# seed='+(e.seed??'unknown')+', prng='+(e.prng||'unspecified')+', manualEdits='+(e.manualEdits??'unknown')];return new Blob(['\ufeff',...head.map(v=>v+'\r\n'),rows.join('\r\n')+'\r\n'],{type:'text/csv;charset=utf-8'})}
@@ -6415,8 +6467,8 @@ function q79Save(){const v=q79Current(),items=q79Read();items.unshift(v);q79Stat
 function q79Populate(pick){const v=q79Read(),s=$('qy79-select'),a=$('qy79-compare-a'),b=$('qy79-compare-b'),holdA=a.value,holdB=b.value,holdS=pick||s.value;s.replaceChildren();a.replaceChildren();b.replaceChildren();for(const e of v){let label=e.model+' · '+e.detail+'× · '+e.steps+' '+Q79().step.toLowerCase()+' · '+new Date(e.createdAt).toLocaleString();for(const el of [s,a,b]){const op=document.createElement('option');op.value=e.id;op.textContent=label;el.append(op)}}if(v.length){s.value=v.some(e=>e.id===holdS)?holdS:v[0].id;a.value=v.some(e=>e.id===holdA)?holdA:v[0].id;b.value=v.some(e=>e.id===holdB)?holdB:(v[1]?.id||v[0].id)}else{const opt=document.createElement('option');opt.value='';opt.textContent=Q79().none;s.append(opt)}for(const el of [s,a,b])el.disabled=v.length===0;$('qy79-view').disabled=!v.length;$('qy79-export').disabled=!v.length;$('qy79-delete').disabled=!v.length;$('qy79-compare-button').disabled=v.length<2;$('qy79-count').textContent=String(v.length);q80RefreshReplay()}
 function q79ReadSelected(){return q79Read().find(e=>e.id===$('qy79-select').value)}
 function q79View(){const v=q79ReadSelected();if(!v)return;q79Viewed=v;q79Render()}
-function q80RefreshReplay(){const rec=q79ReadSelected();$('qy80-archive-replay').disabled=!(rec&&Number.isInteger(rec.seed)&&rec.prng==='mulberry32-v1'&&rec.algorithm==='quantumyur-lab-v80'&&rec.manualEdits===0)}
-function q80ReplayArchive(){const rec=q79ReadSelected();if(!rec||rec.manualEdits!==0||rec.prng!=='mulberry32-v1'||rec.algorithm!=='quantumyur-lab-v80'||![1,2,4].includes(rec.detail)||!names.uk.modes[rec.model])return;mode=rec.model;detail=rec.detail;try{localStorage.setItem(QUALITY_KEY,String(detail))}catch(_e){}allocateGrid();seed=rec.seed>>>0;running=true;clearMode();updateQuality();schedule()}
+function q80RefreshReplay(){const rec=q79ReadSelected();$('qy80-archive-replay').disabled=!(rec&&Number.isInteger(rec.seed)&&rec.prng==='mulberry32-v1'&&['quantumyur-lab-v80','quantumyur-lab-v81'].includes(rec.algorithm)&&rec.manualEdits===0)}
+function q80ReplayArchive(){const rec=q79ReadSelected();if(!rec||rec.manualEdits!==0||rec.prng!=='mulberry32-v1'||!['quantumyur-lab-v80','quantumyur-lab-v81'].includes(rec.algorithm)||![1,2,4].includes(rec.detail)||!names.uk.modes[rec.model])return;genesisStop();mode=rec.model;detail=rec.detail;genesisInfluence=rec.algorithm==='quantumyur-lab-v81'?Math.max(.12,Math.min(.45,Number(rec.influence)||.27)):null;try{localStorage.setItem(QUALITY_KEY,String(detail))}catch(_e){}allocateGrid();seed=rec.seed>>>0;running=true;clearMode();updateQuality();schedule()}
 
 function q79Delete(){const e=q79ReadSelected();if(!e)return;let rest=q79Read().filter(r=>r.id!==e.id);if(q79Write(rest)){if(q79Viewed?.id===e.id)q79Viewed=null;q79Status='';q79Populate();q79Render()}}
 function q79Compare(){const v=q79Read(),a=v.find(e=>e.id===$('qy79-compare-a').value),b=v.find(e=>e.id===$('qy79-compare-b').value),t=Q79();if(!a||!b){$('qy79-compare-result').textContent=t.compareEmpty;return}if(a.model!==b.model||a.detail!==b.detail){$('qy79-compare-result').textContent=t.notComparable;return}
@@ -6436,17 +6488,17 @@ $('qy79-compare-button').addEventListener('click',q79Compare);$('qy79-select').a
 $('site-language')?.addEventListener('change',()=>{q79Populate();q79Render()});
 window.addEventListener('resize',()=>{if(active)q79RenderChart()});
 
-function clearMode(){steps=0;pop=0;acc=0;randomState=seed;manualEdits=0;perfMs=0;if(mode==='life'){cells.fill(0);for(let y=0;y<GH;y++)for(let x=0;x<GW;x++)if(random()<.27)cells[index(x,y)]=1;pop=cells.reduce((a,b)=>a+b,0)}
+function clearMode(){steps=0;pop=0;acc=0;randomState=seed;manualEdits=0;perfMs=0;if(mode==='life'){cells.fill(0);for(let y=0;y<GH;y++)for(let x=0;x<GW;x++)if(random()<(genesisInfluence===null?.27:genesisInfluence))cells[index(x,y)]=1;pop=cells.reduce((a,b)=>a+b,0)}
 else if(mode==='crystal'){crystal.fill(0);crystal[index(GW>>1,GH>>1)]=1;Ccount=1;crad=1;pop=1}
 else if(mode==='waves'){wave.fill(0);prior.fill(0);next.fill(0);pokeWave(GW/2,GH/2);pop=1}
 else if(mode==='network'){nodes=[];edges=[];for(let k=0;k<5;k++)addNode();pop=nodes.length}q79Reset();updateInfo();draw()}
 function stepLife(){// Conway B3/S23 with toroidal edges; eight direct lookups avoid inner loops/modulo.
 pop=0;for(let y=0;y<GH;y++){const a=(y===0?GH-1:y-1)*GW,b=y*GW,d=(y===GH-1?0:y+1)*GW;for(let x=0;x<GW;x++){const left=x===0?GW-1:x-1,right=x===GW-1?0:x+1,i=b+x;const n=cells[a+left]+cells[a+x]+cells[a+right]+cells[b+left]+cells[b+right]+cells[d+left]+cells[d+x]+cells[d+right];const alive=n===3||(cells[i]!==0&&n===2)?1:0;scratch[i]=alive;pop+=alive}}[cells,scratch]=[scratch,cells]}
-function stepCrystal(){const cx=GW>>1,cy=GH>>1;for(let trial=0;trial<4*detail;trial++){const a=random()*2*Math.PI,dist=Math.min(Math.min(GW,GH)*.46,crad+6);let x=Math.round(cx+Math.cos(a)*dist),y=Math.round(cy+Math.sin(a)*dist);for(let walk=0;walk<750;walk++){if(x<2||x>=GW-2||y<2||y>=GH-2)break;const i=index(x,y);if(crystal[i])break;if(crystal[i-1]||crystal[i+1]||crystal[i-GW]||crystal[i+GW]||crystal[i-GW-1]||crystal[i-GW+1]||crystal[i+GW-1]||crystal[i+GW+1]){crystal[i]=1;Ccount++;crad=Math.max(crad,Math.hypot(x-cx,y-cy));break}const d=random()*4|0;if(d===0)x++;else if(d===1)x--;else if(d===2)y++;else y--}}pop=Ccount}
-function pokeWave(x,y){x=Math.round(x);y=Math.round(y);for(let dy=-3;dy<=3;dy++)for(let dx=-3;dx<=3;dx++){let xx=x+dx,yy=y+dy;if(xx<1||xx>=GW-1||yy<1||yy>=GH-1)continue;wave[index(xx,yy)]+=Math.exp(-(dx*dx+dy*dy)/3)*1.7}}
+function stepCrystal(){const cx=GW>>1,cy=GH>>1;for(let trial=0;trial<(genesisInfluence===null?4*detail:Math.max(2,Math.round((2+6*genesisInfluence)*detail)));trial++){const a=random()*2*Math.PI,dist=Math.min(Math.min(GW,GH)*.46,crad+6);let x=Math.round(cx+Math.cos(a)*dist),y=Math.round(cy+Math.sin(a)*dist);for(let walk=0;walk<750;walk++){if(x<2||x>=GW-2||y<2||y>=GH-2)break;const i=index(x,y);if(crystal[i])break;if(crystal[i-1]||crystal[i+1]||crystal[i-GW]||crystal[i+GW]||crystal[i-GW-1]||crystal[i-GW+1]||crystal[i+GW-1]||crystal[i+GW+1]){crystal[i]=1;Ccount++;crad=Math.max(crad,Math.hypot(x-cx,y-cy));break}const d=random()*4|0;if(d===0)x++;else if(d===1)x--;else if(d===2)y++;else y--}}pop=Ccount}
+function pokeWave(x,y){x=Math.round(x);y=Math.round(y);for(let dy=-3;dy<=3;dy++)for(let dx=-3;dx<=3;dx++){let xx=x+dx,yy=y+dy;if(xx<1||xx>=GW-1||yy<1||yy>=GH-1)continue;wave[index(xx,yy)]+=Math.exp(-(dx*dx+dy*dy)/3)*(genesisInfluence===null?1.7:(.8+2.7*genesisInfluence))}}
 function stepWave(){for(let y=1;y<GH-1;y++)for(let x=1;x<GW-1;x++){const i=index(x,y),v=wave[i],lap=wave[i-1]+wave[i+1]+wave[i-GW]+wave[i+GW]-4*v;next[i]=(2*v-prior[i]+.22*lap)*.996} [prior,wave,next]=[wave,next,prior];if(steps%65===0)pokeWave(GW*.34,GH*.52);pop=steps}
 function preferential(){let sum=nodes.reduce((a,n)=>a+n.deg+1,0),r=random()*sum;for(let i=0;i<nodes.length;i++){r-=nodes[i].deg+1;if(r<=0)return i}return nodes.length-1}
-function addNode(){if(nodes.length>=90)return;let p=nodes.length?preferential():-1;const x=p>=0?nodes[p].x+(random()-.5)*.35:random()*.5+.25,y=p>=0?nodes[p].y+(random()-.5)*.35:random()*.5+.25;nodes.push({x:Math.max(.04,Math.min(.96,x)),y:Math.max(.05,Math.min(.95,y)),deg:0,vx:0,vy:0});const id=nodes.length-1;if(p>=0){edges.push([p,id]);nodes[p].deg++;nodes[id].deg++;if(id>9&&random()<.38){const q=preferential();if(q!==id&&q!==p){edges.push([q,id]);nodes[q].deg++;nodes[id].deg++}}}pop=nodes.length}
+function addNode(){if(nodes.length>=90)return;let p=nodes.length?preferential():-1;const x=p>=0?nodes[p].x+(random()-.5)*.35:random()*.5+.25,y=p>=0?nodes[p].y+(random()-.5)*.35:random()*.5+.25;nodes.push({x:Math.max(.04,Math.min(.96,x)),y:Math.max(.05,Math.min(.95,y)),deg:0,vx:0,vy:0});const id=nodes.length-1;if(p>=0){edges.push([p,id]);nodes[p].deg++;nodes[id].deg++;if(id>9&&random()<(genesisInfluence===null?.38:(.12+.65*genesisInfluence))){const q=preferential();if(q!==id&&q!==p){edges.push([q,id]);nodes[q].deg++;nodes[id].deg++}}}pop=nodes.length}
 function stepNetwork(){if(steps%8===0)addNode();const N=nodes.length;for(let i=0;i<N;i++){const a=nodes[i];let fx=0,fy=0;for(let j=0;j<N;j++){if(i===j)continue;const b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,d2=Math.max(.001,dx*dx+dy*dy),force=.00012/d2;fx+=dx*force;fy+=dy*force}a.vx=(a.vx+fx)*.82;a.vy=(a.vy+fy)*.82}
 for(const [i,j] of edges){const a=nodes[i],b=nodes[j],dx=b.x-a.x,dy=b.y-a.y,d=Math.max(.001,Math.hypot(dx,dy)),force=(d-.11)*.002;a.vx+=dx/d*force;a.vy+=dy/d*force;b.vx-=dx/d*force;b.vy-=dy/d*force}
 for(const n of nodes){n.x=Math.max(.04,Math.min(.96,n.x+n.vx));n.y=Math.max(.05,Math.min(.95,n.y+n.vy))}}
@@ -6455,11 +6507,11 @@ function draw(){resizeDisplay();const W=c.width,H=c.height;if(mode==='life'||mod
 else if(mode==='network'){ctx.fillStyle='#08162d';ctx.fillRect(0,0,W,H);ctx.lineWidth=1.1;ctx.strokeStyle='rgba(116,203,245,.36)';for(const [a,b] of edges){ctx.beginPath();ctx.moveTo(nodes[a].x*W,nodes[a].y*H);ctx.lineTo(nodes[b].x*W,nodes[b].y*H);ctx.stroke()}for(const n of nodes){const rad=3+Math.sqrt(n.deg)*1.1;ctx.fillStyle='#6ce7d4';ctx.beginPath();ctx.arc(n.x*W,n.y*H,rad,0,Math.PI*2);ctx.fill()}}}
 function updateInfo(){const l=L();$('qy75-intro').textContent=l.intro;document.querySelectorAll('#qy75-mode-row [data-mode]').forEach(b=>{b.textContent=l.modes[b.dataset.mode];b.classList.toggle('active',b.dataset.mode===mode);b.setAttribute('aria-pressed',String(b.dataset.mode===mode))});$('qy75-mode-label').textContent=l.title[mode];$('qy75-status').textContent=running?l.statusOn:l.statusOff;$('qy75-steps').textContent=steps.toLocaleString();$('qy75-count').textContent=pop.toLocaleString();$('qy75-step-label').textContent=l.steps;$('qy75-count-label').textContent=l.count;$('qy75-rule-label').textContent=l.rule;$('qy75-rule').textContent={life:'B3/S23',crystal:'DLA',waves:'Δ²u',network:'PA'}[mode];$('qy75-pause').textContent=running?l.pause:l.play;$('qy75-reset').textContent=l.restart;$('qy75-speed-wrap').firstChild.textContent=l.speed+' ';$('qy75-description').textContent=l.description[mode];$('qy75-next-title').textContent=l.sphere;$('qy75-thomson-link').textContent=l.open;if(!q79Viewed){const pt=q79Samples[q79Samples.length-1];if(pt){$('qy79-primary').textContent=mode==='waves'?pt.primary.toFixed(4):pt.primary.toLocaleString();$('qy79-secondary').textContent=mode==='life'?pt.secondary.toFixed(2)+'%':pt.secondary.toFixed(3);$('qy79-samples').textContent=String(q79Samples.length)}}}
 function schedule(){if(active&&!raf)raf=requestAnimationFrame(tick)}
-function tick(ms){raf=0;if(!active||document.hidden)return;const base=detail===4?55:(detail===2?35:22);const period=Math.max(base,Math.min(180,perfMs*1.6));if(ms-last<period){schedule();return}last=ms;const start=performance.now();if(running){const s=Number($('qy75-speed').value)||2;for(let i=0;i<s;i++)step()}computeMs=performance.now()-start;draw();displayMs=performance.now()-start-computeMs;const duration=performance.now()-start;perfMs=perfMs?perfMs*.82+duration*.18:duration;if(steps%6===0||!running)updateInfo();if(steps%12===0)updateRunBar();if(running)schedule()}
-function activate(){if(active)return;active=true;last=0;resizeDisplay();updateInfo();draw();schedule()}
+function tick(ms){raf=0;if(!active||document.hidden)return;const base=detail===4?55:(detail===2?35:22);const period=Math.max(base,Math.min(180,perfMs*1.6));if(ms-last<period){schedule();return}last=ms;const start=performance.now();if(running){const s=Number($('qy75-speed').value)||2;for(let i=0;i<s;i++)step()}computeMs=performance.now()-start;draw();displayMs=performance.now()-start-computeMs;genesisTick();const duration=performance.now()-start;perfMs=perfMs?perfMs*.82+duration*.18:duration;if(steps%6===0||!running)updateInfo();if(steps%12===0)updateRunBar();if(running)schedule()}
+function activate(){if(active)return;active=true;genesisResumeClock();last=0;resizeDisplay();updateInfo();draw();schedule()}
 
-function deactivate(){active=false;if(raf){cancelAnimationFrame(raf);raf=0}exitExpanded()}
-function setMode(value){if(!names.uk.modes[value])return;mode=value;seed=newSeed();running=true;clearMode();schedule()}
+function deactivate(){genesisPauseClock();active=false;if(raf){cancelAnimationFrame(raf);raf=0}exitExpanded()}
+function setMode(value){if(!names.uk.modes[value])return;genesisStop();genesisInfluence=null;mode=value;seed=newSeed();running=true;clearMode();schedule()}
 document.querySelectorAll('#qy75-mode-row [data-mode]').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
 $('qy75-pause').addEventListener('click',()=>{running=!running;updateInfo();schedule()});$('qy75-reset').addEventListener('click',startNewExperiment);
 $('qy80-repeat').addEventListener('click',()=>repeatExperiment($('qy80-seed').value));
@@ -6479,6 +6531,93 @@ $('qy75-canvas').addEventListener('pointerdown',e=>{manualEdits++;const rect=c.g
 $('qy75-thomson-link').addEventListener('click',()=>{$('qy72-app-grid')?.querySelector('button[data-app="thomson"]')?.click()});
 $('site-language')?.addEventListener('change',()=>{if(active)updateInfo()});
 
+// QuantumYur Genesis v81. Autonomous local numerical generations, not physical observations.
+const QY81_SETTINGS='qy81-genesis-options-v1',QY81_DB='quantumyur-genesis-v81';
+const qy81Words={
+uk:{title:'✧ Лабораторія еволюції даних',description:'Чисельні досліди створюють наступні покоління на основі власних результатів.',on:'● Автоматично',off:'● Вимкнено',paused:'● Призупинено',toggle:'Автоматичні покоління',interval:'Збір кожні',strategy:'Стратегія',strategies:['Пошук нового','Стабільність','Порівняння моделей'],count:'Збережених поколінь',generation:'Поточне покоління',anomalies:'Змін структури',next:'↻ Завершити покоління',chart:'Еволюція нормалізованих показників (лише для однієї моделі)',history:'Дерево поколінь (останнє зверху)',empty:'Поки що порожньо',replay:'↻ Відтворити вибране',clear:'✕ Очистити Genesis',confirm:'Видалити всю історію Genesis із цього браузера?',need:'Для запису потрібно щонайменше 32 кроки симуляції.',ready:'Автозбір розпочато. Нове покоління виникне після наступного інтервалу та мінімум 32 кроків.',disabled:'Увімкни автоматичні покоління, щоб почати.',progress:'До наступного запису',recorded:'Записано покоління',storage:'Не вдалося відкрити IndexedDB. Дані залишаються лише в пам’яті цієї вкладки — експортуй JSON.',notice:'Чисельні симуляції, а не фізичні вимірювання. Дані локальні; прихована вкладка та закрита лабораторія не виконують експерименти.',manual:'Ручна взаємодія: цей дослід не можна точно відтворити.',details:'Параметри, зміни та походження покоління з’являться тут.',step:'кроків',parent:'Батьківське покоління',influence:'Параметр моделі',score:'Нормалізований показник',trend:'Тренд',anomaly:'Помітна зміна',none:'немає',yes:'так',no:'ні',restarted:'Відтворення умов покоління. Автоматичний цикл вимкнений.',exportEmpty:'Історія порожня.'},
+ru:{title:'✧ Лаборатория эволюции данных',description:'Численные опыты создают следующие поколения на основе результатов.',on:'● Автоматически',off:'● Выключено',paused:'● Пауза',toggle:'Автоматические поколения',interval:'Сбор каждые',strategy:'Стратегия',strategies:['Поиск нового','Стабильность','Сравнение моделей'],count:'Сохранённых поколений',generation:'Текущее поколение',anomalies:'Заметных изменений',next:'↻ Завершить поколение',chart:'Эволюция нормализованного показателя (одна модель)',history:'Дерево поколений (новые сверху)',empty:'Пока пусто',replay:'↻ Повторить выбранное',clear:'✕ Очистить Genesis',confirm:'Удалить всю историю Genesis из браузера?',need:'Необходимо не менее 32 шагов симуляции.',ready:'Автосбор запущен; новое поколение после интервала и 32 шагов.',disabled:'Включите автоматические поколения.',progress:'До записи',recorded:'Записано поколение',storage:'IndexedDB недоступен. Данные временно в памяти вкладки; экспортируйте JSON.',notice:'Численные симуляции, не измерения физического мира. Данные локальные; фоновая вкладка не вычисляет.',manual:'После ручного изменения опыт нельзя точно воспроизвести.',details:'Параметры и происхождение поколения будут здесь.',step:'шагов',parent:'Предыдущее поколение',influence:'Параметр модели',score:'Нормализованный показатель',trend:'Тренд',anomaly:'Заметное изменение',none:'нет',yes:'да',no:'нет',restarted:'Условия восстановлены. Автозапуск отключён.',exportEmpty:'История пуста.'},
+en:{title:'✧ Genesis Data Laboratory',description:'Simulated results guide the next seeded generation.',on:'● Automatic',off:'● Disabled',paused:'● Paused',toggle:'Automatic generations',interval:'Sample every',strategy:'Strategy',strategies:['Explore novelty','Improve stability','Compare models'],count:'Stored generations',generation:'Current generation',anomalies:'Distinct changes',next:'↻ Complete generation',chart:'Normalized indicator by generation (same model only)',history:'Generation lineage (newest first)',empty:'No records yet',replay:'↻ Replay selected',clear:'✕ Clear Genesis',confirm:'Delete all locally stored Genesis history?',need:'At least 32 simulation steps are needed to save.',ready:'Collecting automatically; a generation is created after the interval and at least 32 steps.',disabled:'Enable automatic generations to begin.',progress:'Until next record',recorded:'Generation saved',storage:'IndexedDB unavailable. Records are only in this tab memory; export JSON.',notice:'Numerical simulations, not real-world observations. Local-only; hidden tabs do not compute.',manual:'Manually edited runs are not exactly reproducible.',details:'Generation settings, analysis and parent will appear here.',step:'steps',parent:'Parent',influence:'Model parameter',score:'Normalized indicator',trend:'Trend',anomaly:'Notable change',none:'none',yes:'yes',no:'no',restarted:'Conditions restored. Automatic generation paused.',exportEmpty:'History is empty.'},
+pl:{title:'✧ Laboratorium ewolucji danych',description:'Wyniki symulacji wpływają na następne pokolenia.',on:'● Automatycznie',off:'● Wyłączono',paused:'● Pauza',toggle:'Automatyczne pokolenia',interval:'Próbka co',strategy:'Strategia',strategies:['Poszukiwanie nowości','Stabilność','Porównanie modeli'],count:'Zapisane pokolenia',generation:'Bieżące pokolenie',anomalies:'Istotne zmiany',next:'↻ Zakończ pokolenie',chart:'Wskaźnik znormalizowany (ten sam model)',history:'Drzewo pokoleń (nowe na górze)',empty:'Brak zapisów',replay:'↻ Odtwórz wybrane',clear:'✕ Wyczyść Genesis',confirm:'Usunąć lokalną historię Genesis?',need:'Aby zapisać, potrzeba co najmniej 32 kroków.',ready:'Zbieranie włączone; kolejne pokolenie po okresie i 32 krokach.',disabled:'Włącz automatyczne pokolenia.',progress:'Do następnego zapisu',recorded:'Zapisano pokolenie',storage:'IndexedDB niedostępne. Dane tymczasowo w tej karcie; eksportuj JSON.',notice:'Symulacje liczbowe, a nie pomiary fizyczne. Dane lokalne; ukryta karta nie liczy.',manual:'Ręczna zmiana wyklucza dokładne odtworzenie.',details:'Tutaj pojawią się parametry, analiza i rodzic.',step:'kroków',parent:'Rodzic',influence:'Parametr modelu',score:'Wskaźnik',trend:'Trend',anomaly:'Znacząca zmiana',none:'brak',yes:'tak',no:'nie',restarted:'Warunki odtworzone. Automatyka zatrzymana.',exportEmpty:'Historia jest pusta.'}
+};
+const G81=()=>qy81Words[$('site-language')?.value]||qy81Words.uk;
+let genesisEnabled=false,genesisInterval=30,genesisStrategy='exploration',genesisGeneration=1,genesisParent=null,genesisLastSample=0,genesisStarted=false,genesisStorageReady=false,genesisStorageOk=true,genesisDB=null,genesisLog=[],genesisNotice='';
+try{const opts=JSON.parse(localStorage.getItem(QY81_SETTINGS)||'{}');genesisEnabled=opts.enabled===true;if([10,30,60].includes(Number(opts.interval)))genesisInterval=Number(opts.interval);if(['exploration','stability','comparison'].includes(opts.strategy))genesisStrategy=opts.strategy;}catch(_e){}
+function genesisSaveOptions(){try{localStorage.setItem(QY81_SETTINGS,JSON.stringify({enabled:genesisEnabled,interval:genesisInterval,strategy:genesisStrategy}))}catch(_e){}}
+function genesisPauseClock(){genesisLastSample=0}
+function genesisResumeClock(){genesisLastSample=Date.now();if(genesisEnabled&&!genesisStarted&&genesisStorageReady)genesisStartRun()}
+function genesisStop(){if(!genesisEnabled)return;genesisEnabled=false;genesisStarted=false;genesisSaveOptions();genesisUpdateUI()}
+function genesisNewID(){return 'g81-'+Date.now().toString(36)+'-'+newSeed().toString(36)}
+function genesisStartRun(){if(!genesisEnabled)return;const candidate=genesisLog.find(e=>e.model===mode&&e.detail===detail)||genesisLog[0]||null;genesisParent=candidate?.id||null;genesisGeneration=(candidate?.generation||0)+1;genesisInfluence=.27;seed=newSeed();running=true;genesisStarted=true;genesisLastSample=Date.now();clearMode();genesisNotice=G81().ready;genesisUpdateUI();schedule()}
+function genesisStart(){if(genesisEnabled){if(active&&!document.hidden&&!genesisStarted&&genesisStorageReady)genesisStartRun();genesisUpdateUI();return;}genesisEnabled=true;genesisStarted=false;genesisSaveOptions();if(active&&!document.hidden&&genesisStorageReady)genesisStartRun();else genesisUpdateUI()}
+function genesisNormalized(model,metric,grid){if(model==='life')return Math.max(0,Math.min(1,metric.secondary/100));if(model==='crystal')return Math.max(0,Math.min(1,metric.primary/(grid[0]*grid[1])));if(model==='waves')return Math.max(0,Math.min(1,Math.abs(metric.primary)/2));return Math.max(0,Math.min(1,metric.secondary/5))}
+// The following descriptors and proposed conditions are derived synthetic features, not new observations.
+function genesisAnalyze(run){const samples=run.samples||[],first=samples[0]||run.metric,last=run.metric,prev=samples.length>1?samples[samples.length-2]:first;
+ const score=genesisNormalized(run.model,last,run.grid),startScore=genesisNormalized(run.model,first,run.grid),previousScore=genesisNormalized(run.model,prev,run.grid);
+ const trend=score-startScore,volatility=Math.abs(score-previousScore),anomaly=Math.abs(trend)>.12;
+ return {score:Number(score.toFixed(6)),trend:Number(trend.toFixed(6)),change:Number((score-startScore).toFixed(6)),volatility:Number(volatility.toFixed(6)),notableChange:anomaly,method:'heuristic-normalized-v1',interpretation:'Derived from synthetic simulation samples; threshold is heuristic, not scientific significance.'};}
+function genesisPropose(record){const a=record.analysis,modelOrder=['life','crystal','waves','network'];const mixed=((record.seed>>>0)^Math.imul(Math.round((a.score+1)*1e6),2654435761)^Math.imul(record.generation,2246822519)^Math.imul(Math.round((a.volatility+1)*1e6),3266489917))>>>0;
+ const seedCandidate=(Math.imul(mixed^(mixed>>>16),2246822519)^0x9e3779b9)>>>0;
+ const direction=(seedCandidate&1)?1:-1;let influence=record.influence??.27;
+ if(genesisStrategy==='stability')influence+= a.volatility>.03?-.07*direction:.025*direction;
+ else influence+=direction*(.045+Math.min(.09,Math.abs(a.trend)*.35));
+ influence=Math.max(.12,Math.min(.45,Math.round(influence*1000)/1000));
+ return {seed:seedCandidate===record.seed?(seedCandidate+1)>>>0:seedCandidate,influence,model:genesisStrategy==='comparison'?modelOrder[(modelOrder.indexOf(record.model)+1)%modelOrder.length]:record.model,detail:record.detail,strategy:genesisStrategy,reason:'Deterministic proposal derived from last run, normalized change and selected strategy.'};}
+function genesisRecord(force=false){if(!genesisEnabled||!genesisStarted||!active||document.hidden||!running)return false;
+ if(steps<32){genesisNotice=G81().need;genesisUpdateUI();return false}
+ const run=q79Current();const item={schema:'quantumyur.genesis.v1',id:genesisNewID(),parentId:genesisParent,generation:genesisGeneration,createdAt:new Date().toISOString(),model:run.model,detail:run.detail,grid:run.grid,seed:run.seed,prng:'mulberry32-v1',algorithm:'quantumyur-lab-v81',influence:genesisInfluence,manualEdits:run.manualEdits,replayable:run.manualEdits===0,steps:run.steps,metric:run.metric,samples:run.samples.slice(-100),analysis:genesisAnalyze(run),strategy:genesisStrategy,kind:'numerical simulation',notice:'Synthetic numerical outputs; derived indicators are not independent measurements.'};
+ const next=genesisPropose(item);item.proposal=next;genesisLog.unshift(item);const removed=genesisLog.length>240?genesisLog.splice(240):[];genesisStore(item,removed);genesisParent=item.id;genesisGeneration=item.generation+1;mode=next.model;detail=next.detail;seed=next.seed;genesisInfluence=next.influence;running=true;
+ genesisLastSample=Date.now();clearMode();updateQuality();genesisNotice=G81().recorded+' #'+item.generation+' · '+item.steps+' '+G81().step;genesisUpdateUI(item.id);schedule();return true}
+function genesisTick(){if(!genesisEnabled||!genesisStarted||!active||document.hidden||!running)return;
+ const now=Date.now();if(!genesisLastSample)genesisLastSample=now;
+ if(now-genesisLastSample>=genesisInterval*1000){q79Capture(true);if(steps>=32)genesisRecord();else genesisLastSample=now}
+ else if(steps%16===0)genesisUpdateProgress(now)}
+function genesisUpdateProgress(now=Date.now()){const L=G81();const secs=genesisEnabled&&active&&genesisStarted&&genesisLastSample?Math.max(0,genesisInterval-(now-genesisLastSample)/1000):genesisInterval;const pct=genesisEnabled&&active&&genesisStarted?100*(1-secs/genesisInterval):0;
+ $('qy81-progress-bar').style.width=Math.max(0,Math.min(100,pct)).toFixed(1)+'%';$('qy81-progress-label').textContent=genesisEnabled?(L.progress+': '+Math.ceil(secs)+(['uk','ru'].includes($('site-language')?.value)?' с':' s')+' · '+steps+' '+L.step):L.disabled;}
+function genesisDrawChart(){const cv=$('qy81-chart'),ct=cv.getContext('2d'),dpr=Math.min(2,window.devicePixelRatio||1),width=Math.max(260,cv.getBoundingClientRect().width||550),height=150;cv.width=Math.round(width*dpr);cv.height=Math.round(height*dpr);ct.setTransform(dpr,0,0,dpr,0,0);ct.fillStyle='#081c33';ct.fillRect(0,0,width,height);
+ const rows=genesisLog.filter(e=>e.model===mode).slice(0,40).reverse();ct.strokeStyle='#264760';ct.lineWidth=1;for(let i=0;i<=4;i++){const y=9+i*(height-24)/4;ct.beginPath();ct.moveTo(24,y);ct.lineTo(width-9,y);ct.stroke()}ct.fillStyle='#87b3c3';ct.font='10px monospace';ct.fillText('1',5,17);ct.fillText('0',5,height-11);
+ if(!rows.length){ct.fillStyle='#91b6c9';ct.fillText(G81().empty,30,76);return}
+ ct.beginPath();rows.forEach((e,i)=>{const x=24+(width-40)*(rows.length===1?.5:i/(rows.length-1)),y=9+(height-24)*(1-Math.max(0,Math.min(1,e.analysis.score)));if(!i)ct.moveTo(x,y);else ct.lineTo(x,y)});ct.lineWidth=2.4;ct.strokeStyle='#64e4c7';ct.stroke();rows.forEach((e,i)=>{const x=24+(width-40)*(rows.length===1?.5:i/(rows.length-1)),y=9+(height-24)*(1-Math.max(0,Math.min(1,e.analysis.score)));ct.fillStyle=e.analysis.notableChange?'#ffcc83':'#b6f8f3';ct.beginPath();ct.arc(x,y,3.2,0,Math.PI*2);ct.fill()})}
+function genesisUpdateUI(pick){const T=G81(),status=$('qy81-status'),select=$('qy81-list'),oldPick=pick||select.value;
+ $('qy81-title').textContent=T.title;$('qy81-description').textContent=T.description;
+ status.dataset.on=String(genesisEnabled);status.textContent=genesisEnabled?(active&&running&&!document.hidden?T.on:T.paused):T.off;
+ $('qy81-auto').checked=genesisEnabled;$('qy81-toggle-label').textContent=T.toggle;$('qy81-interval-label').textContent=T.interval;$('qy81-strategy-label').textContent=T.strategy;
+ $('qy81-interval').value=String(genesisInterval);$('qy81-strategy').value=genesisStrategy;
+ [...$('qy81-strategy').options].forEach((opt,i)=>opt.textContent=T.strategies[i]);
+ $('qy81-count-label').textContent=T.count;$('qy81-generation-label').textContent=T.generation;$('qy81-anomalies-label').textContent=T.anomalies;
+ $('qy81-count').textContent=genesisLog.length.toLocaleString();$('qy81-generation').textContent=genesisEnabled?String(genesisGeneration):'—';$('qy81-anomalies').textContent=genesisLog.filter(v=>v.analysis?.notableChange).length.toLocaleString();
+ $('qy81-next').textContent=T.next;$('qy81-chart-title').textContent=T.chart;$('qy81-history-label').textContent=T.history;$('qy81-replay').textContent=T.replay;$('qy81-clear').textContent=T.clear;
+ select.replaceChildren();if(!genesisLog.length){const o=document.createElement('option');o.value='';o.textContent=T.empty;select.append(o)}else for(const r of genesisLog){const o=document.createElement('option');o.value=r.id;o.textContent='#'+r.generation+' · '+(names[$('site-language')?.value]?.modes[r.model]||r.model)+' · '+r.steps+' '+T.step+' · '+r.createdAt.slice(0,16).replace('T',' ');select.append(o)}
+ if(genesisLog.some(e=>e.id===oldPick))select.value=oldPick;
+ const item=genesisLog.find(r=>r.id===select.value),p=genesisLog.find(r=>r.id===item?.parentId);
+ $('qy81-details').textContent=item?`#${item.generation} · ${item.model} ${item.detail}× · ${item.steps} ${T.step}\nSeed ${item.seed} · ${T.influence} ${(item.influence??0).toFixed(3)}\n${T.parent}: ${p?'#'+p.generation:item.parentId?'#'+(item.generation-1):T.none}\n${T.score}: ${item.analysis.score.toFixed(4)} · ${T.trend}: ${item.analysis.trend>=0?'+':''}${item.analysis.trend.toFixed(4)}\n${T.anomaly}: ${item.analysis.notableChange?T.yes:T.no} · Next seed: ${item.proposal.seed}`:T.details;
+ $('qy81-replay').disabled=!item||!item.replayable;$('qy81-clear').disabled=!genesisLog.length;
+ $('qy81-notice').textContent=(genesisStorageOk?'':T.storage+' ')+(genesisNotice?genesisNotice+' ':'')+T.notice;
+ genesisUpdateProgress();genesisDrawChart();}
+function genesisExport(kind){if(!genesisLog.length){genesisNotice=G81().exportEmpty;genesisUpdateUI();return}
+ const meta={schema:'quantumyur.genesis.archive.v1',exportedAt:new Date().toISOString(),source:'QuantumYur Hub v81 — local numerical simulation',count:genesisLog.length,records:genesisLog};
+ if(kind==='json'){q79Download(new Blob([JSON.stringify(meta,null,2)],{type:'application/json;charset=utf-8'}),'quantumyur-genesis-v81-'+new Date().toISOString().slice(0,10)+'.json');return}
+ const cols=['id','parentId','generation','createdAt','model','detail','seed','influence','steps','primary','secondary','score','trend','volatility','notableChange','strategy','nextSeed','nextInfluence'];
+ const quote=x=>'"'+String(x??'').replaceAll('"','""')+'"';const data=[cols.join(','),...genesisLog.map(r=>[r.id,r.parentId,r.generation,r.createdAt,r.model,r.detail,r.seed,r.influence,r.steps,r.metric.primary,r.metric.secondary,r.analysis.score,r.analysis.trend,r.analysis.volatility,r.analysis.notableChange,r.strategy,r.proposal.seed,r.proposal.influence].map(quote).join(','))].join('\r\n');q79Download(new Blob(['\ufeff',data],{type:'text/csv;charset=utf-8'}),'quantumyur-genesis-v81-'+new Date().toISOString().slice(0,10)+'.csv')}
+function genesisReplay(){const r=genesisLog.find(r=>r.id===$('qy81-list').value);if(!r||!r.replayable)return;genesisStop();mode=r.model;detail=r.detail;seed=r.seed>>>0;genesisInfluence=r.influence;try{localStorage.setItem(QUALITY_KEY,String(detail))}catch(_e){}allocateGrid();running=true;clearMode();updateQuality();genesisNotice=G81().restarted;genesisUpdateUI(r.id);schedule()}
+function genesisOpenDB(){return new Promise((resolve,reject)=>{if(!('indexedDB' in window))return reject(Error('IndexedDB unsupported'));let req;try{req=indexedDB.open(QY81_DB,1)}catch(e){reject(e);return}
+ req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains('generations'))db.createObjectStore('generations',{keyPath:'id'})};req.onerror=()=>reject(req.error);req.onsuccess=()=>resolve(req.result)})}
+function genesisStore(item,removed=[]){if(!genesisDB)return;try{const tx=genesisDB.transaction('generations','readwrite'),store=tx.objectStore('generations');store.put(item);for(const old of removed)store.delete(old.id);tx.onerror=()=>{genesisStorageOk=false;genesisUpdateUI()}}catch(_e){genesisStorageOk=false;genesisUpdateUI()}}
+function genesisLoad(){genesisOpenDB().then(db=>{genesisDB=db;const tx=db.transaction('generations','readonly');const request=tx.objectStore('generations').getAll();request.onsuccess=()=>{genesisLog=(request.result||[]).filter(e=>e.schema==='quantumyur.genesis.v1'&&e.analysis&&e.proposal).sort((a,b)=>b.createdAt.localeCompare(a.createdAt)).slice(0,240);genesisStorageReady=true;genesisUpdateUI();if(genesisEnabled&&active&&!document.hidden&&!genesisStarted)genesisStartRun()};request.onerror=()=>{genesisStorageOk=false;genesisStorageReady=true;genesisUpdateUI();if(genesisEnabled&&active&&!document.hidden)genesisStartRun()}}
+ ).catch(()=>{genesisStorageReady=true;genesisStorageOk=false;genesisUpdateUI();if(genesisEnabled&&active&&!document.hidden)genesisStartRun()})}
+function genesisErase(){if(!genesisLog.length||!window.confirm(G81().confirm))return;genesisLog=[];genesisParent=null;genesisGeneration=1;genesisNotice='';if(genesisDB)try{genesisDB.transaction('generations','readwrite').objectStore('generations').clear()}catch(_e){genesisStorageOk=false}genesisUpdateUI()}
+$('qy81-auto').addEventListener('change',e=>e.target.checked?genesisStart():genesisStop());
+$('qy81-interval').addEventListener('change',e=>{const v=Number(e.target.value);if([10,30,60].includes(v)){genesisInterval=v;genesisLastSample=Date.now();genesisSaveOptions();genesisUpdateUI()}});
+$('qy81-strategy').addEventListener('change',e=>{if(['exploration','stability','comparison'].includes(e.target.value)){genesisStrategy=e.target.value;genesisSaveOptions();genesisUpdateUI()}});
+$('qy81-next').addEventListener('click',()=>genesisRecord(true));
+$('qy81-json').addEventListener('click',()=>genesisExport('json'));
+$('qy81-csv').addEventListener('click',()=>genesisExport('csv'));
+$('qy81-list').addEventListener('change',()=>genesisUpdateUI());
+$('qy81-replay').addEventListener('click',genesisReplay);
+$('qy81-clear').addEventListener('click',genesisErase);
+$('site-language')?.addEventListener('change',()=>genesisUpdateUI());
+window.qyGenesis=Object.freeze({version:'81',snapshot:()=>({enabled:genesisEnabled,interval:genesisInterval,strategy:genesisStrategy,generation:genesisGeneration,stored:genesisLog.length,storage:genesisStorageOk?'indexeddb':'temporary-memory',currentSeed:seed,influence:genesisInfluence,parentId:genesisParent,last:genesisLog[0]||null}),advance:()=>genesisRecord(true),start:genesisStart,stop:genesisStop});
+genesisUpdateUI();genesisLoad();
+
 const qy80Labels={uk:['Зерно досліду','↻ Повторити','↻ Відтворити умови з архіву'],ru:['Зерно опыта','↻ Повторить','↻ Повторить условия из архива'],en:['Experiment seed','↻ Repeat','↻ Restart archived conditions'],pl:['Ziarno eksperymentu','↻ Powtórz','↻ Powtórz warunki z archiwum']};
 const qy78I18n={
 uk:['Деталізація','Зміна деталізації починає новий дослід. Режим 4× потребує більше ресурсів телефону.','⛶ На весь екран','⤢ Вийти з перегляду','Закрити'],
@@ -6490,8 +6629,8 @@ $('site-language')?.addEventListener('change',updateQualityLabels);
 updateQualityLabels();
 if(typeof ResizeObserver==='function'){const observer=new ResizeObserver(()=>{if(active&&resizeDisplay())draw()});observer.observe($('qy78-view'))}
 window.addEventListener('resize',()=>{if(active&&resizeDisplay())draw()});
-document.addEventListener('visibilitychange',()=>{if(active&&!document.hidden){last=0;schedule()}});
-allocateGrid();q79Populate();clearMode();updateQuality();updateRunBar();window.qyLab=Object.freeze({activate,deactivate,version:'80',snapshot:()=>({mode,steps,count:pop,running,grid:[GW,GH],detail,fullscreen:expanded(),canvas:[c.width,c.height],seed,manualEdits,replayable:manualEdits===0,perfMs:Number(perfMs.toFixed(2)),computeMs:Number(computeMs.toFixed(2)),displayMs:Number(displayMs.toFixed(2)),measurements:q79Samples.length,archiveCount:q79Read().length,lastMeasurement:q79Samples.at(-1)})});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){genesisPauseClock()}else if(active){genesisResumeClock();last=0;schedule()}});
+allocateGrid();q79Populate();clearMode();updateQuality();updateRunBar();window.qyLab=Object.freeze({activate,deactivate,version:'81',snapshot:()=>({mode,steps,count:pop,running,grid:[GW,GH],detail,fullscreen:expanded(),canvas:[c.width,c.height],seed,genesisInfluence,manualEdits,replayable:manualEdits===0,perfMs:Number(perfMs.toFixed(2)),computeMs:Number(computeMs.toFixed(2)),displayMs:Number(displayMs.toFixed(2)),measurements:q79Samples.length,archiveCount:q79Read().length,lastMeasurement:q79Samples.at(-1)})});
 })();
 
 (()=>{'use strict';
