@@ -5869,4 +5869,153 @@ if(originalOpen){const original=window.qyHubAdmin;window.qyHubAdmin=Object.freez
 window.qy71AdminTools=Object.freeze({report,validateSettings});
 })();
 </script>
+
+<!-- QuantumYur Hub v72: self-contained mini-app world. All tools run locally. -->
+<style id="qy72-apps-css">
+#qy72-apps-overlay[hidden]{display:none!important}
+#qy72-apps-overlay{position:fixed!important;inset:0!important;z-index:2147483300!important;display:block!important;background:#050d20!important;color:#f2f7ff!important;font-family:ui-monospace,'Cascadia Code',Consolas,monospace!important;overflow-y:auto!important;overscroll-behavior:contain;isolation:isolate;-webkit-overflow-scrolling:touch}
+#qy72-apps-overlay *{box-sizing:border-box}
+#qy72-apps-overlay button,#qy72-apps-overlay textarea,#qy72-apps-overlay select{font-family:inherit}
+#qy72-apps-overlay::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 18% 18%,rgba(74,107,212,.22),transparent 42%),radial-gradient(ellipse at 88% 37%,rgba(21,165,190,.12),transparent 43%),radial-gradient(ellipse at 50% 110%,rgba(131,87,196,.13),transparent 50%),linear-gradient(170deg,#071225,#0a1632 40%,#090e20);}
+#qy72-apps-overlay::after{content:"";position:fixed;inset:0;z-index:-1;opacity:.35;pointer-events:none;background-image:radial-gradient(circle,rgba(214,231,255,.85) 1px,transparent 2px),radial-gradient(circle,rgba(128,186,243,.8) 1px,transparent 2px);background-position:17px 11px,110px 90px;background-size:151px 167px,239px 221px}
+#qy72-apps-shell{max-width:1200px;margin:0 auto;padding:clamp(17px,3vw,34px) clamp(16px,4vw,38px) 56px;min-height:100dvh}
+#qy72-topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:7px 0 18px;border-bottom:1px solid rgba(175,221,253,.25)}
+#qy72-brand{font-size:clamp(14px,2vw,18px);font-weight:800;color:#d8f2ff;letter-spacing:.03em}
+#qy72-topactions{display:flex;gap:9px}
+#qy72-apps-overlay .qy72-btn{border:1px solid rgba(167,220,244,.65);border-radius:13px;min-height:44px;padding:9px 15px;background:linear-gradient(140deg,rgba(21,60,91,.92),rgba(26,44,84,.93));color:#f5fbff;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 6px 17px rgba(0,0,0,.22)}
+#qy72-apps-overlay .qy72-btn:focus-visible,#qy72-apps-overlay .qy72-app:focus-visible{outline:3px solid #ffe5a6!important;outline-offset:3px}
+#qy72-apps-overlay .qy72-btn[disabled]{opacity:.5;cursor:not-allowed}
+#qy72-apps-overlay .qy72-btn:hover:not([disabled]){border-color:#e1f6ff;background:#23527a}
+#qy72-hero{padding:clamp(23px,5vw,56px) 0 22px;display:grid;grid-template-columns:minmax(0,1fr) minmax(135px,230px);align-items:center;gap:15px}
+#qy72-eyebrow{font-size:12px;font-weight:850;letter-spacing:.24em;text-transform:uppercase;color:#93d6ef;margin:0 0 14px}
+#qy72-hero h1{font-size:clamp(29px,5.6vw,64px);line-height:1.12;letter-spacing:-.035em;color:#fff;margin:0 0 15px;text-shadow:0 0 38px rgba(107,183,255,.35)}
+#qy72-hero p:not(#qy72-eyebrow){color:#c7deef;font-size:clamp(14px,2vw,17px);line-height:1.6;margin:0;max-width:65ch}
+#qy72-hero-art{height:clamp(130px,20vw,220px);position:relative;display:grid;place-items:center}
+#qy72-hero-art .orbit{position:absolute;border:1.5px solid rgba(143,222,253,.54);border-radius:50%;width:65%;aspect-ratio:1;transform:rotateX(58deg) rotate(-25deg);box-shadow:0 0 25px rgba(111,202,247,.11);animation:qy72-orbit 11s ease-in-out infinite alternate}
+#qy72-hero-art .orbit:nth-child(2){width:88%;border-color:#b4a8ff7c;transform:rotateX(65deg) rotate(34deg);animation-delay:-4s;animation-duration:15s}
+#qy72-hero-art .orbcore{width:28%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 36% 30%,#fcfeff,#83d9f7 20%,#3766bf 48%,#0a1b55 80%);box-shadow:0 0 36px #64c5f787,0 0 110px #535dcb55;animation:qy72-breathe 6s ease-in-out infinite}
+#qy72-apps-area{border-top:1px solid rgba(169,213,255,.18);padding-top:24px}
+#qy72-section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 20px}
+#qy72-section-head h2{font-size:clamp(18px,2.5vw,25px);margin:0;color:#e7f6ff}
+#qy72-count{font-size:12px;color:#9cd3de;background:#102d45;padding:8px 11px;border-radius:999px;border:1px solid #8bd7e743}
+#qy72-app-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+#qy72-apps-overlay .qy72-app{min-width:0;text-align:left;position:relative;display:flex;flex-direction:column;gap:12px;min-height:185px;border:1px solid #8ac9dc6c;border-radius:20px;padding:19px;background:linear-gradient(145deg,rgba(25,53,85,.9),rgba(12,27,52,.94));box-shadow:inset 0 0 0 1px rgba(207,238,255,.045),0 13px 24px rgba(0,0,0,.22);color:#f2faff;cursor:pointer;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+#qy72-apps-overlay .qy72-app:hover:not(:disabled){transform:translateY(-3px);border-color:#bcf0f3;box-shadow:0 16px 36px #0005,0 0 25px #58b8fc19}
+#qy72-apps-overlay .qy72-app:disabled{opacity:.73;cursor:default}
+#qy72-apps-overlay .qy72-app .qy72-icon{font:normal 30px/1.1 system-ui,'Segoe UI Emoji',sans-serif;width:51px;height:51px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(135deg,rgba(128,208,251,.19),rgba(188,140,247,.14));border:1px solid #d9f7ff43}
+#qy72-apps-overlay .qy72-app .qy72-name{font-size:clamp(15px,1.7vw,19px);font-weight:850;line-height:1.35;color:#fff}
+#qy72-apps-overlay .qy72-app .qy72-desc{font-size:12px;line-height:1.55;color:#bed8e8;max-width:32ch}
+#qy72-apps-overlay .qy72-app .qy72-state{display:inline-flex;align-self:flex-start;font-size:11px;font-weight:750;color:#b6f3de;border-radius:999px;border:1px solid #9ce5cc55;padding:4px 9px;background:#205e5955;margin-top:auto}
+#qy72-apps-overlay .qy72-app:disabled .qy72-state{color:#ccd4e7;border-color:#b0b9e04f;background:#42507255}
+#qy72-workbench[hidden],#qy72-app-grid[hidden],#qy72-section-head[hidden],#qy72-hero[hidden]{display:none!important}
+#qy72-workbench{max-width:850px;margin:20px auto 0;padding:clamp(20px,3.3vw,35px);border:1px solid #a0d9eb7d;border-radius:22px;background:linear-gradient(140deg,rgba(17,39,67,.95),rgba(9,22,46,.96));box-shadow:0 18px 55px #0008}
+#qy72-workhead{display:flex;align-items:center;gap:12px;margin:0 0 16px;flex-wrap:wrap}
+#qy72-worktitle{font-size:clamp(20px,3vw,29px);margin:0}
+#qy72-apps-overlay .qy72-tool[hidden]{display:none!important}
+#qy72-apps-overlay .qy72-tool p{font-size:14px;color:#bfd9e9;line-height:1.55}
+#qy72-apps-overlay textarea{resize:vertical;width:100%;min-height:190px;padding:16px;background:#071c32;color:#fff;border:1px solid #79a9c5;border-radius:14px;font:500 16px/1.55 ui-monospace,Consolas,monospace}
+#qy72-apps-overlay textarea:focus{outline:2px solid #92e4ff;outline-offset:1px}
+#qy72-apps-overlay .qy72-toolactions{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-top:13px}
+#qy72-apps-overlay .qy72-status{font-size:13px;line-height:1.45;color:#b1f1d7}
+#qy72-idea{font-size:clamp(20px,3vw,30px);line-height:1.45;color:#fff;padding:22px;border:1px solid #b0cced78;border-radius:17px;background:linear-gradient(130deg,#1b4262,#293661);min-height:125px}
+#qy72-timer-clock{font:850 clamp(55px,11vw,105px)/1.15 ui-monospace,Consolas,monospace;font-variant-numeric:tabular-nums;text-align:center;letter-spacing:-.04em;color:#fff;text-shadow:0 0 35px #83d7ff68;margin:8px 0 23px}
+#qy72-timer-preset{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin:10px 0 15px}
+#qy72-apps-overlay .qy72-choice[aria-pressed="true"]{border:2px solid #ffd88e;background:#554970}
+#qy72-timer-controls{display:flex;gap:11px;align-items:center;justify-content:center;flex-wrap:wrap}
+#qy72-apps-footer{padding:24px 0 20px;color:#9cbed1;font-size:12px;line-height:1.6;text-align:center}
+#qy72-apps-portal{position:fixed;inset:0;background:radial-gradient(ellipse at center,transparent 6%,#000b 42%,#01050ff0 83%);z-index:10;pointer-events:none;display:grid;place-items:center;opacity:0;visibility:hidden}
+#qy72-apps-portal .qy72-ring{position:absolute;width:clamp(180px,45vmin,580px);aspect-ratio:1;border:2px solid rgba(169,233,255,.6);border-radius:50%;box-shadow:0 0 28px rgba(107,199,244,.55),inset 0 0 24px #8ed2ff42}
+#qy72-apps-portal .qy72-ring:nth-child(2){width:clamp(130px,30vmin,430px);border-color:#c4a4ffb3}
+#qy72-apps-portal .qy72-ring:nth-child(3){width:clamp(90px,19vmin,275px);border-color:#a5f9ffc9}
+#qy72-apps-portal .qy72-portal-name{color:#e8f8ff;letter-spacing:.27em;font-size:clamp(12px,2vw,18px);text-shadow:0 0 19px #a7e9ff;z-index:2}
+#qy72-apps-overlay.qy72-entering #qy72-apps-portal{visibility:visible;animation:qy72-portal-fade 1.04s ease-out both}
+#qy72-apps-overlay.qy72-entering .qy72-ring{animation:qy72-ring 1.04s cubic-bezier(.12,.7,.2,1) both}
+#qy72-apps-overlay.qy72-entering .qy72-ring:nth-child(2){animation-delay:.08s}
+#qy72-apps-overlay.qy72-entering .qy72-ring:nth-child(3){animation-delay:.16s}
+#qy72-apps-overlay.qy72-entering #qy72-apps-shell{animation:qy72-enter 1.04s ease-out both}
+@keyframes qy72-portal-fade{0%{opacity:1}55%{opacity:.95}100%{opacity:0}}
+@keyframes qy72-ring{0%{transform:scale(.25) rotate(-15deg);opacity:.3}55%{opacity:1}100%{transform:scale(3.8) rotate(18deg);opacity:0}}
+@keyframes qy72-enter{0%{opacity:0;filter:blur(12px);transform:scale(.96)}60%{opacity:.3;filter:blur(3px)}100%{opacity:1;filter:blur(0);transform:scale(1)}}
+@keyframes qy72-orbit{from{transform:rotateX(58deg) rotate(-25deg)}to{transform:rotateX(58deg) rotate(30deg)}}
+@keyframes qy72-breathe{0%,100%{filter:brightness(.92)}50%{filter:brightness(1.15)}}
+#qy72-menu-launch{width:100%;display:flex;align-items:center;justify-content:space-between;margin:10px 0 17px!important;min-height:65px!important;border:1.5px solid #a6dfff!important;border-radius:15px!important;padding:12px 17px!important;background:linear-gradient(110deg,#1e5675,#293b72)!important;color:#fff!important;cursor:pointer;font:850 17px/1.3 ui-monospace,Consolas,monospace!important;box-shadow:0 6px 22px #4ca3f52e!important}
+#qy72-menu-launch small{font-size:12px;color:#c0e8f8}
+#qy72-menu-launch:focus-visible{outline:3px solid #ffe8aa!important;outline-offset:2px}
+@media(max-width:800px){#qy72-app-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){#qy72-hero{grid-template-columns:1fr;gap:0;padding:24px 0 17px}#qy72-hero-art{position:absolute;width:120px;height:120px;right:14px;top:78px;opacity:.38;pointer-events:none}#qy72-hero h1{max-width:270px;font-size:32px}#qy72-app-grid{grid-template-columns:1fr 1fr;gap:10px}#qy72-apps-overlay .qy72-app{padding:14px;min-height:175px;border-radius:16px}#qy72-apps-overlay .qy72-app .qy72-icon{height:46px;width:46px;font-size:26px}#qy72-apps-overlay .qy72-app .qy72-name{font-size:14px}#qy72-apps-overlay .qy72-app .qy72-desc{font-size:11px}#qy72-topline{align-items:center}#qy72-brand{font-size:13px}#qy72-apps-overlay .qy72-btn{padding:9px 11px}#qy72-workbench{padding:17px}}
+@media(max-width:360px){#qy72-app-grid{grid-template-columns:1fr}#qy72-apps-overlay .qy72-app{min-height:125px}#qy72-hero-art{opacity:.20}}
+@media(prefers-reduced-motion:reduce){#qy72-apps-overlay *,#qy72-apps-overlay.qy72-entering *{animation:none!important;transition:none!important;filter:none!important}#qy72-apps-portal{display:none!important}}
+</style>
+<script id="qy72-apps-js">
+(()=>{'use strict';
+if(document.getElementById('qy72-apps-overlay'))return;
+const $=id=>document.getElementById(id);
+const store={get(k){try{return localStorage.getItem(k)||''}catch(_){return ''}},set(k,v){try{localStorage.setItem(k,v);return true}catch(_){return false}}};
+const labels={
+ uk:{menu:'🧩 Додатки',soon:'Незабаром',ready:'Доступний',tag:'НОВИЙ СВІТ',title:'Простір додатків',subtitle:'Невеликі інструменти сьогодні. Нові застосунки для спілкування, творчості та відкриттів — завтра.',list:'Бібліотека додатків',back:'← До списку',close:'✕ На головну',count:'працюють',privacy:'Дані нотаток зберігаються лише в цьому браузері. Нові застосунки додаватимемо до наступних версій.',notes:'Швидкі нотатки',notesDesc:'Записуй думки та ідеї. Зберігаються на цьому пристрої.',ideas:'Іскра ідей',ideasDesc:'Нові творчі запитання для Астрохізму та світів.',timer:'Таймер уваги',timerDesc:'Спокійний таймер для творчості й навчання.',save:'Зберегти',saved:'Нотатку збережено в браузері',notSaved:'Не вдалося зберегти: сховище недоступне',prompt:'Нова ідея',start:'Старт',pause:'Пауза',reset:'Скинути'},
+ ru:{menu:'🧩 Приложения',soon:'Позже',ready:'Доступно',tag:'НОВЫЙ МИР',title:'Пространство приложений',subtitle:'Небольшие инструменты сегодня. Новые приложения для общения, творчества и открытий — завтра.',list:'Библиотека приложений',back:'← К списку',close:'✕ На главную',count:'работают',privacy:'Заметки хранятся только в этом браузере. Новые приложения появятся в будущих версиях.',notes:'Быстрые заметки',notesDesc:'Записывай мысли и идеи на этом устройстве.',ideas:'Искра идей',ideasDesc:'Творческие вопросы для Астрохизма и новых миров.',timer:'Таймер внимания',timerDesc:'Спокойный таймер для творчества и учёбы.',save:'Сохранить',saved:'Заметка сохранена в браузере',notSaved:'Не удалось сохранить: хранилище недоступно',prompt:'Новая идея',start:'Старт',pause:'Пауза',reset:'Сброс'},
+ en:{menu:'🧩 Apps',soon:'Coming soon',ready:'Available',tag:'NEW WORLD',title:'Apps Space',subtitle:'Useful mini tools now, and a home for future apps for creativity, learning and exploration.',list:'App library',back:'← All apps',close:'✕ Back home',count:'available',privacy:'Notes are stored only in this browser. More apps can be added in future versions.',notes:'Quick notes',notesDesc:'Keep ideas locally on this device.',ideas:'Idea spark',ideasDesc:'Fresh prompts for creativity and new worlds.',timer:'Focus timer',timerDesc:'A calm timer for creative work or study.',save:'Save',saved:'Note saved in this browser',notSaved:'Storage is unavailable',prompt:'New idea',start:'Start',pause:'Pause',reset:'Reset'},
+ pl:{menu:'🧩 Aplikacje',soon:'Wkrótce',ready:'Dostępne',tag:'NOWY ŚWIAT',title:'Przestrzeń aplikacji',subtitle:'Przydatne miniaplikacje dziś, miejsce na nowe pomysły jutro.',list:'Biblioteka aplikacji',back:'← Wszystkie',close:'✕ Strona główna',count:'dostępne',privacy:'Notatki są przechowywane tylko w tej przeglądarce. Nowe aplikacje pojawią się w kolejnych wersjach.',notes:'Szybkie notatki',notesDesc:'Zapisuj pomysły na tym urządzeniu.',ideas:'Iskra pomysłów',ideasDesc:'Inspiracje do tworzenia nowych światów.',timer:'Minutnik skupienia',timerDesc:'Spokojny minutnik do pracy i nauki.',save:'Zapisz',saved:'Notatkę zapisano w przeglądarce',notSaved:'Brak dostępu do pamięci',prompt:'Nowy pomysł',start:'Start',pause:'Pauza',reset:'Reset'}
+};
+const lang=()=>{const l=$('site-language')?.value||document.documentElement.lang||'uk';return labels[l]||labels.en};
+// Extend this array to add future apps; ready apps have a matching tool panel below.
+const apps=[
+ {id:'notes',icon:'📝',name:'notes',desc:'notesDesc',status:'ready'},
+ {id:'ideas',icon:'✨',name:'ideas',desc:'ideasDesc',status:'ready'},
+ {id:'timer',icon:'⏳',name:'timer',desc:'timerDesc',status:'ready'},
+ {id:'astronomy',icon:'🔭',title:{uk:'Зоряний атлас',ru:'Звёздный атлас',en:'Star atlas',pl:'Atlas gwiazd'},desc:{uk:'Зорі, планети та космос',ru:'Звёзды, планеты и космос',en:'Stars, planets and space',pl:'Gwiazdy i planety'},status:'planned'},
+ {id:'gaming',icon:'🎮',title:{uk:'Ігровий радар',ru:'Игровой радар',en:'Gaming radar',pl:'Radar gier'},desc:{uk:'Ігри, Xbox і Twitch',ru:'Игры, Xbox и Twitch',en:'Games, Xbox and Twitch',pl:'Gry, Xbox i Twitch'},status:'planned'},
+ {id:'astrohism',icon:'🌌',title:{uk:'Астрохізм',ru:'Астрохизм',en:'Astrohism',pl:'Astrochizm'},desc:{uk:'Філософські практики та записи',ru:'Философские практики и записи',en:'Philosophy and reflection',pl:'Filozofia i refleksje'},status:'planned'},
+ {id:'language',icon:'🌍',title:{uk:'Мовний простір',ru:'Языковой мир',en:'Language world',pl:'Świat języków'},desc:{uk:'Слова, мови та переклади',ru:'Слова, языки и переводы',en:'Words, languages and translations',pl:'Słowa i języki'},status:'planned'},
+ {id:'weather',icon:'🌦️',title:{uk:'Погода і планета',ru:'Погода и планета',en:'Weather and planet',pl:'Pogoda i planeta'},desc:{uk:'Погода та цікаві місця',ru:'Погода и интересные места',en:'Weather and places',pl:'Pogoda i miejsca'},status:'planned'},
+ {id:'creator',icon:'🎨',title:{uk:'Майстерня світів',ru:'Мастерская миров',en:'World workshop',pl:'Warsztat światów'},desc:{uk:'Творчість і майбутні фони',ru:'Творчество и будущие фоны',en:'Creative worlds and backgrounds',pl:'Tworzenie światów'},status:'planned'}
+];
+const t=(v)=>typeof v==='string'?lang()[v]||v:v?.[$('site-language')?.value]||v?.uk||v?.en||'';
+const wrap=document.createElement('div');wrap.id='qy72-apps-overlay';wrap.hidden=true;wrap.setAttribute('role','dialog');wrap.setAttribute('aria-modal','true');wrap.setAttribute('aria-labelledby','qy72-title');
+wrap.innerHTML=`<div id="qy72-apps-portal" aria-hidden="true"><i class="qy72-ring"></i><i class="qy72-ring"></i><i class="qy72-ring"></i><span class="qy72-portal-name">QUANTUMYUR · APPS</span></div>
+<div id="qy72-apps-shell"><header id="qy72-topline"><div id="qy72-brand">✦ QUANTUMYUR / APPS</div><div id="qy72-topactions"><button type="button" class="qy72-btn" id="qy72-back">←</button><button type="button" class="qy72-btn" id="qy72-exit">✕</button></div></header>
+<div id="qy72-hero"><div><p id="qy72-eyebrow"></p><h1 id="qy72-title"></h1><p id="qy72-subtitle"></p></div><div id="qy72-hero-art" aria-hidden="true"><i class="orbit"></i><i class="orbit"></i><i class="orbcore"></i></div></div>
+<main id="qy72-apps-area"><div id="qy72-section-head"><h2 id="qy72-list-title"></h2><span id="qy72-count"></span></div><div id="qy72-app-grid"></div>
+<section id="qy72-workbench" hidden><div id="qy72-workhead"><h2 id="qy72-worktitle"></h2></div>
+<div class="qy72-tool" id="qy72-tool-notes" hidden><p>📝 <span id="qy72-notes-lead"></span></p><textarea id="qy72-notes-text" maxlength="12000" aria-label="Notes"></textarea><div class="qy72-toolactions"><button class="qy72-btn" type="button" id="qy72-notes-save"></button><span class="qy72-status" id="qy72-notes-status" role="status"></span></div></div>
+<div class="qy72-tool" id="qy72-tool-ideas" hidden><p id="qy72-ideas-lead"></p><div id="qy72-idea" aria-live="polite"></div><div class="qy72-toolactions"><button type="button" class="qy72-btn" id="qy72-ideas-next"></button></div></div>
+<div class="qy72-tool" id="qy72-tool-timer" hidden><p id="qy72-timer-lead"></p><div id="qy72-timer-clock" role="timer" aria-live="off">05:00</div><div id="qy72-timer-preset"><button type="button" data-seconds="300" class="qy72-btn qy72-choice" aria-pressed="true">5 хв</button><button type="button" data-seconds="600" class="qy72-btn qy72-choice" aria-pressed="false">10 хв</button><button type="button" data-seconds="1500" class="qy72-btn qy72-choice" aria-pressed="false">25 хв</button></div><div id="qy72-timer-controls"><button class="qy72-btn" type="button" id="qy72-timer-start"></button><button class="qy72-btn" type="button" id="qy72-timer-reset"></button></div><p class="qy72-status" id="qy72-timer-status" role="status"></p></div>
+</section></main><footer id="qy72-apps-footer"></footer></div>`;
+document.body.append(wrap);
+const menu=$('qy44-menulead');if(menu&&!$('qy72-menu-launch')){const btn=document.createElement('button');btn.type='button';btn.id='qy72-menu-launch';menu.insertAdjacentElement('afterend',btn);btn.addEventListener('click',()=>{const drawer=$('qy44-menuclose');drawer?.click();open()})}
+// Optional entry inside local admin tools, kept separate from the protected GitHub permissions.
+const quick=$('qy71-admin-quick');if(quick&&!$('qy72-admin-entry')){const btn=document.createElement('button');btn.type='button';btn.id='qy72-admin-entry';btn.textContent='🧩 Додатки';quick.append(btn);btn.addEventListener('click',()=>{const close=$('qy67-admin-close');close?.click();open()})}
+let focusBefore=null,scrollBefore='',view='',openingHandle=0;
+let timerRemaining=300,timerRunning=false,timerUntil=0,timerLoop=0;
+const ideaContent={
+ uk:['Як виглядав би світ, у якому кожен день має власний колір?','Яку нову ідею можна знайти у звичайному природному явищі?','Який світ утворився б із тиші, світла та руху?','Чого можна навчитися від річки, яка ніколи не повторюється?','Що має відбуватися на першій сторінці твоєї майбутньої книги?','Як виглядала б подорож від міста до далекої планети?'],
+ ru:['Как выглядел бы мир, в котором у каждого дня свой цвет?','Какую идею можно увидеть в обычном природном явлении?','Какой мир возник бы из тишины, света и движения?','Чему учит река, которая никогда не повторяется?','Что должно происходить на первой странице твоей будущей книги?','Как выглядело бы путешествие от города до далёкой планеты?'],
+ en:['What if every day had its own colour?','What original idea hides in an ordinary natural event?','What world could emerge from silence, light and motion?','What can a river teach us about change?','What belongs on the first page of your next book?','What would a journey from a city to a distant planet feel like?'],
+ pl:['Jak wyglądałby świat, w którym każdy dzień ma własny kolor?','Jaką ideę można odnaleźć w zwykłym zjawisku przyrody?','Jaki świat powstałby z ciszy, światła i ruchu?','Czego uczy nas rzeka, która nigdy się nie powtarza?','Co powinno znaleźć się na pierwszej stronie Twojej książki?','Jak wyglądałaby podróż z miasta na odległą planetę?']};
+let lastIdea=-1;
+function newIdea(){const langCode=$('site-language')?.value||'uk',a=ideaContent[langCode]||ideaContent.en;let index=Math.floor(Math.random()*a.length);if(index===lastIdea)index=(index+1)%a.length;lastIdea=index;$('qy72-idea').textContent=a[index]}
+function redraw(){const L=lang();$('qy72-eyebrow').textContent=L.tag;$('qy72-title').textContent=L.title;$('qy72-subtitle').textContent=L.subtitle;$('qy72-list-title').textContent=L.list;$('qy72-count').textContent=apps.filter(x=>x.status==='ready').length+' '+L.count+' / '+apps.length;$('qy72-exit').textContent=L.close;$('qy72-back').textContent=L.back;$('qy72-back').hidden=!view;$('qy72-apps-footer').textContent=L.privacy;$('qy72-notes-lead').textContent=L.notesDesc;$('qy72-ideas-lead').textContent=L.ideasDesc;$('qy72-timer-lead').textContent=L.timerDesc;$('qy72-notes-save').textContent=L.save;$('qy72-ideas-next').textContent=L.prompt;$('qy72-timer-start').textContent=timerRunning?L.pause:L.start;$('qy72-timer-reset').textContent=L.reset;
+ const menuBtn=$('qy72-menu-launch');if(menuBtn)menuBtn.innerHTML='<span>'+L.menu+'</span><small>↗</small>';
+ const grid=$('qy72-app-grid');grid.replaceChildren();for(const app of apps){const b=document.createElement('button');b.type='button';b.className='qy72-app';b.disabled=app.status==='planned';b.dataset.app=app.id;const icon=document.createElement('span');icon.className='qy72-icon';icon.textContent=app.icon;const name=document.createElement('span');name.className='qy72-name';name.textContent=t(app.name||app.title);const desc=document.createElement('span');desc.className='qy72-desc';desc.textContent=t(app.desc);const badge=document.createElement('span');badge.className='qy72-state';badge.textContent=app.status==='ready'?L.ready:L.soon;b.append(icon,name,desc,badge);if(!b.disabled)b.addEventListener('click',()=>showApp(app.id));grid.append(b)}
+ if(view){const app=apps.find(x=>x.id===view);$('qy72-worktitle').textContent=(app?.icon||'')+' '+t(app?.name||app?.title);}
+}
+function showApp(name){view=name;$('qy72-hero').hidden=true;$('qy72-app-grid').hidden=true;$('qy72-section-head').hidden=true;$('qy72-workbench').hidden=false;wrap.querySelectorAll('.qy72-tool').forEach(x=>x.hidden=x.id!=='qy72-tool-'+name);redraw();if(name==='notes'){$('qy72-notes-text').value=store.get('qy72-notes');$('qy72-notes-text').focus()}if(name==='ideas')newIdea();if(name==='timer')updateTimer();wrap.scrollTop=0}
+function list(){view='';$('qy72-hero').hidden=false;$('qy72-app-grid').hidden=false;$('qy72-section-head').hidden=false;$('qy72-workbench').hidden=true;redraw();wrap.scrollTop=0}
+function open(){if(!wrap.hidden)return;focusBefore=document.activeElement;scrollBefore=document.body.style.overflow;document.body.style.overflow='hidden';wrap.hidden=false;list();wrap.classList.add('qy72-entering');window.clearTimeout(openingHandle);openingHandle=window.setTimeout(()=>wrap.classList.remove('qy72-entering'),1050);$('qy72-exit').focus();try{const url=new URL(location.href);url.searchParams.set('apps','1');history.replaceState(null,'',url)}catch(_){}}
+function close(){if(wrap.hidden)return;wrap.hidden=true;wrap.classList.remove('qy72-entering');document.body.style.overflow=scrollBefore;try{const url=new URL(location.href);url.searchParams.delete('apps');history.replaceState(null,'',url)}catch(_){}if(focusBefore?.isConnected)focusBefore.focus()}
+$('qy72-exit').addEventListener('click',close);$('qy72-back').addEventListener('click',list);
+wrap.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();view?list():close();return}if(e.key==='Tab'){const targets=[...wrap.querySelectorAll('button:not([disabled]),textarea')].filter(x=>!x.hidden&&x.offsetParent!==null);if(!targets.length)return;const first=targets[0],last=targets[targets.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
+$('qy72-notes-save').addEventListener('click',()=>{$('qy72-notes-status').textContent=store.set('qy72-notes',$('qy72-notes-text').value)?lang().saved:lang().notSaved});
+$('qy72-notes-text').addEventListener('input',()=>{store.set('qy72-notes',$('qy72-notes-text').value);$('qy72-notes-status').textContent=lang().saved});
+$('qy72-ideas-next').addEventListener('click',newIdea);
+function updateTimer(){if(timerRunning){timerRemaining=Math.max(0,Math.ceil((timerUntil-Date.now())/1000));if(timerRemaining<=0){timerRunning=false;timerRemaining=0;$('qy72-timer-status').textContent='✓'} }const mm=String(Math.floor(timerRemaining/60)).padStart(2,'0'),ss=String(timerRemaining%60).padStart(2,'0');$('qy72-timer-clock').textContent=mm+':'+ss;$('qy72-timer-start').textContent=timerRunning?lang().pause:lang().start}
+$('qy72-timer-start').addEventListener('click',()=>{if(timerRunning){updateTimer();timerRunning=false}else{if(timerRemaining<=0)timerRemaining=300;timerUntil=Date.now()+timerRemaining*1000;timerRunning=true;$('qy72-timer-status').textContent=''}updateTimer()});
+$('qy72-timer-reset').addEventListener('click',()=>{timerRunning=false;timerRemaining=Number(wrap.querySelector('.qy72-choice[aria-pressed="true"]')?.dataset.seconds||300);$('qy72-timer-status').textContent='';updateTimer()});
+wrap.querySelectorAll('.qy72-choice').forEach(btn=>btn.addEventListener('click',()=>{wrap.querySelectorAll('.qy72-choice').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));timerRunning=false;timerRemaining=Number(btn.dataset.seconds);updateTimer()}));
+timerLoop=window.setInterval(()=>{if(timerRunning)updateTimer()},250);
+$('site-language')?.addEventListener('change',()=>{if(!wrap.hidden)redraw();else{const b=$('qy72-menu-launch');if(b)b.innerHTML='<span>'+lang().menu+'</span><small>↗</small>'}});
+redraw();try{if(new URLSearchParams(location.search).get('apps')==='1')requestAnimationFrame(open)}catch(_){}
+window.qyHubApps=Object.freeze({open,close,version:'72',installed:apps.filter(a=>a.status==='ready').map(a=>a.id),planned:apps.filter(a=>a.status==='planned').map(a=>a.id)});
+})();
+</script>
 </body></html>
