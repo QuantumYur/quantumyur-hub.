@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="uk">
 <head>
-<!-- QuantumYur v87 (Genesis Studio editing addition; Chronoscapes six-phase generated wallpapers, companion analog clock, Genesis preserved; v47 design preserved) / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
-<meta charset="UTF-8"><meta name="qy-build" content="86"><meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- QuantumYur v88 (Genesis Film Library enhancement on v87; Chronoscapes six-phase generated wallpapers, companion analog clock, Genesis preserved; v47 design preserved) / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
+<meta charset="UTF-8"><meta name="qy-build" content="88"><meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script id="qy-v35-before-paint">
 (()=>{'use strict';
@@ -7578,7 +7578,7 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
    v87Status('Експорт монтажу: '+selected.length+' сцен · '+total.toFixed(1)+' с. Не згортай вкладку.');
    await new Promise(resolve=>{finish=resolve;const loop=now=>{if(v87.cancel||document.hidden||now-start>=total*1000){resolve();return;}if(last<0||now-last>=1000/24){last=now;const elapsed=clamp((now-start)/1000,0,total);v87PaintScene(cap,elapsed,(now-start)*opts.speed,images,buffers);v87El('qy87-progress-bar').style.width=(100*elapsed/total).toFixed(1)+'%';}rafId=requestAnimationFrame(loop)};rafId=requestAnimationFrame(loop);});
    if(rafId)cancelAnimationFrame(rafId);if(rec.state!=='inactive')rec.stop();await done;
-   if(!v87.cancel&&chunks.length){fileDownload(new Blob(chunks,{type:mime}),'QuantumYur-v87-Genesis-Studio-'+selected.length+'-scenes.webm');v87El('qy87-progress-bar').style.width='100%';v87Status('Готово: WebM створено локально з '+selected.length+' сцен.');}
+   if(!v87.cancel&&chunks.length){const videoBlob=new Blob(chunks,{type:mime});fileDownload(videoBlob,'QuantumYur-v88-Genesis-Studio-'+selected.length+'-scenes.webm');try{window.dispatchEvent(new CustomEvent('qy88-film-recorded',{detail:{blob:videoBlob,project:v87Project(),cover:cap.toDataURL('image/jpeg',.75),width:cap.width,height:cap.height}}))}catch(_e){};v87El('qy87-progress-bar').style.width='100%';v87Status('Готово: WebM створено локально з '+selected.length+' сцен.');}
    else v87Status(v87.cancel?'Запис скасовано.':'Жодного відеокадру не отримано.');
   }catch(e){v87Status('Помилка відеозапису: '+String(e.message||e));if(rec?.state==='recording')rec.stop();}
   finally{if(rafId)cancelAnimationFrame(rafId);stream?.getTracks().forEach(t=>t.stop());v87.finish=null;v87.recording=false;v85.recording=false;v87El('qy87-cancel').hidden=true;v87El('qy87-record').disabled=false;v85RenderCompare();v87Render();}
@@ -7586,7 +7586,7 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
  v87El('qy87-record').addEventListener('click',v87Record);
  v87El('qy87-cancel').addEventListener('click',()=>{v87.cancel=true;v87.finish?.();v87Status('Скасування запису…');});
  document.addEventListener('visibilitychange',()=>{if(document.hidden&&v87.recording){v87.cancel=true;v87.finish?.();}});
- window.qyGenesisStudio=Object.freeze({version:'87',snapshot:()=>({count:v87.clips.length,ids:v87.clips.map(c=>c.id),titles:v87.clips.map(c=>c.title),durations:v87.clips.map(c=>v87Duration(c)),position:v87.position,playing:v87.playing,previewActive:v87.preview,recording:v87.recording,total:v87Total()}),refresh:v87Refresh});
+ window.qyGenesisStudio=Object.freeze({version:'87',exportProject:()=>v87Project(),snapshot:()=>({count:v87.clips.length,ids:v87.clips.map(c=>c.id),titles:v87.clips.map(c=>c.title),durations:v87.clips.map(c=>v87Duration(c)),position:v87.position,playing:v87.playing,previewActive:v87.preview,recording:v87.recording,total:v87Total()}),refresh:v87Refresh});
  v87LoadImages().then(()=>v87DrawPreview()).catch(()=>v87Status('Фото не вдалося декодувати для попереднього перегляду.'));
  v85Refresh();
 
@@ -7649,5 +7649,103 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
  refreshMetrics(true);sync();
 })();
 
+</script>
+
+<style id="qy88-film-library-css">
+/* v88 Genesis film library and mobile admin layout: additive scoped styles */
+#qy83-controls .qy88-gallery{margin:16px 0 0;padding:14px;border:1px solid rgba(137,208,229,.55);border-radius:12px;background:linear-gradient(155deg,#102a42,#0b2036);color:#e8f6ff}
+#qy83-controls .qy88-gallery h4{font-size:18px;margin:5px 0 8px;color:#eafaff}
+#qy83-controls .qy88-gallery h5{font-size:14px;margin:8px 0}
+#qy83-controls .qy88-gallery p,#qy83-controls .qy88-gallery small{font-size:11px;line-height:1.55;color:#b7d0e0}
+#qy83-controls .qy88-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+#qy83-controls .qy88-grid label{font-size:11px;color:#dceffc;min-width:0}
+#qy83-controls .qy88-grid input,#qy83-controls .qy88-grid select,#qy83-controls .qy88-film-info input{display:block;box-sizing:border-box;width:100%;min-height:42px;border:1px solid #507b90;background:#0b263b;color:#f3fbff;border-radius:9px;padding:7px;font-size:13px;margin-top:4px}
+#qy83-controls .qy88-actions{display:flex;gap:7px;flex-wrap:wrap;margin:9px 0}
+#qy83-controls .qy88-actions button{flex:1 1 140px;min-height:42px}
+#qy83-controls .qy88-check{display:flex;gap:8px;align-items:center;font-size:12px;color:#d4eefa;margin:8px 0}
+#qy83-controls .qy88-check input{width:20px;height:20px}
+#qy83-controls #qy88-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#qy83-controls .qy88-film{border:1px solid #3d7086;background:#132c41;border-radius:10px;overflow:hidden;min-width:0}
+#qy83-controls .qy88-film>img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#081727}
+#qy83-controls .qy88-film-info{padding:9px;min-width:0}
+#qy83-controls .qy88-film-info small{display:block;margin:7px 0}
+#qy83-controls .qy88-film-actions{display:flex;flex-wrap:wrap;gap:6px}
+#qy83-controls .qy88-film-actions button{flex:1 1 95px;font-size:11px;min-height:36px;white-space:normal}
+#qy83-controls #qy88-player-box{margin-top:12px;border:1px solid #6b9ab3;border-radius:10px;padding:10px}
+@media(max-width:700px){#qy67-admin-sheet{padding:14px!important}#qy67-admin-overlay #qy67-admin-stats{grid-template-columns:repeat(2,minmax(0,1fr))}#qy67-admin-overlay .qy67-admin-grid{grid-template-columns:minmax(0,1fr)}#qy67-admin-overlay .qy67-panel{padding:12px}#qy67-admin-sheet .qy67-admin-actions{flex-wrap:wrap}#qy83-controls .qy88-grid{grid-template-columns:1fr}#qy83-controls #qy88-list{grid-template-columns:1fr}}
+
+#qy88-shortcut{width:100%;min-height:43px;background:#204a66;border:1px solid #8cc6dd;border-radius:10px;color:#ecf8ff;margin:0 0 12px;font:600 13px ui-monospace,monospace;cursor:pointer}
+</style>
+<script id="qy88-film-library-js">
+(()=>{'use strict';
+ // QuantumYur Genesis Film Library v88. All media stays on this device in IndexedDB.
+ const studio=document.getElementById('qy87-studio');if(!studio||window.qyFilmLibrary)return;
+ const $=id=>document.getElementById(id);
+ const panel=document.createElement('section');panel.id='qy88-gallery';panel.className='qy88-gallery';panel.setAttribute('aria-label','Бібліотека авторських фільмів Genesis');
+ panel.innerHTML=`
+ <small>✦ QUANTUM GENESIS · v88</small><h4>🎞️ Бібліотека авторських фільмів</h4>
+ <p>Готові відео WebM та монтажі Genesis. Обкладинки, проєкти й відео зберігаються <strong>лише у цьому браузері</strong> — не на GitHub і не на сервері.</p>
+ <div class="qy88-grid"><label>Назва нового фільму<input id="qy88-title" type="text" maxlength="80" placeholder="Наприклад: Зоряна еволюція"></label><label>Профіль експорту
+ <select id="qy88-profile"><option value="twitch">Twitch · 960 × 540 · 16:9</option><option value="youtube">YouTube · 1280 × 720 · 16:9</option><option value="mobile">Мобільний · 640 × 360 · 16:9</option></select></label></div>
+ <div class="qy88-actions"><button id="qy88-save-project" type="button">＋ Зберегти монтаж</button><button id="qy88-save-cover" type="button">↓ Обкладинка JPG</button><button id="qy88-import-btn" type="button">↑ Імпорт MP4 / WebM</button><input id="qy88-import-file" type="file" accept="video/mp4,video/webm,.mp4,.webm" hidden></div>
+ <label class="qy88-check"><input id="qy88-autosave" type="checkbox" checked> Автоматично зберігати записані тут WebM у бібліотеці</label>
+ <div class="qy88-actions"><button id="qy88-refresh" type="button">↻ Оновити бібліотеку</button><button id="qy88-manifest" type="button">↓ Каталог JSON</button></div>
+ <p id="qy88-state" role="status">Підключення локальної бібліотеки…</p>
+ <div id="qy88-list" class="qy88-list" aria-live="polite"></div>
+ <div id="qy88-player-box" hidden><h5>Перегляд фільму</h5><video id="qy88-player" playsinline controls preload="metadata" style="width:100%;max-height:360px;background:#071526"></video><button type="button" id="qy88-player-close">Закрити перегляд</button></div>
+ <p>JSON-каталог містить лише описи, без відеобайтів. Для перенесення фільмів завантажуй WebM окремо. WebM без аудіо, вертикальний формат Shorts у цій версії не створюється. Власні відео NASA вважатимуться зовнішніми матеріалами, не поколіннями Genesis.</p>`;
+ studio.insertAdjacentElement('afterend',panel);
+ const galleryBody=$('qy41-body');if(galleryBody){const shortcut=document.createElement('button');shortcut.id='qy88-shortcut';shortcut.type='button';shortcut.textContent='🎞️ Фільми Genesis v88';shortcut.setAttribute('aria-label','Відкрити бібліотеку фільмів Genesis');galleryBody.prepend(shortcut);shortcut.addEventListener('click',()=>{const theme=$('qy37-theme');if(theme&&theme.value!=='54'){theme.value='54';theme.dispatchEvent(new Event('change',{bubbles:true}));}const details=$('qy41-picker');if(details)details.open=true;panel.scrollIntoView({behavior:'smooth',block:'start'});});}
+ const status=s=>{$('qy88-state').textContent=s;};
+ const btn=(txt,fn)=>{const e=document.createElement('button');e.type='button';e.textContent=txt;e.addEventListener('click',fn);return e;};
+ function download(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),15000);}
+ const filename=(s,ext)=>'QuantumYur-'+String(s||'film').replace(/[^\p{L}\p{N}_-]+/gu,'-').slice(0,70)+'.'+ext;
+ let dbPromise=null,cache=[],currentUrl=null,active=null;
+ function db(){if(!('indexedDB' in window))return Promise.reject(Error('IndexedDB недоступна'));
+  if(dbPromise)return dbPromise;
+  dbPromise=new Promise((resolve,reject)=>{const r=indexedDB.open('QuantumYurFilms_v88',1);
+   r.onupgradeneeded=()=>{const st=r.result.createObjectStore('films',{keyPath:'id'});st.createIndex('createdAt','createdAt');};
+   r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error||Error('Помилка IndexedDB'));
+  }).catch(err=>{dbPromise=null;throw err});return dbPromise;
+ }
+ async function all(){const d=await db();return new Promise((resolve,reject)=>{const req=d.transaction('films','readonly').objectStore('films').getAll();req.onsuccess=()=>resolve(req.result||[]);req.onerror=()=>reject(req.error);});}
+ async function put(film){const d=await db();return new Promise((resolve,reject)=>{const tr=d.transaction('films','readwrite');tr.objectStore('films').put(film);tr.oncomplete=resolve;tr.onerror=()=>reject(tr.error);tr.onabort=()=>reject(tr.error||Error('Сховище заповнене'));});}
+ async function del(id){const d=await db();return new Promise((resolve,reject)=>{const tr=d.transaction('films','readwrite');tr.objectStore('films').delete(id);tr.oncomplete=resolve;tr.onerror=()=>reject(tr.error);});}
+ async function cover(){const c=$('qy87-canvas'),t=document.createElement('canvas');t.width=480;t.height=270;const x=t.getContext('2d');x.fillStyle='#071526';x.fillRect(0,0,480,270);x.drawImage(c,0,0,480,270);return t.toDataURL('image/jpeg',.77);}
+ const guid=()=>crypto.randomUUID?crypto.randomUUID():'film-'+Date.now()+'-'+Math.random().toString(36).slice(2);
+ function metadata(r){const {blob, cover, ...other}=r;return {...other,hasVideo:blob instanceof Blob,hasCover:!!cover,bytes:blob?.size||0};}
+ async function refresh(){try{cache=(await all()).sort((a,b)=>b.createdAt.localeCompare(a.createdAt));render();status('Записів у бібліотеці: '+cache.length+'. Вони залишаються на цьому пристрої.');}catch(e){status('Сховище недоступне: '+(e.message||e));}}
+ function closePreview(){const p=$('qy88-player');p.pause();p.removeAttribute('src');p.load();$('qy88-player-box').hidden=true;if(currentUrl){URL.revokeObjectURL(currentUrl);currentUrl=null;}active=null;}
+ function render(){const list=$('qy88-list');list.replaceChildren();if(!cache.length){const p=document.createElement('p');p.textContent='Поки порожньо. Збережи монтаж або запиши WebM у студії вище.';list.appendChild(p);return;}
+  for(const f of cache){const article=document.createElement('article');article.className='qy88-film';const coverEl=document.createElement('img');coverEl.alt='Обкладинка фільму '+f.title;coverEl.loading='lazy';if(f.cover)coverEl.src=f.cover;else coverEl.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="480" height="270"><rect width="480" height="270" fill="#071c32"/><text x="55" y="135" fill="#d0eaff" font-size="28">QUANTUM GENESIS</text></svg>');article.appendChild(coverEl);
+   const fields=document.createElement('div');fields.className='qy88-film-info';const title=document.createElement('input');title.type='text';title.maxLength=80;title.value=f.title;title.setAttribute('aria-label','Назва фільму');title.addEventListener('change',async()=>{f.title=title.value.trim().slice(0,80)||'Без назви';try{await put(f);status('Назву змінено.');}catch(e){status('Не вдалося зберегти: '+e.message)}});fields.appendChild(title);
+   const small=document.createElement('small');small.textContent=new Date(f.createdAt).toLocaleString('uk-UA')+' · '+(f.origin==='genesis'?'Genesis / симуляція':'Імпортований файл')+' · '+(f.blob?((f.blob.size/1048576).toFixed(1)+' МБ'):'проєкт без відео')+(f.width?' · '+f.width+'×'+f.height:'');fields.appendChild(small);
+   const actions=document.createElement('div');actions.className='qy88-film-actions';if(f.blob)actions.appendChild(btn('▶ Перегляд',()=>{closePreview();currentUrl=URL.createObjectURL(f.blob);$('qy88-player').src=currentUrl;$('qy88-player-box').hidden=false;$('qy88-player-box').scrollIntoView({behavior:'smooth',block:'nearest'});active=f.id;}));
+   if(f.blob)actions.appendChild(btn('↓ '+(f.format||'webm').toUpperCase(),()=>download(f.blob,filename(f.title,f.format||'webm'))));
+   if(f.project)actions.appendChild(btn('↓ Проєкт JSON',()=>download(new Blob([JSON.stringify(f.project,null,2)],{type:'application/json'}),filename(f.title,'json'))));
+   if(f.cover)actions.appendChild(btn('↓ Обкладинка',()=>{const a=document.createElement('a');a.href=f.cover;a.download=filename(f.title,'jpg');a.click();}));
+   actions.appendChild(btn('× Видалити',async()=>{if(!confirm('Видалити фільм «'+f.title+'» лише з цього браузера?'))return;try{if(active===f.id)closePreview();await del(f.id);await refresh();}catch(e){status('Не вдалося видалити: '+e.message)}}));fields.appendChild(actions);article.appendChild(fields);list.appendChild(article);}
+ }
+ $('qy88-player-close').addEventListener('click',closePreview);
+ $('qy88-profile').addEventListener('change',e=>{const w={twitch:'960',youtube:'1280',mobile:'640'}[e.target.value]||'960';$('qy87-quality').value=w;$('qy87-quality').dispatchEvent(new Event('input',{bubbles:true}));status('Вибрано '+w+'×'+Math.round(w*9/16)+' для наступного запису WebM (16:9). Публікація не здійснюється.');});
+ try{$('qy88-autosave').checked=localStorage.getItem('qy88-auto')!=='0';}catch(_e){}$('qy88-autosave').addEventListener('change',e=>{try{localStorage.setItem('qy88-auto',e.target.checked?'1':'0');}catch(_e){}});
+ $('qy88-save-project').addEventListener('click',async()=>{const project=window.qyGenesisStudio?.exportProject?.();if(!project||!project.clips?.length){status('Спочатку додай хоча б одну сцену до монтажу v87.');return;}
+  const f={id:guid(),createdAt:new Date().toISOString(),title:$('qy88-title').value.trim().slice(0,80)||project.film.intro||'Новий монтаж',origin:'genesis',project,cover:await cover(),blob:null,width:640,height:360};try{await put(f);await refresh();}catch(e){status('Помилка: '+e.message)}});
+ $('qy88-save-cover').addEventListener('click',async()=>{try{const base=await cover(),a=document.createElement('a');a.href=base;a.download=filename($('qy88-title').value||'Genesis-cover','jpg');a.click();status('Обкладинку JPEG збережено.');}catch(e){status('Не вдалося створити обкладинку: '+e.message)}});
+ $('qy88-refresh').addEventListener('click',refresh);
+ $('qy88-import-btn').addEventListener('click',()=>$('qy88-import-file').click());
+ $('qy88-import-file').addEventListener('change',async e=>{const file=e.target.files?.[0];e.target.value='';if(!file)return;if(!/\.(mp4|webm)$/i.test(file.name)||file.size>128*1048576){status('Потрібен MP4 або WebM до 128 МБ.');return;}
+  const f={id:guid(),createdAt:new Date().toISOString(),title:$('qy88-title').value.trim().slice(0,80)||file.name.replace(/\.(mp4|webm)$/i,''),origin:'external',project:null,cover:null,blob:file,format:file.name.toLowerCase().endsWith('.mp4')?'mp4':'webm',width:0,height:0};try{await put(f);await refresh();}catch(err){status('Не вдалося зберегти WebM: '+err.message)}});
+ $('qy88-manifest').addEventListener('click',()=>{const body={schema:'quantumyur.films.catalog.v1',generatedAt:new Date().toISOString(),notice:'Metadata only; video and thumbnails are not included. Download WebM separately.',films:cache.map(metadata)};download(new Blob([JSON.stringify(body,null,2)],{type:'application/json'}),'QuantumYur-v88-film-catalog.json');});
+ window.addEventListener('qy88-film-recorded',async e=>{if(!$('qy88-autosave').checked)return;const d=e.detail||{};if(!(d.blob instanceof Blob))return;
+  const project=d.project||null,title=$('qy88-title').value.trim().slice(0,80)||project?.film?.intro||'Genesis Studio Film';const f={id:guid(),createdAt:new Date().toISOString(),title,origin:'genesis',project,cover:d.cover||null,blob:d.blob,format:'webm',width:d.width||0,height:d.height||0};
+  try{await put(f);await refresh();status('WebM збережено в бібліотеці разом з обкладинкою та JSON монтажу. Файл також завантажено.');}catch(err){status('WebM завантажено, але не збережено в бібліотеці: '+err.message+'; перевір вільне місце на пристрої.');}
+ });
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)closePreview()});
+ window.qyFilmLibrary=Object.freeze({version:'88',refresh,snapshot:()=>({count:cache.length,videoCount:cache.filter(f=>f.blob).length,storage:'IndexedDB',titles:cache.map(f=>f.title)})});
+ // Correct the old admin counter without modifying the original 53-theme source audit.
+ const adminCount=document.querySelector('#qy67-admin-stats .qy67-stat strong');if(adminCount)adminCount.textContent='54';
+ refresh();
+})();
 </script>
 </body></html>
