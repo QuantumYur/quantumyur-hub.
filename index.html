@@ -1615,6 +1615,16 @@ html[data-qy-v37="on"] .hero{background-image:linear-gradient(100deg,rgba(5,15,2
 #qy-v37-wallpaper .qy62-wallplane{position:absolute;inset:0;background-position:center center;background-size:cover;background-repeat:no-repeat;pointer-events:none;transition:opacity .09s linear;will-change:auto}
 @media(prefers-reduced-motion:reduce){#qy-v37-wallpaper .qy62-wallplane{transition:none!important}}
 </style>
+
+<style id="qy-v68-stable-home-css">
+/* The approved clock-first home is authoritative, even before late scripts finish. */
+body:has(#qy44-front):not(.qy44-content) #top > :not(#qy44-front):not(#qy44-contentbar){display:none!important}
+body:has(#qy44-front):not(.qy44-content) #qy44-contentbar{display:none!important}
+body:has(#qy44-front):not(.qy44-content) .wrap > header,
+body:has(#qy44-front):not(.qy44-content) .wrap > footer{display:none!important}
+#qy68-recovery{display:flex;flex-direction:column;gap:7px;margin-top:10px;padding:10px 12px;color:#f9eac9;background:rgba(10,25,39,.88);border:1px solid #e9c48a;border-radius:12px;font:650 13px/1.45 ui-monospace,Consolas,monospace}
+#qy68-recovery button{align-self:center;color:#14253a;background:#f3dca8;border:0;border-radius:10px;padding:8px 16px;min-height:42px;font:750 13px ui-monospace,Consolas,monospace;cursor:pointer}
+</style>
 </head>
 <body>
 <div id="qy-v35-startup" role="status" aria-label="Завантаження оформлення"><div class="qy-v35-inside"><div class="qy-v35-mark">✦ QuantumYur</div><div class="qy-v35-sub">Відновлюємо вибрану тему…</div></div></div>
@@ -4118,6 +4128,9 @@ const tr=i=>(UI[lang()]||UI.uk)[i];
 const main=id('top'),wrap=$('.wrap'),oldheader=wrap?.querySelector(':scope > header');if(!main||!wrap||!oldheader)return;
 const front=document.createElement('section');front.id='qy44-front';front.innerHTML=`<div class="qy44-head"><div class="qy44-brand"><span aria-hidden="true" class="star">✦</span> QuantumYur</div><span class="qy44-head-note" id="qy44-phase" aria-live="off"></span></div><div class="qy44-middle"><p class="qy44-greeting" id="qy44-greeting"></p><time id="qy44-time"></time><p id="qy44-date"></p><div id="qy44-active"></div></div><div class="qy44-bottom"><button id="qy44-weather" type="button" aria-haspopup="dialog" aria-controls="qy44-menu-overlay"><span aria-hidden="true">☁️</span><span id="qy44-weathertext"></span></button><div class="qy44-actions"><button type="button" class="qy44-action" id="qy44-themes"><span class="emoji" aria-hidden="true">🎨</span><span class="label"></span></button><button type="button" class="qy44-action" id="qy44-frames"><span class="emoji" aria-hidden="true">🎭</span><span class="label"></span></button><button type="button" class="qy44-action" id="qy44-menu"><span class="emoji" aria-hidden="true">☰</span><span class="label"></span></button></div></div>`;
 main.prepend(front);
+// v68: make the approved home visible before any optional subsystem finishes.
+document.body.classList.add('qy44-ready','qy44-home');
+document.body.classList.remove('qy44-content');
 const backbar=document.createElement('div');backbar.id='qy44-contentbar';backbar.innerHTML='<button type="button" id="qy44-homebutton"></button><button type="button" id="qy44-c-themes"></button><button type="button" id="qy44-c-frames"></button><button type="button" id="qy44-c-menu"></button>';main.prepend(backbar);
 const drawer=document.createElement('div');drawer.id='qy44-menu-overlay';drawer.hidden=true;drawer.setAttribute('role','dialog');drawer.setAttribute('aria-modal','true');drawer.setAttribute('aria-labelledby','qy44-menutitle');
 drawer.innerHTML=`<div id="qy44-menu-sheet"><div class="qy44-menuhead"><h2 id="qy44-menutitle"></h2><button class="qy44-close" id="qy44-menuclose" type="button" aria-label="Close">×</button></div><p class="qy44-menulead" id="qy44-menulead"></p><div id="qy44-navgroups"></div><div class="qy44-menugroup"><label for="qy44-city" id="qy44-weatherlabel"></label><div class="qy44-weatherrow"><input id="qy44-city" type="search" autocomplete="off" maxlength="80"><button type="button" class="qy44-smallbtn" id="qy44-findcity"></button></div><div id="qy44-weatherstate" role="status" aria-live="polite"></div></div><div class="qy44-menugroup"><label id="qy44-langlabel" for="site-language"></label><div id="qy44-lang-slot"></div></div></div>`;
@@ -5610,6 +5623,34 @@ const originalLanguage=el('site-language');originalLanguage?.addEventListener('c
 launchButton();
 window.qyHubAdmin=Object.freeze({open,close,diagnostics});
 try{if(new URLSearchParams(location.search).get('admin')==='1')requestAnimationFrame(open)}catch(_){}
+})();
+</script>
+
+<script id="qy-v68-home-recovery">
+(()=>{'use strict';
+try{history.scrollRestoration='manual'}catch(_){ }
+const language=()=>document.getElementById('site-language')?.value||'uk';
+const words={uk:['Фототеми не завантажились повністю. Спробуй оновити сторінку.','Оновити сайт'],en:['Photo themes did not finish loading. Refresh this page.','Refresh site'],pl:['Motywy zdjęć nie wczytały się w pełni. Odśwież stronę.','Odśwież stronę'],ru:['Фототемы не загрузились полностью. Обновите страницу.','Обновить сайт']};
+function recover(){
+ const front=document.getElementById('qy44-front');if(!front)return;
+ document.body.classList.add('qy44-ready');
+ if(!document.body.classList.contains('qy44-content')){
+  document.body.classList.add('qy44-home');
+  window.scrollTo({top:0,left:0,behavior:'instant'});
+ }
+ const source=document.getElementById('qy37-theme'),mode=document.getElementById('qy37-mode');
+ const failed=!source||!mode||!source.options.length;
+ const old=document.getElementById('qy68-recovery');
+ if(!failed){old?.remove();return}
+ if(old)return;
+ const inside=document.getElementById('qy44-active');if(!inside)return;
+ const box=document.createElement('div');box.id='qy68-recovery';box.setAttribute('role','status');
+ const line=document.createElement('span');const button=document.createElement('button');button.type='button';button.addEventListener('click',()=>location.reload());
+ const l=words[language()]||words.en;line.textContent=l[0];button.textContent='↻ '+l[1];box.append(line,button);
+ document.getElementById('qy47-controls')?.remove();inside.insertAdjacentElement('afterend',box);
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(recover,200),{once:true});else setTimeout(recover,200);
+ window.addEventListener('pageshow',()=>setTimeout(recover,60));
 })();
 </script>
 </body></html>
