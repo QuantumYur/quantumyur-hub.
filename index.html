@@ -5963,6 +5963,7 @@ const apps=[
  {id:'notes',icon:'📝',name:'notes',desc:'notesDesc',status:'ready'},
  {id:'ideas',icon:'✨',name:'ideas',desc:'ideasDesc',status:'ready'},
  {id:'timer',icon:'⏳',name:'timer',desc:'timerDesc',status:'ready'},
+ {id:'thomson',icon:'🔮',title:{uk:'Сфера Томсона',ru:'Сфера Томсона',en:'Thomson sphere',pl:'Sfera Thomsona'},desc:{uk:'Заряди самі шукають стійкий порядок на кулі',ru:'Заряды сами ищут устойчивый порядок на сфере',en:'Watch charges settle into order on a sphere',pl:'Ładunki same odnajdują układ na sferze'},status:'ready'},
  {id:'astronomy',icon:'🔭',title:{uk:'Зоряний атлас',ru:'Звёздный атлас',en:'Star atlas',pl:'Atlas gwiazd'},desc:{uk:'Зорі, планети та космос',ru:'Звёзды, планеты и космос',en:'Stars, planets and space',pl:'Gwiazdy i planety'},status:'planned'},
  {id:'gaming',icon:'🎮',title:{uk:'Ігровий радар',ru:'Игровой радар',en:'Gaming radar',pl:'Radar gier'},desc:{uk:'Ігри, Xbox і Twitch',ru:'Игры, Xbox и Twitch',en:'Games, Xbox and Twitch',pl:'Gry, Xbox i Twitch'},status:'planned'},
  {id:'astrohism',icon:'🌌',title:{uk:'Астрохізм',ru:'Астрохизм',en:'Astrohism',pl:'Astrochizm'},desc:{uk:'Філософські практики та записи',ru:'Философские практики и записи',en:'Philosophy and reflection',pl:'Filozofia i refleksje'},status:'planned'},
@@ -5979,6 +5980,28 @@ wrap.innerHTML=`<div id="qy72-apps-portal" aria-hidden="true"><i class="qy72-rin
 <section id="qy72-workbench" hidden><div id="qy72-workhead"><h2 id="qy72-worktitle"></h2></div>
 <div class="qy72-tool" id="qy72-tool-notes" hidden><p>📝 <span id="qy72-notes-lead"></span></p><textarea id="qy72-notes-text" maxlength="12000" aria-label="Notes"></textarea><div class="qy72-toolactions"><button class="qy72-btn" type="button" id="qy72-notes-save"></button><span class="qy72-status" id="qy72-notes-status" role="status"></span></div></div>
 <div class="qy72-tool" id="qy72-tool-ideas" hidden><p id="qy72-ideas-lead"></p><div id="qy72-idea" aria-live="polite"></div><div class="qy72-toolactions"><button type="button" class="qy72-btn" id="qy72-ideas-next"></button></div></div>
+<div class="qy72-tool" id="qy72-tool-thomson" hidden>
+  <p id="qy73-intro">Кожна крапка — заряд на сфері. Заряди відштовхуються; ми чисельно зменшуємо їхню сумарну енергію. Поверни сферу пальцем.</p>
+  <div class="qy73-sim">
+    <div class="qy73-spherepanel">
+      <canvas id="qy73-sphere" width="800" height="580" role="img" aria-label="Тривимірна проєкція заряджених частинок на сфері" tabindex="0"></canvas>
+      <div class="qy73-sphere-caption"><span>THOMSON · 1904</span><span id="qy73-state-pill" aria-live="polite">● Дослідження</span></div>
+    </div>
+    <div class="qy73-stats" aria-live="off">
+      <div><span id="qy73-energy-label">Енергія</span><strong id="qy73-energy">—</strong></div>
+      <div><span id="qy73-steps-label">Кроки</span><strong id="qy73-steps">0</strong></div>
+      <div><span id="qy73-change-label">Зниження енергії</span><strong id="qy73-drop">—</strong></div>
+    </div>
+    <div class="qy73-controlgrid">
+      <label class="qy73-range-label" for="qy73-count"><span id="qy73-count-label">Кількість зарядів</span><output id="qy73-count-value">24</output></label>
+      <input type="range" id="qy73-count" min="4" max="60" value="24" step="1" />
+      <div class="qy73-controls-row"><button type="button" class="qy72-btn" id="qy73-toggle">⏸ Пауза</button><button type="button" class="qy72-btn" id="qy73-restart">↻ Інша конфігурація</button></div>
+      <div class="qy73-controls-row"><label for="qy73-speed" id="qy73-speed-label">Швидкість</label><select id="qy73-speed"><option value="1">×1</option><option value="3" selected>×3</option><option value="6">×6</option></select><label class="qy73-check"><input type="checkbox" id="qy73-orbit" checked /><span id="qy73-orbit-label">Повільне обертання</span></label></div>
+    </div>
+    <div class="qy73-energy-chart"><div class="qy73-chart-head"><strong id="qy73-graph-label">Енергія системи</strong><span id="qy73-graph-hint">Вниз = стійкіше</span></div><canvas id="qy73-chart" width="700" height="170" role="img" aria-label="Графік зменшення сумарної кулонівської енергії"></canvas></div>
+    <div class="qy73-explain"><strong id="qy73-info-title">Як виникає порядок</strong><p id="qy73-explain">На сфері однакові заряди відштовхуються. На кожному кроці алгоритм рухає їх уздовж поверхні, якщо це зменшує сумарну енергію. Результат може бути локальним, а не глобальним мінімумом.</p><p id="qy73-remark">Це інтерактивна математична модель, а не відеозапис експерименту.</p></div>
+  </div>
+</div>
 <div class="qy72-tool" id="qy72-tool-timer" hidden><p id="qy72-timer-lead"></p><div id="qy72-timer-clock" role="timer" aria-live="off">05:00</div><div id="qy72-timer-preset"><button type="button" data-seconds="300" class="qy72-btn qy72-choice" aria-pressed="true">5 хв</button><button type="button" data-seconds="600" class="qy72-btn qy72-choice" aria-pressed="false">10 хв</button><button type="button" data-seconds="1500" class="qy72-btn qy72-choice" aria-pressed="false">25 хв</button></div><div id="qy72-timer-controls"><button class="qy72-btn" type="button" id="qy72-timer-start"></button><button class="qy72-btn" type="button" id="qy72-timer-reset"></button></div><p class="qy72-status" id="qy72-timer-status" role="status"></p></div>
 </section></main><footer id="qy72-apps-footer"></footer></div>`;
 document.body.append(wrap);
@@ -5999,10 +6022,10 @@ function redraw(){const L=lang();$('qy72-eyebrow').textContent=L.tag;$('qy72-tit
  const grid=$('qy72-app-grid');grid.replaceChildren();for(const app of apps){const b=document.createElement('button');b.type='button';b.className='qy72-app';b.disabled=app.status==='planned';b.dataset.app=app.id;const icon=document.createElement('span');icon.className='qy72-icon';icon.textContent=app.icon;const name=document.createElement('span');name.className='qy72-name';name.textContent=t(app.name||app.title);const desc=document.createElement('span');desc.className='qy72-desc';desc.textContent=t(app.desc);const badge=document.createElement('span');badge.className='qy72-state';badge.textContent=app.status==='ready'?L.ready:L.soon;b.append(icon,name,desc,badge);if(!b.disabled)b.addEventListener('click',()=>showApp(app.id));grid.append(b)}
  if(view){const app=apps.find(x=>x.id===view);$('qy72-worktitle').textContent=(app?.icon||'')+' '+t(app?.name||app?.title);}
 }
-function showApp(name){view=name;$('qy72-hero').hidden=true;$('qy72-app-grid').hidden=true;$('qy72-section-head').hidden=true;$('qy72-workbench').hidden=false;wrap.querySelectorAll('.qy72-tool').forEach(x=>x.hidden=x.id!=='qy72-tool-'+name);redraw();if(name==='notes'){$('qy72-notes-text').value=store.get('qy72-notes');$('qy72-notes-text').focus()}if(name==='ideas')newIdea();if(name==='timer')updateTimer();wrap.scrollTop=0}
-function list(){view='';$('qy72-hero').hidden=false;$('qy72-app-grid').hidden=false;$('qy72-section-head').hidden=false;$('qy72-workbench').hidden=true;redraw();wrap.scrollTop=0}
+function showApp(name){window.qyThomson?.deactivate();view=name;$('qy72-hero').hidden=true;$('qy72-app-grid').hidden=true;$('qy72-section-head').hidden=true;$('qy72-workbench').hidden=false;wrap.querySelectorAll('.qy72-tool').forEach(x=>x.hidden=x.id!=='qy72-tool-'+name);redraw();if(name==='notes'){$('qy72-notes-text').value=store.get('qy72-notes');$('qy72-notes-text').focus()}if(name==='ideas')newIdea();if(name==='timer')updateTimer();if(name==='thomson')window.qyThomson?.activate();wrap.scrollTop=0;try{const url=new URL(location.href);url.searchParams.set('apps','1');if(name==='thomson')url.searchParams.set('tool','thomson');else url.searchParams.delete('tool');history.replaceState(null,'',url)}catch(_){}}
+function list(){window.qyThomson?.deactivate();view='';try{const url=new URL(location.href);url.searchParams.delete('tool');history.replaceState(null,'',url)}catch(_){}$('qy72-hero').hidden=false;$('qy72-app-grid').hidden=false;$('qy72-section-head').hidden=false;$('qy72-workbench').hidden=true;redraw();wrap.scrollTop=0}
 function open(){if(!wrap.hidden)return;focusBefore=document.activeElement;scrollBefore=document.body.style.overflow;document.body.style.overflow='hidden';wrap.hidden=false;list();wrap.classList.add('qy72-entering');window.clearTimeout(openingHandle);openingHandle=window.setTimeout(()=>wrap.classList.remove('qy72-entering'),1050);$('qy72-exit').focus();try{const url=new URL(location.href);url.searchParams.set('apps','1');history.replaceState(null,'',url)}catch(_){}}
-function close(){if(wrap.hidden)return;wrap.hidden=true;wrap.classList.remove('qy72-entering');document.body.style.overflow=scrollBefore;try{const url=new URL(location.href);url.searchParams.delete('apps');history.replaceState(null,'',url)}catch(_){}if(focusBefore?.isConnected)focusBefore.focus()}
+function close(){if(wrap.hidden)return;window.qyThomson?.deactivate();wrap.hidden=true;wrap.classList.remove('qy72-entering');document.body.style.overflow=scrollBefore;try{const url=new URL(location.href);url.searchParams.delete('apps');url.searchParams.delete('tool');history.replaceState(null,'',url)}catch(_){}if(focusBefore?.isConnected)focusBefore.focus()}
 $('qy72-exit').addEventListener('click',close);$('qy72-back').addEventListener('click',list);
 wrap.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();view?list():close();return}if(e.key==='Tab'){const targets=[...wrap.querySelectorAll('button:not([disabled]),textarea')].filter(x=>!x.hidden&&x.offsetParent!==null);if(!targets.length)return;const first=targets[0],last=targets[targets.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
 $('qy72-notes-save').addEventListener('click',()=>{$('qy72-notes-status').textContent=store.set('qy72-notes',$('qy72-notes-text').value)?lang().saved:lang().notSaved});
@@ -6014,8 +6037,98 @@ $('qy72-timer-reset').addEventListener('click',()=>{timerRunning=false;timerRema
 wrap.querySelectorAll('.qy72-choice').forEach(btn=>btn.addEventListener('click',()=>{wrap.querySelectorAll('.qy72-choice').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));timerRunning=false;timerRemaining=Number(btn.dataset.seconds);updateTimer()}));
 timerLoop=window.setInterval(()=>{if(timerRunning)updateTimer()},250);
 $('site-language')?.addEventListener('change',()=>{if(!wrap.hidden)redraw();else{const b=$('qy72-menu-launch');if(b)b.innerHTML='<span>'+lang().menu+'</span><small>↗</small>'}});
-redraw();try{if(new URLSearchParams(location.search).get('apps')==='1')requestAnimationFrame(open)}catch(_){}
-window.qyHubApps=Object.freeze({open,close,version:'72',installed:apps.filter(a=>a.status==='ready').map(a=>a.id),planned:apps.filter(a=>a.status==='planned').map(a=>a.id)});
+redraw();try{const params=new URLSearchParams(location.search);if(params.get('apps')==='1')requestAnimationFrame(()=>{open();if(params.get('tool')==='thomson')showApp('thomson')})}catch(_){}
+window.qyHubApps=Object.freeze({open,close,version:'73',installed:apps.filter(a=>a.status==='ready').map(a=>a.id),planned:apps.filter(a=>a.status==='planned').map(a=>a.id)});
+})();
+</script>
+
+<style id="qy73-thomson-css">
+/* Interactive science app: all calculations and rendering are bundled in this file. */
+#qy72-workbench:has(#qy72-tool-thomson:not([hidden])){max-width:960px}
+#qy72-apps-overlay .qy73-sim{display:grid;gap:16px}
+#qy72-apps-overlay #qy72-tool-thomson>p{margin:0 0 15px;color:#c1e1ec}
+#qy72-apps-overlay .qy73-spherepanel{position:relative;overflow:hidden;border-radius:20px;background:radial-gradient(circle at 50% 47%,#172f69 0,#0a1c3a 42%,#050d20 100%);border:1px solid #80d6ee78;box-shadow:inset 0 0 30px #58b7ef16,0 18px 36px #0007}
+#qy72-apps-overlay #qy73-sphere{display:block;width:100%;height:auto;aspect-ratio:1.38;max-height:520px;touch-action:none;cursor:grab;outline-offset:-3px}
+#qy72-apps-overlay #qy73-sphere:active{cursor:grabbing}
+#qy72-apps-overlay .qy73-sphere-caption{position:absolute;bottom:11px;left:13px;right:13px;display:flex;justify-content:space-between;gap:10px;align-items:center;font:700 11px ui-monospace,Consolas,monospace;letter-spacing:.075em;color:#acd9eb;pointer-events:none}
+#qy72-apps-overlay #qy73-state-pill{border:1px solid #82e5d17d;color:#c9ffee;background:#0b243ebc;border-radius:999px;padding:5px 9px;letter-spacing:0}
+#qy72-apps-overlay .qy73-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+#qy72-apps-overlay .qy73-stats>div{background:linear-gradient(140deg,#143350,#1c2b53);border:1px solid #75b8d15c;border-radius:12px;padding:12px;min-width:0;display:flex;flex-direction:column;gap:5px}
+#qy72-apps-overlay .qy73-stats span{font-size:11px;color:#bad7e7;line-height:1.3}
+#qy72-apps-overlay .qy73-stats strong{font-size:clamp(16px,3.4vw,24px);font-variant-numeric:tabular-nums;font-weight:850;color:#ecfdff;white-space:nowrap}
+#qy72-apps-overlay .qy73-controlgrid{display:grid;gap:12px;padding:15px;border:1px solid #7aacc377;border-radius:16px;background:rgba(6,23,48,.7)}
+#qy72-apps-overlay .qy73-range-label{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#e8f5fc;font-size:14px;font-weight:750}
+#qy72-apps-overlay .qy73-range-label output{font-variant-numeric:tabular-nums;border:1px solid #8dccef7a;border-radius:9px;background:#21496a;padding:4px 10px;font-weight:900}
+#qy72-apps-overlay input[type="range"]#qy73-count{appearance:auto;accent-color:#91e9ea;width:100%;min-height:30px;cursor:pointer}
+#qy72-apps-overlay .qy73-controls-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+#qy72-apps-overlay .qy73-controls-row .qy72-btn{flex:1 1 170px}
+#qy72-apps-overlay #qy73-speed{color:#eafaff;background:#173c58;border:1px solid #9bd1df;border-radius:9px;padding:9px 15px;min-height:44px;font:700 14px ui-monospace,Consolas,monospace}
+#qy72-apps-overlay .qy73-check{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#d6e9f1;cursor:pointer}
+#qy72-apps-overlay .qy73-check input{width:18px;height:18px;accent-color:#89e5e7}
+#qy72-apps-overlay .qy73-energy-chart{padding:12px;border:1px solid #85b5d05b;background:#0b233d;border-radius:15px}
+#qy72-apps-overlay .qy73-chart-head{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;align-items:baseline;color:#d8effd;font-size:13px;margin-bottom:10px}
+#qy72-apps-overlay .qy73-chart-head span{font-size:11px;color:#98bccc}
+#qy72-apps-overlay #qy73-chart{width:100%;height:120px;display:block}
+#qy72-apps-overlay .qy73-explain{padding:14px;border-left:3px solid #83dbd2;background:#14324a6e;border-radius:10px;color:#d1e7f1;font-size:13px;line-height:1.6}
+#qy72-apps-overlay .qy73-explain strong{color:#fff;font-size:14px}
+#qy72-apps-overlay .qy73-explain p{margin:6px 0 0!important}
+#qy72-apps-overlay #qy73-remark{font-size:12px;color:#a7c7d8}
+@media(max-width:480px){#qy72-apps-overlay #qy73-sphere{aspect-ratio:1.06}#qy72-apps-overlay .qy73-sphere-caption{font-size:9px}#qy72-apps-overlay .qy73-stats>div{padding:9px 7px}#qy72-apps-overlay .qy73-stats strong{font-size:15px}#qy72-apps-overlay .qy73-stats span{font-size:10px}}
+@media(prefers-reduced-motion:reduce){#qy72-apps-overlay #qy73-sphere{scroll-behavior:auto}}
+</style>
+
+<script id="qy73-thomson-js">
+(()=>{'use strict';
+// Relaxational search for low-energy Thomson configurations (not inertial dynamics).
+// U = sum_{i<j} 1/|r_i-r_j| with |r_i|=1; backtracking accepts only descending steps.
+const $=id=>document.getElementById(id), ui=$('qy72-tool-thomson');if(!ui||window.qyThomson)return;
+const sphere=$('qy73-sphere'), chart=$('qy73-chart'), ctx=sphere.getContext('2d',{alpha:false}), cctx=chart.getContext('2d');
+if(!ctx||!cctx)return;
+const labels={
+uk:{intro:'Заряди рухаються на поверхні кулі та відштовхуються. Потягни кулю пальцем, щоб оглянути результат.',energy:'Енергія',steps:'Кроки',drop:'Зниження енергії',count:'Кількість зарядів',pause:'⏸ Пауза',play:'▶ Продовжити',restart:'↻ Нова конфігурація',speed:'Швидкість',orbit:'Повільне обертання',graph:'Як змінюється енергія',hint:'Менше = стійкіша конфігурація',info:'Порядок із взаємодії',explain:'Це задача Томсона: однакові заряди відштовхуються на сфері. Алгоритм послідовно пересуває їх по поверхні, приймаючи тільки кроки, які знижують сумарну енергію. Так знаходиться можливий локальний мінімум — не обов’язково найнижчий серед усіх.',remark:'Математична симуляція, не зйомка експерименту. Обертання змінює тільки ракурс.',running:'● Рух',paused:'● Пауза',steady:'● Майже рівновага'},
+ru:{intro:'Заряды отталкиваются на поверхности сферы. Проведи пальцем, чтобы вращать модель.',energy:'Энергия',steps:'Шаги',drop:'Снижение энергии',count:'Число зарядов',pause:'⏸ Пауза',play:'▶ Продолжить',restart:'↻ Новая конфигурация',speed:'Скорость',orbit:'Медленное вращение',graph:'Изменение энергии',hint:'Меньше = устойчивее',info:'Порядок из взаимодействия',explain:'Одинаковые заряды отталкиваются на сфере. Численный алгоритм принимает только шаги, уменьшающие энергию системы. Получается возможный локальный минимум, не обязательно глобальный.',remark:'Это математическая симуляция, не видеозапись опыта. Вращение меняет только ракурс.',running:'● Движение',paused:'● Пауза',steady:'● Почти равновесие'},
+en:{intro:'Equal charges repel on a sphere. Drag to rotate your view of the emerging pattern.',energy:'Energy',steps:'Steps',drop:'Energy decrease',count:'Number of charges',pause:'⏸ Pause',play:'▶ Resume',restart:'↻ New arrangement',speed:'Speed',orbit:'Slow rotation',graph:'Energy over time',hint:'Lower = more stable',info:'Order from interaction',explain:'The Thomson problem places repelling charges on a sphere. A numerical descent accepts only moves that lower the total energy. It may reach a local minimum, not necessarily the global minimum.',remark:'Interactive mathematical simulation, not experimental footage. Rotation only changes the viewpoint.',running:'● Relaxing',paused:'● Paused',steady:'● Near equilibrium'},
+pl:{intro:'Ładunki odpychają się na powierzchni kuli. Przeciągnij, aby obrócić widok.',energy:'Energia',steps:'Kroki',drop:'Spadek energii',count:'Liczba ładunków',pause:'⏸ Pauza',play:'▶ Wznów',restart:'↻ Nowy układ',speed:'Szybkość',orbit:'Powolny obrót',graph:'Zmiana energii',hint:'Niżej = stabilniej',info:'Porządek z oddziaływań',explain:'W problemie Thomsona jednakowe ładunki odpychają się na kuli. Algorytm przyjmuje tylko ruchy zmniejszające energię. Wynik może być minimum lokalnym, nie globalnym.',remark:'Model matematyczny, a nie film eksperymentalny. Obrót zmienia jedynie punkt widzenia.',running:'● Ruch',paused:'● Pauza',steady:'● Blisko równowagi'}};
+const L=()=>labels[$('site-language')?.value]||labels.uk;
+const norm=v=>{const r=Math.hypot(v[0],v[1],v[2])||1;return [v[0]/r,v[1]/r,v[2]/r]};
+let count=24,pts=[],energy=0,initial=0,history=[],steps=0,alpha=.025,playing=true,rotating=true,active=false,raf=0;
+let ax=-.12,ay=.35,scale=1,drag=null,lastUi=0,drawFrames=0,accepted=0;
+const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+rotating=!reduce;playing=!reduce;
+function calcEnergy(p){let E=0;for(let i=0;i<p.length;i++)for(let j=i+1;j<p.length;j++){const dx=p[i][0]-p[j][0],dy=p[i][1]-p[j][1],dz=p[i][2]-p[j][2];E+=1/Math.sqrt(Math.max(1e-8,dx*dx+dy*dy+dz*dz))}return E}
+function randomize(){count=Number($('qy73-count').value)||24;pts=[];for(let i=0;i<count;i++){const v=Math.random()*2-1,a=Math.random()*Math.PI*2,r=Math.sqrt(1-v*v);pts.push([r*Math.cos(a),v,r*Math.sin(a)])}energy=calcEnergy(pts);initial=energy;history=[energy];steps=0;accepted=0;alpha=.03;updateLabels();schedule()}
+function relax(){const n=pts.length,F=Array.from({length:n},()=>[0,0,0]);for(let i=0;i<n;i++)for(let j=i+1;j<n;j++){const dx=pts[i][0]-pts[j][0],dy=pts[i][1]-pts[j][1],dz=pts[i][2]-pts[j][2],d2=Math.max(1e-8,dx*dx+dy*dy+dz*dz),q=1/(d2*Math.sqrt(d2));F[i][0]+=dx*q;F[i][1]+=dy*q;F[i][2]+=dz*q;F[j][0]-=dx*q;F[j][1]-=dy*q;F[j][2]-=dz*q}
+for(let i=0;i<n;i++){const v=pts[i],f=F[i],normal=f[0]*v[0]+f[1]*v[1]+f[2]*v[2];f[0]-=normal*v[0];f[1]-=normal*v[1];f[2]-=normal*v[2]}
+let test=Math.min(.065,alpha*1.14);for(let attempt=0;attempt<13;attempt++){const candidate=pts.map((p,i)=>norm([p[0]+test*F[i][0],p[1]+test*F[i][1],p[2]+test*F[i][2]])),en=calcEnergy(candidate);if(en < energy-1e-11){pts=candidate;energy=en;steps++;accepted++;alpha=test;if(steps%4===0){history.push(energy);if(history.length>170)history.shift()}return true}test*=.5}
+alpha=Math.max(1e-8,test);return false}
+function dimensions(canvas,context){const dpr=Math.min(2,window.devicePixelRatio||1),w=Math.max(100,Math.round(canvas.getBoundingClientRect().width)),h=Math.max(90,Math.round(canvas.getBoundingClientRect().height));const bw=Math.round(w*dpr),bh=Math.round(h*dpr);if(canvas.width!==bw||canvas.height!==bh){canvas.width=bw;canvas.height=bh}context.setTransform(dpr,0,0,dpr,0,0);return [w,h]}
+function view(p){const c=Math.cos(ay),s=Math.sin(ay),cx=c*p[0]+s*p[2],cz=-s*p[0]+c*p[2],u=Math.cos(ax),v=Math.sin(ax);return [cx,u*p[1]-v*cz,v*p[1]+u*cz]}
+function paint(){const [w,h]=dimensions(sphere,ctx);ctx.fillStyle='#061225';ctx.fillRect(0,0,w,h);const midX=w*.5,midY=h*.47,R=Math.min(w*.425,h*.425)*scale;
+const glow=ctx.createRadialGradient(midX-R*.23,midY-R*.31,R*.05,midX,midY,R*1.48);glow.addColorStop(0,'#15446a');glow.addColorStop(.55,'#0b264d');glow.addColorStop(.79,'#091834');glow.addColorStop(1,'#050e23');ctx.fillStyle=glow;ctx.beginPath();ctx.arc(midX,midY,R*1.33,0,Math.PI*2);ctx.fill();
+ctx.save();ctx.beginPath();ctx.arc(midX,midY,R,0,Math.PI*2);ctx.clip();const fill=ctx.createRadialGradient(midX-R*.3,midY-R*.35,0,midX,midY,R*1.23);fill.addColorStop(0,'#173e73');fill.addColorStop(.55,'#0b2654');fill.addColorStop(1,'#061532');ctx.fillStyle=fill;ctx.fillRect(midX-R,midY-R,R*2,R*2);
+const drawPath=(arr)=>{let begun=false;ctx.beginPath();for(const v of arr){const p=view(v),x=midX+p[0]*R,y=midY-p[1]*R;if(!begun){ctx.moveTo(x,y);begun=true}else ctx.lineTo(x,y)}ctx.stroke()};ctx.strokeStyle='rgba(146,220,255,.14)';ctx.lineWidth=1;
+for(let lat=-60;lat<=60;lat+=30){let seq=[];const a=lat*Math.PI/180;for(let k=0;k<=96;k++){const t=k/96*Math.PI*2;seq.push([Math.cos(a)*Math.cos(t),Math.sin(a),Math.cos(a)*Math.sin(t)])}drawPath(seq)}for(let lon=0;lon<180;lon+=30){let seq=[];const a=lon*Math.PI/180;for(let k=0;k<=96;k++){const t=k/96*Math.PI*2;seq.push([Math.cos(a)*Math.cos(t),Math.sin(t),Math.sin(a)*Math.cos(t)])}drawPath(seq)}ctx.restore();
+ctx.beginPath();ctx.arc(midX,midY,R,0,Math.PI*2);ctx.strokeStyle='rgba(162,233,255,.49)';ctx.lineWidth=1.6;ctx.stroke();
+const ordered=pts.map(p=>view(p)).sort((a,b)=>a[2]-b[2]);for(const p of ordered){const front=(p[2]+1)/2,x=midX+p[0]*R,y=midY-p[1]*R,rad=2.8+front*3.2;ctx.globalAlpha=.35+front*.65;ctx.beginPath();ctx.arc(x,y,rad*2,0,Math.PI*2);ctx.fillStyle=front>.52?'rgba(120,247,249,.22)':'rgba(140,159,249,.15)';ctx.fill();ctx.beginPath();ctx.arc(x,y,rad,0,Math.PI*2);ctx.fillStyle=front>.5?'#b7fcff':'#6f90d0';ctx.fill();if(front>.63){ctx.beginPath();ctx.arc(x-rad*.28,y-rad*.28,rad*.34,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill()}}ctx.globalAlpha=1;
+ctx.fillStyle='rgba(192,231,248,.83)';ctx.font='600 11px ui-monospace,Consolas,monospace';ctx.fillText('N = '+count,15,24)}
+function paintChart(){const [w,h]=dimensions(chart,cctx),pad={x:44,top:13,right:13,bottom:23};cctx.clearRect(0,0,w,h);cctx.strokeStyle='rgba(148,204,230,.22)';cctx.lineWidth=1;for(let j=0;j<4;j++){const y=pad.top+j*(h-pad.top-pad.bottom)/3;cctx.beginPath();cctx.moveTo(pad.x,y);cctx.lineTo(w-pad.right,y);cctx.stroke()}
+let min=Math.min(...history),max=Math.max(...history);if(max-min<1e-7)max=min+1e-7;let pts2=history.length>1?history:[energy,energy];cctx.beginPath();for(let i=0;i<pts2.length;i++){const x=pad.x+(w-pad.x-pad.right)*i/(pts2.length-1),y=pad.top+(h-pad.top-pad.bottom)*(max-pts2[i])/(max-min);if(i===0)cctx.moveTo(x,y);else cctx.lineTo(x,y)}cctx.lineWidth=2.6;cctx.strokeStyle='#8aeee1';cctx.stroke();cctx.fillStyle='#aacbd8';cctx.font='11px ui-monospace,Consolas,monospace';cctx.fillText(max.toFixed(1),4,pad.top+7);cctx.fillText(min.toFixed(1),4,h-pad.bottom+4);cctx.fillText('0',pad.x-4,h-4);cctx.fillText(String(steps),w-40,h-4)}
+function updateLabels(){const l=L();$('qy73-intro').textContent=l.intro;$('qy73-energy-label').textContent=l.energy;$('qy73-steps-label').textContent=l.steps;$('qy73-change-label').textContent=l.drop;$('qy73-count-label').textContent=l.count;$('qy73-count-value').textContent=count;$('qy73-energy').textContent=energy.toFixed(3);$('qy73-steps').textContent=steps.toLocaleString();$('qy73-drop').textContent=(initial-energy).toFixed(3);$('qy73-toggle').textContent=playing?l.pause:l.play;$('qy73-restart').textContent=l.restart;$('qy73-speed-label').textContent=l.speed;$('qy73-orbit-label').textContent=l.orbit;$('qy73-graph-label').textContent=l.graph;$('qy73-graph-hint').textContent=l.hint;$('qy73-info-title').textContent=l.info;$('qy73-explain').textContent=l.explain;$('qy73-remark').textContent=l.remark;$('qy73-state-pill').textContent=playing?(accepted===0&&steps>15?l.steady:l.running):l.paused}
+function schedule(){if(active&&!raf)raf=window.requestAnimationFrame(frame)}
+function frame(now){raf=0;if(!active)return;const SPEED=Number($('qy73-speed').value)||3;if(playing){for(let k=0;k<SPEED;k++){if(!relax()){playing=false;break}}}if(rotating&&!drag)ay+=.0026;paint();drawFrames++;if(drawFrames%6===0||now-lastUi>700){updateLabels();paintChart();lastUi=now}if(playing||rotating||drag)schedule()}
+function activate(){active=true;updateLabels();paint();paintChart();schedule()}
+function deactivate(){active=false;if(raf){window.cancelAnimationFrame(raf);raf=0}}
+$('qy73-count').addEventListener('input',()=>{randomize();if(active){paint();paintChart()}});
+$('qy73-toggle').addEventListener('click',()=>{playing=!playing;updateLabels();schedule()});
+$('qy73-restart').addEventListener('click',()=>{playing=true;randomize()});
+$('qy73-speed').addEventListener('change',schedule);
+$('qy73-orbit').addEventListener('change',e=>{rotating=e.target.checked;schedule()});
+const move=e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>3){ay+=dx*.008;ax=Math.max(-1.32,Math.min(1.32,ax+dy*.008));drag={x:e.clientX,y:e.clientY};schedule();if(Math.abs(dx)>Math.abs(dy))e.preventDefault()}};
+sphere.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY};sphere.setPointerCapture(e.pointerId);schedule()});sphere.addEventListener('pointermove',move);sphere.addEventListener('pointerup',()=>{drag=null;schedule()});sphere.addEventListener('pointercancel',()=>{drag=null;schedule()});
+sphere.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){ay+=e.key==='ArrowLeft'?-.15:.15;e.preventDefault();paint()}if(e.key==='ArrowUp'||e.key==='ArrowDown'){ax=Math.max(-1.32,Math.min(1.32,ax+(e.key==='ArrowUp'?-.15:.15)));e.preventDefault();paint()}});
+window.addEventListener('resize',()=>{if(active){paint();paintChart()}});$('site-language')?.addEventListener('change',()=>{if(active)updateLabels()});
+randomize();$('qy73-orbit').checked=rotating;
+window.qyThomson=Object.freeze({activate,deactivate,version:'73',snapshot:()=>({count,steps,initialEnergy:initial,energy,history:[...history],playing,active,points:pts.map(p=>[...p])})});
 })();
 </script>
 </body></html>
