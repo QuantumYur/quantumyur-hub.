@@ -1,0 +1,164 @@
+name: QuantumYur Autopilot - one file
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 8 * * *'
+
+concurrency:
+  group: quantumyur-autopilot
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    if: ${{ vars.QY_AUTOPILOT_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      ready: ${{ steps.pick.outputs.ready }}
+      task_id: ${{ steps.pick.outputs.task_id }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Select next task (skip merged and currently open proposals)
+        id: pick
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PYTASK'
+          import base64,zlib,json,os,subprocess
+          from pathlib import Path
+          data=json.loads(zlib.decompress(base64.b64decode('eNqtWltvE1cQ/iurvPCSSLnYccIbVaUKISqqUiFU9QEaq42KQkVCi1RVIg5JQEIOheBIFAqofejjemPHZn3JX9j9R5355pzdc4439npdIRC+7cyZyzffzJxvf5vb3Ji7PPfV7YXFxaW5+bmdzZ17VXoj+jsaxI34SdyIwngvCiI/rkVdLwri3bjhReeRHw2idtTjF53Ixz/0jSBqx4+jVnRGnw2ibtSnD+gNnz4OoyG9/KVUISl3HlTvsJBj+gr9MPoUDejd7Z07Oyz75+rWxubWD3O/z5vaLZvaveGHQYuQpA6UFtEpvd2jvwFJ6xpa0t9PBcWumGLf0Y8CMskpHfaAzHPkRX16eWYa5IgUI9lNetHxlJiAdCLd6GtkjCHp/Djeiw/FrvSzQXxUULuSqd0HEnlKD+3F9fTBHiR2WE+WSgrTy0E0jJ9GXfqoy9+i/+178VN+SR6v0YmCgvqUTX3eIxjakLZLj0YAteCeU/bYAHER8Lshf4mMSLbxJL6GbMqCWqyaWpyw5enotcQiHKUUE10OEjo4uaoHpxQ/dsU+Np+Qz9NmT4tYetgnD9Y4Q1qQsAGlUo19Qi4hI81k9zX7xD7isX8pPqJjkzZmpHnsjcQaz+nViZXPBTVYNzV4iR+Sf+ND+B9iOfDOYPdAqUBZKSnRFVPQ23VD/Fv6QZOM0iMtGYz4O88nKbK0aCryGrAzAFrAB/Ockk06U49PTGE5VJaBfxqsJWPKLjuJv8WiHd9F3Zl1NJH21v0HP1UfcGL0JDZ9EqMik599yNYBhJG3POjd5IAG3nJgN+KTmRVatnGEAaPFD1FZK/YAtBwB+Ooeu04sVM9EsWJ6WGj7ggK3Bteh+JAlBoyhHXjkzKxKjCRQAnF9lsYcgstjvIYifSMRGjMra4HvXySrBis1qOQZuqWZSO6Ln5DL6EweK+qhlrRI2+HMupRdBALyxM807A5Jck9SeeHGrStTyNuqVje2F6qPdqoPtu7cc8Q6SOvH+5LL6mhS/wIVwUAa5gkCPyjSMx+8YmvQRFXzda3xhRuAtXCNO4T56SsAvn0BpZamCB7K+0jIGTr+mZF9RxN1XHM4BI62R5FBkCu1LkS9a6Rh22CL8X/FgFRIqWCnYY1iKdW1JSjOVW5mRdftKPJRvag6AZy5TCv3hALgbNoWijvrzoAReEQx6HV7BJcKKbS86Cq0B7YJigBiI3Qizfj/UfaSG1ltVQO0rG3KjHlPeYcD7MRDYQHfQOL12Rqc6fhlBwD6nN8YKfbFVFx2sp5/xtwDdR8J0EaqsXs6irPWvaVHC6VHM8vOA9XnIB/yzHoKiUbMWAhQTBELhl/BO23QKqM8sBrStrgh3RnNJkYKwQ6uwjPrZ0HzMTzSRttCD8gwkabjmhyGjBXxY0ONF6h3ZD4UnDDyJ6qw6sbJU36wB2FDk+jwydErgPEVF1iZxAZVDUjwXkSDrKHpPOUzS8Rardv0qljg+woPRVcL53MRHsFfh+JNL3L9wrTUAA7BjF786BAYBgM4AeqAxNSarCxm5oYOXy8J+wDdoRl/3KKxaRCtnZmUWHKb1E/46SA6zSgfDc7IUOGnQPnMDllZnoBVjA2++VT9ZgeWqc0ofsXNhiab24k8JvdGPPqK54aIBlP+R5CHVh7sWSlNPjhlYp2Lmp6jcACGhQWWRxsJPkFLA7KZACT5ACHpw83HUb+gUAve3iZVtgt2F+hTmrJOCkqquExuT7KXJYDR94X/kjkPmCeJZFaFJ2UAHtWHFFRgzXYoHQ3uVMOoEOmsW1qoowrdjHFkIdoHHl6Bu6qS6WPsZHg3k0bLBAzjJ2nTihqhZKHaP9qmClA5krg/1SMl5qp1lVotPfuQYL+ozk+jy5I9lvSFb/FpTXen0EY9DqnErVgLGDjql5dGUzhe9vIkhoqZjttBSKFBnICHOEUmv3gb1vAzc2hAQnvc6+gWTD02aQ0lOADxiqIG3pdXvr5SSJeSDbFtDPwk6lU/aaqwfhmd6/RiTHi7fqMkjKWHNh8lTHKN0ptikLpXCrajCXLGtdclp70ONNzoWGbT8bDIB49tAW4DaKQdTW0/N/29wk4eh3i79KKJBBcyLRDIpOGI3a7DsJBcC+jeYzYo6dTwbv66ufP9j/Pe7fsPbz68W50XUDGopMUY84tcd3lKgFkOI2s6t9lTo4RyiXtNsAPHth8NzjBWYNnEseVrC6VriRwCVEVUMTPxQDekgHUyGFGWyHGBVbZQ6189bOH5iK9moroHkREKpSbCqzlRbPZJLaT6CFAayhQuOXJm555fwkrG5iHeR0nA+Ev5SqUGwFFWNHo/grn06BwzvwYWBB3QgxjggTmUJgYMtenE0gB2BT/OkuqYRNReIQ3KF9ci2cmhPPTmkwItHYbKWyvErBTKr4HbaNp9Ncb96o1TrMpasx654uasWq+wCKur9fWKQVpeevyh/iiLArxByPT537w5tWb7vw8gpDKEopZn8ltA5rpDB/WsxwMCy/YpSId158bgRZZUqu0Whm7jWLY6mW5YXZzU8YoNGiObBAqJL6pb1e3N7YKSLSR7q+ZdevBLTznXu6aUGjHQ1aQBbyIimk7DM438ZXsJEEJMX/dxeuzBJTreZ1Ip+S7cMxQ5RiyOmqegWhYcPlFck/dYsodPV+fyJndF++60wXhvvLDSBeMlxbll2lCfN6ftPeLkcAIPUQsJLTtzHR6o211I3tF0fpmr2evtNj/WnM0HKeqoR0sJ1ZcFrJXnyHgjtzqVLHUwypGAOxDCBC5mDOxH0S6/yDX3FsZAoWpPzS+S8ycG6al5hoCxLnSozUwznmGAMr0mFvQdo4c41ecU5i9lf2D6AwGI9LJj/R0QsMHrsbybp8ripAF42/vmqgfokX2PEZpJWZRKJfP5oTUAKaJS1spCXVdRu0i7ItfN7UXdVEvVySDlSzMrZ3erQrv48oNi9WoSLqWpb/I09KryObO0noPWRXSx4PEP8FE++6FMTRJ2JPcf1HRFsENdcRrINpNLDablF9ygGK/buNJeKTmFTdxl9HgGdQOgqH1Hkuozmqicdaela1I4Nca4+J7VW0nxiaJWLypWsjZWkkNPlXEY3EngvKIq2fglO+lB2gg1jFtCMh0GYVfTRHVWdW/HisZjZX6sd3Mb27m/Iw82Fr6+Nek70bdF+A4Zepqu7tiwbNxVt0TCdNaTlpsT55JREXXtBQdPAVBnVPrgtoXqwID/XT4KG7QLwpWsGNI8GwpnRxcf16xO4Dzp65k/+znTZ81EZxkYiHHU0OCyPZ6SIMCFIH3F5STZ3A6x9Ks5rW9BvZZG0uoSYWsnuYOkBqQNvaHJvO+D+EwvOybD1fTCmVlTXyfvTsyPtUmbEizfkSxq/ZmxxVBBYGrXT24e6pNZ+DSNhiuZhFsKiM2Auu5gSFlJWApnxJ53q3r3ujj66tZG9VF14/PPDL3eyx0D2cLq7M+XI2uZq5eOXv1ku9W9+KH2YPSHxxX4Ml+AwAqPhzVy3o5VmqxNleW/tJaNCdbv/gNd1EXz')).decode('utf-8'))
+          prs=json.loads(subprocess.check_output(['gh','pr','list','--state','all','--limit','200',
+                 '--json','headRefName,mergedAt,state'],text=True))
+          open_pr=any(p['headRefName'].startswith('autopilot/') and p['state']=='OPEN' for p in prs)
+          merged={p['headRefName'].split('/')[-1] for p in prs
+                  if p.get('mergedAt') and p['headRefName'].startswith('autopilot/')}
+          task=next((t for t in data if t['state']=='pending' and t['id'] not in merged),None)
+          ready=bool(task and not open_pr)
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write('ready='+str(ready).lower()+'\n')
+              if ready:f.write('task_id='+task['id']+'\n')
+          if ready:
+              prompt=f"""Implement or verify exactly one QuantumYur Hub improvement: {task['id']},
+              Area: {task['area']}. Requirement: {task['title']}.
+              Read only relevant portions of index.html; do not print embedded base64 images.
+              You may edit index.html ONLY. Preserve all 54 worlds, the v47 approved
+              main-screen aesthetic, lab, Genesis, media players, book reader and archives.
+              Do not change GitHub workflows, secrets, external dependencies, or other files.
+              No synthetic data should be claimed as physical observations.
+              If already done, leave code unchanged and explain evidence clearly.
+              If impossible without a server or licensed assets, do not fake completion;
+              explain the blocker. Keep a single self-contained HTML file.
+              Review and test any code edits before finishing."""
+              Path('.qy-autopilot-instruction.txt').write_text(prompt,encoding='utf-8')
+              print('Next task:',task['id'],task['title'])
+          elif open_pr:print('Existing Autopilot PR must be reviewed first.')
+          else:print('All eligible tasks have been proposed.')
+          PYTASK
+      - name: Generate one carefully scoped proposal
+        if: steps.pick.outputs.ready == 'true'
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          permission-profile: ':workspace'
+          prompt-file: .qy-autopilot-instruction.txt
+          output-file: .qy-codex-result.txt
+      - name: Validate and write review note
+        if: steps.pick.outputs.ready == 'true'
+        env:
+          TASK_ID: ${{ steps.pick.outputs.task_id }}
+        run: |
+          python - <<'PYVALIDATE'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          import os,subprocess,tempfile,json
+          src=Path('index.html').read_text(encoding='utf-8')
+          old=subprocess.check_output(['git','show','HEAD:index.html']).decode('utf-8')
+          assert len(src)>=len(old)*0.88, 'Potential loss of embedded assets'
+          for marker in ('QuantumYur','Genesis','Thomson','54','</html>'):
+              assert marker.lower() in src.lower(), 'Required marker missing: '+marker
+          changed=subprocess.check_output(['git','diff','--name-only','HEAD'],text=True).splitlines()
+          assert all(n=='index.html' for n in changed), 'Unexpected source modifications: '+str(changed)
+          class P(HTMLParser):
+              def __init__(self):super().__init__();self.current=None;self.scripts=[]
+              def handle_starttag(self,tag,attrs):
+                  if tag=='script':
+                      a=dict(attrs)
+                      self.current=[] if not a.get('src') and a.get('type','') in ('','text/javascript','module') else None
+              def handle_data(self,data):
+                  if self.current is not None:self.current.append(data)
+              def handle_endtag(self,tag):
+                  if tag=='script' and self.current is not None:
+                      self.scripts.append(''.join(self.current));self.current=None
+          p=P();p.feed(src)
+          assert len(p.scripts)>=40,'Too few scripts compared with QuantumYur builds'
+          for num,code in enumerate(p.scripts):
+              if not code.strip():continue
+              with tempfile.NamedTemporaryFile('w',suffix='.js',delete=False,encoding='utf-8') as f:
+                  f.write(code);name=f.name
+              try:
+                  r=subprocess.run(['node','--check',name],capture_output=True,text=True)
+                  assert r.returncode==0,f'JS #{num}: {r.stderr[-350:]}'
+              finally:Path(name).unlink(missing_ok=True)
+          report=Path('autopilot/reports')/(os.environ['TASK_ID']+'.md')
+          report.parent.mkdir(parents=True,exist_ok=True)
+          result=Path('.qy-codex-result.txt')
+          summary=result.read_text(encoding='utf-8')[:10000] if result.exists() else 'Agent did not provide a summary.'
+          report.write_text('# '+os.environ['TASK_ID']+'\n\n'+
+             ('Code changes prepared for review.\n' if 'index.html' in changed else 'No code changes: requires review.\n')+
+             '\n## Agent report\n'+summary+'\n\n## Local check\n'+
+             f'{len(p.scripts)} embedded JavaScript scripts passed node --check.\n'+
+             'Real Android use and data storage were NOT tested.\n',encoding='utf-8')
+          print('Validated',len(p.scripts),'JavaScript blocks; code changed:',bool(changed))
+          PYVALIDATE
+      - uses: actions/upload-artifact@v4
+        if: steps.pick.outputs.ready == 'true'
+        with:
+          name: quantumyur-proposal
+          path: |
+            index.html
+            autopilot/reports/
+          retention-days: 7
+
+  proposal:
+    needs: prepare
+    if: needs.prepare.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: quantumyur-proposal
+          path: .
+      - name: Create Pull Request - NEVER auto merge
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: autopilot/${{ needs.prepare.outputs.task_id }}
+          delete-branch: true
+          add-paths: |
+            index.html
+            autopilot/reports/
+          title: 'QuantumYur Autopilot: ${{ needs.prepare.outputs.task_id }}'
+          commit-message: 'autopilot: propose ${{ needs.prepare.outputs.task_id }}'
+          body: |
+            Automated one-task proposal. Read the report in autopilot/reports/.
+            Verify changes and test on Android BEFORE merging.
+            This workflow never auto-merges or deploys changes.
+
