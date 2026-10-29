@@ -2,7 +2,7 @@
 <html lang="uk">
 <head>
 <!-- QuantumYur v58 / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
-<meta charset="UTF-8"><meta name="qy-build" content="58"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"><meta name="qy-build" content="59"><meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script id="qy-v35-before-paint">
 (()=>{'use strict';
@@ -3544,7 +3544,17 @@ if(h<17)return 4;if(h<19)return 5;return 6;
 }
 function phaseLabel(){return activeTheme().id===1?FIRST_THEME_PERIODS[localPhase8()]:periods[localPhase()]}
 function selectedImageIndex(){return state.mode==='auto'?(activeTheme().id===1?localPhase8():[0,0,1,2,2,2][localPhase()]):Number(state.mode)}
-function themeImageURL(theme,i,small=false){return theme.id===1?FIRST_THEME_ASSETS[i]:imageUrl(theme.photos[i],small)}
+/* v59 - audited 2K photo sources, sparse map, loaded only when chosen.
+   Unsupported/broken sources fall back to the previous photo immediately. */
+const qy59Photos={"4:1":{"u":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Waterfall_hidden_in_dark_forest_foliage.jpg/3072px-Waterfall_hidden_in_dark_forest_foliage.jpg","s":"https://commons.wikimedia.org/wiki/File:Waterfall_hidden_in_dark_forest_foliage.jpg","a":"Jozef020","l":"CC BY-SA 4.0","ll":"https://creativecommons.org/licenses/by-sa/4.0/"},"15:2":{"u":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Coral_Reef_from_above_2.jpg/3072px-Coral_Reef_from_above_2.jpg","s":"https://commons.wikimedia.org/wiki/File:Coral_Reef_from_above_2.jpg","a":"Paul Harrison","l":"CC BY-SA 4.0","ll":"https://creativecommons.org/licenses/by-sa/4.0/"},"21:1":{"u":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Autumn_Forest.jpg/3072px-Autumn_Forest.jpg","s":"https://commons.wikimedia.org/wiki/File:Autumn_Forest.jpg","a":"Vronnhk","l":"CC BY-SA 4.0","ll":"https://creativecommons.org/licenses/by-sa/4.0/"},"21:2":{"u":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Forest_path_during_autumn.jpg/1920px-Forest_path_during_autumn.jpg","s":"https://commons.wikimedia.org/wiki/File:Forest_path_during_autumn.jpg","a":"Paxxen","l":"CC0 1.0","ll":"https://creativecommons.org/publicdomain/zero/1.0/"},"26:1":{"u":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Carpathian_forest.JPG/1920px-Carpathian_forest.JPG","s":"https://commons.wikimedia.org/wiki/File:Carpathian_forest.JPG","a":"Alreadyexist","l":"CC BY-SA 3.0","ll":"https://creativecommons.org/licenses/by-sa/3.0/"},"28:0":{"u":"https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Great_Wall_of_China_at_Simatai_in_September_2026.jpg/1920px-Great_Wall_of_China_at_Simatai_in_September_2026.jpg","s":"https://commons.wikimedia.org/wiki/File:Great_Wall_of_China_at_Simatai_in_September_2026.jpg","a":"Renek78","l":"CC0 1.0","ll":"https://creativecommons.org/publicdomain/zero/1.0/"},"33:0":{"u":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Iceland_black_sand_beach.jpg/1920px-Iceland_black_sand_beach.jpg","s":"https://commons.wikimedia.org/wiki/File:Iceland_black_sand_beach.jpg","a":"Delahanty","l":"CC BY 4.0","ll":"https://creativecommons.org/licenses/by/4.0/"},"38:0":{"u":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Blue_Ice_Cave_-_Flickr_-_Eric_Kilby.jpg/3072px-Blue_Ice_Cave_-_Flickr_-_Eric_Kilby.jpg","s":"https://commons.wikimedia.org/wiki/File:Blue_Ice_Cave_-_Flickr_-_Eric_Kilby.jpg","a":"Eric Kilby","l":"CC BY-SA 2.0","ll":"https://creativecommons.org/licenses/by-sa/2.0/"},"38:1":{"u":"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Ice_Cave_Blue_Roof_-_Iceland.jpg/3072px-Ice_Cave_Blue_Roof_-_Iceland.jpg","s":"https://commons.wikimedia.org/wiki/File:Ice_Cave_Blue_Roof_-_Iceland.jpg","a":"Eric Kilby","l":"CC BY-SA 2.0","ll":"https://creativecommons.org/licenses/by-sa/2.0/"},"39:0":{"u":"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/2023_Grindavik_eruption.jpg/3072px-2023_Grindavik_eruption.jpg","s":"https://commons.wikimedia.org/wiki/File:2023_Grindavik_eruption.jpg","a":"Halldór Björnsson / Icelandic Meteorological Office","l":"Attribution","ll":"https://commons.wikimedia.org/wiki/File:2023_Grindavik_eruption.jpg"},"39:2":{"u":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Grindavik_eruption_14_januar_2024.jpg/3072px-Grindavik_eruption_14_januar_2024.jpg","s":"https://commons.wikimedia.org/wiki/File:Grindavik_eruption_14_januar_2024.jpg","a":"Veðurstofa Íslands","l":"Attribution","ll":"https://commons.wikimedia.org/wiki/File:Grindavik_eruption_14_januar_2024.jpg"},"40:2":{"u":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Wadi_rum_desert.jpg/3072px-Wadi_rum_desert.jpg","s":"https://commons.wikimedia.org/wiki/File:Wadi_rum_desert.jpg","a":"Peter Chisholm","l":"CC0 1.0","ll":"https://creativecommons.org/publicdomain/zero/1.0/"},"46:0":{"u":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Arashiyama_Bamboo_Forest_in_Kyoto%2C_Japan_in_July_2026.jpg/1920px-Arashiyama_Bamboo_Forest_in_Kyoto%2C_Japan_in_July_2026.jpg","s":"https://commons.wikimedia.org/wiki/File:Arashiyama_Bamboo_Forest_in_Kyoto,_Japan_in_July_2026.jpg","a":"Gatorfan252525","l":"CC BY-SA 4.0","ll":"https://creativecommons.org/licenses/by-sa/4.0/"},"47:1":{"u":"https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Lavender_field.JPG/3072px-Lavender_field.JPG","s":"https://commons.wikimedia.org/wiki/File:Lavender_field.JPG","a":"UKgeofan","l":"CC BY-SA 3.0","ll":"https://creativecommons.org/licenses/by-sa/3.0/"},"52:1":{"u":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Mongolina_steppe.jpg/3072px-Mongolina_steppe.jpg","s":"https://commons.wikimedia.org/wiki/File:Mongolina_steppe.jpg","a":"Orgio89","l":"CC0 1.0","ll":"https://creativecommons.org/publicdomain/zero/1.0/"}};
+function qy59Img(id,small){
+ const v=qy59Photos[id];if(!v)return '';
+ if(!small)return v.u;
+ return v.u.replace(/\/([0-9]+)px-([^/]+)$/, '/480px-$2');
+}
+window.qyHubPhotoAudit=Object.freeze({version:'59',verifiedSlots:15,totalSlots:159});
+function themeImageURL(theme,i,small=false){return theme.id===1?FIRST_THEME_ASSETS[i]:(qy59Img(theme.id+':'+i,small)||imageUrl(theme.photos[i],small))}
+
 /* v54: portrait-aware image delivery. Only the visited world is fetched;
    the small embedded fallback remains instantly visible without a network.
    Two dimension tiers respect data saver, never fetch all 53 photos. */
@@ -3571,7 +3581,7 @@ function qy54PhotoParams(small=false){
 }
 const imageUrl=(id,small=false)=>'https://images.unsplash.com/'+id+'?auto=format&fit=crop&'+qy54PhotoParams(small);
 /* Debug-only metrics; not visible in the user interface. */
-window.qyHubImageQuality=Object.freeze({version:'58',dimensions:()=>qy54PhotoParams(false),lazy:true});
+window.qyHubImageQuality=Object.freeze({version:'59',dimensions:()=>qy54PhotoParams(false),lazy:true});
 // v51.1: read the real image of a destination from this site's 53-theme catalogue.
 // Theme 1 includes eight embedded scenes, so its portal works fully offline.
 window.qyHubPortalSource=Object.freeze({
@@ -3620,12 +3630,21 @@ const preview=document.createElement('details');preview.id='qy37-preview';previe
 const status=document.createElement('p');status.className='qy37-status';status.id='qy37-status';status.setAttribute('role','status');status.setAttribute('aria-live','polite');
 const seasonalNote=document.createElement('p');seasonalNote.className='qy40-season-note';
 seasonalNote.textContent='🌎 Авто враховує місцевий час і сезон. Для повністю зимових, весняних чи осінніх фото потрібні окремі зображення; зараз сезони змінюють атмосферу й колір освітлення. Ручний пейзаж не змінюється.';
-panel.append(h,controls,seasonalNote,preview,status);
+const credit=document.createElement('details');credit.id='qy59-photo-credit';
+credit.style.cssText='margin:8px 0;padding:8px 11px;border:1px solid rgba(207,177,113,.55);border-radius:11px;background:rgba(10,24,39,.8);font-size:13px';
+credit.innerHTML='<summary style="cursor:pointer;font-weight:700">ⓘ Автор і ліцензія поточного фото</summary><div id="qy59-credit-text" style="padding:8px 0 2px;line-height:1.6"></div>';
+function qy59Credit(){const t=activeTheme(),i=selectedImageIndex(),obj=qy59Photos[t.id+':'+i],e=credit.querySelector('#qy59-credit-text');
+e.replaceChildren();if(!obj){e.textContent='Базова фотографія: Unsplash або вбудоване резервне зображення. Походження окремого кадру ще перевіряється.';return;}
+const author=document.createElement('span');author.textContent='Автор: '+obj.a+' · Ліцензія: '+obj.l+' · ';
+const source=document.createElement('a');source.href=obj.s;source.target='_blank';source.rel='noopener noreferrer';source.textContent='Сторінка оригіналу';
+const license=document.createElement('a');license.href=obj.ll;license.target='_blank';license.rel='noopener noreferrer';license.textContent='Умови ліцензії';
+e.append(author,source,document.createTextNode(' · '),license,document.createTextNode(' · Кадрування/масштабування для екрана. При недоступності мережі може показуватись резервне фото.'));}
+panel.append(h,controls,seasonalNote,preview,credit,status);
 const studio=document.getElementById('qy-atmosphere-studio');
 if(studio?.parentNode)studio.insertAdjacentElement('afterend',panel);
 else (document.querySelector('.wrap > main')||document.querySelector('main')||document.body).prepend(panel);
 const shots=preview.querySelector('#qy37-shots');
-function sync(){tselect.value=String(state.theme);populateModes();document.getElementById('qy38-caption').textContent=state.theme===1?'Тема №1: 8 РІЗНИХ гірських краєвидів · автоматично або вручну':'53 теми · інші теми: 6 станів доби й 3 фото';preview.querySelector('summary').textContent=state.theme===1?'Переглянути 8 пейзажів':'Переглянути 3 фотографії теми';mode.value=state.mode;seasons.value=state.seasonMode;hemisphere.value=state.hemisphere;
+function sync(){tselect.value=String(state.theme);populateModes();qy59Credit();document.getElementById('qy38-caption').textContent=state.theme===1?'Тема №1: 8 РІЗНИХ гірських краєвидів · автоматично або вручну':'53 теми · інші теми: 6 станів доби й 3 фото';preview.querySelector('summary').textContent=state.theme===1?'Переглянути 8 пейзажів':'Переглянути 3 фотографії теми';mode.value=state.mode;seasons.value=state.seasonMode;hemisphere.value=state.hemisphere;
 toggle.textContent=state.on?tr(7):tr(8);toggle.setAttribute('aria-pressed',String(state.on));root.dataset.qyV37=state.on?(state.activeUrl?'on':'pending'):'off';
 root.dataset.qySeason=currentSeason();
 save(STORAGE,JSON.stringify({theme:state.theme,mode:state.mode,on:state.on,seasonMode:state.seasonMode,hemisphere:state.hemisphere}));}
@@ -3645,7 +3664,14 @@ state.slot=key;const request=++state.pending;
 const painting=()=>{root.dataset.qyV37='on';root.dataset.qySeason=currentSeason();
  bg.style.backgroundImage=sceneLayer()+'linear-gradient(180deg,rgba(0,9,20,.07),rgba(0,9,20,.21)),url("'+url+'")';textStatus();};
 if(url===state.activeUrl){painting();return}
-const photo=new Image();photo.decoding='async';photo.onload=()=>{if(request!==state.pending||!state.on)return;currentImage=photo;state.activeUrl=url;painting();};photo.onerror=()=>{if(request!==state.pending)return;textStatus('Фотографія недоступна — залишено попередній фон. Перевірте інтернет.');};photo.src=url;textStatus('Завантаження реалістичного пейзажу…')}
+const photo=new Image();photo.decoding='async';photo.onload=()=>{if(request!==state.pending||!state.on)return;currentImage=photo;state.activeUrl=url;painting();};photo.onerror=()=>{if(request!==state.pending)return;
+ const old=theme.id===1?'':imageUrl(theme.photos[i],false);
+ if(url!==old && old){const fallback=new Image();fallback.decoding='async';
+ fallback.onload=()=>{if(request!==state.pending||!state.on)return;state.activeUrl=old;
+ bg.style.backgroundImage=sceneLayer()+'linear-gradient(180deg,rgba(0,9,20,.07),rgba(0,9,20,.21)),url("'+old+'")';textStatus();};
+ fallback.onerror=()=>textStatus('Висока якість тимчасово недоступна — збережено попередній фон.');
+ fallback.src=old;return;}
+ textStatus('Фотографія недоступна — залишено попередній фон. Перевірте інтернет.');};photo.src=url;textStatus('Завантаження реалістичного пейзажу…')}
 function refresh(force=false){sync();textStatus();updateCards();renderImage(force)}
 tselect.addEventListener('change',()=>{state.theme=Number(tselect.value);if(state.theme!==1&&state.mode!=='auto'&&Number(state.mode)>2)state.mode='auto';refresh(true)});
 mode.addEventListener('change',()=>{state.mode=mode.value;refresh(true)});
@@ -4989,7 +5015,7 @@ const motionReduced=()=>matchMedia('(prefers-reduced-motion:reduce)').matches;
 function paintScene(element,id){const spec=sceneSpec(id);element.dataset.family=spec.family;
   element.style.setProperty('--qy49-a',spec.a);element.style.setProperty('--qy49-b',spec.b);
 }
-function labels(){hint.textContent=tr(0);$('qy49-eyebrow').textContent=tr(1)+' · v58';$('qy49-title').textContent=tr(2);$('qy49-desc').textContent=tr(3);
+function labels(){hint.textContent=tr(0);$('qy49-eyebrow').textContent=tr(1)+' · v59';$('qy49-title').textContent=tr(2);$('qy49-desc').textContent=tr(3);
   $('qy49-next').textContent=tr(4);$('qy49-gallery').textContent=tr(5);$('qy49-back').textContent=tr(6);$('qy49-stylelabel').textContent='';
   for(const [i,b] of [...overlay.querySelectorAll('[data-portal-style]')].entries())b.textContent=tr(8+i);
   $('qy50-journey-caption').textContent=tr(12)+':';$('qy50-copy-caption').textContent='';updateDestination();}
