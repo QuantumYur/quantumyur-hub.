@@ -5681,9 +5681,9 @@ function openAdmin(){
 }
 if(front&&!el('qy69-home-admin')){
   const button=document.createElement('button');button.type='button';button.id='qy69-home-admin';
-  button.title='Панель адміністратора (локальне керування)';button.setAttribute('aria-label','Відкрити панель адміністратора');
+  button.title='Панель адміністратора — локальні налаштування';button.setAttribute('aria-label','Відкрити панель адміністратора QuantumYur');
   button.addEventListener('click',openAdmin);
-  front.append(button);
+  (front.querySelector('.qy44-head')||front).append(button);
 }
 const menuBtn=el('qy67-admin-open'),lead=el('qy44-menulead');
 if(menuBtn&&lead&&lead.parentNode){lead.insertAdjacentElement('afterend',menuBtn)}
@@ -5695,4 +5695,70 @@ update();el('site-language')?.addEventListener('change',update);
 window.qyHubAdminEntry=Object.freeze({open:openAdmin});
 })();
 </script>
+
+<style id="qy-v70-admin-visibility-css">
+/* The admin entry lives in the header grid, not on top of the phase/status chip.
+   Only the button position is changed; the approved clock, photo and bottom actions remain intact. */
+body.qy44-ready #qy44-front .qy44-head{
+  position:relative!important;
+  z-index:16!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  grid-template-areas:"brand admin" "phase phase"!important;
+  align-items:center!important;
+  column-gap:8px!important;
+  row-gap:9px!important;
+  width:100%!important;
+}
+body.qy44-ready #qy44-front .qy44-brand{
+  grid-area:brand!important;
+  justify-self:start!important;
+  font-size:clamp(13px,3.6vw,19px)!important;
+  padding:9px 12px!important;
+  white-space:nowrap;
+}
+body.qy44-ready #qy44-front #qy69-home-admin{
+  grid-area:admin!important;
+  position:relative!important;
+  inset:auto!important;
+  top:auto!important;
+  left:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  justify-self:end!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-width:130px!important;
+  min-height:48px!important;
+  padding:10px 14px!important;
+  font:800 clamp(15px,3.6vw,18px)/1.25 ui-monospace,Consolas,monospace!important;
+  letter-spacing:.005em!important;
+  border:1.5px solid #f4d29e!important;
+  border-radius:14px!important;
+  background:linear-gradient(135deg,rgba(37,52,79,.97),rgba(18,31,51,.96))!important;
+  color:#fff0d0!important;
+  text-shadow:none!important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 5px 18px rgba(0,0,0,.52)!important;
+  white-space:nowrap!important;
+}
+body.qy44-ready #qy44-front .qy44-head-note{
+  grid-area:phase!important;
+  justify-self:end!important;
+  margin:0!important;
+  max-width:100%!important;
+  font-size:clamp(12px,2.6vw,15px)!important;
+  line-height:1.4!important;
+  padding:7px 12px!important;
+}
+@media(max-width:380px){
+  body.qy44-ready #qy44-front .qy44-brand{padding:8px 10px!important;font-size:13px!important}
+  body.qy44-ready #qy44-front #qy69-home-admin{min-width:114px!important;padding:9px 10px!important;font-size:14px!important;min-height:46px!important}
+  body.qy44-ready #qy44-front .qy44-head{column-gap:6px!important}
+}
+@media(max-width:305px){
+  body.qy44-ready #qy44-front .qy44-brand{font-size:12px!important;padding:7px 8px!important}
+  body.qy44-ready #qy44-front #qy69-home-admin{min-width:0!important;padding:9px 8px!important;font-size:13px!important}
+}
+</style>
 </body></html>
