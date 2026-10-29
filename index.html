@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="uk">
 <head>
-<!-- QuantumYur v86 (Genesis Film multi-generation addition; Chronoscapes six-phase generated wallpapers, companion analog clock, Genesis preserved; v47 design preserved) / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
+<!-- QuantumYur v87 (Genesis Studio editing addition; Chronoscapes six-phase generated wallpapers, companion analog clock, Genesis preserved; v47 design preserved) / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
 <meta charset="UTF-8"><meta name="qy-build" content="86"><meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script id="qy-v35-before-paint">
@@ -6900,6 +6900,35 @@ $('site-language')?.addEventListener('change',()=>{if(active)refresh()});window.
 #qy83-controls #qy85-progress-fill{width:0;height:100%;background:#81d9bf;transition:width .18s linear}
 @media(max-width:520px){#qy83-controls .qy85-panel{padding:10px}}
 </style>
+<style id="qy87-studio-css">
+/* Genesis Studio v87 · scoped to theme 54; approved global design stays intact. */
+#qy83-controls .qy87-studio{margin:16px 0 0;padding:14px;border:1px solid rgba(152,222,210,.55);border-radius:12px;background:linear-gradient(145deg,rgba(13,48,58,.96),rgba(14,31,50,.96));color:#e5f7f3}
+#qy83-controls .qy87-studio h4{font-size:17px;margin:3px 0 6px;color:#ddfff3}
+#qy83-controls .qy87-studio p{font-size:11px;line-height:1.55;color:#b5d9d5}
+#qy83-controls .qy87-studio label{display:block;font-size:11px;color:#cce9e3}
+#qy83-controls .qy87-studio input[type=text],#qy83-controls .qy87-studio select,#qy83-controls .qy87-studio input[type=number]{width:100%;box-sizing:border-box;min-height:42px;border:1px solid #537e89;border-radius:8px;background:#102d42;color:#efffff;padding:8px;font:13px ui-monospace,monospace}
+#qy83-controls .qy87-studio input[type=range]{width:100%;min-height:38px}
+#qy83-controls .qy87-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:10px}
+#qy83-controls .qy87-stage{width:100%;display:block;aspect-ratio:16/9;background:#051521;border:1px solid #547c88;border-radius:9px;margin:10px 0 8px}
+#qy83-controls .qy87-clips{display:flex;flex-direction:column;gap:8px;max-height:380px;overflow:auto;padding:3px 2px}
+#qy83-controls .qy87-clip{border:1px solid #507b82;background:#12354b;border-radius:10px;padding:9px;display:grid;grid-template-columns: minmax(0,1fr) auto;gap:6px;align-items:center}
+#qy83-controls .qy87-clip[aria-current=true]{border-color:#efdc9c;background:#1b4a57}
+#qy83-controls .qy87-clip strong{font:12px ui-monospace,monospace;overflow-wrap:anywhere}
+#qy83-controls .qy87-clip input[type=text]{grid-column:1/3}
+#qy83-controls .qy87-clip-tools{display:flex;gap:4px;justify-content:flex-end;flex-wrap:wrap}
+#qy83-controls .qy87-clip-tools button{font-size:12px;min-width:36px;min-height:35px;padding:6px;border-radius:7px}
+#qy83-controls .qy87-clip-foot{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+#qy83-controls .qy87-clip-foot label{flex:1 1 95px}
+#qy83-controls .qy87-clip-foot input[type=number]{max-width:90px}
+#qy83-controls .qy87-actions{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}
+#qy83-controls .qy87-actions button{flex:1 1 135px;min-height:42px}
+#qy83-controls .qy87-actions button:disabled{opacity:.42;cursor:not-allowed}
+#qy83-controls .qy87-meter{height:7px;border-radius:9px;background:#0a2734;overflow:hidden}
+#qy83-controls #qy87-progress-bar{height:100%;width:0;background:linear-gradient(90deg,#66a8cf,#b8e7bd)}
+#qy83-controls #qy87-state{white-space:pre-wrap;color:#caeee7;overflow-wrap:anywhere}
+#qy83-controls .qy87-studio small{color:#aad0ce}
+@media(max-width:520px){#qy83-controls .qy87-studio{padding:10px}#qy83-controls .qy87-grid{grid-template-columns:1fr}#qy83-controls .qy87-actions button{flex-basis:120px}}
+</style>
 <style id="qy86-film-css">
 /* v86: scoped feature; retains v47/v85 approved visual design. */
 #qy83-controls .qy86-panel{margin:16px 0 0;padding:14px;border:1px solid rgba(169,206,252,.52);border-radius:12px;background:linear-gradient(140deg,rgba(15,39,64,.96),rgba(19,34,58,.95));color:#e8f9ff}
@@ -6974,7 +7003,7 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
  const oCanvas=$('qy83-observer-canvas');const backgroundDay=window.qy83Images?.day,backgroundNight=window.qy83Images?.night;
  const compact=$('qy41-compact');const quick=document.createElement('button');quick.id='qy83-quick';quick.type='button';quick.textContent='✧ Спостерігач';quick.hidden=true;compact?.appendChild(quick);
  const panel=document.createElement('section');panel.id='qy83-controls';panel.hidden=true;
- panel.innerHTML='<small>QUANTUMYUR · v85 · ТЕМА №54</small><h3>🌿 Quantum Genesis — Жива матерія</h3><p>Пейзаж реагує на справжні числові результати локальних симуляцій. Нові покоління Genesis змінюють світлові структури, але не перетворюють їх на реальні фізичні спостереження. Для автоматичної зміни фото залиш режим фону «Авто».</p>'+
+ panel.innerHTML='<small>QUANTUMYUR · v87 · ТЕМА №54</small><h3>🌿 Quantum Genesis — Жива матерія</h3><p>Пейзаж реагує на справжні числові результати локальних симуляцій. Нові покоління Genesis змінюють світлові структури, але не перетворюють їх на реальні фізичні спостереження. Для автоматичної зміни фото залиш режим фону «Авто».</p>'+
  '<div class="qy83-grid"><div class="qy83-box"><label for="qy83-scene">Освітлення</label><select id="qy83-scene"><option value="auto">Авто · шість фаз доби</option><option value="day">🌄 Долина</option><option value="night">🌌 Зоряний ліс</option></select></div><div class="qy83-box"><label for="qy83-strength">Інтенсивність світла · <span id="qy83-strength-value">65%</span></label><input type="range" min="0" max="100" step="5" id="qy83-strength" value="65"></div></div>'+
  '<div class="qy83-actions"><button id="qy83-toggle" type="button">Анімація: увімкнена</button><button id="qy83-pause" type="button">Пауза</button><button id="qy83-open" type="button">⛶ Спостерігач</button></div><p class="qy83-status" id="qy83-status" role="status"></p>';
  panel.insertAdjacentHTML('beforeend',
@@ -7010,6 +7039,25 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
   '<div class="qy83-actions"><button id="qy86-record" type="button">● Створити WebM</button><button id="qy86-cancel" type="button" hidden>■ Скасувати запис</button></div>'+
   '<div class="qy86-progress"><div id="qy86-bar"></div></div><p id="qy86-state" role="status">Потрібні щонайменше два збережені покоління. Відео створюється лише у твоєму браузері.</p>'+
   '</section>');
+
+ panel.insertAdjacentHTML('beforeend',
+  '<section id="qy87-studio" class="qy87-studio" aria-label="Genesis Studio — монтаж поколінь">'+
+  '<small>✦ QUANTUM GENESIS · v87</small><h4>🎬 Монтажна студія</h4>'+
+  '<p>Монтуй фільм із реальних збережених поколінь Genesis: міняй порядок, редагуй титри та тривалість кожної сцени. Переходи між даними — художні, не нові вимірювання.</p>'+
+  '<div class="qy87-grid"><div><label for="qy87-intro">Початковий титр</label><input type="text" id="qy87-intro" maxlength="70" value="QuantumYur · Історія еволюції"></div>'+
+  '<div><label for="qy87-outro">Завершальний титр</label><input type="text" id="qy87-outro" maxlength="70" value="Quantum Genesis · Далі буде"></div></div>'+
+  '<div class="qy87-grid"><div><label for="qy87-pick">Додати покоління з архіву</label><select id="qy87-pick"></select></div>'+
+  '<div><label for="qy87-add">Дії зі сценами</label><div class="qy87-actions"><button id="qy87-add" type="button">＋ Додати сцену</button><button id="qy87-default" type="button">↺ Останні 5</button></div></div></div>'+
+  '<div id="qy87-clips" class="qy87-clips" aria-label="Монтажний порядок сцен"></div>'+
+  '<div class="qy87-grid"><div><label for="qy87-scene">Атмосфера</label><select id="qy87-scene"><option value="journey">Долина → зоряна ніч</option><option value="day">Лише долина</option><option value="night">Лише ніч</option><option value="auto">Місцевий час</option></select></div>'+
+  '<div><label for="qy87-quality">Експорт відео</label><select id="qy87-quality"><option value="640">640×360 · економний</option><option value="960" selected>960×540 · збалансований</option><option value="1280">1280×720 · HD</option></select></div></div>'+
+  '<div class="qy87-grid"><div><label for="qy87-fade">Плавний перехід · <output id="qy87-fade-text">0.8 с</output></label><input id="qy87-fade" type="range" min="0" max="1.5" value="0.8" step="0.1"></div>'+
+  '<div><label for="qy87-scrub">Перегляд · <output id="qy87-time">0.0 / 0.0 с</output></label><input id="qy87-scrub" type="range" min="0" max="1000" value="0" step="1"></div></div>'+
+  '<canvas id="qy87-canvas" class="qy87-stage" width="640" height="360" role="img" aria-label="Попередній перегляд анімації монтажу"></canvas>'+
+  '<div class="qy87-actions"><button id="qy87-play" type="button">▶ Переглянути</button><button id="qy87-start" type="button">↺ На початок</button><button id="qy87-live" type="button">◉ Живий світ</button><button id="qy87-save" type="button">↓ Сценарій JSON</button><button id="qy87-import" type="button">↑ Відкрити JSON</button><input id="qy87-import-file" type="file" accept="application/json,.json" hidden></div>'+
+  '<div class="qy87-actions"><button id="qy87-record" type="button">● Експорт WebM</button><button id="qy87-cancel" type="button" hidden>■ Скасувати запис</button></div>'+
+  '<div class="qy87-meter" aria-hidden="true"><div id="qy87-progress-bar"></div></div><p id="qy87-state" role="status">Сцени зберігаються локально на цьому пристрої. Для запису потрібні записи архіву Genesis.</p>'+
+  '</section>');
  (gallery||$('qy-v37-controls')).insertAdjacentElement('afterend',panel);
  const ui={scene:$('qy83-scene'),strength:$('qy83-strength'),text:$('qy83-strength-value'),toggle:$('qy83-toggle'),pause:$('qy83-pause'),status:$('qy83-status'),observerStatus:$('qy83-observer-status')};
  let raf=0,lastFrame=0,lastData=0,visual=null,lastFingerprint='',t=0,cycles=0,painted=0,oldFocus=null,modeBefore='';
@@ -7037,7 +7085,7 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
  }
  function rnd(n){let v=n>>>0;return ()=>{v=(v+0x6D2B79F5)>>>0;let z=v;z=Math.imul(z^(z>>>15),z|1);z^=z+Math.imul(z^(z>>>7),z|61);return ((z^(z>>>14))>>>0)/4294967296}}
  function refreshMetrics(force=false){if(!force&&performance.now()-lastData<1700)return;lastData=performance.now();const next=readMetrics();const fp=[next.source,next.model,next.seed,next.generation,next.steps,Number(next.metric.primary).toFixed(3),Number(next.metric.secondary).toFixed(3)].join('|');if(fp!==lastFingerprint){visual=next;lastFingerprint=fp;updateStatus();}}
- function updateStatus(){if(!ui.status)return;if(typeof v86!=='undefined'&&v86.preview&&v86.sequence.length>=2){const shot=v86Shot(v86.position);const label='Genesis Film · архів '+v86.sequence.length+' поколінь · #'+shot.a.generation+' → #'+shot.b.generation+' · '+Math.round(shot.blend*100)+'% · художній перехід';ui.status.textContent=label;ui.observerStatus.textContent=label;return;}if(v85?.previewActive){const a=v85Record(v85.a),b=v85Record(v85.b);if(a&&b){const label='Архів Genesis · візуальний перехід #'+a.generation+' → #'+b.generation+' · '+Math.round(v85.blend*100)+'%';ui.status.textContent=label;ui.observerStatus.textContent=label;if(typeof display84==='function')display84();return;}}const d=visual||readMetrics();const msg=d.source+' · '+d.model+' · seed '+d.seed+(d.generation?' · покоління '+d.generation:'')+(d.steps?' · крок '+d.steps:'');ui.status.textContent=msg;ui.observerStatus.textContent=msg;if(typeof display84==='function')display84();}
+ function updateStatus(){if(!ui.status)return;if(typeof v87!=='undefined'&&v87.preview&&v87.clips.length){const s=v87Lookup(v87.position),r=s.clip&&v87Resolve(s.clip.id);const label='Genesis Studio · архів · '+(r?'#'+r.generation+' · '+r.model:'немає запису')+' · художній монтаж';ui.status.textContent=label;ui.observerStatus.textContent=label;return;}if(typeof v86!=='undefined'&&v86.preview&&v86.sequence.length>=2){const shot=v86Shot(v86.position);const label='Genesis Film · архів '+v86.sequence.length+' поколінь · #'+shot.a.generation+' → #'+shot.b.generation+' · '+Math.round(shot.blend*100)+'% · художній перехід';ui.status.textContent=label;ui.observerStatus.textContent=label;return;}if(v85?.previewActive){const a=v85Record(v85.a),b=v85Record(v85.b);if(a&&b){const label='Архів Genesis · візуальний перехід #'+a.generation+' → #'+b.generation+' · '+Math.round(v85.blend*100)+'%';ui.status.textContent=label;ui.observerStatus.textContent=label;if(typeof display84==='function')display84();return;}}const d=visual||readMetrics();const msg=d.source+' · '+d.model+' · seed '+d.seed+(d.generation?' · покоління '+d.generation:'')+(d.steps?' · крок '+d.steps:'');ui.status.textContent=msg;ui.observerStatus.textContent=msg;if(typeof display84==='function')display84();}
  function sizeTarget(c){if(c.dataset.qy85Capture==='1')return [c.width,c.height];const isObs=c===oCanvas,rect=isObs?observer.getBoundingClientRect():wallpaper.getBoundingClientRect();const w=rect.width||window.innerWidth,h=rect.height||window.innerHeight;
   const saveData=navigator.connection?.saveData===true;const mem=Number(navigator.deviceMemory||4);
   const factor=(saveData||mem<3)?0.7:1;const dpr=clamp((window.devicePixelRatio||1)*factor,.65,1.25);
@@ -7181,9 +7229,9 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
   // Last 30 chronological points are enough for mobile screen without causing layout thrashing.
   for(const r of v85.records.slice(0,30).reverse()){
    const btn=document.createElement('button');btn.type='button';btn.dataset.run=r.id;btn.setAttribute('aria-label','Встановити покоління '+r.generation+' як дослід B');
-   btn.textContent='#'+r.generation+'\n'+r.model;btn.style.whiteSpace='pre-line';btn.addEventListener('click',()=>{v85.userSelectedB=true;v85.previewActive=true;v85.b=r.id;v85El('qy85-b').value=r.id;v85.blend=1;v85El('qy85-blend').value='100';v85.playing=false;v85El('qy85-play').textContent='▶ Відтворити';v85RenderCompare();v85PreviewFrame()});row.appendChild(btn);
+   btn.textContent='#'+r.generation+'\n'+r.model;btn.style.whiteSpace='pre-line';btn.addEventListener('click',()=>{v87Leave();v85.userSelectedB=true;v85.previewActive=true;v85.b=r.id;v85El('qy85-b').value=r.id;v85.blend=1;v85El('qy85-blend').value='100';v85.playing=false;v85El('qy85-play').textContent='▶ Відтворити';v85RenderCompare();v85PreviewFrame()});row.appendChild(btn);
   }
-  v85RenderCompare();v86Refresh();
+  v85RenderCompare();v86Refresh();v87Refresh();
  }
  function v85BlendFrame(target,ms,alpha=v85.blend){
   const a=v85Record(v85.a),b=v85Record(v85.b);if(!a||!b)return false;
@@ -7195,11 +7243,11 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
   return true;
  }
  function v85PreviewFrame(){if(!isActive())return;const dest=observer.hidden?canvas:oCanvas;if(v85Record(v85.a)&&v85Record(v85.b))v85BlendFrame(dest,t);}
- v85El('qy85-a').addEventListener('change',e=>{v86.preview=false;v86.playing=false;v85.previewActive=true;v85.a=e.target.value;v85RenderCompare();v85PreviewFrame()});
- v85El('qy85-b').addEventListener('change',e=>{v86.preview=false;v86.playing=false;v85.userSelectedB=true;v85.previewActive=true;v85.b=e.target.value;v85RenderCompare();v85PreviewFrame()});
- v85El('qy85-blend').addEventListener('input',e=>{v86.preview=false;v86.playing=false;v85.previewActive=true;v85.blend=Number(e.target.value)/100;v85.playing=false;v85El('qy85-play').textContent='▶ Відтворити';v85RenderCompare();v85PreviewFrame()});
- v85El('qy85-play').addEventListener('click',()=>{v86.preview=false;v86.playing=false;v85.previewActive=true;v85.playing=!v85.playing;v85El('qy85-play').textContent=v85.playing?'Ⅱ Призупинити':'▶ Відтворити';if(v85.playing&&v85.blend>=.999)v85.blend=0;v85El('qy85-blend').value=String(Math.round(100*v85.blend));v85RenderCompare();});
- v85El('qy85-live').addEventListener('click',()=>{v85.previewActive=false;v85.playing=false;v85El('qy85-play').textContent='▶ Відтворити';v85SetMessage('Повернуто живі показники лабораторії.');});
+ v85El('qy85-a').addEventListener('change',e=>{v87Leave();v86.preview=false;v86.playing=false;v85.previewActive=true;v85.a=e.target.value;v85RenderCompare();v85PreviewFrame()});
+ v85El('qy85-b').addEventListener('change',e=>{v87Leave();v86.preview=false;v86.playing=false;v85.userSelectedB=true;v85.previewActive=true;v85.b=e.target.value;v85RenderCompare();v85PreviewFrame()});
+ v85El('qy85-blend').addEventListener('input',e=>{v87Leave();v86.preview=false;v86.playing=false;v85.previewActive=true;v85.blend=Number(e.target.value)/100;v85.playing=false;v85El('qy85-play').textContent='▶ Відтворити';v85RenderCompare();v85PreviewFrame()});
+ v85El('qy85-play').addEventListener('click',()=>{v87Leave();v86.preview=false;v86.playing=false;v85.previewActive=true;v85.playing=!v85.playing;v85El('qy85-play').textContent=v85.playing?'Ⅱ Призупинити':'▶ Відтворити';if(v85.playing&&v85.blend>=.999)v85.blend=0;v85El('qy85-blend').value=String(Math.round(100*v85.blend));v85RenderCompare();});
+ v85El('qy85-live').addEventListener('click',()=>{v87Leave();v85.previewActive=false;v85.playing=false;v85El('qy85-play').textContent='▶ Відтворити';v85SetMessage('Повернуто живі показники лабораторії.');});
  v85El('qy85-refresh').addEventListener('click',()=>{v85Refresh();v85SetMessage('Перечитано локальний архів: '+v85.records.length+' поколінь.');});
  window.addEventListener('qy-genesis-changed',()=>{if(!v85.recording)v85Refresh()});
  v85El('qy85-json').addEventListener('click',()=>{
@@ -7292,7 +7340,7 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
   for(const [i,r] of v86.sequence.entries()){
    const cell=document.createElement('button');cell.type='button';cell.className='qy86-shot';cell.textContent='#'+r.generation+' · '+r.model;
    const sub=document.createElement('small');sub.textContent='seed '+r.seed+' · '+Math.round(v85Score(r)*100)+'%*';cell.appendChild(sub);
-   cell.addEventListener('click',()=>{if(v86.recording)return;v86.position=i/Math.max(1,v86.sequence.length-1);v86.playing=false;v86.preview=true;v85.previewActive=false;v85.playing=false;v86Explain();v86PreviewFrame()});board.appendChild(cell);
+   cell.addEventListener('click',()=>{if(v86.recording)return;v87Leave();v86.position=i/Math.max(1,v86.sequence.length-1);v86.playing=false;v86.preview=true;v85.previewActive=false;v85.playing=false;v86Explain();v86PreviewFrame()});board.appendChild(cell);
   }
   const enough=v86.sequence.length>=2;
   for(const id of ['qy86-play','qy86-scrub','qy86-record','qy86-json'])v86El(id).disabled=!enough||v86.recording;
@@ -7310,12 +7358,12 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
   return true;
  }
  function v86PreviewFrame(){if(!isActive()||!v86.preview)return;v86Paint(observer.hidden?canvas:oCanvas,t,v86.position);}
- function v86Stop(){v86.playing=false;v86.position=0;v86.preview=true;v85.previewActive=false;v85.playing=false;v86El('qy86-play').textContent='▶ Показати фільм';v86Explain();v86PreviewFrame();}
- v86El('qy86-count').addEventListener('change',()=>{v86.position=0;v86.playing=false;v86Refresh();});
- v86El('qy86-scrub').addEventListener('input',e=>{v86.position=Number(e.target.value)/1000;v86.preview=true;v86.playing=false;v85.previewActive=false;v85.playing=false;v86El('qy86-play').textContent='▶ Показати фільм';v86Explain();v86PreviewFrame();});
- v86El('qy86-play').addEventListener('click',()=>{if(v86.sequence.length<2||v86.recording)return;v86.preview=true;v86.playing=!v86.playing;v85.previewActive=false;v85.playing=false;if(v86.playing&&v86.position>=1)v86.position=0;v86El('qy86-play').textContent=v86.playing?'Ⅱ Призупинити':'▶ Показати фільм';v86Explain();});
+ function v86Stop(){v87Leave();v86.playing=false;v86.position=0;v86.preview=true;v85.previewActive=false;v85.playing=false;v86El('qy86-play').textContent='▶ Показати фільм';v86Explain();v86PreviewFrame();}
+ v86El('qy86-count').addEventListener('change',()=>{v87Leave();v86.position=0;v86.playing=false;v86Refresh();});
+ v86El('qy86-scrub').addEventListener('input',e=>{v87Leave();v86.position=Number(e.target.value)/1000;v86.preview=true;v86.playing=false;v85.previewActive=false;v85.playing=false;v86El('qy86-play').textContent='▶ Показати фільм';v86Explain();v86PreviewFrame();});
+ v86El('qy86-play').addEventListener('click',()=>{if(v86.sequence.length<2||v86.recording)return;v87Leave();v86.preview=true;v86.playing=!v86.playing;v85.previewActive=false;v85.playing=false;if(v86.playing&&v86.position>=1)v86.position=0;v86El('qy86-play').textContent=v86.playing?'Ⅱ Призупинити':'▶ Показати фільм';v86Explain();});
  v86El('qy86-stop').addEventListener('click',v86Stop);
- v86El('qy86-live').addEventListener('click',()=>{v86.playing=false;v86.preview=false;v85.previewActive=false;v85.playing=false;v86El('qy86-play').textContent='▶ Показати фільм';v86Status('Повернуто поточні показники лабораторії.');updateStatus()});
+ v86El('qy86-live').addEventListener('click',()=>{v87Leave();v86.playing=false;v86.preview=false;v85.previewActive=false;v85.playing=false;v86El('qy86-play').textContent='▶ Показати фільм';v86Status('Повернуто поточні показники лабораторії.');updateStatus()});
  v86El('qy86-json').addEventListener('click',()=>{
   if(v86.sequence.length<2)return;
   const payload={schema:'quantumyur.genesis-film.v1',appVersion:'86',generatedAt:new Date().toISOString(),source:'Local IndexedDB Genesis archive',disclaimer:'Input metrics are synthetic numerical simulation results. Image transitions and temporal interpolation are artistic visualizations, not additional scientific measurements.',film:{durationSeconds:Number(v86El('qy86-duration').value),resolution:v86El('qy86-quality').value+'x'+Math.round(Number(v86El('qy86-quality').value)*9/16),scene:v86El('qy86-scene').value,pattern:opts.pattern,speed:opts.speed,intensity:opts.strength,transition:'ease-in-out crossfade'},storyboard:v86.sequence.map((r,index)=>({order:index+1,id:r.id,parentId:r.parentId||null,generation:r.generation,model:r.model,detail:r.detail,seed:r.seed,steps:r.steps,createdAt:r.createdAt,metric:r.metric,score:v85Score(r)}))};
@@ -7372,6 +7420,174 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
  window.qyGenesisFilm=Object.freeze({version:'86',snapshot:()=>({count:v86.sequence.length,ids:v86.sequence.map(r=>r.id),generations:v86.sequence.map(r=>r.generation),position:v86.position,playing:v86.playing,previewActive:v86.preview,recording:v86.recording}),refresh:v86Refresh});
  // Public read-only diagnostics for verification, no archive mutations.
  window.qyGenesisTimeline=Object.freeze({version:'85',snapshot:()=>({count:v85.records.length,a:v85.a,b:v85.b,blend:v85.blend,playing:v85.playing,previewActive:v85.previewActive,recording:v85.recording,themeActive:isActive()}),refresh:v85Refresh});
+
+ // v87: user-editable sequence; preserves original Genesis archive. Titles are authored by visitor.
+ const v87={clips:[],records:[],position:0,playing:false,preview:false,recording:false,cancel:false,finish:null,previewTick:0,restoreAttempted:false};
+ const v87El=id=>$(id),v87Key='qy87.studio.v1',v87Status=s=>{v87El('qy87-state').textContent=s;};
+ const v87Max=20;
+ const v87CleanTitle=s=>String(s||'').replace(/[\x00-\x1f]/g,' ').trim().slice(0,70);
+ const v87Resolve=id=>v85Record(id);
+ const v87Duration=c=>clamp(Number(c.duration)||3,1,12);
+ const v87Total=()=>v87.clips.reduce((sum,c)=>sum+v87Duration(c),0);
+ const v87Active=()=>v87.clips.some(c=>v87Resolve(c.id));
+ const v87Fresh=(r)=>({uid:'c'+Date.now().toString(36)+Math.random().toString(36).slice(2,7),id:r.id,title:'Покоління #'+r.generation+' · '+r.model,duration:3});
+ function v87Save(){
+  try{localStorage.setItem(v87Key,JSON.stringify({schema:'quantumyur.studio.v1',clips:v87.clips.map(c=>({uid:c.uid,id:c.id,title:c.title,duration:c.duration})),intro:v87El('qy87-intro').value,outro:v87El('qy87-outro').value,scene:v87El('qy87-scene').value,quality:v87El('qy87-quality').value,fade:v87El('qy87-fade').value}));}
+  catch(e){console.warn('Genesis Studio: локальне сховище недоступне у цьому середовищі; проєкт можна експортувати в JSON.');}
+ }
+ function v87Load(){
+  try{const raw=localStorage.getItem(v87Key);if(!raw)return false;const j=JSON.parse(raw);if(j.schema!=='quantumyur.studio.v1'||!Array.isArray(j.clips))return false;
+   v87.clips=j.clips.slice(0,v87Max).filter(c=>typeof c.id==='string'&&typeof c.uid==='string').map(c=>({uid:c.uid,id:c.id,title:v87CleanTitle(c.title),duration:clamp(Number(c.duration)||3,1,12)}));
+   for(const [id,v] of [['qy87-intro',j.intro],['qy87-outro',j.outro]])if(typeof v==='string')v87El(id).value=v87CleanTitle(v);
+   if(['day','night','journey','auto'].includes(j.scene))v87El('qy87-scene').value=j.scene;
+   if(['640','960','1280'].includes(j.quality))v87El('qy87-quality').value=j.quality;
+   v87El('qy87-fade').value=String(clamp(Number(j.fade)||0,0,1.5));return true;
+  }catch(e){return false;}
+ }
+ function v87Defaults(){
+  const recs=[...v85.records].sort((a,b)=>Date.parse(a.createdAt)-Date.parse(b.createdAt)||Number(a.generation)-Number(b.generation)).slice(-5);
+  v87.clips=recs.map(v87Fresh);v87.position=0;v87.playing=false;v87Save();v87Render();
+ }
+ function v87Refresh(){
+  if(v87.recording)return;
+  if(!v87.restoreAttempted){v87.restoreAttempted=true;if(!v87Load())v87Defaults();}
+  const picker=v87El('qy87-pick'),current=picker.value;picker.replaceChildren();
+  const recs=[...v85.records].sort((a,b)=>Date.parse(a.createdAt)-Date.parse(b.createdAt)).slice(-60).reverse();
+  if(!recs.length)picker.add(new Option('Архів порожній',''));
+  for(const r of recs)picker.add(new Option(v85Label(r),r.id));if(recs.some(r=>r.id===current))picker.value=current;
+  v87Render();
+ }
+ function v87Lookup(time){
+  let t=clamp(time,0,Math.max(0,v87Total()));let start=0;
+  for(let i=0;i<v87.clips.length;i++){
+   const c=v87.clips[i],dur=v87Duration(c);
+   if(t<start+dur||i===v87.clips.length-1){
+    const within=clamp(t-start,0,dur),fade=Math.min(Number(v87El('qy87-fade').value)||0,dur*.45);
+    const next=v87.clips[i+1];const blend=next&&fade>0&&within>dur-fade?clamp((within-(dur-fade))/fade,0,1):0;
+    return {index:i,clip:c,next,blend:blend*blend*(3-2*blend),localTime:within,start,seconds:t};
+   }
+   start+=dur;
+  }
+  return {index:0,clip:null,next:null,blend:0,seconds:0,localTime:0,start:0};
+ }
+ function v87SyncTime(){
+  const total=v87Total(),s=v87Lookup(v87.position),n=s.clip;
+  v87El('qy87-time').textContent=v87.position.toFixed(1)+' / '+total.toFixed(1)+' с'+(n?' · #'+(v87Resolve(n.id)?.generation||'?'):'');
+  v87El('qy87-scrub').value=String(total?Math.round(1000*v87.position/total):0);
+  v87El('qy87-fade-text').textContent=Number(v87El('qy87-fade').value).toFixed(1)+' с';
+  v87El('qy87-clips').querySelectorAll('.qy87-clip').forEach((el,i)=>el.setAttribute('aria-current',String(i===s.index)));
+ }
+ function v87Render(){
+  const wrap=v87El('qy87-clips');wrap.replaceChildren();
+  if(!v87.clips.length){const p=document.createElement('p');p.textContent='Монтаж порожній. Створи досліди в Genesis, потім додай їх сюди.';wrap.appendChild(p);}
+  v87.clips.forEach((c,i)=>{
+   const r=v87Resolve(c.id),box=document.createElement('div');box.className='qy87-clip';
+   const name=document.createElement('strong');name.textContent=(i+1)+'. '+(r?'#'+r.generation+' · '+r.model+' · seed '+r.seed:'Запис недоступний · '+c.id.slice(0,20));box.appendChild(name);
+   const actions=document.createElement('div');actions.className='qy87-clip-tools';
+   for(const [sym,title,delta] of [['↑','Підняти сцену',-1],['↓','Опустити сцену',1],['×','Прибрати сцену',0]]){
+    const b=document.createElement('button');b.type='button';b.textContent=sym;b.title=title;b.setAttribute('aria-label',title+' '+(i+1));b.disabled=v87.recording||(delta===-1&&i===0)||(delta===1&&i===v87.clips.length-1);
+    b.addEventListener('click',()=>{if(v87.recording)return;if(delta===0)v87.clips.splice(i,1);else [v87.clips[i],v87.clips[i+delta]]=[v87.clips[i+delta],v87.clips[i]];v87.position=0;v87.playing=false;v87Save();v87Render();});actions.appendChild(b);
+   }box.appendChild(actions);
+   const title=document.createElement('input');title.type='text';title.maxLength=70;title.placeholder='Титр сцени';title.value=c.title;title.setAttribute('aria-label','Титр сцени '+(i+1));title.disabled=v87.recording;
+   title.addEventListener('input',()=>{c.title=v87CleanTitle(title.value);v87Save();});box.appendChild(title);
+   const foot=document.createElement('div');foot.className='qy87-clip-foot';foot.style.gridColumn='1/3';
+   const lbl=document.createElement('label');lbl.textContent='Тривалість, с';const dur=document.createElement('input');dur.type='number';dur.min='1';dur.max='12';dur.step='0.5';dur.value=String(v87Duration(c));dur.disabled=v87.recording;
+   dur.addEventListener('change',()=>{c.duration=clamp(Number(dur.value)||3,1,12);dur.value=String(c.duration);v87.position=Math.min(v87.position,v87Total());v87Save();v87SyncTime();});lbl.appendChild(dur);foot.appendChild(lbl);
+   const jump=document.createElement('button');jump.type='button';jump.textContent='▶ Ця сцена';jump.disabled=v87.recording;let start=v87.clips.slice(0,i).reduce((a,c)=>a+v87Duration(c),0);
+   jump.addEventListener('click',()=>{v87.position=start;v87.playing=false;v87Activate();v87DrawPreview();});foot.appendChild(jump);box.appendChild(foot);wrap.appendChild(box);
+  });
+  const ready=v87.clips.length>=1&&v87.clips.every(c=>!!v87Resolve(c.id));
+  for(const id of ['qy87-play','qy87-scrub','qy87-save','qy87-record','qy87-start'])v87El(id).disabled=!ready||v87.recording;
+  v87El('qy87-add').disabled=!v85.records.length||v87.clips.length>=v87Max||v87.recording;
+  v87El('qy87-default').disabled=v87.recording;
+  v87SyncTime();v87DrawPreview();
+ }
+ function v87Activate(){v87.preview=true;v85.previewActive=false;v85.playing=false;v86.preview=false;v86.playing=false;v87El('qy87-play').textContent=v87.playing?'Ⅱ Пауза':'▶ Переглянути';updateStatus();}
+ function v87Leave(){v87.preview=false;v87.playing=false;v87El('qy87-play').textContent='▶ Переглянути';updateStatus();}
+ function v87DrawBg(ctx,img){const w=ctx.canvas.width,h=ctx.canvas.height,s=Math.max(w/img.naturalWidth,h/img.naturalHeight);ctx.drawImage(img,(w-img.naturalWidth*s)*.5,(h-img.naturalHeight*s)*.5,img.naturalWidth*s,img.naturalHeight*s);}
+ let v87Images=null;
+ async function v87LoadImages(){if(v87Images)return v87Images;v87Images=await Promise.all([backgroundDay,backgroundNight].map(async src=>{const im=new Image();im.src=src;await im.decode();return im;}));return v87Images;}
+ function v87PaintScene(target,seconds,ms,images,buffers){
+  const selected=v87Lookup(seconds),c=selected.clip;if(!c)return false;
+  const r=v87Resolve(c.id),n=selected.next?v87Resolve(selected.next.id):null;if(!r)return false;
+  const width=target.width,height=target.height,ctx=target.getContext('2d',{alpha:false});ctx.fillStyle='#071526';ctx.fillRect(0,0,width,height);
+  if(images){const mode=v87El('qy87-scene').value,p=v87Total()?seconds/v87Total():0;
+   if(mode==='day')v87DrawBg(ctx,images[0]);else if(mode==='night')v87DrawBg(ctx,images[1]);else if(mode==='auto')v87DrawBg(ctx,night()?images[1]:images[0]);else {v87DrawBg(ctx,images[0]);ctx.globalAlpha=clamp((p-.18)/.72,0,1);v87DrawBg(ctx,images[1]);ctx.globalAlpha=1;}}
+  const A=buffers[0],B=buffers[1];for(const c of [A,B])if(c.width!==width||c.height!==height){c.width=width;c.height=height;}
+  paint(A,ms,v85Data(r));if(n&&selected.blend>0)paint(B,ms,v85Data(n));
+  ctx.globalAlpha=1-selected.blend;ctx.drawImage(A,0,0);if(n&&selected.blend>0){ctx.globalAlpha=selected.blend;ctx.drawImage(B,0,0);}ctx.globalAlpha=1;
+  const fontSize=Math.round(clamp(width/54,13,23));ctx.fillStyle='rgba(5,22,34,.72)';ctx.fillRect(0,height-fontSize*4.4,width,fontSize*4.4);
+  const drawText=(str,x,y,max,sz,color)=>{ctx.fillStyle=color;ctx.font='600 '+sz+'px ui-monospace, monospace';let s=v87CleanTitle(str);while(s.length>2&&ctx.measureText(s).width>max)s=s.slice(0,-2)+'…';ctx.fillText(s,x,y);};
+  const title=selected.blend>.50&&selected.next?selected.next.title:c.title;
+  drawText(title,16,height-fontSize*2.4,width-32,fontSize,'#e8fff0');
+  drawText('#'+r.generation+' '+r.model+' · seed '+r.seed+' · '+(selected.index+1)+'/'+v87.clips.length,16,height-fontSize*.7,width-32,Math.max(10,Math.round(fontSize*.65)),'#b8dfea');
+  const intro=v87CleanTitle(v87El('qy87-intro').value),outro=v87CleanTitle(v87El('qy87-outro').value),total=v87Total();
+  if(intro&&seconds<2){ctx.fillStyle='rgba(5,19,32,.62)';ctx.fillRect(0,12,width,fontSize*2.3);drawText(intro,16,12+fontSize*1.4,width-32,fontSize,'#fff3d5');}
+  if(outro&&seconds>total-2){ctx.fillStyle='rgba(5,19,32,.65)';ctx.fillRect(0,12,width,fontSize*2.3);drawText(outro,16,12+fontSize*1.4,width-32,fontSize,'#fff3d5');}
+  return true;
+ }
+ const v87Scratch=[document.createElement('canvas'),document.createElement('canvas')];
+ function v87DrawPreview(){if(v87.recording||!v87Active())return;const cvs=v87El('qy87-canvas');v87PaintScene(cvs,v87.position,performance.now()*opts.speed,v87Images,v87Scratch);v87SyncTime();}
+ function v87PaintLive(target,ms){
+  const [w,h]=sizeTarget(target);if(target.width!==w||target.height!==h){target.width=w;target.height=h;}
+  return v87PaintScene(target,v87.position,ms,v87Images,v87Scratch);
+ }
+ for(const id of ['qy87-intro','qy87-outro'])v87El(id).addEventListener('input',()=>{v87Save();v87DrawPreview();});
+ for(const id of ['qy87-scene','qy87-quality','qy87-fade'])v87El(id).addEventListener('input',()=>{v87Save();v87DrawPreview();});
+ v87El('qy87-add').addEventListener('click',()=>{const r=v87Resolve(v87El('qy87-pick').value);if(!r||v87.clips.length>=v87Max)return;v87.clips.push(v87Fresh(r));v87Save();v87Render();v87Status('Сцену #'+r.generation+' додано до монтажу.');});
+ v87El('qy87-default').addEventListener('click',()=>{v87Defaults();v87Status('Сцени встановлено за останніми п’ятьма поколіннями.');});
+ v87El('qy87-scrub').addEventListener('input',e=>{v87.position=v87Total()*Number(e.target.value)/1000;v87.playing=false;v87Activate();v87DrawPreview();});
+ v87El('qy87-play').addEventListener('click',()=>{if(!v87Active()||v87.recording)return;if(v87.position>=v87Total())v87.position=0;v87.playing=!v87.playing;v87Activate();v87Status(v87.playing?'Відтворюється власний монтаж поколінь.':'Перегляд на паузі.');});
+ v87El('qy87-start').addEventListener('click',()=>{v87.position=0;v87.playing=false;v87Activate();v87DrawPreview();});
+ v87El('qy87-live').addEventListener('click',()=>{v87Leave();v87Status('Повернуто поточний живий світ.');});
+ function v87Project(){return {schema:'quantumyur.genesis-studio.v1',appVersion:'87',generatedAt:new Date().toISOString(),source:'Local Genesis archive. Unavailable/missing records are not fabricated.',notice:'Simulation results are synthetic. Animated transitions are artistic interpolations, not scientific measurements.',film:{totalDurationSeconds:v87Total(),scene:v87El('qy87-scene').value,quality:v87El('qy87-quality').value,fadeSeconds:Number(v87El('qy87-fade').value),intro:v87CleanTitle(v87El('qy87-intro').value),outro:v87CleanTitle(v87El('qy87-outro').value),pattern:opts.pattern,animationSpeed:opts.speed},clips:v87.clips.map((c,i)=>{const r=v87Resolve(c.id);return {position:i+1,uid:c.uid,id:c.id,title:c.title,durationSeconds:v87Duration(c),record:r?{id:r.id,parentId:r.parentId||null,generation:r.generation,createdAt:r.createdAt,model:r.model,detail:r.detail,seed:r.seed,steps:r.steps,metric:r.metric,analysis:r.analysis}:null};})};}
+ v87El('qy87-save').addEventListener('click',()=>{const data=v87Project();fileDownload(new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'}),'QuantumYur-v87-studio-project.json');v87Status('Проєкт JSON експортовано разом з архівними параметрами.');});
+
+ v87El('qy87-import').addEventListener('click',()=>{if(!v87.recording)v87El('qy87-import-file').click();});
+ v87El('qy87-import-file').addEventListener('change',async e=>{
+  const f=e.target.files?.[0];e.target.value='';if(!f||v87.recording)return;
+  if(f.size>1024*1024){v87Status('JSON завеликий. Максимальний розмір монтажного файлу 1 МБ.');return;}
+  try{
+   const j=JSON.parse(await f.text());if(j.schema!=='quantumyur.genesis-studio.v1'||!Array.isArray(j.clips))throw Error('невідомий формат проєкту');
+   const scenes=j.clips.slice(0,v87Max).filter(c=>typeof c.id==='string'&&v87Resolve(c.id));
+   if(!scenes.length){v87Status('Жодного з поколінь із JSON немає у локальному архіві Genesis. Спочатку перенеси відповідні результати лабораторії.');return;}
+   v87.clips=scenes.map(c=>({uid:'import'+Math.random().toString(36).slice(2,9),id:c.id,title:v87CleanTitle(c.title),duration:clamp(Number(c.durationSeconds)||3,1,12)}));
+   for(const [id,v] of [['qy87-intro',j.film?.intro],['qy87-outro',j.film?.outro]])if(typeof v==='string')v87El(id).value=v87CleanTitle(v);
+   if(['day','night','journey','auto'].includes(j.film?.scene))v87El('qy87-scene').value=j.film.scene;
+   if(['640','960','1280'].includes(String(j.film?.quality)))v87El('qy87-quality').value=String(j.film.quality);
+   if(Number.isFinite(Number(j.film?.fadeSeconds)))v87El('qy87-fade').value=String(clamp(Number(j.film.fadeSeconds),0,1.5));
+   v87.playing=false;v87.position=0;v87Save();v87Render();v87Status('Монтаж імпортовано: '+scenes.length+' сцен. '+(j.clips.length-scenes.length?'Відсутні покоління пропущено.':'Порядок і титри відновлені.'));
+  }catch(err){v87Status('Не вдалося прочитати JSON: '+String(err.message||err));}
+ });
+
+ async function v87Record(){
+  if(v87.recording||v85.recording||v86.recording)return;
+  if(!v87.clips.length||!v87.clips.every(c=>v87Resolve(c.id))){v87Status('Додай доступні покоління Genesis. Не можна створити відео з відсутніх даних.');return;}
+  if(!opts.enabled){v87Status('Увімкни анімацію у темі №54.');return;}
+  if(!window.MediaRecorder||!HTMLCanvasElement.prototype.captureStream){v87Status('Браузер не підтримує запис Canvas у WebM. Доступний JSON.');return;}
+  const mime=['video/webm;codecs=vp8','video/webm'].find(t=>MediaRecorder.isTypeSupported(t));if(!mime){v87Status('Відсутня підтримка WebM.');return;}
+  let width=Number(v87El('qy87-quality').value)||960;if(Number(navigator.deviceMemory||4)<3&&width>640){width=640;v87Status('На пристрої з малою RAM обрано 640×360.');}
+  const total=v87Total(),selected=v87.clips.map(c=>({...c}));if(total>90){v87Status('Для мобільного експорту обмежено 90 секунд. Скороти сцени.');return;}
+  v87.recording=true;v85.recording=true;v87.cancel=false;v87.playing=false;v87El('qy87-cancel').hidden=false;v87El('qy87-record').disabled=true;v87El('qy87-progress-bar').style.width='0%';v87Render();
+  let stream,rec,rafId=0,finish=()=>{};v87.finish=()=>finish();
+  try{
+   const images=await v87LoadImages();const cap=document.createElement('canvas');cap.width=width;cap.height=Math.round(width*9/16);cap.dataset.qy85Capture='1';const buffers=[document.createElement('canvas'),document.createElement('canvas')];
+   v87PaintScene(cap,0,0,images,buffers);stream=cap.captureStream(24);rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:width>=1280?2600000:width>=960?1700000:850000});
+   const chunks=[],done=new Promise((resolve,reject)=>{rec.ondataavailable=e=>{if(e.data?.size)chunks.push(e.data)};rec.onstop=resolve;rec.onerror=e=>reject(e.error||new Error('MediaRecorder error'));});
+   rec.start(500);const start=performance.now();let last=-1;
+   v87Status('Експорт монтажу: '+selected.length+' сцен · '+total.toFixed(1)+' с. Не згортай вкладку.');
+   await new Promise(resolve=>{finish=resolve;const loop=now=>{if(v87.cancel||document.hidden||now-start>=total*1000){resolve();return;}if(last<0||now-last>=1000/24){last=now;const elapsed=clamp((now-start)/1000,0,total);v87PaintScene(cap,elapsed,(now-start)*opts.speed,images,buffers);v87El('qy87-progress-bar').style.width=(100*elapsed/total).toFixed(1)+'%';}rafId=requestAnimationFrame(loop)};rafId=requestAnimationFrame(loop);});
+   if(rafId)cancelAnimationFrame(rafId);if(rec.state!=='inactive')rec.stop();await done;
+   if(!v87.cancel&&chunks.length){fileDownload(new Blob(chunks,{type:mime}),'QuantumYur-v87-Genesis-Studio-'+selected.length+'-scenes.webm');v87El('qy87-progress-bar').style.width='100%';v87Status('Готово: WebM створено локально з '+selected.length+' сцен.');}
+   else v87Status(v87.cancel?'Запис скасовано.':'Жодного відеокадру не отримано.');
+  }catch(e){v87Status('Помилка відеозапису: '+String(e.message||e));if(rec?.state==='recording')rec.stop();}
+  finally{if(rafId)cancelAnimationFrame(rafId);stream?.getTracks().forEach(t=>t.stop());v87.finish=null;v87.recording=false;v85.recording=false;v87El('qy87-cancel').hidden=true;v87El('qy87-record').disabled=false;v85RenderCompare();v87Render();}
+ }
+ v87El('qy87-record').addEventListener('click',v87Record);
+ v87El('qy87-cancel').addEventListener('click',()=>{v87.cancel=true;v87.finish?.();v87Status('Скасування запису…');});
+ document.addEventListener('visibilitychange',()=>{if(document.hidden&&v87.recording){v87.cancel=true;v87.finish?.();}});
+ window.qyGenesisStudio=Object.freeze({version:'87',snapshot:()=>({count:v87.clips.length,ids:v87.clips.map(c=>c.id),titles:v87.clips.map(c=>c.title),durations:v87.clips.map(c=>v87Duration(c)),position:v87.position,playing:v87.playing,previewActive:v87.preview,recording:v87.recording,total:v87Total()}),refresh:v87Refresh});
+ v87LoadImages().then(()=>v87DrawPreview()).catch(()=>v87Status('Фото не вдалося декодувати для попереднього перегляду.'));
  v85Refresh();
 
  function draw(ms){raf=0;if(!isActive()||document.hidden){sync();return;}
@@ -7382,9 +7598,11 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
     if(v85.playing&&!v85.recording){v85.blend=(v85.blend+dt/10000)%1;v85El('qy85-blend').value=String(Math.round(100*v85.blend));v85El('qy85-blend-label').textContent=Math.round(v85.blend*100)+'%';}
     const target=observer.hidden?canvas:oCanvas;
     if(v86.playing && !v86.recording){v86.position=Math.min(1,v86.position+dt/Math.max(1000,Number(v86El('qy86-duration').value)*1000));v86Explain();if(v86.position>=1){v86.playing=false;v86El('qy86-play').textContent='▶ Показати фільм';v86Status('Фільм переглянуто. Можна повторити або записати WebM.');}}
-    if(v86.preview&&v86.sequence.length>=2)v86Paint(target,t,v86.position);
+    if(v87.playing&&!v87.recording){v87.position=Math.min(v87Total(),v87.position+dt/1000);if(v87.position>=v87Total()){v87.playing=false;v87El('qy87-play').textContent='▶ Переглянути';}v87SyncTime();}
+    if(v87.preview&&v87Active())v87PaintLive(target,t);
+    else if(v86.preview&&v86.sequence.length>=2)v86Paint(target,t,v86.position);
     else if(v85.records.length>0 && v85.previewActive && v85Record(v85.a)&&v85Record(v85.b))v85BlendFrame(target,t);
-    else paint(target,t);cycles++;}
+    else paint(target,t);cycles++;if(v87Active()&&!v87.recording&&ms-v87.previewTick>180){v87.previewTick=ms;v87DrawPreview();}}
 }
   raf=requestAnimationFrame(draw);
  }
