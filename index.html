@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="uk">
 <head>
-<!-- QuantumYur v88 (Genesis Film Library enhancement on v87; Chronoscapes six-phase generated wallpapers, companion analog clock, Genesis preserved; v47 design preserved) / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
-<meta charset="UTF-8"><meta name="qy-build" content="88"><meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- QuantumYur v89 (mobile readability and Genesis navigation refinement on v88; Chronoscapes six-phase generated wallpapers, companion analog clock, Genesis preserved; v47 design preserved) / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
+<meta charset="UTF-8"><meta name="qy-build" content="89"><meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script id="qy-v35-before-paint">
 (()=>{'use strict';
@@ -28,7 +28,7 @@
  root.dataset.qyLakeActive=!forest&&read('qy-v26-lake-active')==='1'?'1':'0';
  root.dataset.qyV35NeedsForest=forest?'1':'0';
  // Built-in fallback if later scripts fail or a browser restores from its page cache.
- const guard=setTimeout(()=>{const veil=document.getElementById('qy-v35-startup');if(veil){veil.remove();root.dataset.qyV35Boot='ready'}},6500);
+ const guard=setTimeout(()=>{const veil=document.getElementById('qy-v35-startup');if(veil){veil.remove();root.dataset.qyV35Boot='ready'}},3500);
  window.__qyV35BootFallback=()=>clearTimeout(guard);
 })();
 </script>
@@ -3549,7 +3549,7 @@ update();
   if(root.dataset.qyV35NeedsForest==='1'&&root.dataset.qyV35WallpaperReady!=='1'){
    const onImage=()=>{window.removeEventListener('qy:v35-wallpaper-ready',onImage);release()};
    window.addEventListener('qy:v35-wallpaper-ready',onImage,{once:true});
-   waiter=setTimeout(()=>{window.removeEventListener('qy:v35-wallpaper-ready',onImage);release()},2800);
+   waiter=setTimeout(()=>{window.removeEventListener('qy:v35-wallpaper-ready',onImage);release()},2100);
   }else release();
  };
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true}); else start();
@@ -7714,7 +7714,7 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
  async function cover(){const c=$('qy87-canvas'),t=document.createElement('canvas');t.width=480;t.height=270;const x=t.getContext('2d');x.fillStyle='#071526';x.fillRect(0,0,480,270);x.drawImage(c,0,0,480,270);return t.toDataURL('image/jpeg',.77);}
  const guid=()=>crypto.randomUUID?crypto.randomUUID():'film-'+Date.now()+'-'+Math.random().toString(36).slice(2);
  function metadata(r){const {blob, cover, ...other}=r;return {...other,hasVideo:blob instanceof Blob,hasCover:!!cover,bytes:blob?.size||0};}
- async function refresh(){try{cache=(await all()).sort((a,b)=>b.createdAt.localeCompare(a.createdAt));render();status('Записів у бібліотеці: '+cache.length+'. Вони залишаються на цьому пристрої.');}catch(e){status('Сховище недоступне: '+(e.message||e));}}
+ async function refresh(){try{cache=(await all()).sort((a,b)=>b.createdAt.localeCompare(a.createdAt));render();status('Записів у бібліотеці: '+cache.length+'. Вони залишаються на цьому пристрої.');}catch(e){status('Локальне сховище недоступне у цьому режимі браузера. Відкрий сайт через HTTPS і перевір дозволи на зберігання даних.');}}
  function closePreview(){const p=$('qy88-player');p.pause();p.removeAttribute('src');p.load();$('qy88-player-box').hidden=true;if(currentUrl){URL.revokeObjectURL(currentUrl);currentUrl=null;}active=null;}
  function render(){const list=$('qy88-list');list.replaceChildren();if(!cache.length){const p=document.createElement('p');p.textContent='Поки порожньо. Збережи монтаж або запиши WebM у студії вище.';list.appendChild(p);return;}
   for(const f of cache){const article=document.createElement('article');article.className='qy88-film';const coverEl=document.createElement('img');coverEl.alt='Обкладинка фільму '+f.title;coverEl.loading='lazy';if(f.cover)coverEl.src=f.cover;else coverEl.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="480" height="270"><rect width="480" height="270" fill="#071c32"/><text x="55" y="135" fill="#d0eaff" font-size="28">QUANTUM GENESIS</text></svg>');article.appendChild(coverEl);
@@ -7748,4 +7748,117 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
  refresh();
 })();
 </script>
+
+<!-- v89 accessibility & navigation: additive patch over intact v88 code. -->
+<style id="qy89-mobile-readability">
+#qy89-app-shortcuts,#qy89-gallery-nav{margin:13px 0 15px;padding:14px;border:1px solid #71b8cf99;border-radius:16px;background:linear-gradient(125deg,rgba(12,44,69,.96),rgba(24,41,78,.96));color:#e9faff;box-sizing:border-box}
+#qy89-app-shortcuts strong,#qy89-gallery-nav strong{display:block;font:700 16px/1.4 ui-monospace,Consolas,monospace;letter-spacing:.01em}
+#qy89-app-shortcuts p{font:400 13px/1.55 ui-monospace,Consolas,monospace;color:#c4dce8;margin:5px 0 12px}
+.qy89-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:9px}
+.qy89-actions button{border:1px solid #80b9d5;background:#163953;color:#f4fcff;border-radius:10px;min-height:46px;padding:10px 12px;font:650 13px/1.45 ui-monospace,Consolas,monospace;cursor:pointer;flex:1 1 145px;white-space:normal;text-align:center;overflow-wrap:anywhere}
+.qy89-actions button:focus-visible{outline:3px solid #f9db91;outline-offset:2px}
+.qy89-actions button:hover{background:#205472}
+#qy89-gallery-nav{margin-bottom:12px}
+#qy89-gallery-nav .qy89-actions{margin-top:9px}
+html[data-qy-device-package="light"] #qy72-app-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:11px!important}
+html[data-qy-device-package="light"] #qy72-apps-overlay .qy72-app{padding:14px!important;min-height:178px!important;gap:9px!important}
+html[data-qy-device-package="light"] #qy72-apps-overlay .qy72-name{font-size:clamp(14px,3.7vw,18px)!important;line-height:1.28!important;overflow-wrap:anywhere;hyphens:auto}
+html[data-qy-device-package="light"] #qy72-apps-overlay .qy72-desc{font-size:clamp(12px,3.1vw,14px)!important;line-height:1.52!important;overflow-wrap:anywhere;hyphens:auto}
+html[data-qy-device-package="light"] #qy72-apps-overlay .qy72-state{font-size:12px!important}
+html[data-qy-device-package="light"] #qy72-apps-overlay #qy72-subtitle{font-size:14px!important;line-height:1.55!important}
+html[data-qy-device-package="light"] #qy72-apps-overlay #qy72-brand{font-size:13px!important;overflow-wrap:anywhere}
+html[data-qy-device-package="light"] #qy72-apps-overlay .qy72-tool p,
+html[data-qy-device-package="light"] #qy72-apps-overlay .qy73-sim p,
+html[data-qy-device-package="light"] #qy72-apps-overlay .qy75-lab p{font-size:13px!important;line-height:1.6!important;overflow-wrap:anywhere}
+html[data-qy-device-package="light"] #qy72-apps-overlay .qy72-tool label,
+html[data-qy-device-package="light"] #qy72-apps-overlay .qy73-sim label,
+html[data-qy-device-package="light"] #qy72-apps-overlay .qy75-lab label{font-size:13px!important;line-height:1.5!important;overflow-wrap:anywhere}
+html[data-qy-device-package="light"] #qy72-apps-overlay .qy72-tool button,
+html[data-qy-device-package="light"] #qy72-apps-overlay .qy72-tool select,
+html[data-qy-device-package="light"] #qy72-apps-overlay .qy72-tool input:not([type="range"]){font-size:13px!important;line-height:1.3!important;min-height:42px;max-width:100%}
+html[data-qy-device-package="light"] #qy83-controls .qy84-panel p,
+html[data-qy-device-package="light"] #qy83-controls .qy85-panel p,
+html[data-qy-device-package="light"] #qy83-controls .qy87-studio p,
+html[data-qy-device-package="light"] #qy83-controls .qy88-gallery p{font-size:13px!important;line-height:1.65!important;overflow-wrap:anywhere}
+html[data-qy-device-package="light"] #qy83-controls .qy87-studio label,
+html[data-qy-device-package="light"] #qy83-controls .qy88-gallery label{font-size:13px!important;line-height:1.5!important;overflow-wrap:anywhere}
+html[data-qy-device-package="light"] #qy83-controls .qy87-studio button,
+html[data-qy-device-package="light"] #qy83-controls .qy88-gallery button{font-size:13px!important;line-height:1.45!important;min-height:42px;white-space:normal;overflow-wrap:anywhere}
+html[data-qy-device-package="light"] #qy67-admin-overlay .qy67-panel p,
+html[data-qy-device-package="light"] #qy67-admin-overlay .qy67-panel label,
+html[data-qy-device-package="light"] #qy67-admin-overlay .qy67-panel li{font-size:13px!important;line-height:1.6!important;overflow-wrap:anywhere}
+html[data-qy-device-package="light"] #qy67-admin-overlay .qy67-panel button{font-size:13px!important;min-height:42px}
+html[data-qy-device-package="light"] #qy72-apps-overlay #qy75-lab-tabs{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px}
+html[data-qy-device-package="light"] #qy72-apps-overlay #qy75-lab-tabs button{min-width:0!important}
+html[data-qy-device-package="light"] #qy41-overlay{overflow-wrap:anywhere}
+/* Assist Android Chrome in "desktop site" mode too, which may expose ~980px layout width. */
+@media (pointer:coarse) and (max-width:1250px){
+ #qy72-app-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #qy72-apps-overlay .qy72-name{font-size:max(15px,1.35vw)!important}
+ #qy72-apps-overlay .qy72-desc{font-size:max(13px,1.1vw)!important;line-height:1.5!important}
+ #qy72-apps-overlay .qy72-app{min-height:172px;overflow-wrap:anywhere}
+}
+@media (max-width:420px){
+ #qy89-app-shortcuts,#qy89-gallery-nav{padding:11px}
+ .qy89-actions button{flex-basis:130px;min-height:46px}
+ #qy72-apps-overlay #qy72-apps-shell{padding-left:12px!important;padding-right:12px!important}
+}
+@media (prefers-reduced-motion:reduce){#qy89-app-shortcuts *,#qy89-gallery-nav *{scroll-behavior:auto}}
+</style>
+<script id="qy89-navigation-js">
+(()=>{'use strict';
+  if(document.getElementById('qy89-app-shortcuts'))return;
+  const $=(id)=>document.getElementById(id);
+  const words={
+   uk:{head:'✦ Genesis · швидкий доступ',note:'Нові можливості вже існують у темі №54. Інші картки з позначкою «Незабаром» поки в розробці.',world:'🌌 Живий світ',studio:'🎬 Монтажна студія',films:'🎞️ Бібліотека фільмів'},
+   ru:{head:'✦ Genesis · быстрый доступ',note:'Новые инструменты уже доступны в теме №54. Остальные карточки с пометкой «Скоро» ещё в разработке.',world:'🌌 Живой мир',studio:'🎬 Монтажная студия',films:'🎞️ Библиотека фильмов'},
+   en:{head:'✦ Genesis · quick access',note:'These tools are available in world #54. Other cards marked “Coming soon” are still in development.',world:'🌌 Living world',studio:'🎬 Editing studio',films:'🎞️ Film library'},
+   pl:{head:'✦ Genesis · szybki dostęp',note:'Te narzędzia są dostępne w świecie nr 54. Pozostałe karty oznaczone „Wkrótce” są w przygotowaniu.',world:'🌌 Żywy świat',studio:'🎬 Studio montażu',films:'🎞️ Biblioteka filmów'}
+  };
+  function lang(){const k=($('site-language')?.value||document.documentElement.lang||'uk').toLowerCase();return words[k]||words[k.slice(0,2)]||words.uk;}
+  function openGenesis(id){
+    try{window.qyHubApps?.close()}catch(_){ }
+    // Use exactly the same theme choice mechanism as the existing v88 shortcut.
+    const theme=$('qy37-theme');
+    if(theme&&theme.value!=='54'){theme.value='54';theme.dispatchEvent(new Event('change',{bubbles:true}));}
+    const overlay=$('qy41-overlay');
+    if(overlay?.hidden){$('qy41-open')?.click();}
+    else if(!overlay){$('qy41-open')?.click();}
+    const destination=(id==='studio'?'qy87-studio':id==='films'?'qy88-gallery':'qy83-controls');
+    const focusTarget=()=>{
+      const dest=$(destination);
+      if(!dest)return;
+      const parent=$('qy41-picker');if(parent&&typeof parent.open==='boolean')parent.open=true;
+      dest.scrollIntoView({behavior:'auto',block:'start'});
+      if(dest.tabIndex<0)dest.tabIndex=-1;
+      dest.focus({preventScroll:true});
+    };
+    requestAnimationFrame(()=>setTimeout(focusTarget,180));
+    setTimeout(focusTarget,600);
+  }
+  function makeAction(text,id){
+    const b=document.createElement('button');b.type='button';b.textContent=text;
+    b.addEventListener('click',()=>openGenesis(id));return b;
+  }
+  function createBar(id,includeNote){
+    const section=document.createElement('section');section.id=id;
+    section.setAttribute('aria-label','Швидкий доступ до Genesis');
+    const heading=document.createElement('strong');heading.dataset.qy89Word='head';heading.textContent=lang().head;section.append(heading);
+    if(includeNote){const note=document.createElement('p');note.dataset.qy89Word='note';note.textContent=lang().note;section.append(note);}
+    const actions=document.createElement('div');actions.className='qy89-actions';
+    for(const id of ['world','studio','films']){const button=makeAction(lang()[id],id);button.dataset.qy89Word=id;actions.append(button);}
+    section.append(actions);return section;
+  }
+  const area=$('qy72-apps-area');const appsHeading=$('qy72-section-head');
+  if(area&&appsHeading)area.insertBefore(createBar('qy89-app-shortcuts',true),appsHeading);
+  const gallery=$('qy41-body');const oldShortcut=$('qy88-shortcut');
+  if(gallery){const bar=createBar('qy89-gallery-nav',false);gallery.insertBefore(bar,oldShortcut||gallery.firstChild);if(oldShortcut)oldShortcut.hidden=true;}
+  $('site-language')?.addEventListener('change',()=>{document.querySelectorAll('[data-qy89-word]').forEach(e=>{e.textContent=lang()[e.dataset.qy89Word]||e.textContent;});});
+  // A tap or return from the browser cache must not leave the page blocked by a stale loader.
+  const dismissSplash=()=>{const veil=$('qy-v35-startup');if(veil){veil.remove();document.documentElement.dataset.qyV35Boot='ready';}};
+  window.addEventListener('pageshow',()=>setTimeout(dismissSplash,1500));
+  const veil=$('qy-v35-startup');if(veil){veil.addEventListener('click',dismissSplash,{once:true});veil.setAttribute('title','Торкніться, щоб відкрити сайт');}
+})();
+</script>
+
 </body></html>
