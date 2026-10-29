@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="uk">
 <head>
-<!-- QuantumYur v81 (Genesis autonomous generational data laboratory; v47 design preserved) / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
-<meta charset="UTF-8"><meta name="qy-build" content="81"><meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- QuantumYur v82 (Chronoscapes six-phase generated wallpapers, companion analog clock, Genesis preserved; v47 design preserved) / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
+<meta charset="UTF-8"><meta name="qy-build" content="82"><meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script id="qy-v35-before-paint">
 (()=>{'use strict';
@@ -1624,6 +1624,40 @@ body:has(#qy44-front):not(.qy44-content) .wrap > header,
 body:has(#qy44-front):not(.qy44-content) .wrap > footer{display:none!important}
 #qy68-recovery{display:flex;flex-direction:column;gap:7px;margin-top:10px;padding:10px 12px;color:#f9eac9;background:rgba(10,25,39,.88);border:1px solid #e9c48a;border-radius:12px;font:650 13px/1.45 ui-monospace,Consolas,monospace}
 #qy68-recovery button{align-self:center;color:#14253a;background:#f3dca8;border:0;border-radius:10px;padding:8px 16px;min-height:42px;font:750 13px ui-monospace,Consolas,monospace;cursor:pointer}
+</style>
+<style id="qy-v82-chronoscapes-css">
+/* QuantumYur v82 Chronoscapes — scoped additions; v47 clock-first layout stays in charge */
+#qy82-chronoscapes, #qy82-chronoscapes *{box-sizing:border-box}
+#qy82-chronoscapes{position:relative;z-index:10;margin:12px 0 17px;border:1.5px solid rgba(114,190,208,.68);border-radius:17px;padding:15px 17px;color:#e6f4ff;background:linear-gradient(120deg,rgba(10,27,46,.92),rgba(14,34,49,.87));box-shadow:0 10px 28px #0005;font:600 13px/1.55 ui-monospace,Consolas,monospace}
+#qy82-chronoscapes .qy82-title{display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:10px}
+#qy82-chronoscapes .qy82-title small{font-size:10px;color:#81d9ec;letter-spacing:.14em}
+#qy82-chronoscapes h3{font-size:clamp(17px,2.4vw,21px);margin:3px 0;color:#e8fffa}
+#qy82-chronoscapes .qy82-title p{font-size:12px;color:#d2e5ee;max-width:780px;margin:1px 0 9px}
+#qy82-chronoscapes .qy82-phase-name{color:#a9eeeb;border:1px solid #739caa88;border-radius:99px;padding:6px 11px}
+#qy82-chronoscapes .qy82-settings{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+#qy82-chronoscapes label{display:inline-flex;align-items:center;gap:8px;border:1px solid #669eb278;border-radius:11px;padding:8px 11px;min-height:45px;background:#0e2c43cc;cursor:pointer}
+#qy82-chronoscapes label.qy82-check{flex:1 1 210px}
+#qy82-chronoscapes input{accent-color:#5cddca;min-width:18px;min-height:18px}
+#qy82-chronoscapes select{border-radius:7px;background:#142f47;color:#e6f4ff;padding:7px;max-width:100%;border:1px solid #5c9eae}
+#qy82-chronoscapes .qy82-meta{font-size:12px;color:#b9e8e9;min-height:18px;margin:10px 0 2px}
+#qy82-chronoscapes .qy82-hint{font-size:12px;color:#f0d8a2;margin:8px 0}
+#qy82-chronoscapes details{margin-top:10px;border-top:1px solid #7ca3b055;padding-top:8px;font-size:12px;color:#d0e0e9}
+#qy82-chronoscapes details summary{cursor:pointer;font-weight:800;color:#d1f1fc}
+#qy82-chronoscapes code{background:#0c1c30;padding:2px 5px;border-radius:5px;overflow-wrap:anywhere}
+#qy82-strip{display:flex;align-items:center;justify-content:center;gap:11px;width:max-content;max-width:100%;margin:10px auto 0;padding:7px 13px;border:1px solid #b6e2ee55;border-radius:14px;background:rgba(5,18,32,.51);color:#e8faff;text-shadow:0 2px 11px #0009;backdrop-filter:blur(6px);pointer-events:none}
+#qy82-dial{position:relative;flex:0 0 49px;width:49px;height:49px;border:2px solid rgba(210,241,255,.85);border-radius:50%;background:repeating-conic-gradient(from 0deg,#d1eefe 0deg 1.3deg,transparent 1.3deg 30deg),radial-gradient(circle,#12334c 45%,#142b43 100%);box-shadow:0 0 0 2px rgba(12,29,49,.7),inset 0 0 9px #0016;--qy82-hour:0deg;--qy82-min:0deg}
+#qy82-dial .qy82-hour,#qy82-dial .qy82-minute{position:absolute;left:calc(50% - 1.5px);bottom:50%;width:3px;transform-origin:bottom center;border-radius:4px;background:#f1fcff}
+#qy82-dial .qy82-hour{height:13px;transform:rotate(var(--qy82-hour));background:#eaf6f8}
+#qy82-dial .qy82-minute{height:19px;transform:rotate(var(--qy82-min));background:#93e5e9;width:2px;left:calc(50% - 1px)}
+#qy82-dial .qy82-center{position:absolute;left:calc(50% - 3px);top:calc(50% - 3px);width:6px;height:6px;background:#f0e9c4;border-radius:50%}
+#qy82-strip .qy82-clock-info{display:grid;gap:5px;text-align:left;min-width:95px}
+#qy82-strip .qy82-phase-name{font:750 12px ui-monospace,Consolas,monospace;letter-spacing:.06em}
+#qy82-strip .qy82-dots{display:flex;gap:5px}
+#qy82-strip .qy82-dots i{height:5px;width:13px;border-radius:5px;background:#b9d6ec55}
+#qy82-strip .qy82-dots i.active{background:#b4f3eb;box-shadow:0 0 8px #9de4e8}
+@media(max-width:650px){#qy82-chronoscapes{padding:12px}#qy82-chronoscapes label.qy82-check{flex:1 1 100%}#qy82-chronoscapes label.qy82-phase-select{width:100%;justify-content:space-between}#qy82-strip{margin-top:8px;padding:5px 10px;gap:8px}#qy82-dial{width:42px;height:42px;flex-basis:42px}#qy82-dial .qy82-hour{height:10px}#qy82-dial .qy82-minute{height:16px}}
+@media(prefers-reduced-motion:reduce){#qy82-strip *,#qy82-chronoscapes *{transition:none!important;animation:none!important}}
+
 </style>
 </head>
 <body>
@@ -3603,7 +3637,7 @@ window.qyHubPhotoOverrides=Object.freeze({
  all:()=>({...qy71PublishedPhotoMap,...qy71PhotoMap}),validate:qy71SafePhotoURL
 });
 window.qyHubUpgradeAudit=Object.freeze({version:'71',completed:['local_admin_panel','cinematic_animated_frames','frames_menu_fixed','faster_photo_swap_preserved','curated_theme_fallbacks_all_53','42_photo_sources_mapped'],remaining:['find_unique_verified_images_for_remaining_117_slots','live_visual_review_of_every_theme_on_mobile']});
-function themeImageURL(theme,i,small=false){return window.qyHubPhotoOverrides?.get(theme.id,i)||(theme.id===1?FIRST_THEME_ASSETS[i]:(qy59Img(theme.id+':'+i,small)||imageUrl(theme.photos[i],small)))}
+function themeImageURL(theme,i,small=false){return window.qyHubPhotoOverrides?.get(theme.id,i)||(state.mode==='auto'?window.qyHubChronoscapes?.resolve(theme.id,small):'')||(theme.id===1?FIRST_THEME_ASSETS[i]:(qy59Img(theme.id+':'+i,small)||imageUrl(theme.photos[i],small)))}
 
 /* v54: portrait-aware image delivery. Only the visited world is fetched;
    the small embedded fallback remains instantly visible without a network.
@@ -3684,7 +3718,7 @@ const credit=document.createElement('details');credit.id='qy59-photo-credit';
 credit.style.cssText='margin:8px 0;padding:8px 11px;border:1px solid rgba(207,177,113,.55);border-radius:11px;background:rgba(10,24,39,.8);font-size:13px';
 credit.innerHTML='<summary style="cursor:pointer;font-weight:700">ⓘ Автор і ліцензія поточного фото</summary><div id="qy59-credit-text" style="padding:8px 0 2px;line-height:1.6"></div>';
 function qy59Credit(){const t=activeTheme(),i=selectedImageIndex(),obj=qy60Photos[t.id+':'+i],e=credit.querySelector('#qy59-credit-text');
-e.replaceChildren();const custom=window.qyHubPhotoOverrides?.get(t.id,i);if(custom){e.textContent='Власне фото (локальне налаштування). Перевір право на використання перед публікацією. URL: ';const a=document.createElement('a');a.href=custom;a.rel='noopener noreferrer';a.target='_blank';a.textContent='Відкрити зображення';e.append(a);return;}if(!obj){e.textContent='Базова фотографія: Unsplash або вбудоване резервне зображення. Походження окремого кадру ще перевіряється.';return;}
+e.replaceChildren();const custom=window.qyHubPhotoOverrides?.get(t.id,i);if(custom){e.textContent='Власне фото (локальне налаштування). Перевір право на використання перед публікацією. URL: ';const a=document.createElement('a');a.href=custom;a.rel='noopener noreferrer';a.target='_blank';a.textContent='Відкрити зображення';e.append(a);return;}const generated=state.mode==='auto'&&window.qyHubChronoscapes?.resolve(t.id);if(generated){e.textContent='Згенероване зображення з вашої папки assets/chronoscapes (за наявності). Це художній матеріал, а не документальне фото. Джерело: '+generated;return;}if(!obj){e.textContent='Базова фотографія: Unsplash або вбудоване резервне зображення. Походження окремого кадру ще перевіряється.';return;}
 const author=document.createElement('span');author.textContent='Автор: '+obj.a+' · Ліцензія: '+obj.l+' · ';
 const source=document.createElement('a');source.href=obj.s;source.target='_blank';source.rel='noopener noreferrer';source.textContent='Сторінка оригіналу';
 const license=document.createElement('a');license.href=obj.ll;license.target='_blank';license.rel='noopener noreferrer';license.textContent='Умови ліцензії';
@@ -3784,7 +3818,7 @@ function qy62SwapFallback(theme){
 function renderImage(force=false){
  if(!state.on){state.pending++;qy62Planes.forEach(x=>x.style.opacity='0');bg.style.backgroundImage='none';textStatus();return}
  const i=selectedImageIndex(),theme=activeTheme(),url=themeImageURL(theme,i);
- const key=theme.id+':'+i+':'+(window.innerWidth<680?'phone':'full')+':'+(state.mode==='auto'?currentSeason():'manual');
+ const key=theme.id+':'+i+':'+(window.innerWidth<680?'phone':'full')+':'+(state.mode==='auto'?currentSeason():'manual')+':'+(window.qyHubChronoscapes?.key(theme.id)||'');
  if(!force&&state.slot===key){textStatus();return}
  state.slot=key;const request=++state.pending;
  const extra=sceneLayer()+'linear-gradient(180deg,rgba(0,9,20,.07),rgba(0,9,20,.21))';
@@ -3796,6 +3830,7 @@ function renderImage(force=false){
  if(qy62Cache.has(url)){accept(url);return}
  qy62Fetch(url).then(()=>accept(url)).catch(()=>{
   if(request!==state.pending)return;
+  if(window.qyHubChronoscapes?.failed(url)){state.slot='';qy59Credit();renderImage(true);return;}
   // On network failure, retain a theme-matched built-in scene, with no empty flash.
   if(qy62Presented!=='fallback:'+theme.id)qy62SwapFallback(theme);
   textStatus('Показано резервний краєвид.');
@@ -3814,6 +3849,7 @@ preview.addEventListener('toggle',updateCards);
 document.addEventListener('click',e=>{if(e.target.closest('#qy-v28-forest-buttons button,#qy-v26-lake-choices button,#qy-atmosphere-studio .qy-atmo-choice')){state.on=false;refresh(true)}},true);
 document.getElementById('site-language')?.addEventListener('change',()=>{refresh();updateCards()});
 window.addEventListener('pageshow',()=>refresh());
+window.addEventListener('qy82-photo-refresh',()=>{state.slot='';renderImage(true)});
 // Smartphone toolbar changes must not cause wallpaper re-layout. Detect only width changes.
 let width=window.innerWidth;window.addEventListener('resize',()=>{if(Math.abs(window.innerWidth-width)>70){width=window.innerWidth;state.slot='';renderImage()}},{passive:true});
 setInterval(()=>{const ph=localPhase();if(state.mode==='auto'&&state.on){const key=activeTheme().id+':'+selectedImageIndex()+':'+(window.innerWidth<680?'phone':'full')+':'+currentSeason();if(key!==state.slot)renderImage()}textStatus()},60_000);
@@ -6735,5 +6771,107 @@ $('qy76-prev').addEventListener('click',()=>choose(current-1));$('qy76-next').ad
 stage.addEventListener('pointerdown',e=>{if(split)return;drag=true;stage.setPointerCapture(e.pointerId);setPlay(false);pointer(e)});stage.addEventListener('pointermove',pointer);stage.addEventListener('pointerup',()=>drag=false);stage.addEventListener('pointercancel',()=>drag=false);stage.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){value=Math.max(0,Math.min(100,value+(e.key==='ArrowLeft'?-5:5)));apply();e.preventDefault()}});
 $('site-language')?.addEventListener('change',()=>{if(active)refresh()});window.qyTimeLayers=Object.freeze({activate,deactivate,version:'76',snapshot:()=>({scene:s().id,position:value,playing,split,loaded:loaded.size,failed:failed.size})});choose(0);
 })();
+</script>
+<script id="qy-v82-chronoscapes-script">
+/* QuantumYur v82 Chronoscapes — optional six-phase generated photography + companion dial.
+   - Does not replace the v81 gallery, weather, existing manual background choices or Genesis.
+   - Generated assets are optional, expected at ./assets/chronoscapes/tNN-PHASE.webp.
+   - Broken/missing assets are cached for the page and fall back to the original photo.
+*/
+(()=>{'use strict';
+ if(window.qyHubChronoscapes)return;
+ const PHASES=[['dawn','Світанок','🌅'],['morning','Ранок','🌤️'],['day','День','☀️'],['sunset','Захід','🌇'],['evening','Вечір','🌆'],['night','Ніч','🌌']];
+ const translations={
+ uk:['Світанок','Ранок','День','Захід','Вечір','Ніч'],
+ pl:['Świt','Poranek','Dzień','Zachód','Wieczór','Noc'],
+ en:['Dawn','Morning','Day','Sunset','Evening','Night'],
+ ru:['Рассвет','Утро','День','Закат','Вечер','Ночь'],
+ es:['Amanecer','Mañana','Día','Atardecer','Tarde','Noche'],
+ 'pt-BR':['Amanhecer','Manhã','Dia','Pôr do sol','Noite','Madrugada'],
+ ja:['夜明け','朝','昼','夕焼け','夕方','夜'],
+ ko:['새벽','아침','낮','일몰','저녁','밤'],
+ zh:['黎明','早晨','白天','日落','傍晚','夜晚'],
+ hi:['भोर','सुबह','दिन','सूर्यास्त','शाम','रात']};
+ const KEY='qy82-chronoscapes-options-v1';
+ let stored={};try{stored=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(_){}
+ const options={enabled:stored.enabled!==false,full:stored.full===true,preview:PHASES.some(a=>a[0]===stored.preview)?stored.preview:'auto',dial:stored.dial!==false};
+ const broken=new Set();
+ const phaseNames=PHASES.map(x=>x[0]);
+ function readLang(){const lang=document.getElementById('site-language')?.value||document.documentElement.lang||'uk';return translations[lang]?lang:'uk'}
+ function season(){const manual=document.getElementById('qy40-season')?.value||'auto';if(manual!=='auto')return manual;
+  let m=(new Date()).getMonth();let hemisphere=document.getElementById('qy40-hemisphere')?.value||'auto';
+  if(hemisphere==='south')m=(m+6)%12;
+  return m===11||m<=1?'winter':m<=4?'spring':m<=7?'summer':'autumn';}
+ function actualPhase(){const d=new Date(),h=d.getHours()+d.getMinutes()/60;
+  const shift=season()==='winter'?1:season()==='summer'?-1:0;
+  const b=[5+shift,8+shift,12,17+shift,20+shift,23];
+  const idx=(h<b[0]||h>=b[5])?5:h<b[1]?0:h<b[2]?1:h<b[3]?2:h<b[4]?3:4;
+  return phaseNames[idx];}
+ function selectedPhase(){return options.preview==='auto'?actualPhase():options.preview}
+ const startPhase={dawn:'dawn',morning:'day',day:'day',sunset:'dawn',evening:'night',night:'night'};
+ function mappedPhase(){const phase=selectedPhase();return options.full?phase:startPhase[phase]}
+ function source(id){return './assets/chronoscapes/t'+String(id).padStart(2,'0')+'-'+mappedPhase()+'.webp'}
+ function resolve(id){
+  if(!options.enabled||!Number.isInteger(Number(id))||Number(id)<1||Number(id)>53)return '';
+  const path=source(Number(id));return broken.has(path)?'':path;
+ }
+ function key(id){return options.enabled?'v82:'+Number(id)+':'+mappedPhase()+':'+Number(options.full):'v82-off'}
+ function failed(url){if(typeof url==='string'&&url.startsWith('./assets/chronoscapes/')){broken.add(url);updateStatus('Файл відсутній — використано попереднє фото');return true}return false}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(options))}catch(_){}}
+ let lastKey='';
+ function refreshWallpaper(){const k=key(Number(document.getElementById('qy37-theme')?.value||1));if(k!==lastKey){lastKey=k;window.dispatchEvent(new Event('qy82-photo-refresh'))}}
+ function updateStatus(note=''){
+  const p=selectedPhase();const lang=readLang();const idx=phaseNames.indexOf(p),label=translations[lang][idx];
+  const theme=document.getElementById('qy37-theme');const name=theme?.selectedOptions?.[0]?.textContent?.replace(/^\s*\d+\s*[·.\-]\s*/,'').trim()||'QuantumYur';
+  const status=document.getElementById('qy82-status');
+  if(status)status.textContent=(note?note+' · ':'')+name+' · '+label+' · '+(options.preview==='auto'?'місцевий час':'ручний перегляд')+' · '+(options.enabled?'згенеровані файли (за наявності)':'наявні фототеми');
+  document.querySelectorAll('.qy82-phase-name').forEach(el=>el.textContent=PHASES[idx][2]+' '+label);
+  const strip=document.getElementById('qy82-strip');if(strip){strip.dataset.phase=p;strip.style.display=options.dial?'flex':'none'}
+  const select=document.getElementById('qy82-preview');if(select&&select.value!==options.preview)select.value=options.preview;
+  const chip=document.getElementById('qy82-asset-path');if(chip)chip.textContent=source(Number(theme?.value||1));
+  const manual=theme&&document.getElementById('qy37-mode')?.value!=='auto';
+  const warning=document.getElementById('qy82-manual-note');if(warning)warning.hidden=!manual;
+  const dots=document.getElementById('qy82-dots');if(dots){dots.querySelectorAll('i').forEach((dot,i)=>dot.classList.toggle('active',i===idx));}
+ }
+ function updateDial(){const now=new Date(),m=now.getMinutes()+now.getSeconds()/60,h=(now.getHours()%12)+m/60;
+  const d=document.getElementById('qy82-dial');if(d){d.style.setProperty('--qy82-min',m*6+'deg');d.style.setProperty('--qy82-hour',h*30+'deg');d.setAttribute('aria-label','Аналоговий годинник: '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0'));}
+  updateStatus();refreshWallpaper();}
+ function change(settings){Object.assign(options,settings);save();updateDial();refreshWallpaper();}
+ const v37=document.getElementById('qy-v37-controls');
+ if(v37){
+  const panel=document.createElement('section');panel.id='qy82-chronoscapes';panel.setAttribute('aria-label','Chronoscapes — зміна атмосфери світу за часом');
+  panel.innerHTML='<div class="qy82-title"><div><small>QUANTUMYUR · CHRONOSCAPES v82</small><h3>🕰️ Часові світи</h3><p>Один світ — шість станів світла. Згенеровані фото підключаються за назвою файлу; старі залишаються резервом.</p></div><span class="qy82-phase-name"></span></div>'+
+   '<div class="qy82-settings"><label class="qy82-check"><input type="checkbox" id="qy82-enable"> Використовувати мої згенеровані фото</label><label class="qy82-check"><input type="checkbox" id="qy82-full"> Повні шість кадрів (замість базових трьох)</label><label class="qy82-check"><input type="checkbox" id="qy82-dial-on"> Аналоговий годинник на головній</label>'+
+   '<label class="qy82-phase-select">Візуальний час <select id="qy82-preview"><option value="auto">Авто · час відвідувача</option><option value="dawn">🌅 Світанок</option><option value="morning">🌤️ Ранок</option><option value="day">☀️ День</option><option value="sunset">🌇 Захід</option><option value="evening">🌆 Вечір</option><option value="night">🌌 Ніч</option></select></label></div>'+
+   '<p class="qy82-meta" id="qy82-status" role="status"></p><p class="qy82-hint" id="qy82-manual-note" hidden>Вибрано ручний фон у головних налаштуваннях — він має пріоритет. Поверни там «Авто», щоб використовувати часові фото.</p>'+
+   '<details><summary>📂 Куди завантажувати згенеровані картинки?</summary><p>У репозиторії створи папку <code>assets/chronoscapes/</code>. Назви файли за шаблоном: <code>t01-dawn.webp</code>, <code>t01-day.webp</code>, <code>t01-night.webp</code> тощо. Поточний очікуваний файл: <code id="qy82-asset-path"></code>. Папка й фото не вбудовані в index.html: після їх завантаження увімкни перемикач вище. Якщо зображення недоступне, сайт повернеться до старого фону.</p></details>';
+  v37.insertAdjacentElement('afterend',panel);
+  panel.querySelector('#qy82-enable').checked=options.enabled;
+  panel.querySelector('#qy82-full').checked=options.full;
+  panel.querySelector('#qy82-dial-on').checked=options.dial;
+  panel.querySelector('#qy82-preview').value=options.preview;
+  panel.querySelector('#qy82-enable').addEventListener('change',e=>change({enabled:e.target.checked}));
+  panel.querySelector('#qy82-full').addEventListener('change',e=>change({full:e.target.checked}));
+  panel.querySelector('#qy82-dial-on').addEventListener('change',e=>change({dial:e.target.checked}));
+  panel.querySelector('#qy82-preview').addEventListener('change',e=>change({preview:e.target.value}));
+ }
+ const front=document.getElementById('qy44-front');const middle=front?.querySelector('.qy44-middle');
+ if(middle){
+  const strip=document.createElement('div');strip.id='qy82-strip';strip.setAttribute('aria-label','Час та світлова атмосфера');
+  strip.innerHTML='<div id="qy82-dial" role="img" aria-label="Аналоговий годинник"><i class="qy82-hour"></i><i class="qy82-minute"></i><i class="qy82-center"></i></div><div class="qy82-clock-info"><div class="qy82-phase-name"></div><div class="qy82-dots" id="qy82-dots">'+PHASES.map(()=>'<i></i>').join('')+'</div></div>';
+  middle.appendChild(strip);
+ }
+ const theme=document.getElementById('qy37-theme');const mode=document.getElementById('qy37-mode');
+ theme?.addEventListener('change',()=>{lastKey='';updateDial()});
+ mode?.addEventListener('change',()=>{lastKey='';updateDial()});
+ document.getElementById('qy40-season')?.addEventListener('change',updateDial);
+ document.getElementById('qy40-hemisphere')?.addEventListener('change',updateDial);
+ document.getElementById('site-language')?.addEventListener('change',updateDial);
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateDial()});
+ window.addEventListener('pageshow',updateDial);
+ window.qyHubChronoscapes=Object.freeze({resolve,key,failed,snapshot:()=>({...options,phase:selectedPhase(),actualPhase:actualPhase(),mappedPhase:mappedPhase(),file:source(Number(theme?.value||1)),missing:[...broken] }),setEnabled:v=>{const x=!!v;const el=document.getElementById('qy82-enable');if(el)el.checked=x;change({enabled:x})},setFull:v=>{const x=!!v;const el=document.getElementById('qy82-full');if(el)el.checked=x;change({full:x})},setPreview:p=>{if(p==='auto'||phaseNames.includes(p))change({preview:p})},update:updateDial});
+ updateDial();setInterval(()=>{if(!document.hidden)updateDial()},45_000);
+})();
+
 </script>
 </body></html>
