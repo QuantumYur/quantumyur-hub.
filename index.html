@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="uk">
 <head>
-<!-- QuantumYur v77 (higher-resolution self-organization laboratory + science exports; v47 design preserved) / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
-<meta charset="UTF-8"><meta name="qy-build" content="77"><meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- QuantumYur v78 (detail 1x/2x/4x + fullscreen lab; v47 design preserved) / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
+<meta charset="UTF-8"><meta name="qy-build" content="78"><meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script id="qy-v35-before-paint">
 (()=>{'use strict';
@@ -6038,8 +6038,19 @@ wrap.innerHTML=`<div id="qy72-apps-portal" aria-hidden="true"><i class="qy72-rin
       <button type="button" data-mode="waves" class="qy75-mode">🌊 Хвилі</button>
       <button type="button" data-mode="network" class="qy75-mode">🕸️ Мережі</button>
     </div>
-    <div class="qy75-canvas-wrap">
+    <div class="qy78-toolbar" role="group" aria-label="Деталізація та розмір лабораторії">
+      <div class="qy78-quality-label"><strong id="qy78-detail-label">Деталізація</strong><small id="qy78-detail-info" aria-live="polite">160 × 116 · 2×</small></div>
+      <div class="qy78-quality-switch" id="qy78-quality-switch" aria-label="Якість моделі">
+        <button type="button" data-detail="1" aria-pressed="false">1×</button>
+        <button type="button" data-detail="2" aria-pressed="true">2×</button>
+        <button type="button" data-detail="4" aria-pressed="false">4×</button>
+      </div>
+      <button type="button" id="qy78-expand" class="qy72-btn qy78-expand-btn" aria-controls="qy75-canvas" aria-expanded="false">⛶ На весь екран</button>
+    </div>
+    <p class="qy78-help" id="qy78-help">Зміна деталізації починає новий дослід. Режим 4× потребує більше ресурсів телефону.</p>
+    <div class="qy75-canvas-wrap" id="qy78-view">
       <canvas id="qy75-canvas" width="960" height="720" aria-label="Інтерактивна модель самоорганізації" role="img"></canvas>
+      <button type="button" class="qy78-view-close" id="qy78-view-close" aria-label="Вийти з повноекранного перегляду">✕ <span id="qy78-exit-label">Закрити</span></button>
       <div class="qy75-canvas-label"><span id="qy75-mode-label">Клітинний автомат</span><span id="qy75-status">● Працює</span></div>
     </div>
     <div class="qy75-stats"><div><small id="qy75-step-label">Кроки</small><strong id="qy75-steps">0</strong></div><div><small id="qy75-count-label">Елементи</small><strong id="qy75-count">0</strong></div><div><small id="qy75-rule-label">Правило</small><strong id="qy75-rule">B3/S23</strong></div></div>
@@ -6251,6 +6262,25 @@ window.qyThomson=Object.freeze({activate,deactivate,version:'74',snapshot:()=>({
 #qy72-apps-overlay .qy75-compare-info{color:#b6d4e5;font-size:12px;border-top:1px solid #77b4ce45;padding-top:10px}
 @media(max-width:520px){#qy72-apps-overlay .qy75-mode-row{grid-template-columns:repeat(2,minmax(0,1fr))}#qy72-apps-overlay .qy75-compare-grid{gap:7px}#qy72-apps-overlay .qy75-compare-card{padding:7px}#qy72-apps-overlay .qy75-compare-card select{font-size:12px;padding:5px}#qy72-apps-overlay .qy75-stats strong{font-size:16px}}
 </style>
+<style id="qy78-lab-ui-css">
+#qy72-apps-overlay .qy78-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin:18px 0 8px;padding:10px 12px;border:1px solid #83c8d975;border-radius:14px;background:linear-gradient(135deg,#13334f,#0f2642)}
+#qy72-apps-overlay .qy78-quality-label{display:flex;flex-direction:column;gap:4px;min-width:100px;flex:1 1 110px;color:#edfaff}
+#qy72-apps-overlay .qy78-quality-label strong{font-size:14px;line-height:1.2}
+#qy72-apps-overlay .qy78-quality-label small{font-size:11px;color:#9ee4e2;white-space:nowrap;font-variant-numeric:tabular-nums}
+#qy72-apps-overlay .qy78-quality-switch{display:flex;gap:4px;padding:4px;border-radius:12px;background:#071b32;border:1px solid #619cb983}
+#qy72-apps-overlay .qy78-quality-switch button{min-width:51px;min-height:44px;border-radius:9px;color:#dff3fc;background:transparent;border:1px solid transparent;font:800 14px ui-monospace,Consolas,monospace;cursor:pointer}
+#qy72-apps-overlay .qy78-quality-switch button[aria-pressed="true"]{background:linear-gradient(120deg,#28617e,#23717b);border-color:#a1e9e0;box-shadow:0 0 0 1px #1c818e inset;color:#fff}
+#qy72-apps-overlay .qy78-expand-btn{min-height:46px;flex:1 1 155px;white-space:normal}
+#qy72-apps-overlay .qy78-help{font-size:12px;color:#a7c9d9;line-height:1.5;margin:0 0 10px}
+#qy72-apps-overlay .qy78-view-close{display:none;border:1px solid #c5f4fa;background:rgba(8,26,45,.92);color:#f1ffff;border-radius:11px;padding:11px 14px;min-height:48px;cursor:pointer;font:700 13px ui-monospace,Consolas,monospace;z-index:5}
+#qy72-apps-overlay #qy78-view.qy78-expanded,#qy78-view:fullscreen,#qy78-view:-webkit-full-screen{position:fixed!important;inset:0!important;z-index:2147483646!important;width:100vw!important;height:100vh!important;height:100dvh!important;max-height:none!important;border:0!important;border-radius:0!important;background:radial-gradient(ellipse at 50% 38%,#143657,#061125 83%)!important;display:flex!important;flex-direction:column!important;align-items:center;justify-content:center;overflow:hidden!important;box-sizing:border-box!important;padding:max(env(safe-area-inset-top,0px),12px) 8px max(env(safe-area-inset-bottom,0px),12px)!important}
+#qy72-apps-overlay #qy78-view.qy78-expanded #qy75-canvas,#qy78-view:fullscreen #qy75-canvas,#qy78-view:-webkit-full-screen #qy75-canvas{display:block!important;width:min(calc(100vw - 16px),calc((100dvh - 80px)*4/3))!important;max-height:calc(100dvh - 80px)!important;height:auto!important;aspect-ratio:4/3!important;object-fit:contain;flex:0 1 auto;touch-action:none}
+#qy72-apps-overlay #qy78-view.qy78-expanded .qy78-view-close,#qy78-view:fullscreen .qy78-view-close,#qy78-view:-webkit-full-screen .qy78-view-close{display:block!important;position:absolute;top:max(14px,env(safe-area-inset-top,14px));right:max(14px,env(safe-area-inset-right,14px))}
+#qy72-apps-overlay #qy78-view.qy78-expanded .qy75-canvas-label,#qy78-view:fullscreen .qy75-canvas-label{bottom:max(12px,env(safe-area-inset-bottom,12px));right:14px;left:14px}
+html:has(#qy78-view.qy78-expanded),html:has(#qy78-view.qy78-expanded) body{overflow:hidden!important}
+@media(max-width:450px){#qy72-apps-overlay .qy78-toolbar{gap:8px;padding:10px}#qy72-apps-overlay .qy78-quality-switch button{min-width:47px}#qy72-apps-overlay .qy78-expand-btn{flex-basis:100%}}
+@media(prefers-reduced-motion:reduce){#qy72-apps-overlay .qy78-quality-switch button{transition:none!important}}
+</style>
 <script id="qy75-science-js">
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
@@ -6263,21 +6293,24 @@ en:{intro:'Complex patterns emerge from simple rules. Select a model, change the
 pl:{intro:'Złożone wzory powstają z prostych zasad. Wybierz model, dostosuj szybkość i oddziałuj dotykiem.',modes:{life:'🟩 Komórki',crystal:'❄️ Kryształy',waves:'🌊 Fale',network:'🕸️ Sieci'},title:{life:'Automat komórkowy',crystal:'Agregacja kryształów',waves:'Interferencja fal',network:'Rozwijająca się sieć'},description:{life:'Gra w życie: komórki rodzą się przy trzech sąsiadach i przeżywają przy dwóch lub trzech. Dotknij, aby dodać komórki.',crystal:'Agregacja ograniczona dyfuzją: błądzące cząstki przyklejają się do skupiska. Dotknij, aby dodać centrum wzrostu. To uproszczony model.',waves:'Zdyskretyzowane równanie falowe: zaburzenia rozchodzą się i interferują. Dotknij, aby wywołać falę.',network:'Preferencyjne dołączanie: nowe węzły chętniej łączą się z popularnymi węzłami. Dotknij, aby dodać węzeł.'},statusOn:'● Działa',statusOff:'● Pauza',steps:'Kroki',count:'Elementy',rule:'Zasada',pause:'⏸ Pauza',play:'▶ Wznów',restart:'↻ Nowa próba',speed:'Szybkość',sphere:'Sfera Thomsona',open:'🔮 Otwórz sferę'}};
 const L=()=>names[$('site-language')?.value]||names.uk;
 let mode='life',active=false,running=true,raf=0,last=0,steps=0,pop=0,acc=0;
-const qyLabShort=Math.min(window.innerWidth||390,window.innerHeight||844);
-const qyLabScale=qyLabShort<=430?1.85:(qyLabShort<=560?1.65:(window.innerWidth>=1200?1.45:1.55));
-const GW=Math.max(96,Math.round(80*qyLabScale)),GH=Math.max(72,Math.round(58*qyLabScale));
+const QUALITY_KEY='qy-lab-detail-v78';
+let detail=2;try{const val=Number(localStorage.getItem(QUALITY_KEY));if([1,2,4].includes(val))detail=val}catch(_e){}
+let GW=80*detail,GH=58*detail;
 let cells=new Uint8Array(GW*GH),scratch=new Uint8Array(GW*GH);
 let crystal=new Uint8Array(GW*GH),Ccount=0,crad=1;
 let wave=new Float32Array(GW*GH),prior=new Float32Array(GW*GH),next=new Float32Array(GW*GH);
 let nodes=[],edges=[];
 low.width=GW;low.height=GH;let lowImage=lctx.createImageData(GW,GH);
+function allocateGrid(){GW=80*detail;GH=58*detail;cells=new Uint8Array(GW*GH);scratch=new Uint8Array(GW*GH);crystal=new Uint8Array(GW*GH);wave=new Float32Array(GW*GH);prior=new Float32Array(GW*GH);next=new Float32Array(GW*GH);low.width=GW;low.height=GH;lowImage=lctx.createImageData(GW,GH);c.width=480*detail;c.height=360*detail;}
+function setDetail(next){if(![1,2,4].includes(next)||detail===next)return;detail=next;try{localStorage.setItem(QUALITY_KEY,String(detail))}catch(_e){}allocateGrid();clearMode();updateQuality();}
+function updateQuality(){document.querySelectorAll('#qy78-quality-switch button').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.detail)===detail)));$('qy78-detail-info').textContent=GW+' × '+GH+' · '+detail+'×';}
 const index=(x,y)=>y*GW+x;
 function clearMode(){steps=0;pop=0;acc=0;if(mode==='life'){cells.fill(0);for(let y=0;y<GH;y++)for(let x=0;x<GW;x++)if(Math.random()<.27)cells[index(x,y)]=1;pop=cells.reduce((a,b)=>a+b,0)}
 else if(mode==='crystal'){crystal.fill(0);crystal[index(GW>>1,GH>>1)]=1;Ccount=1;crad=1;pop=1}
 else if(mode==='waves'){wave.fill(0);prior.fill(0);next.fill(0);pokeWave(GW/2,GH/2);pop=1}
 else if(mode==='network'){nodes=[];edges=[];for(let k=0;k<5;k++)addNode();pop=nodes.length}updateInfo();draw()}
 function stepLife(){pop=0;for(let y=0;y<GH;y++)for(let x=0;x<GW;x++){const i=index(x,y);let n=0;for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){if(dx===0&&dy===0)continue;n+=cells[index((x+dx+GW)%GW,(y+dy+GH)%GH)]}scratch[i]=n===3||(cells[i]&&n===2)?1:0;pop+=scratch[i]}[cells,scratch]=[scratch,cells]}
-function stepCrystal(){const cx=GW>>1,cy=GH>>1;for(let trial=0;trial<4;trial++){const a=Math.random()*2*Math.PI,dist=Math.min(Math.min(GW,GH)*.46,crad+6);let x=Math.round(cx+Math.cos(a)*dist),y=Math.round(cy+Math.sin(a)*dist);for(let walk=0;walk<750;walk++){if(x<2||x>=GW-2||y<2||y>=GH-2)break;const i=index(x,y);if(crystal[i])break;if(crystal[i-1]||crystal[i+1]||crystal[i-GW]||crystal[i+GW]||crystal[i-GW-1]||crystal[i-GW+1]||crystal[i+GW-1]||crystal[i+GW+1]){crystal[i]=1;Ccount++;crad=Math.max(crad,Math.hypot(x-cx,y-cy));break}const d=Math.random()*4|0;if(d===0)x++;else if(d===1)x--;else if(d===2)y++;else y--}}pop=Ccount}
+function stepCrystal(){const cx=GW>>1,cy=GH>>1;for(let trial=0;trial<4*detail;trial++){const a=Math.random()*2*Math.PI,dist=Math.min(Math.min(GW,GH)*.46,crad+6);let x=Math.round(cx+Math.cos(a)*dist),y=Math.round(cy+Math.sin(a)*dist);for(let walk=0;walk<750;walk++){if(x<2||x>=GW-2||y<2||y>=GH-2)break;const i=index(x,y);if(crystal[i])break;if(crystal[i-1]||crystal[i+1]||crystal[i-GW]||crystal[i+GW]||crystal[i-GW-1]||crystal[i-GW+1]||crystal[i+GW-1]||crystal[i+GW+1]){crystal[i]=1;Ccount++;crad=Math.max(crad,Math.hypot(x-cx,y-cy));break}const d=Math.random()*4|0;if(d===0)x++;else if(d===1)x--;else if(d===2)y++;else y--}}pop=Ccount}
 function pokeWave(x,y){x=Math.round(x);y=Math.round(y);for(let dy=-3;dy<=3;dy++)for(let dx=-3;dx<=3;dx++){let xx=x+dx,yy=y+dy;if(xx<1||xx>=GW-1||yy<1||yy>=GH-1)continue;wave[index(xx,yy)]+=Math.exp(-(dx*dx+dy*dy)/3)*1.7}}
 function stepWave(){for(let y=1;y<GH-1;y++)for(let x=1;x<GW-1;x++){const i=index(x,y),v=wave[i],lap=wave[i-1]+wave[i+1]+wave[i-GW]+wave[i+GW]-4*v;next[i]=(2*v-prior[i]+.22*lap)*.996} [prior,wave,next]=[wave,next,prior];if(steps%65===0)pokeWave(GW*.34,GH*.52);pop=steps}
 function preferential(){let sum=nodes.reduce((a,n)=>a+n.deg+1,0),r=Math.random()*sum;for(let i=0;i<nodes.length;i++){r-=nodes[i].deg+1;if(r<=0)return i}return nodes.length-1}
@@ -6289,16 +6322,36 @@ function step(){steps++;if(mode==='life')stepLife();if(mode==='crystal')stepCrys
 function draw(){const W=c.width,H=c.height;ctx.fillStyle='#08162d';ctx.fillRect(0,0,W,H);if(mode==='life'||mode==='crystal'||mode==='waves'){const im=lowImage;for(let i=0;i<GW*GH;i++){const off=i*4;let r=4,g=20,b=40;if(mode==='life'&&cells[i]){r=48;g=227;b=158}else if(mode==='crystal'&&crystal[i]){r=122;g=193;b=250}else if(mode==='waves'){let z=Math.max(-1,Math.min(1,wave[i]*.85));r=17+Math.max(0,z)*188;g=32+Math.abs(z)*140;b=55+Math.max(0,-z)*180+Math.max(0,z)*40}im.data[off]=r;im.data[off+1]=g;im.data[off+2]=b;im.data[off+3]=255}lctx.putImageData(im,0,0);ctx.imageSmoothingEnabled=mode==='waves';ctx.drawImage(low,0,0,W,H);ctx.imageSmoothingEnabled=true}
 else if(mode==='network'){ctx.lineWidth=1.1;ctx.strokeStyle='rgba(116,203,245,.36)';for(const [a,b] of edges){ctx.beginPath();ctx.moveTo(nodes[a].x*W,nodes[a].y*H);ctx.lineTo(nodes[b].x*W,nodes[b].y*H);ctx.stroke()}for(const n of nodes){const rad=3+Math.sqrt(n.deg)*1.1;ctx.fillStyle='#6ce7d4';ctx.beginPath();ctx.arc(n.x*W,n.y*H,rad,0,Math.PI*2);ctx.fill()}}}
 function updateInfo(){const l=L();$('qy75-intro').textContent=l.intro;document.querySelectorAll('#qy75-mode-row [data-mode]').forEach(b=>{b.textContent=l.modes[b.dataset.mode];b.classList.toggle('active',b.dataset.mode===mode);b.setAttribute('aria-pressed',String(b.dataset.mode===mode))});$('qy75-mode-label').textContent=l.title[mode];$('qy75-status').textContent=running?l.statusOn:l.statusOff;$('qy75-steps').textContent=steps.toLocaleString();$('qy75-count').textContent=pop.toLocaleString();$('qy75-step-label').textContent=l.steps;$('qy75-count-label').textContent=l.count;$('qy75-rule-label').textContent=l.rule;$('qy75-rule').textContent={life:'B3/S23',crystal:'DLA',waves:'Δ²u',network:'PA'}[mode];$('qy75-pause').textContent=running?l.pause:l.play;$('qy75-reset').textContent=l.restart;$('qy75-speed-wrap').firstChild.textContent=l.speed+' ';$('qy75-description').textContent=l.description[mode];$('qy75-next-title').textContent=l.sphere;$('qy75-thomson-link').textContent=l.open}
-function tick(ms){raf=0;if(!active)return;if(running){const s=Number($('qy75-speed').value)||2;for(let i=0;i<s;i++)step()}draw();if(steps%6===0||!running)updateInfo();raf=requestAnimationFrame(tick)}
-function activate(){if(active)return;active=true;last=0;updateInfo();raf=requestAnimationFrame(tick)}
-function deactivate(){active=false;if(raf){cancelAnimationFrame(raf);raf=0}}
-function setMode(value){if(!names.uk.modes[value])return;mode=value;running=true;clearMode()}
+function schedule(){if(active&&!raf)raf=requestAnimationFrame(tick)}
+function tick(ms){raf=0;if(!active)return;const period=detail===4?55:(detail===2?35:22);if(ms-last<period){schedule();return}last=ms;if(running){const s=Number($('qy75-speed').value)||2;for(let i=0;i<s;i++)step()}draw();if(steps%6===0||!running)updateInfo();if(running)schedule()}
+function activate(){if(active)return;active=true;last=0;updateInfo();draw();schedule()}
+function deactivate(){active=false;if(raf){cancelAnimationFrame(raf);raf=0}exitExpanded()}
+function setMode(value){if(!names.uk.modes[value])return;mode=value;running=true;clearMode();schedule()}
 document.querySelectorAll('#qy75-mode-row [data-mode]').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
-$('qy75-pause').addEventListener('click',()=>{running=!running;updateInfo()});$('qy75-reset').addEventListener('click',()=>{running=true;clearMode()});
+$('qy75-pause').addEventListener('click',()=>{running=!running;updateInfo();schedule()});$('qy75-reset').addEventListener('click',()=>{running=true;clearMode();schedule()});
+document.querySelectorAll('#qy78-quality-switch button').forEach(b=>b.addEventListener('click',()=>{setDetail(Number(b.dataset.detail));schedule()}));
+function expanded(){return $('qy78-view').classList.contains('qy78-expanded')}
+function showExpandState(on){$('qy78-expand').setAttribute('aria-expanded',String(on));updateQualityLabels();}
+function exitExpanded(){const view=$('qy78-view');view.classList.remove('qy78-expanded');showExpandState(false);if(document.fullscreenElement===view&&document.exitFullscreen){document.exitFullscreen().catch(()=>{})}draw()}
+function enterExpanded(){const view=$('qy78-view');view.classList.add('qy78-expanded');showExpandState(true);draw();if(typeof view.requestFullscreen==='function'){try{const promise=view.requestFullscreen({navigationUI:'hide'});if(promise&&promise.catch)promise.catch(()=>{});}catch(_e){}}}
+$('qy78-expand').addEventListener('click',()=>expanded()?exitExpanded():enterExpanded());
+$('qy78-view-close').addEventListener('click',exitExpanded);
+document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&expanded())exitExpanded()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&expanded())exitExpanded()});
+
 $('qy75-canvas').addEventListener('pointerdown',e=>{const rect=c.getBoundingClientRect(),x=Math.max(1,Math.min(GW-2,Math.floor((e.clientX-rect.left)/rect.width*GW))),y=Math.max(1,Math.min(GH-2,Math.floor((e.clientY-rect.top)/rect.height*GH)));if(mode==='life'){for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++){let xx=x+dx,yy=y+dy;if(xx>=0&&xx<GW&&yy>=0&&yy<GH&&Math.random()>.32)cells[index(xx,yy)]=1}pop=cells.reduce((a,b)=>a+b,0)}if(mode==='crystal'){crystal[index(x,y)]=1;Ccount++;pop=Ccount}if(mode==='waves')pokeWave(x,y);if(mode==='network')addNode();draw();updateInfo()});
 $('qy75-thomson-link').addEventListener('click',()=>{$('qy72-app-grid')?.querySelector('button[data-app="thomson"]')?.click()});
 $('site-language')?.addEventListener('change',()=>{if(active)updateInfo()});
-clearMode();window.qyLab=Object.freeze({activate,deactivate,version:'77',snapshot:()=>({mode,steps,count:pop,running,grid:[GW,GH]})});
+
+const qy78I18n={
+uk:['Деталізація','Зміна деталізації починає новий дослід. Режим 4× потребує більше ресурсів телефону.','⛶ На весь екран','⤢ Вийти з перегляду','Закрити'],
+ru:['Детализация','При изменении детализации запускается новый опыт. Режим 4× требует больше ресурсов телефона.','⛶ На весь экран','⤢ Выйти из просмотра','Закрыть'],
+en:['Detail','Changing detail starts a new experiment. 4× needs more processing power.','⛶ Full screen','⤢ Exit full screen','Close'],
+pl:['Szczegółowość','Zmiana szczegółowości rozpoczyna nową próbę. Tryb 4× zużywa więcej zasobów.','⛶ Pełny ekran','⤢ Wyjdź z pełnego ekranu','Zamknij']};
+function updateQualityLabels(){const l=qy78I18n[$('site-language')?.value]||qy78I18n.uk;$('qy78-detail-label').textContent=l[0];$('qy78-help').textContent=l[1];$('qy78-expand').textContent=expanded()?l[3]:l[2];$('qy78-exit-label').textContent=l[4];}
+$('site-language')?.addEventListener('change',updateQualityLabels);
+updateQualityLabels();
+allocateGrid();clearMode();updateQuality();window.qyLab=Object.freeze({activate,deactivate,version:'78',snapshot:()=>({mode,steps,count:pop,running,grid:[GW,GH],detail,fullscreen:expanded(),canvas:[c.width,c.height]})});
 })();
 
 (()=>{'use strict';
