@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="uk">
 <head>
-<!-- QuantumYur v82 (Chronoscapes six-phase generated wallpapers, companion analog clock, Genesis preserved; v47 design preserved) / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
-<meta charset="UTF-8"><meta name="qy-build" content="82"><meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- QuantumYur v86 (Genesis Film multi-generation addition; Chronoscapes six-phase generated wallpapers, companion analog clock, Genesis preserved; v47 design preserved) / standalone index.html: 53 themes, 8 distinct mountain scenes, seasonal auto moods; all eight mountain WebP images are embedded. -->
+<meta charset="UTF-8"><meta name="qy-build" content="86"><meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script id="qy-v35-before-paint">
 (()=>{'use strict';
@@ -6900,6 +6900,24 @@ $('site-language')?.addEventListener('change',()=>{if(active)refresh()});window.
 #qy83-controls #qy85-progress-fill{width:0;height:100%;background:#81d9bf;transition:width .18s linear}
 @media(max-width:520px){#qy83-controls .qy85-panel{padding:10px}}
 </style>
+<style id="qy86-film-css">
+/* v86: scoped feature; retains v47/v85 approved visual design. */
+#qy83-controls .qy86-panel{margin:16px 0 0;padding:14px;border:1px solid rgba(169,206,252,.52);border-radius:12px;background:linear-gradient(140deg,rgba(15,39,64,.96),rgba(19,34,58,.95));color:#e8f9ff}
+#qy83-controls .qy86-panel h4{font-size:17px;margin:2px 0 6px;color:#e5f8ff}
+#qy83-controls .qy86-panel p{font-size:11px;line-height:1.55;color:#b8d6e4}
+#qy83-controls .qy86-panel label{font-size:11px;color:#cfe6f1}
+#qy83-controls .qy86-panel select{min-height:42px}
+#qy83-controls .qy86-board{display:flex;gap:7px;overflow-x:auto;padding:10px 3px 12px;scrollbar-width:thin}
+#qy83-controls .qy86-shot{flex:0 0 auto;min-width:83px;max-width:128px;border:1px solid rgba(123,177,213,.55);border-radius:9px;padding:9px;background:#13334d;color:#def4ff;font:11px/1.45 ui-monospace,monospace}
+#qy83-controls .qy86-shot[aria-current=true]{background:#195a66;border-color:#f5d38c;color:#ffeec7}
+#qy83-controls .qy86-shot small{display:block;opacity:.83;margin-top:3px}
+#qy83-controls .qy86-progress{height:7px;border-radius:9px;background:#0d283c;overflow:hidden}
+#qy83-controls #qy86-bar{width:0;height:100%;background:linear-gradient(90deg,#7db6fc,#b8e5cd);transition:width .12s linear}
+#qy83-controls #qy86-state,#qy83-controls #qy86-scene-info{white-space:pre-wrap;overflow-wrap:anywhere;color:#cae6ef}
+#qy83-controls .qy86-panel button:disabled{opacity:.45;cursor:not-allowed}
+#qy83-controls #qy86-record{background:#235b58;border-color:#85d6b9}
+@media(max-width:520px){#qy83-controls .qy86-panel{padding:10px}#qy83-controls .qy86-shot{min-width:78px}}
+</style>
 <style id="qy83-genesis-css">
 /* v83 — isolate new experimental world; do not change approved original world styles */
 #qy83-field{position:absolute;inset:0;z-index:5;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity .45s ease}
@@ -6977,6 +6995,21 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
  '<div class="qy83-grid"><div class="qy83-box"><label for="qy85-duration">Тривалість відео</label><select id="qy85-duration"><option value="5">5 секунд</option><option value="8">8 секунд</option></select></div><div class="qy83-box"><label>Формат</label><small class="qy85-muted">WebM · до 24 FPS · без звуку</small></div></div>'+ 
  '<div class="qy83-actions"><button id="qy85-video" type="button">● Записати відео WebM</button><button id="qy85-cancel" type="button" hidden>■ Скасувати</button></div>'+ 
  '<div class="qy85-progress" aria-hidden="true"><div id="qy85-progress-fill"></div></div><p class="qy85-muted" id="qy85-message" role="status">Локальний архів · персональні дані не відправляються на сервер.</p></section>');
+ panel.insertAdjacentHTML('beforeend',
+  '<section class="qy86-panel" id="qy86-panel" aria-label="Genesis Film — фільм поколінь">'+
+  '<small>✦ QUANTUM GENESIS · v86</small><h4>🎞️ Фільм поколінь</h4>'+
+  '<p>Створи один фільм із послідовності записів Genesis. Числа — результати симуляцій, а їхні переходи — художнє зображення, не нові експериментальні дані.</p>'+
+  '<div class="qy83-grid"><div class="qy83-box"><label for="qy86-count">Скільки поколінь</label><select id="qy86-count"><option value="3">Останні 3</option><option value="5" selected>Останні 5</option><option value="10">Останні 10</option><option value="20">Останні 20</option><option value="30">До 30 · максимум</option></select></div>'+
+  '<div class="qy83-box"><label for="qy86-duration">Довжина відео</label><select id="qy86-duration"><option value="6">6 с · коротко</option><option value="12" selected>12 с</option><option value="20">20 с</option><option value="30">30 с</option></select></div></div>'+
+  '<div class="qy83-grid"><div class="qy83-box"><label for="qy86-scene">Атмосфера відео</label><select id="qy86-scene"><option value="auto">Поточна фаза доби</option><option value="journey" selected>Долина → зоряна ніч</option><option value="day">Тільки долина</option><option value="night">Тільки зоряне небо</option></select></div>'+
+  '<div class="qy83-box"><label for="qy86-quality">Якість відео</label><select id="qy86-quality"><option value="640">640 × 360 · економний</option><option value="960" selected>960 × 540 · збалансований</option><option value="1280">1280 × 720 · HD</option></select></div></div>'+
+  '<div class="qy86-board" id="qy86-board" aria-label="Послідовність поколінь"></div>'+
+  '<label for="qy86-scrub">Перегляд фільму · <output id="qy86-percent">0%</output></label><input id="qy86-scrub" type="range" min="0" max="1000" step="1" value="0">'+
+  '<p id="qy86-scene-info">Завантаження архіву…</p>'+
+  '<div class="qy83-actions"><button id="qy86-play" type="button">▶ Показати фільм</button><button id="qy86-stop" type="button">↺ На початок</button><button id="qy86-live" type="button">◉ Повернути живий світ</button><button id="qy86-json" type="button">↓ Сценарій JSON</button></div>'+
+  '<div class="qy83-actions"><button id="qy86-record" type="button">● Створити WebM</button><button id="qy86-cancel" type="button" hidden>■ Скасувати запис</button></div>'+
+  '<div class="qy86-progress"><div id="qy86-bar"></div></div><p id="qy86-state" role="status">Потрібні щонайменше два збережені покоління. Відео створюється лише у твоєму браузері.</p>'+
+  '</section>');
  (gallery||$('qy-v37-controls')).insertAdjacentElement('afterend',panel);
  const ui={scene:$('qy83-scene'),strength:$('qy83-strength'),text:$('qy83-strength-value'),toggle:$('qy83-toggle'),pause:$('qy83-pause'),status:$('qy83-status'),observerStatus:$('qy83-observer-status')};
  let raf=0,lastFrame=0,lastData=0,visual=null,lastFingerprint='',t=0,cycles=0,painted=0,oldFocus=null,modeBefore='';
@@ -7004,7 +7037,7 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
  }
  function rnd(n){let v=n>>>0;return ()=>{v=(v+0x6D2B79F5)>>>0;let z=v;z=Math.imul(z^(z>>>15),z|1);z^=z+Math.imul(z^(z>>>7),z|61);return ((z^(z>>>14))>>>0)/4294967296}}
  function refreshMetrics(force=false){if(!force&&performance.now()-lastData<1700)return;lastData=performance.now();const next=readMetrics();const fp=[next.source,next.model,next.seed,next.generation,next.steps,Number(next.metric.primary).toFixed(3),Number(next.metric.secondary).toFixed(3)].join('|');if(fp!==lastFingerprint){visual=next;lastFingerprint=fp;updateStatus();}}
- function updateStatus(){if(!ui.status)return;if(v85?.previewActive){const a=v85Record(v85.a),b=v85Record(v85.b);if(a&&b){const label='Архів Genesis · візуальний перехід #'+a.generation+' → #'+b.generation+' · '+Math.round(v85.blend*100)+'%';ui.status.textContent=label;ui.observerStatus.textContent=label;if(typeof display84==='function')display84();return;}}const d=visual||readMetrics();const msg=d.source+' · '+d.model+' · seed '+d.seed+(d.generation?' · покоління '+d.generation:'')+(d.steps?' · крок '+d.steps:'');ui.status.textContent=msg;ui.observerStatus.textContent=msg;if(typeof display84==='function')display84();}
+ function updateStatus(){if(!ui.status)return;if(typeof v86!=='undefined'&&v86.preview&&v86.sequence.length>=2){const shot=v86Shot(v86.position);const label='Genesis Film · архів '+v86.sequence.length+' поколінь · #'+shot.a.generation+' → #'+shot.b.generation+' · '+Math.round(shot.blend*100)+'% · художній перехід';ui.status.textContent=label;ui.observerStatus.textContent=label;return;}if(v85?.previewActive){const a=v85Record(v85.a),b=v85Record(v85.b);if(a&&b){const label='Архів Genesis · візуальний перехід #'+a.generation+' → #'+b.generation+' · '+Math.round(v85.blend*100)+'%';ui.status.textContent=label;ui.observerStatus.textContent=label;if(typeof display84==='function')display84();return;}}const d=visual||readMetrics();const msg=d.source+' · '+d.model+' · seed '+d.seed+(d.generation?' · покоління '+d.generation:'')+(d.steps?' · крок '+d.steps:'');ui.status.textContent=msg;ui.observerStatus.textContent=msg;if(typeof display84==='function')display84();}
  function sizeTarget(c){if(c.dataset.qy85Capture==='1')return [c.width,c.height];const isObs=c===oCanvas,rect=isObs?observer.getBoundingClientRect():wallpaper.getBoundingClientRect();const w=rect.width||window.innerWidth,h=rect.height||window.innerHeight;
   const saveData=navigator.connection?.saveData===true;const mem=Number(navigator.deviceMemory||4);
   const factor=(saveData||mem<3)?0.7:1;const dpr=clamp((window.devicePixelRatio||1)*factor,.65,1.25);
@@ -7150,7 +7183,7 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
    const btn=document.createElement('button');btn.type='button';btn.dataset.run=r.id;btn.setAttribute('aria-label','Встановити покоління '+r.generation+' як дослід B');
    btn.textContent='#'+r.generation+'\n'+r.model;btn.style.whiteSpace='pre-line';btn.addEventListener('click',()=>{v85.userSelectedB=true;v85.previewActive=true;v85.b=r.id;v85El('qy85-b').value=r.id;v85.blend=1;v85El('qy85-blend').value='100';v85.playing=false;v85El('qy85-play').textContent='▶ Відтворити';v85RenderCompare();v85PreviewFrame()});row.appendChild(btn);
   }
-  v85RenderCompare();
+  v85RenderCompare();v86Refresh();
  }
  function v85BlendFrame(target,ms,alpha=v85.blend){
   const a=v85Record(v85.a),b=v85Record(v85.b);if(!a||!b)return false;
@@ -7162,10 +7195,10 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
   return true;
  }
  function v85PreviewFrame(){if(!isActive())return;const dest=observer.hidden?canvas:oCanvas;if(v85Record(v85.a)&&v85Record(v85.b))v85BlendFrame(dest,t);}
- v85El('qy85-a').addEventListener('change',e=>{v85.previewActive=true;v85.a=e.target.value;v85RenderCompare();v85PreviewFrame()});
- v85El('qy85-b').addEventListener('change',e=>{v85.userSelectedB=true;v85.previewActive=true;v85.b=e.target.value;v85RenderCompare();v85PreviewFrame()});
- v85El('qy85-blend').addEventListener('input',e=>{v85.previewActive=true;v85.blend=Number(e.target.value)/100;v85.playing=false;v85El('qy85-play').textContent='▶ Відтворити';v85RenderCompare();v85PreviewFrame()});
- v85El('qy85-play').addEventListener('click',()=>{v85.previewActive=true;v85.playing=!v85.playing;v85El('qy85-play').textContent=v85.playing?'Ⅱ Призупинити':'▶ Відтворити';if(v85.playing&&v85.blend>=.999)v85.blend=0;v85El('qy85-blend').value=String(Math.round(100*v85.blend));v85RenderCompare();});
+ v85El('qy85-a').addEventListener('change',e=>{v86.preview=false;v86.playing=false;v85.previewActive=true;v85.a=e.target.value;v85RenderCompare();v85PreviewFrame()});
+ v85El('qy85-b').addEventListener('change',e=>{v86.preview=false;v86.playing=false;v85.userSelectedB=true;v85.previewActive=true;v85.b=e.target.value;v85RenderCompare();v85PreviewFrame()});
+ v85El('qy85-blend').addEventListener('input',e=>{v86.preview=false;v86.playing=false;v85.previewActive=true;v85.blend=Number(e.target.value)/100;v85.playing=false;v85El('qy85-play').textContent='▶ Відтворити';v85RenderCompare();v85PreviewFrame()});
+ v85El('qy85-play').addEventListener('click',()=>{v86.preview=false;v86.playing=false;v85.previewActive=true;v85.playing=!v85.playing;v85El('qy85-play').textContent=v85.playing?'Ⅱ Призупинити':'▶ Відтворити';if(v85.playing&&v85.blend>=.999)v85.blend=0;v85El('qy85-blend').value=String(Math.round(100*v85.blend));v85RenderCompare();});
  v85El('qy85-live').addEventListener('click',()=>{v85.previewActive=false;v85.playing=false;v85El('qy85-play').textContent='▶ Відтворити';v85SetMessage('Повернуто живі показники лабораторії.');});
  v85El('qy85-refresh').addEventListener('click',()=>{v85Refresh();v85SetMessage('Перечитано локальний архів: '+v85.records.length+' поколінь.');});
  window.addEventListener('qy-genesis-changed',()=>{if(!v85.recording)v85Refresh()});
@@ -7226,6 +7259,117 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
  v85El('qy85-video').addEventListener('click',v85RecordVideo);
  v85El('qy85-cancel').addEventListener('click',()=>{v85.cancel=true;v85SetMessage('Скасування відеозапису…')});
  document.addEventListener('visibilitychange',()=>{if(document.hidden&&v85.recording){v85.cancel=true;v85.finish?.();v85SetMessage('Запис зупинено при згортанні вкладки.')}});
+
+ // v86: multi-generation film, built only from existing Genesis archive entries.
+ const v86={sequence:[],position:0,playing:false,preview:false,recording:false,cancel:false,finish:null,raf:0,lastTick:0};
+ const v86El=id=>$(id);
+ const v86Status=msg=>{v86El('qy86-state').textContent=msg;};
+ const v86RecordByIndex=i=>v86.sequence[Math.min(v86.sequence.length-1,Math.max(0,i))];
+ function v86Shot(p){
+  const n=v86.sequence.length;
+  if(!n)return {a:null,b:null,blend:0,index:0};
+  const at=clamp(p,0,1)*Math.max(0,n-1);
+  const i=Math.min(n-2,Math.floor(at)),b=at-i;
+  return {a:v86RecordByIndex(i),b:v86RecordByIndex(i+1),blend:b*b*(3-2*b),index:i};
+ }
+ function v86Sequence(){
+  const limit=Math.max(2,Math.min(30,Number(v86El('qy86-count').value)||5));
+  return [...v85.records].sort((a,b)=>Date.parse(a.createdAt)-Date.parse(b.createdAt)||(Number(a.generation)-Number(b.generation))).slice(-limit);
+ }
+ function v86Explain(){
+  const seq=v86.sequence,shot=v86Shot(v86.position);
+  v86El('qy86-percent').textContent=Math.round(v86.position*100)+'%';
+  v86El('qy86-scrub').value=String(Math.round(v86.position*1000));
+  if(seq.length<2){v86El('qy86-scene-info').textContent='Для фільму потрібні два або більше поколінь. Створи їх у Genesis й онови архів.';return;}
+  v86El('qy86-scene-info').textContent='Кадр '+Math.min(seq.length,shot.index+1)+' / '+seq.length+' · покоління #'+shot.a.generation+' → #'+shot.b.generation+' · '+shot.a.model+' → '+shot.b.model+' · '+Math.round(shot.blend*100)+'% плавного переходу.';if(isActive()&&v86.preview)updateStatus();
+  v86El('qy86-board').querySelectorAll('.qy86-shot').forEach((b,i)=>b.setAttribute('aria-current',String(i===shot.index||i===shot.index+1&&v86.position===1)));
+ }
+ function v86Refresh(){
+  if(v86.recording)return;
+  v86.sequence=v86Sequence();
+  const board=v86El('qy86-board');board.replaceChildren();
+  if(v86.sequence.length===0)board.textContent='Поколінь у браузері поки немає';
+  for(const [i,r] of v86.sequence.entries()){
+   const cell=document.createElement('button');cell.type='button';cell.className='qy86-shot';cell.textContent='#'+r.generation+' · '+r.model;
+   const sub=document.createElement('small');sub.textContent='seed '+r.seed+' · '+Math.round(v85Score(r)*100)+'%*';cell.appendChild(sub);
+   cell.addEventListener('click',()=>{if(v86.recording)return;v86.position=i/Math.max(1,v86.sequence.length-1);v86.playing=false;v86.preview=true;v85.previewActive=false;v85.playing=false;v86Explain();v86PreviewFrame()});board.appendChild(cell);
+  }
+  const enough=v86.sequence.length>=2;
+  for(const id of ['qy86-play','qy86-scrub','qy86-record','qy86-json'])v86El(id).disabled=!enough||v86.recording;
+  v86El('qy86-stop').disabled=!enough||v86.recording;
+  if(!enough){v86.playing=false;v86.preview=false;}
+  v86Explain();
+ }
+ function v86Paint(target,ms,progress){
+  const shot=v86Shot(progress);if(!shot.a||!shot.b)return false;
+  const [w,h]=sizeTarget(target),A=v85.bufferA,B=v85.bufferB;
+  for(const buf of [A,B])if(buf.width!==w||buf.height!==h){buf.width=w;buf.height=h;}
+  paint(A,ms,v85Data(shot.a));paint(B,ms,v85Data(shot.b));
+  const ctx=target.getContext('2d',{alpha:true});ctx.clearRect(0,0,w,h);
+  ctx.globalAlpha=1-shot.blend;ctx.drawImage(A,0,0,w,h);ctx.globalAlpha=shot.blend;ctx.drawImage(B,0,0,w,h);ctx.globalAlpha=1;
+  return true;
+ }
+ function v86PreviewFrame(){if(!isActive()||!v86.preview)return;v86Paint(observer.hidden?canvas:oCanvas,t,v86.position);}
+ function v86Stop(){v86.playing=false;v86.position=0;v86.preview=true;v85.previewActive=false;v85.playing=false;v86El('qy86-play').textContent='▶ Показати фільм';v86Explain();v86PreviewFrame();}
+ v86El('qy86-count').addEventListener('change',()=>{v86.position=0;v86.playing=false;v86Refresh();});
+ v86El('qy86-scrub').addEventListener('input',e=>{v86.position=Number(e.target.value)/1000;v86.preview=true;v86.playing=false;v85.previewActive=false;v85.playing=false;v86El('qy86-play').textContent='▶ Показати фільм';v86Explain();v86PreviewFrame();});
+ v86El('qy86-play').addEventListener('click',()=>{if(v86.sequence.length<2||v86.recording)return;v86.preview=true;v86.playing=!v86.playing;v85.previewActive=false;v85.playing=false;if(v86.playing&&v86.position>=1)v86.position=0;v86El('qy86-play').textContent=v86.playing?'Ⅱ Призупинити':'▶ Показати фільм';v86Explain();});
+ v86El('qy86-stop').addEventListener('click',v86Stop);
+ v86El('qy86-live').addEventListener('click',()=>{v86.playing=false;v86.preview=false;v85.previewActive=false;v85.playing=false;v86El('qy86-play').textContent='▶ Показати фільм';v86Status('Повернуто поточні показники лабораторії.');updateStatus()});
+ v86El('qy86-json').addEventListener('click',()=>{
+  if(v86.sequence.length<2)return;
+  const payload={schema:'quantumyur.genesis-film.v1',appVersion:'86',generatedAt:new Date().toISOString(),source:'Local IndexedDB Genesis archive',disclaimer:'Input metrics are synthetic numerical simulation results. Image transitions and temporal interpolation are artistic visualizations, not additional scientific measurements.',film:{durationSeconds:Number(v86El('qy86-duration').value),resolution:v86El('qy86-quality').value+'x'+Math.round(Number(v86El('qy86-quality').value)*9/16),scene:v86El('qy86-scene').value,pattern:opts.pattern,speed:opts.speed,intensity:opts.strength,transition:'ease-in-out crossfade'},storyboard:v86.sequence.map((r,index)=>({order:index+1,id:r.id,parentId:r.parentId||null,generation:r.generation,model:r.model,detail:r.detail,seed:r.seed,steps:r.steps,createdAt:r.createdAt,metric:r.metric,score:v85Score(r)}))};
+  fileDownload(new Blob([JSON.stringify(payload,null,2)],{type:'application/json;charset=utf-8'}),'QuantumYur-v86-Genesis-Film-'+v86.sequence.length+'-generations.json');
+  v86Status('Сценарій JSON містить справжні записи, seed і параметри візуалізації.');
+ });
+ async function v86RecordFilm(){
+  if(v86.recording||v85.recording)return;
+  if(v86.sequence.length<2){v86Status('Потрібно щонайменше два покоління.');return;}
+  if(!opts.enabled){v86Status('Спочатку ввімкни анімацію теми №54.');return;}
+  if(!window.MediaRecorder||!HTMLCanvasElement.prototype.captureStream){v86Status('Цей браузер не підтримує запис Canvas у WebM.');return;}
+  const mime=['video/webm;codecs=vp8','video/webm'].find(m=>MediaRecorder.isTypeSupported(m));
+  if(!mime){v86Status('Цей браузер не підтримує кодек WebM.');return;}
+  const chosen=[...v86.sequence];const duration=Number(v86El('qy86-duration').value)||12;
+  let width=Number(v86El('qy86-quality').value)||960;
+  if(Number(navigator.deviceMemory||4)<3&&width>960){width=960;v86Status('Для малопотужного пристрою використано 960×540.');}
+  const scene=v86El('qy86-scene').value;
+  v86.recording=true;v85.recording=true;v86.cancel=false;v86.playing=false;v85.playing=false;
+  const bar=v86El('qy86-bar'),btn=v86El('qy86-record'),cancel=v86El('qy86-cancel');bar.style.width='0%';btn.disabled=true;cancel.hidden=false;
+  let stream=null,rec=null,frame=0,finish=()=>{};v86.finish=()=>finish();
+  try{
+   const cap=document.createElement('canvas');cap.width=width;cap.height=Math.round(width*9/16);cap.dataset.qy85Capture='1';
+   const ctx=cap.getContext('2d',{alpha:false});
+   const pics=await Promise.all([backgroundDay,backgroundNight].map(async src=>{const im=new Image();im.src=src;await im.decode();return im;}));
+   const bg=(im,a)=>{const s=Math.max(cap.width/im.naturalWidth,cap.height/im.naturalHeight),w=im.naturalWidth*s,h=im.naturalHeight*s;ctx.globalAlpha=a;ctx.drawImage(im,(cap.width-w)*.5,(cap.height-h)*.5,w,h);ctx.globalAlpha=1;};
+   const paintFrame=(p,ms)=>{
+    ctx.fillStyle='#071526';ctx.fillRect(0,0,cap.width,cap.height);
+    if(scene==='day')bg(pics[0],1);else if(scene==='night')bg(pics[1],1);
+    else if(scene==='auto')bg(night()?pics[1]:pics[0],1);
+    else{bg(pics[0],1);bg(pics[1],clamp((p-.16)/.75,0,1));}
+    const shot=(function(){const at=clamp(p,0,1)*(chosen.length-1),i=Math.min(chosen.length-2,Math.floor(at)),q=at-i;return {a:chosen[i],b:chosen[i+1],alpha:q*q*(3-2*q),index:i}})();
+    const [A,B]=[v85.bufferA,v85.bufferB];for(const c of [A,B])if(c.width!==cap.width||c.height!==cap.height){c.width=cap.width;c.height=cap.height;}
+    paint(A,ms,v85Data(shot.a));paint(B,ms,v85Data(shot.b));
+    ctx.globalAlpha=1-shot.alpha;ctx.drawImage(A,0,0);ctx.globalAlpha=shot.alpha;ctx.drawImage(B,0,0);ctx.globalAlpha=1;
+    const h=cap.height;ctx.fillStyle='rgba(5,20,34,.70)';ctx.fillRect(0,h-60,cap.width,60);
+    ctx.fillStyle='#dcfff6';ctx.font=(width<=640?'13px':'17px')+' monospace';ctx.fillText('QuantumYur · Genesis Film · '+chosen.length+' поколінь',15,h-35);
+    ctx.font=(width<=640?'11px':'14px')+' monospace';ctx.fillStyle='#b3dce8';ctx.fillText('#'+shot.a.generation+' '+shot.a.model+' → #'+shot.b.generation+' '+shot.b.model+'   '+Math.round(p*100)+'%',15,h-12);
+   };
+   paintFrame(0,0);stream=cap.captureStream(24);
+   rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:width>=1280?2500000:width>=960?1700000:950000});
+   const chunks=[];const completed=new Promise((resolve,reject)=>{rec.ondataavailable=e=>{if(e.data?.size)chunks.push(e.data)};rec.onerror=e=>reject(e.error||new Error('MediaRecorder error'));rec.onstop=resolve;});
+   rec.start(500);const start=performance.now();let last=-1;
+   v86Status('Створюється фільм із '+chosen.length+' поколінь. Не згортай вкладку до завершення.');
+   await new Promise(resolve=>{finish=resolve;const loop=now=>{if(v86.cancel||document.hidden||now-start>=duration*1000){resolve();return;}if(last<0||now-last>=1000/24){last=now;const p=clamp((now-start)/(duration*1000),0,1);paintFrame(p,(now-start)*opts.speed);bar.style.width=(100*p).toFixed(1)+'%';}frame=requestAnimationFrame(loop);};frame=requestAnimationFrame(loop)});
+   if(frame)cancelAnimationFrame(frame);if(rec.state!=='inactive')rec.stop();await completed;
+   if(!v86.cancel&&chunks.length){fileDownload(new Blob(chunks,{type:mime}),'QuantumYur-v86-Genesis-Film-'+chosen.length+'-generations.webm');bar.style.width='100%';v86Status('Готово! WebM записано у браузері з '+chosen.length+' справжніх записів Genesis.');}
+   else v86Status(v86.cancel?'Запис скасовано.':'Відеокадри не отримано.');
+  }catch(e){v86Status('Помилка запису: '+String(e.message||e));if(rec?.state==='recording')rec.stop();}
+  finally{if(frame)cancelAnimationFrame(frame);stream?.getTracks().forEach(t=>t.stop());v86.finish=null;v86.recording=false;v85.recording=false;btn.disabled=false;cancel.hidden=true;v85RenderCompare();v86Refresh();}
+ }
+ v86El('qy86-record').addEventListener('click',v86RecordFilm);
+ v86El('qy86-cancel').addEventListener('click',()=>{v86.cancel=true;v86.finish?.();v86Status('Скасування запису…');});
+ document.addEventListener('visibilitychange',()=>{if(document.hidden&&v86.recording){v86.cancel=true;v86.finish?.();v86Status('Запис припинено: вкладка неактивна.');}});
+ window.qyGenesisFilm=Object.freeze({version:'86',snapshot:()=>({count:v86.sequence.length,ids:v86.sequence.map(r=>r.id),generations:v86.sequence.map(r=>r.generation),position:v86.position,playing:v86.playing,previewActive:v86.preview,recording:v86.recording}),refresh:v86Refresh});
  // Public read-only diagnostics for verification, no archive mutations.
  window.qyGenesisTimeline=Object.freeze({version:'85',snapshot:()=>({count:v85.records.length,a:v85.a,b:v85.b,blend:v85.blend,playing:v85.playing,previewActive:v85.previewActive,recording:v85.recording,themeActive:isActive()}),refresh:v85Refresh});
  v85Refresh();
@@ -7237,7 +7381,9 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
   if(!lastFrame||ms-lastFrame>=limit){const dt=lastFrame?Math.min(90,ms-lastFrame):0;lastFrame=ms;if(!opts.paused)t+=dt;refreshMetrics();if(!opts.paused){
     if(v85.playing&&!v85.recording){v85.blend=(v85.blend+dt/10000)%1;v85El('qy85-blend').value=String(Math.round(100*v85.blend));v85El('qy85-blend-label').textContent=Math.round(v85.blend*100)+'%';}
     const target=observer.hidden?canvas:oCanvas;
-    if(v85.records.length>0 && v85.previewActive && v85Record(v85.a)&&v85Record(v85.b))v85BlendFrame(target,t);
+    if(v86.playing && !v86.recording){v86.position=Math.min(1,v86.position+dt/Math.max(1000,Number(v86El('qy86-duration').value)*1000));v86Explain();if(v86.position>=1){v86.playing=false;v86El('qy86-play').textContent='▶ Показати фільм';v86Status('Фільм переглянуто. Можна повторити або записати WebM.');}}
+    if(v86.preview&&v86.sequence.length>=2)v86Paint(target,t,v86.position);
+    else if(v85.records.length>0 && v85.previewActive && v85Record(v85.a)&&v85Record(v85.b))v85BlendFrame(target,t);
     else paint(target,t);cycles++;}
 }
   raf=requestAnimationFrame(draw);
