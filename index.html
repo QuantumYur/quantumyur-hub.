@@ -3589,7 +3589,7 @@ function qy59Img(id,small){
  return v.u.replace(/\/([0-9]+)px-([^/]+)$/, '/480px-$2');
 }
 window.qyHubPhotoAudit=Object.freeze({version:'67',mappedSlots:42,licenseReviewedSlots:42,reviewPendingSlots:0,totalSlots:159});
-window.qyHubUpgradeAudit=Object.freeze({version:'67',completed:['local_admin_panel','cinematic_animated_frames','frames_menu_fixed','faster_photo_swap_preserved','curated_theme_fallbacks_all_53','42_photo_sources_mapped'],remaining:['find_unique_verified_images_for_remaining_117_slots','live_visual_review_of_every_theme_on_mobile']});
+window.qyHubUpgradeAudit=Object.freeze({version:'69',completed:['local_admin_panel','cinematic_animated_frames','frames_menu_fixed','faster_photo_swap_preserved','curated_theme_fallbacks_all_53','42_photo_sources_mapped'],remaining:['find_unique_verified_images_for_remaining_117_slots','live_visual_review_of_every_theme_on_mobile']});
 function themeImageURL(theme,i,small=false){return theme.id===1?FIRST_THEME_ASSETS[i]:(qy59Img(theme.id+':'+i,small)||imageUrl(theme.photos[i],small))}
 
 /* v54: portrait-aware image delivery. Only the visited world is fetched;
@@ -5651,6 +5651,48 @@ function recover(){
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(recover,200),{once:true});else setTimeout(recover,200);
  window.addEventListener('pageshow',()=>setTimeout(recover,60));
+})();
+</script>
+
+<style id="qy-v69-admin-discovery-css">
+/* Explicit admin entry: never overrides the established three home actions. */
+#qy69-home-admin{position:absolute!important;top:17px;right:17px;z-index:12;display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:39px;padding:7px 11px;border:1px solid rgba(255,226,175,.85)!important;border-radius:13px;background:linear-gradient(140deg,rgba(25,40,59,.94),rgba(24,32,56,.96))!important;color:#ffe4b1!important;font:800 13px/1.2 ui-monospace,Consolas,monospace!important;box-shadow:0 4px 16px #0007,0 0 8px rgba(235,199,138,.15)!important;cursor:pointer;backdrop-filter:blur(7px)}
+#qy69-home-admin:hover{background:#254560!important}
+#qy69-home-admin:focus-visible{outline:3px solid #fff2bb!important;outline-offset:2px}
+#qy67-admin-open{display:flex!important;width:100%!important;min-height:60px!important;margin:0 0 16px!important;border:2px solid #f0d5a6!important;border-radius:14px!important;background:linear-gradient(135deg,#3a506e,#203348)!important;color:#ffefd7!important;font:800 17px/1.3 ui-monospace,Consolas,monospace!important;box-shadow:0 0 15px #dbba7240!important}
+#qy67-admin-open:hover{background:#3b5d76!important}
+@media(max-width:540px){#qy69-home-admin{top:16px;right:13px;min-height:37px;padding:7px 9px;font-size:12px!important}#qy67-admin-open{font-size:16px!important;min-height:58px!important}}
+@media(max-width:350px){#qy69-home-admin{top:12px;right:9px;font-size:11px!important;padding:6px 7px;min-height:34px}}
+</style>
+
+<script id="qy-v69-admin-discovery-js">
+(()=>{'use strict';
+const el=id=>document.getElementById(id);
+const locales={uk:'⚙ Адмін',pl:'⚙ Admin',en:'⚙ Admin',ru:'⚙ Админ',ja:'⚙ 管理',ko:'⚙ 관리',zh:'⚙ 管理',hi:'⚙ व्यवस्थापक',es:'⚙ Admin','pt-BR':'⚙ Admin'};
+const captions={uk:'Панель адміністратора',pl:'Panel administratora',en:'Administrator panel',ru:'Панель администратора'};
+const lang=()=>el('site-language')?.value||'uk';
+const front=el('qy44-front');
+function openAdmin(){
+  const api=window.qyHubAdmin;
+  if(api&&typeof api.open==='function'){api.open();return}
+  const diag=el('qy67-admin-overlay');
+  if(diag){diag.hidden=false;return}
+  window.alert((captions[lang()]||captions.en)+': оновіть сторінку, щоб завантажити інструменти керування.');
+}
+if(front&&!el('qy69-home-admin')){
+  const button=document.createElement('button');button.type='button';button.id='qy69-home-admin';
+  button.title='Панель адміністратора (локальне керування)';button.setAttribute('aria-label','Відкрити панель адміністратора');
+  button.addEventListener('click',openAdmin);
+  front.append(button);
+}
+const menuBtn=el('qy67-admin-open'),lead=el('qy44-menulead');
+if(menuBtn&&lead&&lead.parentNode){lead.insertAdjacentElement('afterend',menuBtn)}
+const homeBtn=el('qy69-home-admin');
+function update(){if(homeBtn)homeBtn.textContent=locales[lang()]||locales.en;
+ if(homeBtn)homeBtn.title=(captions[lang()]||captions.en)+' · лише локальні налаштування';
+}
+update();el('site-language')?.addEventListener('change',update);
+window.qyHubAdminEntry=Object.freeze({open:openAdmin});
 })();
 </script>
 </body></html>
