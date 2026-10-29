@@ -7861,4 +7861,96 @@ html[data-qy-device-package="light"] #qy41-overlay{overflow-wrap:anywhere}
 })();
 </script>
 
+<!-- v90: Progressive mobile gallery navigation; no changes to existing simulation engines. -->
+<style id="qy90-compact-gallery-css">
+#qy90-tool-tabs[hidden]{display:none!important}
+#qy90-worlds-toggle{display:block;width:100%;min-height:44px;margin:8px 0 12px;padding:10px 14px;color:#def9ff;background:#16465d;border:1px solid #7ec5d0;border-radius:12px;font:700 14px/1.35 ui-monospace,Consolas,monospace;cursor:pointer}
+#qy41-body.qy90-worlds-hidden :is(#qy41-search-bar,#qy41-help,#qy43-status,#qy41-gallery-grid,#qy43-more){display:none!important}
+#qy90-tool-tabs{margin:14px 0 12px;padding:12px;border:1px solid rgba(131,205,223,.65);border-radius:15px;background:linear-gradient(135deg,#12374c,#112f4b);color:#f0faff;min-width:0}
+#qy90-tool-tabs strong{display:block;font:750 15px/1.4 ui-monospace,Consolas,monospace;margin-bottom:8px}
+#qy90-tool-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+#qy90-tool-grid button{min-width:0;min-height:44px;border:1px solid #639eae;background:#173e52;color:#eaf8fb;border-radius:10px;font:650 12px/1.3 ui-monospace,Consolas,monospace;padding:8px 7px;overflow-wrap:break-word;cursor:pointer}
+#qy90-tool-grid button[aria-pressed="true"]{background:#23606a;border-color:#b6f0d6;color:#fff7d6;box-shadow:inset 0 0 0 1px #b6f0d6}
+#qy90-tool-grid button:focus-visible,#qy90-worlds-toggle:focus-visible{outline:3px solid #ffdc8b;outline-offset:2px}
+#qy90-tool-info{margin:8px 0 0;font:400 12px/1.5 ui-monospace,Consolas,monospace;color:#b4dce7;overflow-wrap:break-word}
+#qy83-controls.qy90-single > section:not(.qy90-visible){display:none!important}
+#qy83-controls.qy90-single:not([data-qy90-view="world"]) > :not(section):not(#qy90-tool-tabs){display:none!important}
+#qy83-controls.qy90-single[data-qy90-view="world"] > section{display:none!important}
+#qy83-controls.qy90-single > section.qy90-visible{display:block!important}
+#qy41-sheet :is(#qy41-content,#qy83-controls,#qy83-controls section,#qy-v37-controls,#qy41-old){min-width:0;max-width:100%;box-sizing:border-box}
+#qy41-sheet :is(input,select,textarea){max-width:100%;min-width:0;box-sizing:border-box}
+#qy41-sheet #qy83-controls :is(.qy83-grid,.qy85-row,.qy86-grid,.qy87-grid,.qy88-grid){min-width:0;max-width:100%;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}
+#qy41-sheet #qy83-controls select{width:100%;max-width:100%;text-overflow:ellipsis}
+#qy41-sheet #qy83-controls :is(button,label,p,h3,h4,h5,small){overflow-wrap:break-word;word-break:normal}
+#qy41-sheet #qy83-controls :is(.qy85-panel,.qy86-panel,.qy87-studio,.qy88-gallery,.qy84-panel){scroll-margin-top:96px}
+#qy41-sheet #qy41-picker,#qy41-sheet #qy41-old{scroll-margin-top:96px}
+@media(max-width:560px){
+ #qy41-top{padding:9px 12px!important;gap:8px!important;min-height:61px}
+ #qy41-top h2{font-size:clamp(17px,5vw,22px)!important;line-height:1.2!important;letter-spacing:0!important}
+ #qy41-top p{font-size:11px!important;line-height:1.3}
+ #qy41-close{min-height:44px;min-width:44px}
+ #qy41-body{padding:10px 10px 22px!important}
+ #qy41-sheet #qy83-controls{padding:9px!important}
+ #qy41-sheet #qy83-controls :is(.qy85-panel,.qy86-panel,.qy87-studio,.qy88-gallery,.qy84-panel){padding:10px!important}
+ #qy41-sheet #qy83-controls :is(.qy85-panel,.qy86-panel,.qy87-studio,.qy88-gallery,.qy84-panel) :is(input,select){font-size:14px!important;line-height:1.3!important;min-height:43px}
+ #qy41-sheet #qy83-controls :is(.qy85-panel,.qy86-panel,.qy87-studio,.qy88-gallery,.qy84-panel) :is(p,label,small){font-size:13px!important;line-height:1.5!important}
+ #qy41-sheet #qy83-controls :is(.qy85-panel,.qy86-panel,.qy87-studio,.qy88-gallery,.qy84-panel) h4{font-size:18px!important;line-height:1.3}
+ #qy41-sheet #qy83-controls :is(.qy85-panel,.qy86-panel,.qy87-studio,.qy88-gallery,.qy84-panel) button{max-width:100%;font-size:13px!important;line-height:1.35;white-space:normal;overflow-wrap:break-word}
+ #qy90-tool-tabs{padding:10px}
+}
+</style>
+
+<script id="qy90-compact-gallery-js">
+(()=>{'use strict';
+ const $=id=>document.getElementById(id);
+ const root=$('qy83-controls'),gallery=$('qy41-body'),pick=$('qy37-theme');
+ if(!root||!gallery||!pick||$('qy90-tool-tabs'))return;
+ const sections={atlas:root.querySelector('.qy84-panel'),timeline:$('qy85-panel'),film:$('qy86-panel'),studio:$('qy87-studio'),library:$('qy88-gallery')};
+ const tools=['world','atlas','timeline','film','studio','library','all'];
+ const names={
+ uk:{worldsShow:'🌍 Показати список світів (54)',worldsHide:'🌍 Сховати список світів',head:'✦ Панелі Quantum Genesis',world:'🌿 Живий світ',atlas:'✨ Атлас руху',timeline:'🕒 Покоління A/B',film:'🎞️ Фільм',studio:'🎬 Монтаж',library:'📚 Відеотека',all:'☰ Показати все',none:'Дані зберігаються у твоєму браузері.',need:'Для запису фільму потрібні щонайменше два покоління Genesis. Зараз доступне одне або жодного.'},
+ en:{worldsShow:'🌍 Show world list (54)',worldsHide:'🌍 Hide world list',head:'✦ Quantum Genesis panels',world:'🌿 Living world',atlas:'✨ Motion atlas',timeline:'🕒 A/B timeline',film:'🎞️ Film',studio:'🎬 Studio',library:'📚 Library',all:'☰ Show all',none:'Data stays in your browser.',need:'A film requires at least two Genesis generations; there is currently one or none.'},
+ pl:{worldsShow:'🌍 Pokaż listę światów (54)',worldsHide:'🌍 Ukryj listę światów',head:'✦ Panele Quantum Genesis',world:'🌿 Żywy świat',atlas:'✨ Atlas ruchu',timeline:'🕒 Generacje A/B',film:'🎞️ Film',studio:'🎬 Montaż',library:'📚 Biblioteka',all:'☰ Pokaż wszystko',none:'Dane pozostają w przeglądarce.',need:'Do filmu potrzebne są przynajmniej dwa pokolenia Genesis. Dostępne jest jedno lub żadne.'},
+ ru:{worldsShow:'🌍 Показать список миров (54)',worldsHide:'🌍 Скрыть список миров',head:'✦ Панели Quantum Genesis',world:'🌿 Живой мир',atlas:'✨ Атлас движения',timeline:'🕒 Поколения A/B',film:'🎞️ Фильм',studio:'🎬 Монтаж',library:'📚 Видеотека',all:'☰ Показать всё',none:'Данные остаются в браузере.',need:'Для фильма нужны минимум два поколения Genesis. Сейчас доступно одно или ни одного.'}
+ };
+ function words(){const l=($('site-language')?.value||'uk').toLowerCase();return names[l]||names[l.slice(0,2)]||names.uk}
+ let view='world';try{let s=localStorage.getItem('qy-v90-tool');if(tools.includes(s))view=s;}catch(_){}
+ let worldsVisible=false;
+ const worldBtn=document.createElement('button');worldBtn.id='qy90-worlds-toggle';worldBtn.type='button';
+ gallery.insertBefore(worldBtn,$('qy41-search-bar')||gallery.firstChild);
+ const nav=document.createElement('div');nav.id='qy90-tool-tabs';nav.setAttribute('role','region');nav.setAttribute('aria-label','Quantum Genesis');
+ const head=document.createElement('strong');nav.append(head);
+ const group=document.createElement('div');group.id='qy90-tool-grid';nav.append(group);
+ const info=document.createElement('p');info.id='qy90-tool-info';info.setAttribute('role','status');nav.append(info);
+ const buttons=new Map();
+ tools.forEach(key=>{const b=document.createElement('button');b.type='button';b.dataset.qy90Tab=key;b.addEventListener('click',()=>select(key,true));group.append(b);buttons.set(key,b)});
+ gallery.insertBefore(nav,$('qy41-picker')||gallery.lastChild);
+ function setWorldList(state){worldsVisible=!!state;gallery.classList.toggle('qy90-worlds-hidden',!worldsVisible);worldBtn.setAttribute('aria-expanded',String(worldsVisible));worldBtn.textContent=worldsVisible?words().worldsHide:words().worldsShow;}
+ worldBtn.addEventListener('click',()=>{setWorldList(!worldsVisible);if(worldsVisible)worldBtn.scrollIntoView({block:'start',behavior:'instant'});});
+ function count(){const els=$('qy85-timeline');return els?els.querySelectorAll('button').length:0}
+ function select(key,scroll){
+  if(!tools.includes(key))key='world';view=key;
+  try{localStorage.setItem('qy-v90-tool',key)}catch(_){}
+  const showAll=key==='all';root.classList.toggle('qy90-single',!showAll);root.dataset.qy90View=key;
+  Object.entries(sections).forEach(([id,el])=>{el?.classList.toggle('qy90-visible',id===key)});
+  for(const [id,b] of buttons)b.setAttribute('aria-pressed',String(key===id));
+  info.textContent=((key==='film'||key==='studio')&&count()<2)?words().need:words().none;
+  if(scroll){$('qy41-picker').open=true;const dest=sections[key]||nav;requestAnimationFrame(()=>{dest.scrollIntoView({block:'start',behavior:'instant'});});}
+ }
+ function translate(){const w=words();head.textContent=w.head;for(const [key,b] of buttons)b.textContent=w[key];setWorldList(worldsVisible);select(view,false)}
+ // Existing v89 shortcuts remain functional, with the correct panel expanded before their own handler scrolls to it.
+ for(const id of ['qy89-app-shortcuts','qy89-gallery-nav']){$(id)?.addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  const list=[...$(id).querySelectorAll('.qy89-actions button')],index=list.indexOf(b);
+  if(index>=0)select(['world','studio','library'][index],false);
+ },true)}
+ // When opening Genesis through an existing gallery shortcut, ensure its panel is visible.
+ $('site-language')?.addEventListener('change',translate);
+ pick.addEventListener('change',()=>{nav.hidden=pick.value!=='54';if(pick.value==='54')setWorldList(false);else setWorldList(true)});
+ $('qy41-open')?.addEventListener('click',()=>{if(pick.value==='54')setWorldList(false);});
+ $('qy41-nav-btn')?.addEventListener('click',()=>{if(pick.value==='54')setWorldList(false);});
+ translate();nav.hidden=pick.value!=='54';setWorldList(pick.value!=='54');
+})();
+</script>
+
 </body></html>
