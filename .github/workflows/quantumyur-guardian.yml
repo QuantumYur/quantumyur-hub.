@@ -1,0 +1,110 @@
+name: QuantumYur Guardian
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  guardian:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout safely
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check site and inline JavaScript
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          import subprocess, tempfile
+
+          site = Path('index.html')
+          if not site.is_file():
+              raise SystemExit('ERROR: index.html not found')
+          content = site.read_text(encoding='utf-8')
+          if not content.strip():
+              raise SystemExit('ERROR: index.html is empty')
+
+          class ScriptParser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.scripts = []
+                  self.current = None
+              def handle_starttag(self, tag, attrs):
+                  if tag == 'script':
+                      attrs = dict(attrs)
+                      kind = attrs.get('type', '')
+                      self.current = [] if not attrs.get('src') and kind in ('', 'text/javascript', 'application/javascript', 'module') else None
+              def handle_data(self, data):
+                  if self.current is not None:
+                      self.current.append(data)
+              def handle_endtag(self, tag):
+                  if tag == 'script' and self.current is not None:
+                      self.scripts.append(''.join(self.current))
+                      self.current = None
+
+          parser = ScriptParser()
+          parser.feed(content)
+          failures = []
+          for i, script in enumerate(parser.scripts, 1):
+              if not script.strip():
+                  continue
+              with tempfile.NamedTemporaryFile(mode='w', suffix='.mjs', encoding='utf-8') as tmp:
+                  tmp.write(script)
+                  tmp.flush()
+                  result = subprocess.run(['node', '--check', tmp.name], capture_output=True, text=True)
+                  if result.returncode:
+                      failures.append(f'Inline script {i}: {result.stderr[-500:]}')
+          if failures:
+              raise SystemExit('JavaScript syntax issues:\n' + '\n'.join(failures))
+          print(f'OK: index.html exists; {len(parser.scripts)} inline JavaScript blocks checked.')
+          PY
+
+      - name: Check tracked files for obvious credentials
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import re, subprocess
+          from pathlib import Path
+          tracked = subprocess.check_output(['git', 'ls-files', '-z']).decode('utf-8', 'replace').split('\0')
+          patterns = {
+              'Private key': re.compile(r'-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----'),
+              'GitHub token': re.compile(r'\bgh[pousr]_[A-Za-z0-9_]{20,}\b'),
+              'OpenAI API key': re.compile(r'\bsk-(?:proj-)?[A-Za-z0-9_-]{20,}\b'),
+              'AWS access key': re.compile(r'\b(?:AKIA|ASIA)[A-Z0-9]{16}\b'),
+          }
+          issues = []
+          for name in tracked:
+              if not name:
+                  continue
+              path = Path(name)
+              if not path.is_file() or path.stat().st_size > 5_000_000:
+                  continue
+              data = path.read_bytes()
+              if b'\0' in data[:4096]:
+                  continue
+              text = data.decode('utf-8', 'replace')
+              for label, pattern in patterns.items():
+                  if pattern.search(text):
+                      issues.append(f'{name}: possible {label}')
+          if issues:
+              raise SystemExit('Potential credentials detected (values hidden):\n' + '\n'.join(issues))
+          print('OK: no obvious credential patterns found in scanned tracked text files.')
+          PY
+
+      - name: Guardian summary
+        if: always()
+        run: |
+          echo '### QuantumYur Guardian v1' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Read-only security checks. No website changes, no merges, no paid API.' >> "$GITHUB_STEP_SUMMARY"
+
