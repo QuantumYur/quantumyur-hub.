@@ -1551,6 +1551,9 @@ html[data-qy-v37="on"] .hero{background-image:linear-gradient(100deg,rgba(5,15,2
 #qy42-frame[data-frame="cosmos"]{--qy42-edge:#9c9ff6;--qy42-glow:rgba(125,121,247,.32)}
 #qy42-frame[data-frame="classic"]{--qy42-edge:#e8c899;--qy42-glow:rgba(235,200,145,.24)}
 #qy42-frame[data-frame="halloween"]{--qy42-edge:#ed9f4c;--qy42-glow:rgba(255,126,19,.32)}
+#qy42-frame[data-frame="jungle"]{--qy42-edge:#7fbf71;--qy42-glow:rgba(109,200,128,.30)}
+#qy42-frame[data-frame="wildlife"]{--qy42-edge:#d7b07a;--qy42-glow:rgba(222,174,106,.28)}
+#qy42-frame[data-frame="storm"]{--qy42-edge:#8bc9ff;--qy42-glow:rgba(120,185,255,.30)}
 #qy42-launch,#qy42-nav{cursor:pointer;color:#ffead4!important;background:linear-gradient(115deg,#51301e,#241a2c)!important;border:1px solid #dea468!important;border-radius:11px!important;min-height:44px;padding:9px 14px!important;font:750 14px/1.4 ui-monospace,Consolas,monospace!important;box-shadow:0 3px 14px #0005;white-space:nowrap}
 #qy42-launch:hover,#qy42-nav:hover{filter:brightness(1.15)}#qy42-nav{font-size:12px!important;padding:8px 11px!important}
 #qy42-launch:focus-visible,#qy42-nav:focus-visible,#qy42-dialog button:focus-visible{outline:3px solid #fce9a5;outline-offset:3px}
@@ -3923,11 +3926,11 @@ setInterval(updateSummary,60000);text();
 if(document.getElementById('qy42-frame'))return;
 const read=(k)=>{try{return localStorage.getItem(k)}catch{return null}};
 const write=(k,v)=>{try{localStorage.setItem(k,v)}catch{}};
-const frameModes=['auto','none','halloween','autumn','winter','cosmos','classic'];
+const frameModes=['auto','none','halloween','autumn','winter','cosmos','classic','jungle','wildlife','storm'];
 let mode=frameModes.includes(read('qy-frame-v42'))?read('qy-frame-v42'):'auto';
-const names={uk:{title:'Рамки для світів',lead:'Святкове обрамлення поверх будь-якого пейзажу',button:'Рамки',close:'Закрити',status:'Зараз',note:'Рамка не змінює обраний пейзаж. «Авто» враховує календар і пору року; ручний вибір має пріоритет.',items:[['🌗','Авто','За святами й сезонами'],['◻️','Без рамки','Чистий екран'],['🎃','Хелловін','Павутина, кажани, гарбузи'],['🍂','Осіння','Листя й теплі кольори'],['❄️','Зимова','Сніжинки та крига'],['🌌','Космічна','Зорі та планети'],['✨','Класична','Тонка золота рамка']]},
-en:{title:'World frames',lead:'Decorative borders over your landscapes',button:'Frames',close:'Close',status:'Now',note:'Frames never change the chosen scenery. Auto follows seasons and holidays; manual choice has priority.',items:[['🌗','Auto','By holidays and seasons'],['◻️','No frame','Clean screen'],['🎃','Halloween','Webs, bats, pumpkins'],['🍂','Autumn','Leaves and warm colors'],['❄️','Winter','Snowflakes and frost'],['🌌','Cosmos','Stars and planets'],['✨','Classic','Thin golden border']]},
-pl:{title:'Ramki światów',lead:'Dekoracje na tle krajobrazów',button:'Ramki',close:'Zamknij',status:'Teraz',note:'Ramka nie zmienia krajobrazu. Tryb Auto uwzględnia święta i pory roku.',items:[['🌗','Auto','Pory roku i święta'],['◻️','Bez ramki','Czysty ekran'],['🎃','Halloween','Pajęczyny i dynie'],['🍂','Jesień','Liście i ciepłe barwy'],['❄️','Zima','Śnieżynki i lód'],['🌌','Kosmos','Gwiazdy i planety'],['✨','Klasyczna','Cienka złota ramka']]},
+const names={uk:{title:'Рамки для світів',lead:'Святкове обрамлення поверх будь-якого пейзажу',button:'Рамки',close:'Закрити',status:'Зараз',note:'Рамка не змінює обраний пейзаж. «Авто» враховує календар і пору року; ручний вибір має пріоритет.',items:[['🌗','Авто','За святами й сезонами'],['◻️','Без рамки','Чистий екран'],['🎃','Хелловін','Павутина, кажани, гарбузи'],['🍂','Осіння','Листя й теплі кольори'],['❄️','Зимова','Сніжинки та крига'],['🌌','Космічна','Зорі та планети'],['✨','Класична','Тонка золота рамка'],['🌿','Ліани','Джунглі, листя й живі гілки'],['🦉','Тварини','Лісові істоти й дикі символи'],['⚡','Блискавки','Енергія бурі та світлові спалахи']]}},
+en:{title:'World frames',lead:'Decorative borders over your landscapes',button:'Frames',close:'Close',status:'Now',note:'Frames never change the chosen scenery. Auto follows seasons and holidays; manual choice has priority.',items:[['🌗','Auto','By holidays and seasons'],['◻️','No frame','Clean screen'],['🎃','Halloween','Webs, bats, pumpkins'],['🍂','Autumn','Leaves and warm colors'],['❄️','Winter','Snowflakes and frost'],['🌌','Cosmos','Stars and planets'],['✨','Classic','Thin golden border'],['🌿','Vines','Jungle leaves and living branches'],['🦉','Wildlife','Forest creatures and wild symbols'],['⚡','Lightning','Storm energy and electric flashes']]}},
+pl:{title:'Ramki światów',lead:'Dekoracje na tle krajobrazów',button:'Ramki',close:'Zamknij',status:'Teraz',note:'Ramka nie zmienia krajobrazu. Tryb Auto uwzględnia święta i pory roku.',items:[['🌗','Auto','Pory roku i święta'],['◻️','Bez ramki','Czysty ekran'],['🎃','Halloween','Pajęczyny i dynie'],['🍂','Jesień','Liście i ciepłe barwy'],['❄️','Zima','Śnieżynki i lód'],['🌌','Kosmos','Gwiazdy i planety'],['✨','Klasyczna','Cienka złota ramka'],['🌿','Liany','Dżungla, liście i żywe gałęzie'],['🦉','Zwierzęta','Leśne stworzenia i dzikie symbole'],['⚡','Błyskawice','Energia burzy i elektryczne rozbłyski']]}},
 ru:{title:'Рамки для миров',lead:'Декоративная окантовка вокруг пейзажа',button:'Рамки',close:'Закрыть',status:'Сейчас',note:'Рамка не меняет пейзаж. Авто учитывает праздники и сезоны; ручной выбор важнее.',items:[['🌗','Авто','По праздникам и сезонам'],['◻️','Без рамки','Чистый экран'],['🎃','Хэллоуин','Паутина, летучие мыши, тыквы'],['🍂','Осень','Листья и теплые цвета'],['❄️','Зима','Снежинки и лед'],['🌌','Космос','Звезды и планеты'],['✨','Классика','Тонкая золотая рамка']]}};
 function words(){const language=document.getElementById('site-language')?.value||document.documentElement.lang||'uk';return names[language]||names.en}
 const svg=(body)=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none" aria-hidden="true">${body}</svg>`;
@@ -3940,7 +3943,13 @@ const leaf=`<g fill="#b87536" stroke="#e5bd7d" stroke-width="2"><path d="M38 10Q
 const star=`<g stroke="#e8e6ff" stroke-width="3" stroke-linecap="round"><path d="M70 20V132M14 76H126M29 35L111 117M29 117L111 35"/><path d="M70 20l-10 12M70 20l10 12M70 132l-10 -12M70 132l10 -12M14 76l12 -10M14 76l12 10M126 76l-12 -10M126 76l-12 10"/></g><g fill="#a8d3ff" opacity=".8"><circle cx="164" cy="75" r="7"/><circle cx="197" cy="120" r="3"/><circle cx="135" cy="173" r="4"/></g>`;
 const planet=`<g fill="#ddd7ff"><circle cx="67" cy="75" r="22" opacity=".8"/><circle cx="196" cy="94" r="5"/><circle cx="177" cy="45" r="3"/><circle cx="151" cy="143" r="3"/></g><ellipse cx="67" cy="75" rx="47" ry="13" transform="rotate(-25 67 75)" stroke="#b7adfd" stroke-width="5"/><path d="M137 35v24m-12 -12h24M186 157v30m-15 -15h30" stroke="#ddccff" stroke-width="3" stroke-linecap="round"/>`;
 const classic=`<g stroke="#dfc392" stroke-width="4" fill="none"><path d="M6 196V35Q6 6 35 6H195"/><path d="M22 160V45Q22 22 45 22H160" stroke-width="2"/><path d="M25 85Q65 80 65 45Q65 78 105 87Q67 91 65 135Q64 96 25 85Z"/><path d="M105 24Q124 60 157 66Q124 70 105 104Q103 71 77 64Q103 62 105 24Z" stroke-width="2"/></g><circle cx="34" cy="35" r="7" fill="#f3d8a2"/>`;
-const illustrations={halloween:[spiderWeb,bats,crookedTree,pumpkins],autumn:[leaf,leaf,leaf,leaf],winter:[star,star,star,star],cosmos:[planet,planet,planet,planet],classic:[classic,classic,classic,classic]};
+const vineA=`<g fill="none" stroke="#6bc37d" stroke-width="5" stroke-linecap="round"><path d="M25 0Q18 50 46 88T33 180T74 240"/><path d="M74 18Q61 58 84 93T75 182T122 240" stroke="#4fa564"/></g><g fill="#83d58c" stroke="#dff6c4" stroke-width="1.5"><path d="M48 53q14-18 29-4q-11 19-29 4Z"/><path d="M31 120q18-14 31 4q-19 11-31-4Z"/><path d="M83 150q18-16 30 1q-17 15-30-1Z"/></g>`;
+const vineB=`<g fill="none" stroke="#5ab877" stroke-width="5" stroke-linecap="round"><path d="M214 0Q225 37 200 83T208 164T171 240"/><path d="M166 0Q178 44 154 95T161 186T126 240" stroke="#438f58"/></g><g fill="#8de59d" stroke="#e6f7cb" stroke-width="1.5"><path d="M178 45q-18-15-30 3q17 17 30-3Z"/><path d="M195 119q-14-18-31-3q12 18 31 3Z"/><path d="M144 156q-15-18-31 0q13 17 31 0Z"/></g>`;
+const animalA=`<g fill="#201826" stroke="#e8cf9a" stroke-width="2"><circle cx="62" cy="63" r="22"/><path d="M45 44l-10-19l18 8M79 44l11-18l7 19"/><circle cx="54" cy="61" r="3" fill="#ffd981"/><circle cx="70" cy="61" r="3" fill="#ffd981"/></g><path d="M110 180c16-22 39-22 52 0c-17 19-33 28-52 0Z" fill="#c78954" stroke="#f2d4ab" stroke-width="2"/><circle cx="136" cy="171" r="3" fill="#fff4ce"/><circle cx="147" cy="171" r="3" fill="#fff4ce"/>`;
+const animalB=`<g fill="#271d24" stroke="#f0d8af" stroke-width="2"><path d="M182 44c24 0 35 16 35 31s-11 31-35 31s-35-16-35-31s11-31 35-31Z"/><path d="M157 58c-17-4-28 15-24 32c7-12 18-15 28-13ZM207 58c17-4 28 15 24 32c-7-12-18-15-28-13Z"/></g><circle cx="171" cy="74" r="3" fill="#ffe7ab"/><circle cx="193" cy="74" r="3" fill="#ffe7ab"/><g stroke="#f0d8af" stroke-width="2" stroke-linecap="round"><path d="M162 91l-10 12M202 91l10 12"/></g>`;
+const stormA=`<path d="M26 22h62l-28 47h26l-48 70l13-47H26Z" fill="#ffe88d" stroke="#fff7ce" stroke-width="3"/><path d="M98 10h97" stroke="#9fceff" stroke-width="5" stroke-linecap="round" opacity=".7"/><path d="M120 32h77" stroke="#9fceff" stroke-width="5" stroke-linecap="round" opacity=".55"/><path d="M124 55h45" stroke="#9fceff" stroke-width="5" stroke-linecap="round" opacity=".55"/>`;
+const stormB=`<path d="M212 18h-55l20 38h-22l37 59l-8-37h28Z" fill="#ffe88d" stroke="#fff7ce" stroke-width="3"/><path d="M32 22h104" stroke="#9fceff" stroke-width="5" stroke-linecap="round" opacity=".7"/><path d="M43 44h74" stroke="#9fceff" stroke-width="5" stroke-linecap="round" opacity=".55"/><path d="M68 67h46" stroke="#9fceff" stroke-width="5" stroke-linecap="round" opacity=".55"/>`;
+const illustrations={halloween:[spiderWeb,bats,crookedTree,pumpkins],autumn:[leaf,leaf,leaf,leaf],winter:[star,star,star,star],cosmos:[planet,planet,planet,planet],classic:[classic,classic,classic,classic],jungle:[vineA,vineB,vineA,vineB],wildlife:[animalA,animalB,animalA,animalB],storm:[stormA,stormB,stormA,stormB]};
 const layer=document.createElement('div');layer.id='qy42-frame';layer.setAttribute('aria-hidden','true');layer.hidden=true;document.body.append(layer);
 const slots=['qy42-tl','qy42-tr','qy42-bl','qy42-br'];for(const cls of slots){const corner=document.createElement('div');corner.className='qy42-corner '+cls;layer.append(corner)}
 const compact=document.getElementById('qy41-compact');const launch=document.createElement('button');launch.id='qy42-launch';launch.type='button';launch.setAttribute('aria-haspopup','dialog');launch.setAttribute('aria-controls','qy42-dialog');(compact||document.querySelector('.wrap > header'))?.append(launch);
@@ -4176,6 +4185,27 @@ document.body.classList.add('qy44-ready','qy44-home');updateLabels();updateClock
   --qy45-glow:rgba(205,167,98,.14);
   --qy45-button-glow:rgba(205,167,98,.10);
 }
+:root:has(#qy42-frame[data-frame="jungle"]:not([hidden])){
+  --qy45-edge:#7ab66f;
+  --qy45-strong:rgba(188,242,170,.88);
+  --qy45-second:rgba(118,195,116,.24);
+  --qy45-glow:rgba(76,156,86,.16);
+  --qy45-button-glow:rgba(76,156,86,.10);
+}
+:root:has(#qy42-frame[data-frame="wildlife"]:not([hidden])){
+  --qy45-edge:#d1a974;
+  --qy45-strong:rgba(247,220,168,.88);
+  --qy45-second:rgba(220,179,114,.24);
+  --qy45-glow:rgba(176,127,70,.16);
+  --qy45-button-glow:rgba(176,127,70,.10);
+}
+:root:has(#qy42-frame[data-frame="storm"]:not([hidden])){
+  --qy45-edge:#91c8ff;
+  --qy45-strong:rgba(210,238,255,.90);
+  --qy45-second:rgba(128,189,255,.24);
+  --qy45-glow:rgba(93,146,245,.16);
+  --qy45-button-glow:rgba(93,146,245,.10);
+}
 /* All primary outer contours echo the page's outer holiday frame. */
 :is(.wrap > header,
   #qy41-compact,
@@ -4302,6 +4332,27 @@ document.body.classList.add('qy44-ready','qy44-home');updateLabels();updateClock
   --qy46-mark-b:"✧";
   --qy46-mark-color:#f3daa1;
   --qy46-mark-bg:rgba(35,29,25,.97);
+}
+:root:has(#qy42-frame[data-frame="jungle"]:not([hidden])){
+  --qy46-visible:grid;
+  --qy46-mark-a:"🌿";
+  --qy46-mark-b:"🍃";
+  --qy46-mark-color:#d7f3c2;
+  --qy46-mark-bg:rgba(16,40,22,.97);
+}
+:root:has(#qy42-frame[data-frame="wildlife"]:not([hidden])){
+  --qy46-visible:grid;
+  --qy46-mark-a:"🦊";
+  --qy46-mark-b:"🪶";
+  --qy46-mark-color:#ffe1ba;
+  --qy46-mark-bg:rgba(45,26,15,.97);
+}
+:root:has(#qy42-frame[data-frame="storm"]:not([hidden])){
+  --qy46-visible:grid;
+  --qy46-mark-a:"⚡";
+  --qy46-mark-b:"✦";
+  --qy46-mark-color:#e0f0ff;
+  --qy46-mark-bg:rgba(15,22,44,.97);
 }
 /* Only card-level boxes; never headings, controls, text containers or scrollable grid items. */
 :is(.daily-panel,.card,.qh-panel,.qy44-menugroup,
