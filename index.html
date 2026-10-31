@@ -8026,7 +8026,7 @@ html[data-qy83-world="true"] #qy83-field{opacity:1}
  function draw(ms){raf=0;if(!isActive()||document.hidden){sync();return;}
   // Pause cosmetic painting while computational lab or an immersive app is on top.
   if(!$('#qy72-apps-overlay')?.hidden){lastFrame=ms;raf=requestAnimationFrame(draw);return;}
-  const limit=(navigator.connection?.saveData||Number(navigator.deviceMemory||4)<3)?1000/18:1000/30;
+  const limit=(window.qyPerformance131?.isLite?.()&&!v86.recording&&!v87.recording)?1000/14:((navigator.connection?.saveData||Number(navigator.deviceMemory||4)<3)?1000/18:1000/30);
   if(!lastFrame||ms-lastFrame>=limit){const dt=lastFrame?Math.min(90,ms-lastFrame):0;lastFrame=ms;if(!opts.paused)t+=dt;refreshMetrics();if(!opts.paused){
     if(v85.playing&&!v85.recording){v85.blend=(v85.blend+dt/10000)%1;v85El('qy85-blend').value=String(Math.round(100*v85.blend));v85El('qy85-blend-label').textContent=Math.round(v85.blend*100)+'%';}
     const target=observer.hidden?canvas:oCanvas;
@@ -8775,7 +8775,20 @@ body.qy101-open{overflow:hidden!important}
     redraw();
   });
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)redraw()});
-  updateLabels();redraw();window.setInterval(()=>{drawCounter++;if(!document.hidden){advanceStory();redraw()}},1200);window.setInterval(()=>{if(full&&!document.hidden){drawCounter++;redraw()}},220);
+  updateLabels();redraw();// v131: skip 2D previews when no corresponding UI is visible; never pause laboratory computations.
+  let qy131LastSmallPaint=0;
+  window.setInterval(()=>{
+    if(document.hidden)return;
+    const home=showHome&&document.body.classList.contains('qy44-home');
+    const activeLab=!$('qy72-tool-lab')?.hidden&&!$('qy72-apps-overlay')?.hidden;
+    if(!home&&!activeLab&&!full)return;
+    advanceStory();
+    const t=Date.now(), lite=window.qyPerformance131?.isLite?.()??false;
+    const minGap=lite&&!homeStory&&!full?3600:1200;
+    if(t-qy131LastSmallPaint<minGap)return;
+    qy131LastSmallPaint=t;drawCounter++;redraw();
+  },1200);
+  window.setInterval(()=>{if(full&&!document.hidden){drawCounter++;redraw()}},220);
   window.qyGenesisDisplay=Object.freeze({version:'102',open:()=>openViewer('home'),close:closeViewer,refresh:redraw,showHome:(value)=>{showHome=!!value;savePrefs();updateLabels()},source:()=>{const d=chosen();return Array.isArray(d)?d.map(x=>x.source):d?.source||'none'},chronicle:()=>{const s=chronicleState();return {count:s.rows.length,selectedId:s.current?.id||null,follow:homeFollow,playing:homeStory}},latest:latestHistory});
 })();
 </script>
@@ -11293,7 +11306,7 @@ const canvas=$('qy130astro-canvas'),ctx=canvas.getContext('2d',{alpha:false});co
 const stars=Array.from({length:100},()=>({x:randomSeed(),y:randomSeed(),s:randomSeed()*1.2+.3}));
 const flux=Array.from({length:46},()=>({p:randomSeed(),r:.15+randomSeed()*.84,a:randomSeed()*6.283,s:.3+randomSeed()*.6}));
 function resize(){const rect=canvas.getBoundingClientRect(),dpr=Math.min(1.5,window.devicePixelRatio||1);const w=Math.max(260,rect.width),h=Math.max(245,rect.height);const pw=Math.round(w*dpr),ph=Math.round(h*dpr);if(canvas.width!==pw||canvas.height!==ph){canvas.width=pw;canvas.height=ph}ctx.setTransform(dpr,0,0,dpr,0,0);return {w,h}}
-function draw(ts){if(!running)return;if(root.hidden||tab!=='sphere'){stop();return}anim=requestAnimationFrame(draw);if(ts-last<32)return;const dt=Math.min(.065,(ts-last)/1000||.03);last=ts;angle+=dt*.21;
+function draw(ts){if(!running)return;if(root.hidden||tab!=='sphere'){stop();return}anim=requestAnimationFrame(draw);if(ts-last<(window.qyPerformance131?.isLite?.()?65:32))return;const dt=Math.min(.065,(ts-last)/1000||.03);last=ts;angle+=dt*.21;
  const {w,h}=resize(),cx=w/2,cy=h/2,zoom=Number($('qy130astro-zoom').value)||1.4,rr=Math.min(w*.405,h*.445)*Math.min(1.45,zoom*.81);
  ctx.fillStyle='#061324';ctx.fillRect(0,0,w,h);
  for(const s of stars){ctx.fillStyle='rgba(165,214,255,.43)';ctx.beginPath();ctx.arc(s.x*w,s.y*h,s.s,0,Math.PI*2);ctx.fill()}
@@ -11364,6 +11377,110 @@ $('qy130-guard').addEventListener('click',()=>switchTo('qyCore124'));$('qy130-re
 $('qy130-inspector').addEventListener('click',()=>{const wrap=$('qy130-inspector-wrap');wrap.hidden=!wrap.hidden;if(!wrap.hidden&&!inspectorLoaded){$('qy130-inspector-frame').srcdoc=INSPECTOR;inspectorLoaded=true}});
 const menu=document.querySelector('#qy113-home-shortcuts .qy113-links')||$('qy44-menu-sheet');const button=$new('button',null,'▣ Зберігання · v130');button.id='qy130-open';button.type='button';button.addEventListener('click',open);(menu||document.body).append(button);
 window.qyStorageCenter130=Object.freeze({version:130,open,close,inventory:()=>({...inventory()}),selftest,getStatus:()=>({version:130,inspectorLoaded,mode:'READ_ONLY_MANUAL',cloudSync:false,reportAvailable:!!report}),latestReport:()=>report?JSON.parse(JSON.stringify(report)):null});
+})();
+</script>
+<!-- QuantumYur v131 Optimization Center. UI + read-only performance monitoring; no application data deleted. -->
+<style id="qy131-optimizer-css">
+html[data-qy131-mode="lite"] #qy-v37-wallpaper .qy62-wallplane.qy63-revealing{transition-duration:.08s!important}
+html[data-qy131-mode="lite"] :is(#qy130-storage .qy130-shell,#qy130astro-app .qy130astro-shell,#qy44-menu-sheet,#qy72-apps-overlay){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html[data-qy131-pause="true"] #qy-v37-wallpaper *,html[data-qy131-pause="true"] #qy44-front .qy44-decoration{animation-play-state:paused!important}
+#qy131-perf-overlay[hidden]{display:none!important}
+#qy131-perf-overlay{position:fixed;inset:0;z-index:2147483636;background:rgba(0,5,17,.93);display:flex;align-items:center;justify-content:center;padding:12px;color:#eef5ff;overflow:auto;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+#qy131-perf-panel{width:min(100%,565px);max-height:calc(100dvh - 24px);overflow:auto;box-sizing:border-box;border:1px solid #7a99bc;border-radius:15px;background:#081727;box-shadow:0 12px 28px #0009;padding:15px;line-height:1.45;overscroll-behavior:contain}
+#qy131-perf-panel *{box-sizing:border-box}
+#qy131-perf-panel h2{font-size:19px;margin:0;color:#fff}
+#qy131-perf-panel h3{font-size:15px;margin:12px 0 8px;color:#fff}
+#qy131-perf-panel p{font-size:13px;margin:8px 0;color:#d5e6f5}
+#qy131-perf-panel .qy131-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+#qy131-perf-panel button{font:inherit;font-size:13px;font-weight:700;min-height:46px;max-width:100%;padding:9px 10px;border-radius:9px;border:1px solid #96b8d2;color:white;background:#17334d;cursor:pointer;overflow-wrap:anywhere;touch-action:manipulation}
+#qy131-perf-panel button[aria-pressed="true"]{border-color:#c2eaff;background:#28577a;outline:2px solid #65d6dc}
+#qy131-perf-panel button:disabled{opacity:.55;cursor:wait}
+#qy131-perf-panel .qy131-close{margin-left:auto;min-width:46px}
+#qy131-perf-panel #qy131-perf-status{border-left:3px solid #71b2ce;padding:4px 8px;margin:10px 0}
+#qy131-perf-panel .qy131-meta{font-size:12px;color:#c1d8e9;border:1px solid #38566d;border-radius:10px;background:#10253a;padding:10px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6;min-height:60px}
+#qy131-perf-panel .qy131-note{font-size:11px;color:#afc6d9}
+#qy131-perf-panel .qy131-rule{height:1px;background:#39576d;margin:12px 0}
+#qy131-open{min-height:44px!important;font-size:inherit!important;touch-action:manipulation}
+@media(max-width:480px){#qy131-perf-panel{padding:12px}#qy131-perf-panel .qy131-row{display:grid;grid-template-columns:1fr 1fr}#qy131-perf-panel .qy131-row.qy131-modes{grid-template-columns:1fr 1fr 1fr}#qy131-perf-panel .qy131-modes button{font-size:12px;padding:8px 3px}#qy131-perf-panel h2{font-size:17px}}
+</style>
+<div id="qy131-perf-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="qy131-title">
+<section id="qy131-perf-panel">
+ <div style="display:flex;align-items:center;gap:8px"><h2 id="qy131-title">⚡ Оптимізатор · v131</h2><button type="button" id="qy131-close" class="qy131-close" aria-label="Закрити">✕</button></div>
+ <p>Налаштування лише відображення. Дані Genesis, лабораторій і резервні копії не видаляються та не перезаписуються.</p>
+ <h3>01 · Режим швидкодії</h3>
+ <div class="qy131-row qy131-modes" aria-label="Режим продуктивності">
+  <button type="button" id="qy131-auto" aria-pressed="false">◉ Авто</button>
+  <button type="button" id="qy131-lite" aria-pressed="false">⚡ Економний</button>
+  <button type="button" id="qy131-full" aria-pressed="false">✦ Повний</button>
+ </div>
+ <p id="qy131-perf-status" role="status"></p>
+ <div class="qy131-row"><button type="button" id="qy131-pause" aria-pressed="false">⏸ Пауза декоративної анімації</button><button type="button" id="qy131-resume">↺ Стандартні параметри</button></div>
+ <div class="qy131-rule"></div>
+ <h3>02 · Діагностика Android / Chrome</h3>
+ <div class="qy131-meta" id="qy131-perf-meta">Готово до перевірки</div>
+ <div class="qy131-row"><button type="button" id="qy131-measure">◉ Виміряти плавність · 3 с</button><button type="button" id="qy131-audit">✓ Аудит оптимізації</button></div>
+ <p id="qy131-perf-measure" class="qy131-note" role="status">Вимірювання виконується лише після натискання кнопки.</p>
+ <div class="qy131-row"><button type="button" id="qy131-export">↓ Звіт JSON</button><button type="button" id="qy131-storage-btn">▣ Зберігання</button></div>
+ <p class="qy131-note">FPS — частота кадрів візуалізації браузера, а не швидкість лабораторних обчислень. На деяких телефонах Chrome не надає дані про пам’ять.</p>
+ <div class="qy131-row"><button type="button" id="qy131-close-bottom">Закрити</button></div>
+</section>
+</div>
+<script id="qy131-performance-script">
+(()=>{'use strict';
+ const $=id=>document.getElementById(id),root=document.documentElement;
+ const key='QY131_PERFORMANCE_PREF',pauseKey='QY131_DECOR_PAUSE';
+ const valid=new Set(['auto','lite','full']);
+ const read=k=>{try{return localStorage.getItem(k)}catch(_){return null}};
+ const save=(k,v)=>{try{localStorage.setItem(k,v);return true}catch(_){return false}};
+ const isPhone=()=>Math.min(innerWidth,innerHeight)<=700;
+ const reduced=()=>{try{return matchMedia('(prefers-reduced-motion: reduce)').matches}catch(_){return false}};
+ const autoLite=()=>isPhone()||reduced()||Boolean(navigator.connection?.saveData)||(Number(navigator.deviceMemory)||4)<3;
+ let preference=valid.has(read(key))?read(key):'auto';
+ let paused=read(pauseKey)==='true';
+ let activeMeasure=false,latestMeasurement=null,latestAudit=null,previous=null;
+ const effective=()=>preference==='auto'?(autoLite()?'lite':'full'):preference;
+ const overlay=$('qy131-perf-overlay');
+ function update(){let m=effective();root.dataset.qy131Mode=m;root.dataset.qy131Pause=String(paused);
+  for(const [id,v] of [['qy131-auto','auto'],['qy131-lite','lite'],['qy131-full','full']])$(id).setAttribute('aria-pressed',String(preference===v));
+  $('qy131-pause').setAttribute('aria-pressed',String(paused));
+  $('qy131-pause').textContent=paused?'▶ Відновити декоративну анімацію':'⏸ Пауза декоративної анімації';
+  $('qy131-perf-status').textContent='Режим: '+(preference==='auto'?'Авто → ':'')+(m==='lite'?'економний':'повний')+(paused?' · декор на паузі':'')+'.';
+ }
+ function select(next){if(!valid.has(next))return;preference=next;save(key,preference);update();if(!overlay.hidden)audit()}
+ function togglePause(){paused=!paused;save(pauseKey,String(paused));update();if(!overlay.hidden)audit()}
+ function reset(){preference='auto';paused=false;save(key,'auto');save(pauseKey,'false');update();audit()}
+ function reportData(){let keys=null;try{keys=localStorage.length}catch(_){}
+  const mem=navigator.deviceMemory??null;
+  return {schema:'quantumyur.optimizer.report.v131',version:131,createdAt:new Date().toISOString(),scope:'display_performance_metadata_only',modePreference:preference,effectiveMode:effective(),decorPaused:paused,viewport:{width:innerWidth,height:innerHeight,devicePixelRatio:devicePixelRatio||1},environment:{mobileWidth:isPhone(),reducedMotion:reduced(),saveData:navigator.connection?.saveData??null,deviceMemoryGB:typeof mem==='number'?mem:null,visibility:document.visibilityState},ui:{domElements:document.getElementsByTagName('*').length,images:document.images.length,canvases:document.querySelectorAll('canvas').length,localStorageKeyCount:keys},frames:latestMeasurement,checks:[{name:'Manual mode choice available',pass:true},{name:'No data clearing in optimizer',pass:true},{name:'Only own settings keys used',pass:true},{name:'Diagnostics do not import any archive',pass:true},{name:'Display preferences can be reset',pass:true}],notice:'Synthetic simulation metadata is not scientific evidence. No original records, filenames, or data contents are exported.'};
+ }
+ function audit(){latestAudit=reportData();let r=latestAudit;
+  $('qy131-perf-meta').textContent='Екран: '+r.viewport.width+'×'+r.viewport.height+' · DPR '+r.viewport.devicePixelRatio+'\nРежим: '+r.effectiveMode+' · анімації: '+(paused?'пауза':'звичайні')+'\nDOM: '+r.ui.domElements+' елементів · Canvas: '+r.ui.canvases+' · <img>: '+r.ui.images+'\nlocalStorage: '+(r.ui.localStorageKeyCount===null?'недоступно':r.ui.localStorageKeyCount+' ключів (лише кількість)')+'\nRAM (оцінка Chrome): '+(r.environment.deviceMemoryGB??'невідомо')+' ГБ · Save-Data: '+(r.environment.saveData??'невідомо')+'\nЗбережені дані та архіви: без змін';
+  return latestAudit;
+ }
+ function show(){previous=document.activeElement;$('qy44-menuclose')?.click();overlay.hidden=false;update();audit();$('qy131-close').focus()}
+ function hide(){overlay.hidden=true;try{previous?.focus?.()}catch(_){}}
+ function download(){const data=audit(),blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='QuantumYur_Optimizer_Audit_v131_'+new Date().toISOString().slice(0,10)+'.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+ async function measure(){if(activeMeasure)return null;activeMeasure=true;const b=$('qy131-measure');b.disabled=true;$('qy131-perf-measure').textContent='Вимірювання в активній вкладці…';
+  const intervals=[];let longCount=0,longMs=0;let observer=null,last=null,start=null;
+  try{if(typeof PerformanceObserver==='function'&&PerformanceObserver.supportedEntryTypes?.includes('longtask')){observer=new PerformanceObserver(list=>{for(const e of list.getEntries()){longCount++;longMs+=e.duration}});observer.observe({entryTypes:['longtask']})}}catch(_){observer=null}
+  const result=await new Promise(resolve=>{let frames=0;function tick(ts){if(overlay.hidden||document.hidden){resolve({status:'cancelled',reason:'panel_or_tab_hidden'});return}if(start===null)start=ts;if(last!==null)intervals.push(ts-last);last=ts;frames++;if(ts-start<3000){requestAnimationFrame(tick)}else{let elapsed=(ts-start)/1000;const sorted=intervals.slice().sort((a,b)=>a-b);resolve({status:'measured',durationSeconds:Math.round(elapsed*100)/100,frames,fps:Math.round(frames/elapsed*10)/10,averageFrameMs:intervals.length?Math.round(intervals.reduce((a,b)=>a+b,0)/intervals.length*10)/10:null,p95FrameMs:sorted.length?Math.round(sorted[Math.floor((sorted.length-1)*.95)]*10)/10:null,longTasks:observer?longCount:null,longTaskMs:observer?Math.round(longMs):null})}}requestAnimationFrame(tick)});
+  try{observer?.disconnect()}catch(_){};latestMeasurement=result;activeMeasure=false;b.disabled=false;
+  $('qy131-perf-measure').textContent=result.status==='measured'?'Орієнтовно '+result.fps+' кадрів/с · 95% кадрів до '+result.p95FrameMs+' мс. Це локальна оцінка.':'Вимірювання припинено: панель або вкладка стала неактивною.';
+  audit();return result;
+ }
+ $('qy131-auto').addEventListener('click',()=>select('auto'));
+ $('qy131-lite').addEventListener('click',()=>select('lite'));
+ $('qy131-full').addEventListener('click',()=>select('full'));
+ $('qy131-pause').addEventListener('click',togglePause);$('qy131-resume').addEventListener('click',reset);
+ $('qy131-close').addEventListener('click',hide);$('qy131-close-bottom').addEventListener('click',hide);
+ overlay.addEventListener('click',e=>{if(e.target===overlay)hide()});overlay.addEventListener('keydown',e=>{if(e.key==='Escape'){e.stopPropagation();hide()}});
+ $('qy131-audit').addEventListener('click',audit);$('qy131-measure').addEventListener('click',measure);$('qy131-export').addEventListener('click',download);
+ $('qy131-storage-btn').addEventListener('click',()=>{hide();window.qyStorageCenter130?.open()});
+ const b=document.createElement('button');b.type='button';b.id='qy131-open';b.textContent='⚡ Оптимізатор · v131';b.addEventListener('click',show);
+ const target=document.querySelector('#qy113-home-shortcuts .qy113-links')||document.getElementById('qy44-menu-sheet')||document.body;target.append(b);
+ addEventListener('resize',()=>{if(preference==='auto'){update();if(!overlay.hidden)audit()}},{passive:true});
+ update();
+ window.qyPerformance131=Object.freeze({version:131,isLite:()=>effective()==='lite',mode:effective,preference:()=>preference,open:show,close:hide,select,reset,pause:togglePause,audit,measure,latestReport:()=>latestAudit});
 })();
 </script>
 </body></html>
